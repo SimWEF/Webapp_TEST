@@ -1,0 +1,1287 @@
+{
+    "_note": "Correspondance centrale -> type de GV, denomination des GV et trous d'acces (portees de joint). Genere depuis 'Repartition GV_TP centrales.xlsx'.",
+    "defaut": {
+      "typeGV": "",
+      "gv": [
+        "GV1",
+        "GV2",
+        "GV3",
+        "GV4"
+      ],
+      "trous": []
+    },
+    "centrales": {
+      "BUG2": {
+        "typeGV": "51/19",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "BUG3": {
+        "typeGV": "51/19",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "BUG4": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "BUG5": {
+        "typeGV": "51BR",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 158",
+          "TO 231",
+          "TO 307"
+        ]
+      },
+      "BLA1": {
+        "typeGV": "56F",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "BLA2": {
+        "typeGV": "58F",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "BLA3": {
+        "typeGV": "55/19 RP",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "BLA4": {
+        "typeGV": "55/19 RO",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "DAM1": {
+        "typeGV": "51BR",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 158",
+          "TO 231",
+          "TO 307"
+        ]
+      },
+      "DAM2": {
+        "typeGV": "55/19 RU",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "DAM3": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "DAM4": {
+        "typeGV": "55/19 RU",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "GRA1": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "GRA2": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "GRA3": {
+        "typeGV": "56F",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "GRA4": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "GRA5": {
+        "typeGV": "55/19 RP 55/19 RQ",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "GRA6": {
+        "typeGV": "55/19 RP 55/19 RQ",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "TRI1": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "TRI2": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "TRI3": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "TRI4": {
+        "typeGV": "55/19 RU",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "CHB1": {
+        "typeGV": "55/19 RU",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "CHB2": {
+        "typeGV": "55/19 RO",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "CHB3": {
+        "typeGV": "51B",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 150",
+          "TO 235",
+          "TO 316"
+        ]
+      },
+      "CHB4": {
+        "typeGV": "51B",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 150",
+          "TO 235",
+          "TO 316"
+        ]
+      },
+      "CRU1": {
+        "typeGV": "58F",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TP 143 Sup",
+          "TP 323 Sup"
+        ]
+      },
+      "CRU2": {
+        "typeGV": "51B",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 150",
+          "TO 235",
+          "TO 316"
+        ]
+      },
+      "CRU3": {
+        "typeGV": "51B",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TO 51",
+          "TO 150",
+          "TO 235",
+          "TO 316"
+        ]
+      },
+      "CRU4": {
+        "typeGV": "58F",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TP 143 Sup",
+          "TP 323 Sup"
+        ]
+      },
+      "SLB1": {
+        "typeGV": "47/22",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT"
+        ]
+      },
+      "SLB2": {
+        "typeGV": "55/19 RU",
+        "gv": [
+          "GV1",
+          "GV2",
+          "GV3"
+        ],
+        "trous": [
+          "TP 143",
+          "TP 323",
+          "TP 53",
+          "TP 233",
+          "TO 143DD",
+          "TO 143DG",
+          "TO 323DG",
+          "TO 323DD",
+          "TO 53DD",
+          "TO 53DG",
+          "TO 233DD",
+          "TO 233DG",
+          "TO 143HT",
+          "TO 323HT",
+          "TO 143 Sup",
+          "TO 323 Sup"
+        ]
+      },
+      "FLA1": {
+        "typeGV": "74/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 90",
+          "TP 180",
+          "TP 270",
+          "TO 0DG",
+          "TO 0DD",
+          "TO 180DG",
+          "TO 180DD",
+          "TO 90DG",
+          "TO 90DD",
+          "TO 270DG",
+          "TO 270DD",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "FLA2": {
+        "typeGV": "74/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 90",
+          "TP 180",
+          "TP 270",
+          "TO 0DG",
+          "TO 0DD",
+          "TO 180DG",
+          "TO 180DD",
+          "TO 90DG",
+          "TO 90DD",
+          "TO 270DG",
+          "TO 270DD",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PAL1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PAL2": {
+        "typeGV": "68/19 PL",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 90",
+          "TP 180",
+          "TP 270",
+          "TO 0DG",
+          "TO 0DD",
+          "TO 180DG",
+          "TO 180DD",
+          "TO 90DG",
+          "TO 90DD",
+          "TO 270DG",
+          "TO 270DD",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PAL3": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PAL4": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "SAL1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "SAL2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "BEL1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "BEL2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "CAT1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "CAT2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "CAT3": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "CAT4": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "GOL1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "GOL2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "NOG1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "NOG2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PEN1": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "PEN2": {
+        "typeGV": "68/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 180",
+          "TO 0DG",
+          "TO 180DD",
+          "TO 90",
+          "TO 270",
+          "TO 0HT",
+          "TO 180HT",
+          "TO 0 Sup",
+          "TO 180 Sup"
+        ]
+      },
+      "CHO1": {
+        "typeGV": "73/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TL 18",
+          "TP 102",
+          "TL 162",
+          "TP 180",
+          "TL 198",
+          "TP 282",
+          "TL 342",
+          "TO 30",
+          "TO 150",
+          "TO 210",
+          "TO 330"
+        ]
+      },
+      "CHO2": {
+        "typeGV": "73/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TL 18",
+          "TP 102",
+          "TL 162",
+          "TP 180",
+          "TL 198",
+          "TP 282",
+          "TL 342",
+          "TO 30",
+          "TO 150",
+          "TO 210",
+          "TO 330"
+        ]
+      },
+      "CIV1": {
+        "typeGV": "73/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 34,5",
+          "TP 102",
+          "TP 145,5",
+          "TP 180",
+          "TP 214,5",
+          "TP 282",
+          "TP 325,5"
+        ]
+      },
+      "CIV2": {
+        "typeGV": "73/19",
+        "gv": [
+          "GV41",
+          "GV42",
+          "GV43",
+          "GV44"
+        ],
+        "trous": [
+          "TP 0",
+          "TP 34,5",
+          "TP 102",
+          "TP 145,5",
+          "TP 180",
+          "TP 214,5",
+          "TP 282",
+          "TP 325,5"
+        ]
+      }
+    }
+  }

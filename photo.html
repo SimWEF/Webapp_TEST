@@ -25,8 +25,10 @@
     .champ { margin-bottom:12px; }
     .champ label { display:block; font-weight:bold; margin-bottom:6px; font-size:15px; }
     .champ .req { color:#d93838; }
+    .champ .aide { font-size:12px; color:#8a94a1; margin-top:4px; }
     input, select, textarea { width:100%; padding:12px; font-size:16px; border-radius:8px;
       border:1px solid #ccc; box-sizing:border-box; }
+    select:disabled { background:#f3f5f7; color:#9aa4af; }
     .card > label { display:block; font-weight:bold; margin-bottom:8px; font-size:15px; }
     .ac-wrap { position:relative; }
     .ac-list { position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #ccc;
@@ -36,6 +38,11 @@
     .ac-list div:last-child { border-bottom:0; }
     .ac-list div:hover { background:#e7f0fb; }
     .ac-list .ac-empty { color:#8a94a1; cursor:default; }
+    /* Bandeau d'information sur la centrale reconnue */
+    .info-gv { display:none; background:#eef4fb; border:1px solid #cfe0f5; border-radius:10px;
+      padding:10px 12px; font-size:13px; color:#083f78; margin-bottom:12px; }
+    .info-gv b { font-weight:800; }
+    .info-gv.warn { background:#fff8e1; border-color:#ffe0a3; color:#8a6100; }
     #galerie.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
     #galerie.grid .vignette { position:relative; border-radius:10px; overflow:hidden; border:1px solid #d0d7de; aspect-ratio:1/1; }
     #galerie.grid .vignette img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -75,6 +82,7 @@
   <div class="container">
     <div class="card">
       <label>1. Renseigner les informations</label>
+      <div class="info-gv" id="infoGV"></div>
       <div id="champs"></div>
     </div>
     <div class="card">
@@ -106,8 +114,18 @@
 const QUALITE_JPEG   = 0.90;
 const MAX_LARGEUR    = 2500;
 const LIMITE_TOTALE  = 10 * 1024 * 1024;
-const GV_OPTIONS = ["GV1","GV2","GV3","GV4"];
 
+/* GV par défaut, utilisés tant qu'aucune centrale n'est reconnue */
+const GV_DEFAUT = ["GV1","GV2","GV3","GV4"];
+
+/* ===========================================================
+   Référentiel centrales : type de GV, dénomination, trous
+   =========================================================== */
+let CENTRALES = {};          // { "PAL4": {typeGV, gv[], trous[]}, ... }
+let CENTRALES_PRET = false;
+
+/* type "gv"    -> menu déroulant alimenté par la centrale
+   type "trous" -> nommage par photo alimenté par la centrale */
 const TYPES = {
   "colisage-conteneur": {
     titre:"📦 Colisage conteneur",
@@ -128,7 +146,7 @@ const TYPES = {
     titre:"📓 Cahier de quart",
     champs:[
       {id:"site",     label:"Site",     type:"json",  source:"sites.json", req:true},
-      {id:"gv",       label:"GV",       type:"liste", options:GV_OPTIONS, req:true},
+      {id:"gv",       label:"GV",       type:"gv",    req:true},
       {id:"activite", label:"Activité", type:"liste", options:["lançage","ETV"], req:true},
       {id:"date",     label:"Date",     type:"date",  req:true},
       {id:"poste",    label:"Poste",    type:"liste", options:["Matin","Après-midi","Nuit","Journée"], req:true}
@@ -141,15 +159,12 @@ const TYPES = {
     titre:"🔩 Portée de joint",
     champs:[
       {id:"site", label:"Site",            type:"json",  source:"sites.json", req:true},
-      {id:"gv",   label:"GV",              type:"liste", options:GV_OPTIONS, req:true},
+      {id:"gv",   label:"GV",              type:"gv",    req:true},
       {id:"sens", label:"Entrée / Sortie", type:"liste", options:["Entrée","Sortie"], req:true}
     ],
     path:v=>`photo-PIGVS/${v.site}/4- Portées de joint/${v.gv}/${v.sens}`,
-    nomPhoto:{ type:"liste", label:"Repère", req:true, options:[
-      {label:"TP 0",value:"TP_0"},{label:"TP 180",value:"TP_180"},
-      {label:"TO 0DG",value:"TO_0DG"},{label:"TO 180DD",value:"TO_180DD"},
-      {label:"TO 90",value:"TO_90"},{label:"TO 270",value:"TO_270"}
-    ]}
+    /* Les trous d'accès dépendent de la centrale */
+    nomPhoto:{ type:"trous", label:"Trou d'accès", req:true }
   },
   "condition-acces": {
     titre:"🚪 Condition d'accès",
@@ -173,9 +188,10 @@ const champsDiv    = document.getElementById('champs');
 const titrePage    = document.getElementById('titrePage');
 const apercuChemin = document.getElementById('apercuChemin');
 const aideNom      = document.getElementById('aide-nom');
+const infoGV       = document.getElementById('infoGV');
 
 let photos = [];
-let nomPhotoOptions = [];
+let nomPhotoOptions = [];    // options du nommage par photo (caisses.json)
 const champData = {};
 
 const camInput  = document.getElementById('camInput');
@@ -193,6 +209,11 @@ function setStatusP(t,m){ statusPhoto.className="status "+t; statusPhoto.innerHT
 function clearStatusP(){ statusPhoto.className="status"; statusPhoto.innerHTML=""; }
 function tailleTotale(){ return photos.reduce((s,p)=>s+p.file.size,0); }
 function fmtMo(o){ return (o/1048576).toFixed(1); }
+
+/* "TO 143 Sup" -> "TO_143_Sup"  (nom de fichier propre) */
+function versNomFichier(lib){
+  return clean(lib).replace(/\s+/g,'_');
+}
 
 function normalize(str){ return (str||'').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
 function editDistance(a,b){
@@ -258,6 +279,73 @@ function compresser(file){
   });
 }
 
+/* ===========================================================
+   CENTRALE COURANTE
+   =========================================================== */
+function siteSaisi(){
+  const el = document.getElementById('f_site');
+  return el ? el.value.trim() : '';
+}
+function centraleCourante(){
+  const s = siteSaisi();
+  if(!s) return null;
+  /* recherche insensible à la casse / aux espaces */
+  const cle = Object.keys(CENTRALES).find(k => normalize(k) === normalize(s));
+  return cle ? Object.assign({ code:cle }, CENTRALES[cle]) : null;
+}
+function listeGV(){
+  const c = centraleCourante();
+  return (c && c.gv && c.gv.length) ? c.gv : GV_DEFAUT;
+}
+function listeTrous(){
+  const c = centraleCourante();
+  return (c && c.trous) ? c.trous : [];
+}
+
+/* Met à jour le bandeau + les listes dépendantes du site */
+function majDependancesSite(){
+  const c = centraleCourante();
+  const s = siteSaisi();
+
+  /* --- Bandeau d'information --- */
+  if(!s){
+    infoGV.style.display = 'none';
+  } else if(c){
+    infoGV.className = 'info-gv';
+    infoGV.style.display = 'block';
+    infoGV.innerHTML = `🏭 <b>${c.code}</b> — GV type <b>${c.typeGV||'?'}</b> · `
+      + `${c.gv.length} GV (${c.gv.join(', ')})`
+      + (c.trous.length ? ` · ${c.trous.length} trous d'accès` : '');
+  } else {
+    infoGV.className = 'info-gv warn';
+    infoGV.style.display = 'block';
+    infoGV.innerHTML = `⚠️ Centrale « ${escAttr(s)} » non répertoriée : liste GV par défaut utilisée.`;
+  }
+
+  /* --- Menu GV --- */
+  const selGV = document.getElementById('f_gv');
+  if(selGV){
+    const avant = selGV.value;
+    const gvs = listeGV();
+    selGV.innerHTML = '<option value="">— choisir —</option>'
+      + gvs.map(g=>`<option value="${escAttr(g)}">${g}</option>`).join('');
+    /* on conserve la sélection si elle existe toujours */
+    if(gvs.includes(avant)) selGV.value = avant;
+  }
+
+  /* --- Trous d'accès (nommage par photo) --- */
+  if(TYPE && TYPE.nomPhoto && TYPE.nomPhoto.type === 'trous'){
+    const trous = listeTrous();
+    /* on vide les repères devenus invalides */
+    photos.forEach(p=>{ if(p.nom && !trous.includes(p.nom)) p.nom = ''; });
+    rendreGalerie();
+  }
+  majEtat();
+}
+
+/* ===========================================================
+   CONSTRUCTION DES CHAMPS
+   =========================================================== */
 function construireChamps(){
   TYPE.champs.forEach(c=>{
     const wrap=document.createElement('div'); wrap.className='champ';
@@ -267,6 +355,9 @@ function construireChamps(){
       inner+=`<div class="ac-wrap"><input type="text" id="f_${c.id}" autocomplete="off"
                autocapitalize="off" spellcheck="false" placeholder="Rechercher…">
                <div class="ac-list" id="ac_f_${c.id}"></div></div>`;
+    } else if(c.type==='gv'){
+      inner+=`<select id="f_${c.id}"><option value="">— choisir —</option></select>
+              <div class="aide">Dépend de la centrale sélectionnée</div>`;
     } else if(c.type==='liste'){
       inner+=`<select id="f_${c.id}"><option value="">— choisir —</option>`+
         c.options.map(o=>`<option value="${o}">${o}</option>`).join('')+`</select>`;
@@ -281,7 +372,14 @@ function construireChamps(){
       champData[c.id]=[];
       fetch(c.source).then(r=>r.json()).then(l=>{ champData[c.id]=l; })
         .catch(()=>{ el.placeholder='⚠️ '+c.source+' introuvable'; });
-      attachAutocomplete(el, document.getElementById('ac_f_'+c.id), ()=>champData[c.id], ()=>majEtat());
+      attachAutocomplete(el, document.getElementById('ac_f_'+c.id), ()=>champData[c.id], ()=>{
+        if(c.id==='site') majDependancesSite(); else majEtat();
+      });
+      /* saisie manuelle du site (sans passer par la liste) */
+      if(c.id==='site'){
+        el.addEventListener('change', majDependancesSite);
+        el.addEventListener('blur',   majDependancesSite);
+      }
     } else {
       if(c.type==='date'){ el.value=new Date().toISOString().slice(0,10); }
       el.addEventListener('input', majEtat);
@@ -333,6 +431,7 @@ galInput.addEventListener('change', async e=>{ const f=Array.from(e.target.files
 
 function champNomPhoto(p,i){
   const np=TYPE.nomPhoto;
+
   if(np.type==='text'){
     return `<input type="text" class="np-text" data-i="${i}" placeholder="${escAttr(np.label)}" value="${escAttr(p.nom)}">`;
   }
@@ -341,6 +440,17 @@ function champNomPhoto(p,i){
              placeholder="${escAttr(np.label)}" value="${escAttr(p.nom)}">
              <div class="ac-list" id="ac_np_${i}"></div></div>`;
   }
+  if(np.type==='trous'){
+    const trous = listeTrous();
+    if(!trous.length){
+      return `<select class="np-select" data-i="${i}" disabled>
+                <option>— choisis d'abord une centrale —</option></select>`;
+    }
+    const opts = `<option value="">— choisir —</option>`
+      + trous.map(t=>`<option value="${escAttr(t)}" ${p.nom===t?'selected':''}>${t}</option>`).join('');
+    return `<select class="np-select" data-i="${i}">${opts}</select>`;
+  }
+  /* liste fixe */
   let opts=`<option value="">— ${np.req?'choisir':'facultatif'} —</option>`+
     np.options.map(o=>`<option value="${o.value}" ${p.nom===o.value?'selected':''}>${o.label}</option>`).join('');
   return `<select class="np-select" data-i="${i}">${opts}</select>`;
@@ -403,7 +513,7 @@ function nomsFichiers(){
   const v=lireValeurs(); const used={};
   return photos.map((p,idx)=>{
     let base;
-    if(TYPE.nomPhoto && p.nom && p.nom.trim()!==''){ base=clean(p.nom); }
+    if(TYPE.nomPhoto && p.nom && p.nom.trim()!==''){ base=versNomFichier(p.nom); }
     else if(TYPE.nomBase){ base=clean(TYPE.nomBase(v))+'_'+Date.now()+'_'+(idx+1); }
     else { base='photo_'+Date.now()+'_'+(idx+1); }
     let name=base;
@@ -428,6 +538,8 @@ sendBtn.addEventListener('click', async ()=>{
   const champs={};
   TYPE.champs.forEach(c=>{ champs[c.label]=document.getElementById('f_'+c.id).value; });
   champs["Type"]=TYPE.titre;
+  const c = centraleCourante();
+  if(c) champs["TypeGV"] = c.typeGV || '';
 
   const res = await PIGVS_ENVOI.envoyer({
     type  : "PHOTO",
@@ -458,12 +570,24 @@ if(!TYPE){
 } else {
   titrePage.textContent=TYPE.titre;
   construireChamps();
-  if(window.PIGVS){
-    PIGVS.loadChantiers().then(function(){
-      const s=document.getElementById('f_site');
-      if(s){ PIGVS.prefillSite(s); majEtat(); }
+
+  /* 1) référentiel des centrales, 2) pré-remplissage du site */
+  fetch('centrales.json')
+    .then(r=>r.json())
+    .then(d=>{ CENTRALES = d.centrales || {}; CENTRALES_PRET = true; })
+    .catch(()=>{ CENTRALES = {}; CENTRALES_PRET = true;
+                 console.warn('centrales.json introuvable : listes GV/trous par défaut'); })
+    .finally(()=>{
+      if(window.PIGVS){
+        PIGVS.loadChantiers().then(function(){
+          const s=document.getElementById('f_site');
+          if(s){ PIGVS.prefillSite(s); }
+          majDependancesSite();
+        });
+      } else {
+        majDependancesSite();
+      }
     });
-  }
 }
 </script>
 </body>

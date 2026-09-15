@@ -25,15 +25,16 @@ const ASSETS = [
    "quizz-questions.json",
    "validateur-questions.html",
    "admin.html",
-   "colisage-editeur.html"
+   "colisage-editeur.html",
+   "centrales.json"
 ];
 /* ==========================================================
    PIGVS Service Worker
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v5";
-   const DATA_CACHE = "pigvs-data-v3";
+   const APP_CACHE = "pigvs-app-v6";
+   const DATA_CACHE = "pigvs-data-v4";
    
    /* ==========================================================
       Fichiers statiques
@@ -64,7 +65,8 @@ const ASSETS = [
    "quizz.html",
    "validateur-questions.html",
    "admin.html",
-   "colisage-editeur.html"
+   "colisage-editeur.html",
+   "centrales.json"
    ];
    
    /* ==========================================================
