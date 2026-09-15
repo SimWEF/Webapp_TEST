@@ -1,33 +1,5 @@
 
-const ASSETS = [
-  "index.html",
-  "fdm.html",
-  "photos.html",
-  "photo.html",
-  "materiel.html",
-  "style.css",
-  "manifest.json",
-  "colisage-data.json",
-  "colisage.html",
-  "rex.html",
-  "info.html",
-  "icon-192.png",
-  "icon-512.png",
-  "pigvs-chantier.js",
-   "chantiers.json", 
-   "info-paluel4.json",
-   "info-cattenom3.json",
-   "pigvs-envoi.js",
-   "pigvs-auth.js",
-   "login.html",
-   "detailSousEnsemble.html",
-   "quizz.html",
-   "quizz-questions.json",
-   "validateur-questions.html",
-   "admin.html",
-   "colisage-editeur.html",
-   "centrales.json"
-];
+
 /* ==========================================================
    PIGVS Service Worker
    Version : 3.0
@@ -63,9 +35,6 @@ const ASSETS = [
    "login.html",
    "detailSousEnsemble.html",
    "quizz.html",
-   "validateur-questions.html",
-   "admin.html",
-   "colisage-editeur.html",
    "centrales.json"
    ];
    
@@ -220,35 +189,17 @@ const ASSETS = [
    
      /* ======================================================
         CAS 3 : Application
-        Cache First
+        Network First
         ====================================================== */
    
-     event.respondWith(
-   
-       caches.match(event.request)
-   
-         .then(cached => {
-   
-           if (cached) {
-             return cached;
-           }
-   
-           return fetch(event.request)
-             .then(response => {
-   
-               const copy = response.clone();
-   
-               caches.open(APP_CACHE)
-                 .then(cache =>
-                   cache.put(event.request, copy)
-                 );
-   
-               return response;
-   
-             });
-   
-         })
-   
-     );
+        event.respondWith(
+          fetch(event.request)
+            .then(response => {
+              const copy = response.clone();
+              caches.open(APP_CACHE).then(cache => cache.put(event.request, copy));
+              return response;
+            })
+            .catch(() => caches.match(event.request))
+        );
    
    });
