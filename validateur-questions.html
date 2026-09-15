@@ -171,5 +171,33 @@ const drop=$('drop');['dragenter','dragover'].forEach(n=>drop.addEventListener(n
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function attr(s){return esc(s).replace(/`/g,'&#96;')}
 window.addEventListener('beforeunload',e=>{if(edited.size||deleted.size){e.preventDefault();e.returnValue=''}});
 </script>
+<script>
+  /* Déverrouillage automatique quand l'éditeur est ouvert depuis
+     l'espace Administration (admin.html) avec une session valide. */
+  (function(){
+    var params = new URLSearchParams(location.search);
+    var vientDeAdmin = params.get('adm') === '1';
+    var session = sessionStorage.getItem('pigvs_admin_session') === '1';
+  
+    if(!vientDeAdmin || !session) return;
+  
+    function deverrouiller(){
+      /* Masque tout écran de saisie de mot de passe repéré */
+      ['gate','login','verrou','auth','mdp-ecran'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) el.style.display = 'none';
+      });
+      /* Affiche le contenu principal */
+      ['app','contenu','main','editeur'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) el.style.display = 'flex';
+      });
+    }
+  
+    deverrouiller();
+    document.addEventListener('DOMContentLoaded', deverrouiller);
+  })();
+  </script>
+  
 </body>
 </html>
