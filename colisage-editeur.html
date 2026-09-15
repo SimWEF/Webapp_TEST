@@ -103,27 +103,65 @@
 
 <script>
 /* ===================== VERROU ===================== */
+/* ===================== VERROU ===================== */
 const EMPREINTE = '64b8f3e016b4777ecafd5cf6d2d723ee8d8827a2befe0a4aca06197137defcb8';
-const depuisAdmin = new URLSearchParams(location.search).get('adm') === '1' && window.parent !== window;
-
 const $ = id => document.getElementById(id);
+
+const params      = new URLSearchParams(location.search);
+const dansIframe  = window.parent !== window;
+const paramAdmin  = params.get('adm') === '1';
+let   sessionAdm  = false;
+try { sessionAdm = sessionStorage.getItem('pigvs_admin_session') === '1'; } catch(e){}
+
+const depuisAdmin = paramAdmin || sessionAdm || dansIframe;
+
 async function sha256(t){
+  if(!window.crypto || !crypto.subtle){
+    throw new Error("Chiffrement indisponible : ouvrez la page en HTTPS.");
+  }
   const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
   return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join('');
 }
+
 if(!depuisAdmin){
   $('verrou').hidden = false;
   document.body.style.overflow = 'hidden';
   $('verrouMdp').focus();
+
   const essayer = async () => {
+    const saisie = $('verrouMdp').value;
+    if(!saisie){ $('verrouMsg').textContent = 'Saisissez le mot de passe'; return; }
+
     $('verrouOk').disabled = true;
+    $('verrouMsg').style.color = '#5a6673';
     $('verrouMsg').textContent = 'Vérification…';
-    const ok = (await sha256($('verrouMdp').value)) === EMPREINTE;
+
+    let ok = false;
+    try{
+      ok = (await sha256(saisie)) === EMPREINTE;
+    }catch(err){
+      console.error(err);
+      $('verrouMsg').style.color = '#c62828';
+      $('verrouMsg').textContent = err.message;
+      $('verrouOk').disabled = false;
+      return;
+    }
+
     await new Promise(r => setTimeout(r, 2000));
-    if(ok){ $('verrou').remove(); document.body.style.overflow = ''; }
-    else { $('verrouMsg').textContent = 'Mot de passe incorrect';
-           $('verrouMdp').value = ''; $('verrouOk').disabled = false; $('verrouMdp').focus(); }
+
+    if(ok){
+      try { sessionStorage.setItem('pigvs_admin_session','1'); } catch(e){}
+      $('verrou').remove();
+      document.body.style.overflow = '';
+    } else {
+      $('verrouMsg').style.color = '#c62828';
+      $('verrouMsg').textContent = 'Mot de passe incorrect';
+      $('verrouMdp').value = '';
+      $('verrouOk').disabled = false;
+      $('verrouMdp').focus();
+    }
   };
+
   $('verrouOk').addEventListener('click', essayer);
   $('verrouMdp').addEventListener('keydown', e => { if(e.key === 'Enter') essayer(); });
 }
