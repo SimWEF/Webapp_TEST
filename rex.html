@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retour d'expérience — PIGVS</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0078D7">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    .field-group { margin-bottom:14px; }
+    .field-group label { display:block; font-weight:700; margin-bottom:6px; font-size:15px; }
+    .field-group .req { color:#d93838; }
+    input, select, textarea { width:100%; padding:12px; font-size:16px; border-radius:8px;
+      border:1px solid #ccc; box-sizing:border-box; }
+    textarea { min-height:110px; resize:vertical; }
+    .btn { width:100%; padding:16px; font-size:17px; font-weight:700; border:none; border-radius:12px;
+      background:#1f9d55; color:#fff; cursor:pointer; margin-top:6px; }
+    .btn:disabled { opacity:.5; }
+    .field-wrap { position:relative; }
+    .dropdown { position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #ccc;
+      border-radius:8px; max-height:200px; overflow-y:auto; z-index:60; display:none;
+      box-shadow:0 6px 16px rgba(0,0,0,.14); }
+    .dropdown div { padding:11px 12px; font-size:15px; cursor:pointer; border-bottom:1px solid #f0f0f0; }
+    .dropdown div:hover { background:#e7f0fb; }
+    .status { text-align:center; font-size:14px; font-weight:700; padding:12px; border-radius:12px; margin-top:10px; display:none; }
+    .status.ok { display:block; background:#e4f6ec; color:#1f9d55; }
+    .status.info { display:block; background:#e7f0fb; color:#083f78; }
+    .status.erreur { display:block; background:#fdecec; color:#d93838; }
+  </style>
+<script src="pigvs-auth.js"></script>
+<script>PIGVS_AUTH.protegerPage();</script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="back" href="index.html">‹</a>
+    <h1>💬 Retour d'expérience</h1>
+  </header>
+  <div class="container">
+    <p class="info">* champs obligatoires</p>
+
+    <div class="field-group">
+      <label>Site <span class="req">*</span></label>
+      <div class="field-wrap">
+        <input type="text" id="site" autocomplete="off" spellcheck="false" placeholder="Rechercher un site…">
+        <div id="siteList" class="dropdown"></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Type de GV</label>
+      <input type="text" id="gv" placeholder="(à préciser ultérieurement)">
+    </div>
+
+    <div class="field-group">
+      <label>Activité <span class="req">*</span></label>
+      <select id="activite">
+        <option value="">— choisir —</option>
+        <option>Lançage</option><option>ETV</option><option>PIGVS</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label>Thème <span class="req">*</span></label>
+      <select id="theme">
+        <option value="">— choisir —</option>
+        <option>Technique</option><option>Documentaire</option><option>Organisationnel</option>
+        <option>Proposition d'amélioration</option><option>Autre</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label>Description du REX <span class="req">*</span></label>
+      <textarea id="description" placeholder="Décrire le retour d'expérience à prendre en compte…"></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Nom de l'opérateur <span class="req">*</span></label>
+      <input type="text" id="operateur" placeholder="Votre nom">
+    </div>
+
+    <button class="btn" id="sendBtn">Envoyer le REX 📤</button>
+    <div id="status" class="status"></div>
+  </div>
+
+<script src="pigvs-chantier.js"></script>
+<script src="pigvs-auth.js"></script>
+<script src="pigvs-envoi.js"></script>
+<script>
+const siteInput=document.getElementById('site');
+const siteList=document.getElementById('siteList');
+const status=document.getElementById('status');
+const sendBtn=document.getElementById('sendBtn');
+let sites=[];
+
+function normalize(s){ return (s||'').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+function setStatus(cls,msg){ status.className="status "+cls; status.textContent=msg; }
+
+fetch('sites.json').then(r=>r.json()).then(l=>{ sites=l; }).catch(()=>{});
+siteInput.addEventListener('focus', ()=>showSites(''));
+siteInput.addEventListener('input', ()=>showSites(siteInput.value));
+function showSites(filter){
+  const val=normalize(filter);
+  const res=sites.filter(s=>normalize(s).includes(val)).slice(0,100);
+  siteList.innerHTML = res.length ? res.map(s=>`<div>${s}</div>`).join('') : "<div>Aucun résultat</div>";
+  siteList.querySelectorAll('div').forEach(d=>d.addEventListener('mousedown',ev=>{
+    ev.preventDefault(); siteInput.value=d.textContent.trim(); siteList.style.display='none';
+  }));
+  siteList.style.display='block';
+}
+document.addEventListener('click', e=>{ if(!e.target.closest('.field-wrap')) siteList.style.display='none'; });
+
+if (window.PIGVS) {
+  PIGVS.loadChantiers().then(function(){ PIGVS.prefillSite(siteInput); });
+}
+
+/* ============ ENVOI HTTP ============ */
+sendBtn.addEventListener('click', async ()=>{
+  const site=siteInput.value.trim();
+  const gv=document.getElementById('gv').value.trim();
+  const activite=document.getElementById('activite').value;
+  const theme=document.getElementById('theme').value;
+  const description=document.getElementById('description').value.trim();
+  const operateur=document.getElementById('operateur').value.trim();
+
+  if(!site||!activite||!theme||!description||!operateur){
+    setStatus('erreur',"⚠️ Remplis tous les champs obligatoires (*)."); return;
+  }
+
+  sendBtn.disabled=true;
+  setStatus('info','⏳ Envoi en cours…');
+
+  const res = await PIGVS_ENVOI.envoyer({
+    type  : "REX",
+    path  : "",
+    champs: {
+      "Site":site, "GV":gv||"N/C", "Activite":activite,
+      "Theme":theme, "Description":description, "Operateur":operateur
+    },
+    photos: []
+  });
+
+  if(res.ok){
+    setStatus('ok',"✅ REX envoyé, merci !");
+    document.getElementById('description').value="";
+    document.getElementById('gv').value="";
+    setTimeout(()=>{ sendBtn.disabled=false; }, 1500);
+  } else {
+    setStatus('erreur',"❌ "+res.msg);
+    sendBtn.disabled=false;
+  }
+});
+</script>
+</body>
+</html>
