@@ -42,7 +42,7 @@
   .tuile .ico{ font-size:38px; }
   .tuile h2{ font-size:16px; margin:10px 0 6px; }
   .tuile p{ font-size:13px; color:var(--gris); margin:0; }
-  .avert{ margin-top:22px; font-size:12px; color:var(--gris); background:#fff8e1; border:1px solid #ffe0a3;
+  .avert{ margin-top:22px; font-size:12px; color:var(--gris); background:#e8f4fd; border:1px solid #b9dcf7;
           border-radius:10px; padding:12px 14px; }
 
   /* ---------- Vue outil ---------- */
@@ -87,8 +87,9 @@
       </div>
     </div>
     <div class="avert">
-      ⚠️ Aucune session n'est enregistrée : le mot de passe est redemandé à chaque ouverture de cette page
-      et après chaque rafraîchissement.
+      ℹ️ La session reste ouverte tant que cet onglet est ouvert : le mot de passe n'est plus redemandé
+      après un rafraîchissement, ni à l'ouverture des éditeurs.
+      Cliquez sur <b>🔒 Verrouiller</b> pour la fermer.
     </div>
   </div>
 </div>
@@ -105,10 +106,13 @@
 
 <script>
 /* SHA-256 de "Admin1%" — le mot de passe n'apparaît jamais en clair dans le code */
-const EMPREINTE = '64b8f3e016b4777ecafd5cf6d2d723ee8d8827a2befe0a4aca06197137defcb8';
+const EMPREINTE  = '64b8f3e016b4777ecafd5cf6d2d723ee8d8827a2befe0a4aca06197137defcb8';
 const MAX_ESSAIS = 5;
-let essais = 0, bloque = false;
 
+/* Clé de session partagée avec les éditeurs (même onglet, même origine) */
+const CLE_SESSION = 'pigvs_admin_session';
+
+let essais = 0, bloque = false;
 const $ = id => document.getElementById(id);
 
 async function sha256(txt){
@@ -116,27 +120,41 @@ async function sha256(txt){
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
+function sessionActive(){ return sessionStorage.getItem(CLE_SESSION) === '1'; }
+
+function ouvrirSession(){
+  sessionStorage.setItem(CLE_SESSION, '1');
+  $('gate').style.display = 'none';
+  $('app').style.display  = 'flex';
+  $('mdp').value = '';
+  $('msg').textContent = '';
+  essais = 0;
+}
+
 async function tenter(){
   if(bloque) return;
   const saisie = $('mdp').value;
   if(!saisie) return;
+
   $('valider').disabled = true;
   $('msg').textContent = 'Vérification…';
   $('msg').style.color = '#5a6673';
 
-  const ok = (await sha256(saisie)) === EMPREINTE;
+  let ok = false;
+  try{
+    ok = (await sha256(saisie)) === EMPREINTE;
+  }catch(err){
+    console.error(err);
+    $('msg').style.color = '#c62828';
+    $('msg').textContent = "Erreur : chiffrement indisponible (HTTPS requis).";
+    $('valider').disabled = false;
+    return;
+  }
 
   /* Temporisation de 2 s : freine les tentatives automatisées */
   await new Promise(r => setTimeout(r, 2000));
 
-  if(ok){
-    $('gate').style.display = 'none';
-    $('app').style.display  = 'flex';
-    $('mdp').value = '';
-    $('msg').textContent = '';
-    essais = 0;
-    return;
-  }
+  if(ok){ ouvrirSession(); return; }
 
   essais++;
   $('mdp').value = '';
@@ -167,13 +185,20 @@ async function tenter(){
 
 $('valider').addEventListener('click', tenter);
 $('mdp').addEventListener('keydown', e => { if(e.key === 'Enter') tenter(); });
-$('mdp').focus();
+
+/* ---- Reprise automatique de la session ---- */
+if(sessionActive()){
+  $('gate').style.display = 'none';
+  $('app').style.display  = 'flex';
+} else {
+  $('mdp').focus();
+}
 
 /* ---- Navigation interne ---- */
 document.querySelectorAll('.tuile').forEach(t => {
   t.addEventListener('click', () => {
     $('titreOutil').textContent = t.dataset.titre;
-    /* le paramètre indique à l'outil qu'il est lancé depuis l'espace admin */
+    /* ?adm=1 : indique à l'outil qu'il est lancé depuis l'espace admin */
     $('cadre').src = t.dataset.outil + '?adm=1';
     $('app').style.display = 'none';
     $('vue').style.display = 'flex';
@@ -188,6 +213,7 @@ function versMenu(){
 $('retour').addEventListener('click', versMenu);
 
 function verrouiller(){
+  sessionStorage.removeItem(CLE_SESSION);
   $('cadre').src = 'about:blank';
   $('vue').style.display = 'none';
   $('app').style.display = 'none';
