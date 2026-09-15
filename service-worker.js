@@ -33,8 +33,8 @@ const ASSETS = [
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v6";
-   const DATA_CACHE = "pigvs-data-v4";
+   const APP_CACHE = "pigvs-app-v7";
+   const DATA_CACHE = "pigvs-data-v5";
    
    /* ==========================================================
       Fichiers statiques
