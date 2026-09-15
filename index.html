@@ -17,6 +17,20 @@
   </style>
 <script src="pigvs-auth.js"></script>
 <script>PIGVS_AUTH.protegerPage();</script>
+<style>
+  .tuile-admin{
+    display:flex; align-items:center; gap:14px;
+    background:#1b2a38; color:#fff; text-decoration:none;
+    border-radius:14px; padding:18px 20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.14);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .tuile-admin:hover{ transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,.22); }
+  .tuile-admin-ico{ font-size:30px; line-height:1; }
+  .tuile-admin-txt{ display:flex; flex-direction:column; }
+  .tuile-admin-txt strong{ font-size:16px; }
+  .tuile-admin-txt small{ font-size:12px; opacity:.75; margin-top:2px; }
+</style>
 </head>
 <body>
 
@@ -98,6 +112,15 @@
         <div style="font-size:14px;color:var(--muted)">Informations importantes à ne pas manquer</div>
       </div>
     </a>
+
+    <a class="tuile-admin" href="admin.html">
+      <span class="tuile-admin-ico">🔒</span>
+      <span class="tuile-admin-txt">
+        <strong>Admin</strong>
+        <small>Éditeurs quizz &amp; colisage</small>
+      </span>
+    </a>
+
 
   </div>
 

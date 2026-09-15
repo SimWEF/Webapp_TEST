@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éditeur de colisage — PIGVS</title>
+<style>
+  :root{ --bleu:#0078D7; --bord:#e0e0e0; --gris:#5a6673; --gris2:#8a94a1; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:Segoe UI,system-ui,Arial,sans-serif; background:#f4f6f9; color:#22303c; }
+  header{ background:var(--bleu); color:#fff; padding:12px 16px; position:sticky; top:0; z-index:20;
+    display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  header h1{ font-size:17px; margin:0; flex:1; }
+  .btn{ border:none; border-radius:8px; padding:9px 13px; font-size:14px; font-weight:600;
+    cursor:pointer; background:#fff; color:var(--bleu); }
+  .btn.ghost{ background:rgba(255,255,255,.18); color:#fff; }
+  .btn.sm{ padding:5px 9px; font-size:13px; }
+  .btn.danger{ background:#fdecec; color:#b3261e; }
+  .btn.neutre{ background:#eef1f5; color:#33414f; }
+  .wrap{ max-width:900px; margin:0 auto; padding:14px; }
+  .bar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px; }
+  select,input[type=text]{ padding:10px 12px; font-size:15px; border:1px solid #ccc; border-radius:9px;
+    background:#fff; max-width:100%; }
+  #selConteneur{ flex:1; min-width:220px; font-weight:700; }
+  #filtre{ flex:1; min-width:180px; }
+  .infos{ font-size:13px; color:var(--gris); margin-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .chip{ display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:14px;
+    font-size:12px; font-weight:700; color:#fff; }
+  .caisse{ background:#fff; border:1px solid var(--bord); border-radius:12px; margin-bottom:10px; overflow:hidden; }
+  .caisse-head{ display:flex; align-items:center; gap:8px; padding:10px 12px; background:#fafbfc; }
+  .caisse-head .tog{ border:none; background:transparent; font-size:16px; cursor:pointer; color:var(--gris2); width:26px; }
+  .caisse-head input{ flex:1; font-weight:700; font-size:15px; border:1px solid transparent; background:transparent; }
+  .caisse-head input:focus{ border-color:#ccc; background:#fff; }
+  .caisse-head .cnt{ font-size:12px; color:var(--gris2); white-space:nowrap; }
+  .items{ padding:6px 12px 12px; }
+  .ligne{ display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px solid #f1f3f6; }
+  .ligne input[type=text]{ flex:1; padding:7px 9px; font-size:14px; border:1px solid #e3e7ec; }
+  .ligne.absent input[type=text]{ text-decoration:line-through; color:#b0b8c1; background:#fbfbfc; }
+  .ligne label{ font-size:12px; color:var(--gris); display:flex; align-items:center; gap:4px; white-space:nowrap; }
+  .actions{ display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .vide{ text-align:center; color:var(--gris2); padding:26px 10px; }
+  .pied{ display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 40px; }
+  .note{ font-size:12px; color:var(--gris); margin-top:8px; }
+  .toast{ position:fixed; left:50%; bottom:20px; transform:translateX(-50%); background:#22303c; color:#fff;
+    padding:10px 16px; border-radius:9px; font-size:14px; opacity:0; pointer-events:none; transition:.25s; z-index:50; }
+  .toast.on{ opacity:1; }
+
+  /* ---- Verrou d'accès direct ---- */
+  #verrou{ position:fixed; inset:0; z-index:100; background:linear-gradient(160deg,#0a2a4a,#0078D7);
+           display:flex; align-items:center; justify-content:center; padding:20px; }
+  #verrou .carte{ background:#fff; border-radius:16px; padding:28px 24px; max-width:340px; width:100%;
+           text-align:center; box-shadow:0 12px 34px rgba(0,0,0,.28); }
+  #verrou h2{ font-size:18px; margin:8px 0 16px; }
+  #verrou input{ width:100%; padding:12px; font-size:16px; text-align:center; letter-spacing:2px;
+           border:1px solid #ccd3da; border-radius:10px; }
+  #verrou button{ width:100%; margin-top:10px; padding:12px; border:none; border-radius:10px;
+           background:var(--bleu); color:#fff; font-size:16px; font-weight:700; cursor:pointer; }
+  #verrouMsg{ min-height:18px; margin-top:10px; font-size:13px; font-weight:600; color:#c62828; }
+</style>
+</head>
+<body>
+
+<!-- Verrou affiché uniquement si la page est ouverte hors de l'espace Admin -->
+<div id="verrou" hidden>
+  <div class="carte">
+    <div style="font-size:38px">🔐</div>
+    <h2>Accès administrateur</h2>
+    <input type="password" id="verrouMdp" placeholder="Mot de passe" autocomplete="off" spellcheck="false">
+    <button id="verrouOk">Entrer</button>
+    <div id="verrouMsg"></div>
+  </div>
+</div>
+
+<header>
+  <h1>🧰 Éditeur de colisage</h1>
+  <button class="btn ghost" id="btnRecharger" title="Recharger le colisage de l'application">🔄</button>
+  <button class="btn ghost" id="btnImport">📂 Importer</button>
+  <button class="btn" id="btnExport">💾 Exporter JSON</button>
+  <input type="file" id="fichier" accept=".json" hidden>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <select id="selConteneur"></select>
+    <input type="text" id="filtre" placeholder="🔍 Filtrer une caisse ou un matériel…">
+  </div>
+  <div class="infos" id="infos"></div>
+  <div id="liste"></div>
+  <div class="pied">
+    <button class="btn neutre" id="btnAddCaisse">＋ Ajouter une caisse</button>
+    <button class="btn neutre" id="btnTout">⇕ Tout plier / déplier</button>
+    <button class="btn neutre" id="btnBrouillon">⬇️ Exporter le brouillon</button>
+    <button class="btn danger" id="btnReset">↺ Repartir du colisage de l'appli</button>
+  </div>
+  <div class="note" id="source"></div>
+  <div class="note">
+    Les modifications restent en mémoire tant que la page est ouverte. À l'export, les lignes décochées
+    (matériel non présent) sont retirées du fichier final ; le brouillon, lui, les conserve.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== VERROU ===================== */
+const EMPREINTE = '64b8f3e016b4777ecafd5cf6d2d723ee8d8827a2befe0a4aca06197137defcb8';
+const depuisAdmin = new URLSearchParams(location.search).get('adm') === '1' && window.parent !== window;
+
+const $ = id => document.getElementById(id);
+async function sha256(t){
+  const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join('');
+}
+if(!depuisAdmin){
+  $('verrou').hidden = false;
+  document.body.style.overflow = 'hidden';
+  $('verrouMdp').focus();
+  const essayer = async () => {
+    $('verrouOk').disabled = true;
+    $('verrouMsg').textContent = 'Vérification…';
+    const ok = (await sha256($('verrouMdp').value)) === EMPREINTE;
+    await new Promise(r => setTimeout(r, 2000));
+    if(ok){ $('verrou').remove(); document.body.style.overflow = ''; }
+    else { $('verrouMsg').textContent = 'Mot de passe incorrect';
+           $('verrouMdp').value = ''; $('verrouOk').disabled = false; $('verrouMdp').focus(); }
+  };
+  $('verrouOk').addEventListener('click', essayer);
+  $('verrouMdp').addEventListener('keydown', e => { if(e.key === 'Enter') essayer(); });
+}
+
+/* ===================== DONNÉES ===================== */
+let DATA = null;       // données de travail
+let ORIGINAL = null;   // colisage chargé depuis l'appli
+let courant = null;    // conteneur affiché
+let plies = new Set();
+
+const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function toast(msg){
+  const t = $('toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+function versObjets(data){
+  data.conteneurs.forEach(c => c.caisses.forEach(k => {
+    k.items = k.items.map(it => typeof it === 'string' ? { t:it, absent:false }
+                                                       : { t:it.t || '', absent:!!it.absent });
+  }));
+  return data;
+}
+function versTexte(data, garderAbsents){
+  const copie = JSON.parse(JSON.stringify(data));
+  copie.conteneurs.forEach(c => c.caisses.forEach(k => {
+    k.items = k.items.filter(it => garderAbsents || !it.absent)
+                     .map(it => garderAbsents ? { t:it.t, absent:!!it.absent } : it.t);
+  }));
+  if(!garderAbsents) copie.conteneurs.forEach(c => { c.caisses = c.caisses.filter(k => k.items.length > 0); });
+  return copie;
+}
+
+/* Chargement automatique du colisage de l'application */
+const CHEMINS = ['colisage-data.json','../colisage-data.json','data/colisage-data.json',
+                 'Data/colisage-data.json','../data/colisage-data.json'];
+
+async function chargerAppli(silencieux){
+  for(const p of CHEMINS){
+    try{
+      const r = await fetch(p, { cache:'no-store' });
+      if(!r.ok) continue;
+      const d = await r.json();
+      if(!d || !Array.isArray(d.conteneurs)) continue;
+      DATA = versObjets(d);
+      ORIGINAL = JSON.parse(JSON.stringify(DATA));
+      courant = DATA.conteneurs[0]?.id || null;
+      plies.clear(); remplirSelect(); rendre();
+      $('source').textContent = '📄 Colisage chargé depuis : ' + p;
+      if(!silencieux) toast('Colisage de l\u2019appli rechargé');
+      return true;
+    }catch(e){ /* chemin suivant */ }
+  }
+  $('liste').innerHTML = "<div class='vide'>Colisage introuvable automatiquement.<br>"
+    + "Placez ce fichier à côté de <b>colisage-data.json</b>, ou utilisez « 📂 Importer ».</div>";
+  $('source').textContent = '';
+  return false;
+}
+chargerAppli(true);
+
+$('btnRecharger').onclick = () => {
+  if(DATA && !confirm('Recharger le colisage de l\u2019application ? Les modifications en cours seront perdues.')) return;
+  chargerAppli(false);
+};
+
+$('btnImport').onclick = () => $('fichier').click();
+$('fichier').onchange = e => {
+  const f = e.target.files[0]; if(!f) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    try{
+      const d = JSON.parse(fr.result);
+      DATA = versObjets(d); ORIGINAL = JSON.parse(JSON.stringify(DATA));
+      courant = DATA.conteneurs[0]?.id || null;
+      plies.clear(); remplirSelect(); rendre();
+      $('source').textContent = '📄 Colisage chargé depuis : ' + f.name + ' (import manuel)';
+      toast('Fichier importé');
+    }catch(err){ alert('Fichier JSON illisible : ' + err.message); }
+  };
+  fr.readAsText(f, 'UTF-8');
+  e.target.value = '';
+};
+
+/* ===================== RENDU ===================== */
+function remplirSelect(){
+  $('selConteneur').innerHTML = DATA.conteneurs.map(c =>
+    `<option value="${esc(c.id)}"${c.id === courant ? ' selected' : ''}>${esc(c.nom)}${c.ref ? ' — ' + esc(c.ref) : ''}</option>`
+  ).join('');
+}
+$('selConteneur').onchange = e => { courant = e.target.value; plies.clear(); rendre(); window.scrollTo(0,0); };
+$('filtre').oninput = rendre;
+
+function conteneur(){ return DATA ? DATA.conteneurs.find(c => c.id === courant) : null; }
+
+function rendre(){
+  const c = conteneur(); if(!c) return;
+  const q = norm($('filtre').value.trim());
+  const nbItems = c.caisses.reduce((s,k) => s + k.items.length, 0);
+  const nbAbs = c.caisses.reduce((s,k) => s + k.items.filter(i => i.absent).length, 0);
+
+  $('infos').innerHTML =
+    `<span class="chip" style="background:${esc(c.couleur || '#0078D7')}">${esc(c.nom)}</span>` +
+    `<span>${c.caisses.length} caisses · ${nbItems} lignes · <b>${nbItems - nbAbs}</b> présentes` +
+    (nbAbs ? ` · ${nbAbs} marquées absentes` : '') + `</span>`;
+
+  let html = '';
+  c.caisses.forEach((k,i) => {
+    if(q && !norm(k.nom).includes(q) && !k.items.some(it => norm(it.t).includes(q))) return;
+    const ouvert = !plies.has(i);
+    html += `<div class="caisse">
+      <div class="caisse-head">
+        <button class="tog" data-act="plier" data-i="${i}">${ouvert ? '▾' : '▸'}</button>
+        <input type="text" value="${esc(k.nom)}" data-act="nomCaisse" data-i="${i}" placeholder="Nom de la caisse">
+        <span class="cnt">${k.items.filter(x => !x.absent).length}/${k.items.length}</span>
+        <button class="btn sm neutre" data-act="up" data-i="${i}" title="Monter">↑</button>
+        <button class="btn sm neutre" data-act="down" data-i="${i}" title="Descendre">↓</button>
+        <button class="btn sm danger" data-act="delCaisse" data-i="${i}" title="Supprimer">🗑</button>
+      </div>`;
+    if(ouvert){
+      html += `<div class="items">`;
+      k.items.forEach((it,j) => {
+        html += `<div class="ligne${it.absent ? ' absent' : ''}">
+          <label><input type="checkbox" data-act="present" data-i="${i}" data-j="${j}"${it.absent ? '' : ' checked'}> présent</label>
+          <input type="text" value="${esc(it.t)}" data-act="nomItem" data-i="${i}" data-j="${j}" placeholder="Désignation">
+          <button class="btn sm danger" data-act="delItem" data-i="${i}" data-j="${j}">✕</button>
+        </div>`;
+      });
+      html += `<div class="actions">
+          <button class="btn sm neutre" data-act="addItem" data-i="${i}">＋ Ligne</button>
+          <button class="btn sm neutre" data-act="dupCaisse" data-i="${i}">⧉ Dupliquer</button>
+          <button class="btn sm neutre" data-act="toutAbsent" data-i="${i}">☐ Tout décocher</button>
+          <button class="btn sm neutre" data-act="toutPresent" data-i="${i}">☑ Tout cocher</button>
+        </div></div>`;
+    }
+    html += `</div>`;
+  });
+  $('liste').innerHTML = html || "<div class='vide'>Aucune caisse ne correspond au filtre.</div>";
+}
+
+/* ===================== INTERACTIONS ===================== */
+$('liste').addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]'); if(!b) return;
+  const c = conteneur(), i = +b.dataset.i, j = +b.dataset.j, act = b.dataset.act;
+  if(act === 'plier'){ plies.has(i) ? plies.delete(i) : plies.add(i); rendre(); return; }
+  if(act === 'up' && i > 0){ [c.caisses[i-1],c.caisses[i]] = [c.caisses[i],c.caisses[i-1]]; plies.clear(); }
+  if(act === 'down' && i < c.caisses.length - 1){ [c.caisses[i+1],c.caisses[i]] = [c.caisses[i],c.caisses[i+1]]; plies.clear(); }
+  if(act === 'delCaisse'){ if(!confirm(`Supprimer la caisse « ${c.caisses[i].nom} » ?`)) return; c.caisses.splice(i,1); plies.clear(); }
+  if(act === 'dupCaisse'){ c.caisses.splice(i+1, 0, JSON.parse(JSON.stringify(c.caisses[i]))); plies.clear(); }
+  if(act === 'addItem'){ c.caisses[i].items.push({ t:'', absent:false }); }
+  if(act === 'delItem'){ c.caisses[i].items.splice(j,1); }
+  if(act === 'toutAbsent'){ c.caisses[i].items.forEach(x => x.absent = true); }
+  if(act === 'toutPresent'){ c.caisses[i].items.forEach(x => x.absent = false); }
+  rendre();
+});
+
+$('liste').addEventListener('change', e => {
+  if(e.target.dataset.act !== 'present') return;
+  conteneur().caisses[+e.target.dataset.i].items[+e.target.dataset.j].absent = !e.target.checked;
+  rendre();
+});
+
+$('liste').addEventListener('input', e => {
+  const el = e.target, act = el.dataset.act;
+  if(act === 'nomCaisse') conteneur().caisses[+el.dataset.i].nom = el.value;
+  if(act === 'nomItem')   conteneur().caisses[+el.dataset.i].items[+el.dataset.j].t = el.value;
+});
+
+$('liste').addEventListener('keydown', e => {
+  if(e.key !== 'Enter' || e.target.dataset.act !== 'nomItem') return;
+  e.preventDefault();
+  const i = +e.target.dataset.i, j = +e.target.dataset.j;
+  conteneur().caisses[i].items.splice(j+1, 0, { t:'', absent:false });
+  rendre();
+  const champ = document.querySelector(`input[data-act="nomItem"][data-i="${i}"][data-j="${j+1}"]`);
+  if(champ) champ.focus();
+});
+
+$('btnAddCaisse').onclick = () => {
+  if(!DATA) return;
+  const nom = prompt('Nom de la nouvelle caisse :'); if(!nom) return;
+  conteneur().caisses.push({ nom, items:[{ t:'', absent:false }] });
+  plies.clear(); rendre(); window.scrollTo(0, document.body.scrollHeight);
+};
+$('btnTout').onclick = () => {
+  const c = conteneur(); if(!c) return;
+  if(plies.size) plies.clear(); else c.caisses.forEach((k,i) => plies.add(i));
+  rendre();
+};
+$('btnReset').onclick = () => {
+  if(!ORIGINAL || !confirm('Annuler toutes vos modifications ?')) return;
+  DATA = JSON.parse(JSON.stringify(ORIGINAL)); plies.clear(); rendre(); toast('Modifications annulées');
+};
+
+function telecharger(obj, nom){
+  const blob = new Blob([JSON.stringify(obj, null, 2)], { type:'application/json;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = nom; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+}
+$('btnExport').onclick = () => { if(!DATA) return; telecharger(versTexte(DATA,false), 'colisage-data.json'); toast('colisage-data.json exporté'); };
+$('btnBrouillon').onclick = () => { if(!DATA) return; telecharger(versTexte(DATA,true), 'colisage-brouillon.json'); toast('Brouillon exporté'); };
+
+/* Avertissement avant fermeture si des modifications sont en cours */
+window.addEventListener('beforeunload', e => {
+  if(DATA && ORIGINAL && JSON.stringify(DATA) !== JSON.stringify(ORIGINAL)){ e.preventDefault(); e.returnValue = ''; }
+});
+</script>
+</body>
+</html>
