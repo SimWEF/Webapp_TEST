@@ -27,31 +27,39 @@
       font-size:12px; font-weight:700; color:var(--muted);
       text-transform:uppercase; letter-spacing:.8px; margin:0 0 10px 4px;
     }
-    .tuile{
-      display:flex; align-items:center; gap:16px;
-      text-decoration:none; color:inherit;
-    }
-    .tuile .txt{ flex:1; }
+    .tuile{ display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit; }
+    .tuile .txt{ flex:1; min-width:0; }
     .tuile .titre{ font-size:17px; font-weight:700; color:var(--marine); }
     .tuile .sous{ font-size:13px; color:var(--muted); margin-top:2px; }
-    .tuile .chev{ color:#b8c2d2; font-size:22px; }
+    .tuile .chev{ color:#b8c2d2; font-size:22px; flex:0 0 auto; }
   </style>
 <script src="pigvs-auth.js"></script>
 <script>PIGVS_AUTH.protegerPage();</script>
 </head>
 <body>
 
-  <!-- ===== BANNIÈRE ===== -->
+  <!-- ===== BANDEAU COMPACT : logo + texte sur une ligne =====
+       Le SVG est INLINE : il hérite de color:#fff → logo blanc -->
   <div class="hero">
-    <img class="logo-big" src="logo-westinghouse.svg" alt="Westinghouse">
-    <h1>PIGVS</h1>
-    <p>Application terrain — maintenance & suivi matériel</p>
-    <span class="marque">Westinghouse Electric Company</span>
+    <svg class="logo-big" viewBox="0 0 100 100" role="img" aria-label="Westinghouse">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6"/>
+      <path d="M27 33 L38 62 L50 38 L62 62 L73 33"
+            fill="none" stroke="currentColor" stroke-width="7"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="27" cy="33" r="7.5" fill="currentColor"/>
+      <circle cx="50" cy="35" r="7.5" fill="currentColor"/>
+      <circle cx="73" cy="33" r="7.5" fill="currentColor"/>
+      <rect x="33" y="68" width="34" height="9" rx="4.5" fill="currentColor"/>
+    </svg>
+    <div class="hero-txt">
+      <h1>PIGVS</h1>
+      <p>Application terrain — maintenance &amp; suivi matériel</p>
+    </div>
+    <span class="marque">Westinghouse<br>Electric Company</span>
   </div>
 
   <div class="container">
 
-    <!-- ===== SÉLECTEUR DE CHANTIER ===== -->
     <div class="chantier-bar">
       <label>🏭 Chantier en cours</label>
       <div id="chantierSelector"></div>
@@ -117,7 +125,16 @@
   </div>
 
   <footer class="app-footer">
-    <img class="logo-mini" src="logo-westinghouse.svg" alt="">
+    <svg class="logo-mini" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="7"/>
+      <path d="M27 33 L38 62 L50 38 L62 62 L73 33"
+            fill="none" stroke="currentColor" stroke-width="8"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="27" cy="33" r="8" fill="currentColor"/>
+      <circle cx="50" cy="35" r="8" fill="currentColor"/>
+      <circle cx="73" cy="33" r="8" fill="currentColor"/>
+      <rect x="33" y="68" width="34" height="9" rx="4.5" fill="currentColor"/>
+    </svg>
     PIGVS Operations — Westinghouse Electric Company
   </footer>
 
