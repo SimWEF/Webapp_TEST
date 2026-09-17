@@ -5,7 +5,7 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v11";
+   const APP_CACHE = "pigvs-app-v12";
    const DATA_CACHE = "pigvs-data-v7";
    
    /* ==========================================================
