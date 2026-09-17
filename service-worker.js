@@ -5,7 +5,7 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v12";
+   const APP_CACHE = "pigvs-app-v13";
    const DATA_CACHE = "pigvs-data-v7";
    
    /* ==========================================================
@@ -35,7 +35,8 @@
    "login.html",
    "detailSousEnsemble.html",
    "quizz.html",
-   "centrales.json"
+   "centrales.json",
+   "logo-wetinghouse.svg"
    ];
    
    /* ==========================================================
