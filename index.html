@@ -25,21 +25,25 @@
 
     .menu-titre{
       font-size:12px; font-weight:700; color:var(--muted);
-      text-transform:uppercase; letter-spacing:.8px; margin:0 0 10px 4px;
+      text-transform:uppercase; letter-spacing:.8px; margin:22px 0 10px 4px;
     }
+    .menu-titre:first-of-type{ margin-top:0; }
     .tuile{ display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit; }
     .tuile .txt{ flex:1; min-width:0; }
     .tuile .titre{ font-size:17px; font-weight:700; color:var(--marine); }
     .tuile .sous{ font-size:13px; color:var(--muted); margin-top:2px; }
     .tuile .chev{ color:#b8c2d2; font-size:22px; flex:0 0 auto; }
+
+    /* Section outils : visuellement distincte des applications terrain */
+    .tuile.outil .ico-rond{ background:#eef1f6; color:var(--muted); }
+    .tuile.outil .titre{ color:var(--text); }
   </style>
 <script src="pigvs-auth.js"></script>
 <script>PIGVS_AUTH.protegerPage();</script>
 </head>
 <body>
 
-  <!-- ===== BANDEAU COMPACT : logo + texte sur une ligne =====
-       Le SVG est INLINE : il hérite de color:#fff → logo blanc -->
+  <!-- ===== BANDEAU COMPACT : logo + texte sur une ligne ===== -->
   <div class="hero">
     <svg class="logo-big" viewBox="0 0 100 100" role="img" aria-label="Westinghouse">
       <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6"/>
@@ -66,6 +70,7 @@
       <div class="chantier-warn" id="chantierWarn">⚠️ Choisis ton chantier pour pré-remplir les formulaires.</div>
     </div>
 
+    <!-- ===== APPLICATIONS TERRAIN ===== -->
     <p class="menu-titre">Applications</p>
 
     <a class="card clickable tuile" href="fdm.html">
@@ -118,6 +123,30 @@
       <div class="txt">
         <div class="titre">Infos chantier</div>
         <div class="sous">Informations importantes à ne pas manquer</div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
+    <!-- ===== FORMATION ===== -->
+    <p class="menu-titre">Formation</p>
+
+    <a class="card clickable tuile" href="quizz.html">
+      <div class="ico-rond">🎯</div>
+      <div class="txt">
+        <div class="titre">Quizz procédures</div>
+        <div class="sous">Tester ses connaissances (ETV, lançage, PIGVS)</div>
+      </div>
+      <div class="chev">›</div>
+    </a>
+
+    <!-- ===== OUTILS ===== -->
+    <p class="menu-titre">Outils</p>
+
+    <a class="card clickable tuile outil" href="admin.html">
+      <div class="ico-rond">🛠️</div>
+      <div class="txt">
+        <div class="titre">Administration</div>
+        <div class="sous">Éditeurs de quizz et de colisage — accès réservé</div>
       </div>
       <div class="chev">›</div>
     </a>
