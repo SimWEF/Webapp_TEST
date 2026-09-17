@@ -77,7 +77,7 @@
 <body>
   <header class="app-header">
     <a class="back" href="photos.html">‹</a>
-    <h1 id="titrePage">📷 Photo</h1>
+    <h1 id="titrePage">📷 Reporting Photo</h1>
   </header>
   <div class="container">
     <div class="card">
@@ -118,6 +118,13 @@ const LIMITE_TOTALE  = 10 * 1024 * 1024;
 /* GV par défaut, utilisés tant qu'aucune centrale n'est reconnue */
 const GV_DEFAUT = ["GV1","GV2","GV3","GV4"];
 
+/* Liste des FCS : FCS-01 … FCS-40 (modifier NB_FCS pour étendre) */
+const NB_FCS = 40;
+const FCS_OPTIONS = Array.from({length:NB_FCS}, (_,i)=>{
+  const v = 'FCS-' + String(i+1).padStart(2,'0');
+  return { label:v, value:v };
+});
+
 /* ===========================================================
    Référentiel centrales : type de GV, dénomination, trous
    =========================================================== */
@@ -127,13 +134,13 @@ let CENTRALES_PRET = false;
 /* type "gv"    -> menu déroulant alimenté par la centrale
    type "trous" -> nommage par photo alimenté par la centrale */
 const TYPES = {
-  "colisage-conteneur": {
+  "calage-arrimage": {
     titre:"📦 Colisage conteneur",
     champs:[
       {id:"site",      label:"Site",      type:"json", source:"sites.json",      req:true},
       {id:"conteneur", label:"Conteneur", type:"json", source:"conteneurs.json", req:true}
     ],
-    path:v=>`photo-PIGVS/${v.site}/1- Colisage conteneur/${v.conteneur}`,
+    path:v=>`photo-PIGVS/${v.site}/1- Calage-Arrimage/${v.conteneur}`,
     nomPhoto:{ type:"text", label:"Nom de la photo (facultatif)", req:false }
   },
   "colisage-caisse": {
@@ -141,6 +148,15 @@ const TYPES = {
     champs:[ {id:"site", label:"Site", type:"json", source:"sites.json", req:true} ],
     path:v=>`photo-PIGVS/${v.site}/2- Colisage caisse`,
     nomPhoto:{ type:"json", source:"caisses.json", label:"Caisse (facultatif)", req:false }
+  },
+  "feuilles-colisage": {
+    titre:"📄 Feuilles de colisage",
+    champs:[
+      {id:"site",      label:"Site",      type:"json", source:"sites.json",      req:true},
+      {id:"conteneur", label:"Conteneur", type:"json", source:"conteneurs.json", req:true}
+    ],
+    path:v=>`photo-PIGVS/${v.site}/3- Feuilles de colisage/${v.conteneur}`,
+    nomPhoto:{ type:"text", label:"Nom de la photo (facultatif)", req:false }
   },
   "cahier-quart": {
     titre:"📓 Cahier de quart",
@@ -151,7 +167,7 @@ const TYPES = {
       {id:"date",     label:"Date",     type:"date",  req:true},
       {id:"poste",    label:"Poste",    type:"liste", options:["Matin","Après-midi","Nuit","Journée"], req:true}
     ],
-    path:v=>`photo-PIGVS/${v.site}/3- Cahier de quart/${v.gv}/${v.activite}`,
+    path:v=>`photo-PIGVS/${v.site}/4- Cahier de quart/${v.gv}/${v.activite}`,
     nomBase:v=>`${v.date}_${v.poste}`,
     nomPhoto:{ type:"text", label:"Nom de la photo (facultatif)", req:false }
   },
@@ -162,20 +178,27 @@ const TYPES = {
       {id:"gv",   label:"GV",              type:"gv",    req:true},
       {id:"sens", label:"Entrée / Sortie", type:"liste", options:["Entrée","Sortie"], req:true}
     ],
-    path:v=>`photo-PIGVS/${v.site}/4- Portées de joint/${v.gv}/${v.sens}`,
+    path:v=>`photo-PIGVS/${v.site}/5- Portées de joint/${v.gv}/${v.sens}`,
     /* Les trous d'accès dépendent de la centrale */
     nomPhoto:{ type:"trous", label:"Trou d'accès", req:true }
+  },
+  "fcs": {
+    titre:"📋 FCS",
+    champs:[ {id:"site", label:"Site", type:"json", source:"sites.json", req:true} ],
+    path:v=>`photo-PIGVS/${v.site}/6- FCS`,
+    /* Menu déroulant FCS-01 … FCS-40 sous chaque photo */
+    nomPhoto:{ type:"liste", label:"N° de FCS", req:true, options:FCS_OPTIONS }
   },
   "condition-acces": {
     titre:"🚪 Condition d'accès",
     champs:[ {id:"site", label:"Site", type:"json", source:"sites.json", req:true} ],
-    path:v=>`photo-PIGVS/${v.site}/5- Conditions d'accès`,
+    path:v=>`photo-PIGVS/${v.site}/7- Conditions d'accès`,
     nomPhoto:{ type:"text", label:"Nom de la photo (facultatif)", req:false }
   },
   "autre": {
     titre:"🗂️ Autre",
     champs:[ {id:"site", label:"Site", type:"json", source:"sites.json", req:true} ],
-    path:v=>`photo-PIGVS/${v.site}/6- Autre`,
+    path:v=>`photo-PIGVS/${v.site}/8- Autre`,
     nomPhoto:{ type:"text", label:"Nom de la photo (facultatif)", req:false }
   }
 };
@@ -450,7 +473,7 @@ function champNomPhoto(p,i){
       + trous.map(t=>`<option value="${escAttr(t)}" ${p.nom===t?'selected':''}>${t}</option>`).join('');
     return `<select class="np-select" data-i="${i}">${opts}</select>`;
   }
-  /* liste fixe */
+  /* liste fixe (ex : FCS) */
   let opts=`<option value="">— ${np.req?'choisir':'facultatif'} —</option>`+
     np.options.map(o=>`<option value="${o.value}" ${p.nom===o.value?'selected':''}>${o.label}</option>`).join('');
   return `<select class="np-select" data-i="${i}">${opts}</select>`;

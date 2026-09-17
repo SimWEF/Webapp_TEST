@@ -11,11 +11,13 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0078D7">
   <link rel="apple-touch-icon" href="icon-192.png">
+<script src="pigvs-auth.js"></script>
+<script>PIGVS_AUTH.protegerPage();</script>
 </head>
 <body>
   <header class="app-header">
     <a class="back" href="index.html">‹</a>
-    <h1>📷 Photos</h1>
+    <h1>📷 Reporting Photo</h1>
   </header>
   <div class="container">
     <p class="info" style="color:var(--muted)">Choisissez le type de photo</p>
@@ -34,6 +36,13 @@
       <div style="font-size:13px;color:var(--muted)">Site · Caisse</div></div>
     </a>
 
+    <a class="card clickable" href="photo.html?type=feuilles-colisage"
+       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
+      <div style="font-size:32px">📄</div>
+      <div><div style="font-size:17px;font-weight:700">Feuilles de colisage</div>
+      <div style="font-size:13px;color:var(--muted)">Site · Conteneur</div></div>
+    </a>
+
     <a class="card clickable" href="photo.html?type=cahier-quart"
        style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
       <div style="font-size:32px">📓</div>
@@ -46,6 +55,13 @@
       <div style="font-size:32px">🔩</div>
       <div><div style="font-size:17px;font-weight:700">Portée de joint</div>
       <div style="font-size:13px;color:var(--muted)">Site · GV · Entrée/Sortie</div></div>
+    </a>
+
+    <a class="card clickable" href="photo.html?type=fcs"
+       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
+      <div style="font-size:32px">📋</div>
+      <div><div style="font-size:17px;font-weight:700">FCS</div>
+      <div style="font-size:13px;color:var(--muted)">Site · N° de FCS par photo</div></div>
     </a>
 
     <a class="card clickable" href="photo.html?type=condition-acces"
@@ -61,6 +77,7 @@
       <div><div style="font-size:17px;font-weight:700">Autre</div>
       <div style="font-size:13px;color:var(--muted)">Site · Commentaire</div></div>
     </a>
+
   </div>
 </body>
 </html>
