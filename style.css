@@ -1,6 +1,6 @@
 /* ============================================================
    PIGVS – Feuille de style commune
-   Thème Westinghouse : bleu marine + accent bleu roi
+   Mobile : grille d'icônes compacte | Ordinateur : cartes détaillées
    ============================================================ */
    :root{
     --marine:#0B2C5C;
@@ -32,10 +32,7 @@
   
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.4;
+    margin:0; background:var(--bg); color:var(--text); line-height:1.4;
     padding:
       env(safe-area-inset-top) env(safe-area-inset-right)
       env(safe-area-inset-bottom) env(safe-area-inset-left);
@@ -62,89 +59,82 @@
   .app-header .logo{ width:30px; height:30px; flex:0 0 auto; color:#fff; }
   
   /* ============================================================
-     ACCUEIL — BARRE SUPÉRIEURE
+     ACCUEIL — BARRE SUPÉRIEURE (2 lignes sur mobile)
      ============================================================ */
-  body.accueil{ background:var(--bg); }
-  
   .topbar{
     position:sticky; top:0; z-index:600;
     background:linear-gradient(135deg,var(--marine) 0%,var(--marine-dark) 100%);
-    color:#fff;
-    padding:10px 16px;
-    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    color:#fff; padding:10px 14px 12px;
     box-shadow:0 2px 14px rgba(7,29,62,.3);
   }
-  .topbar-marque{ display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
-  .topbar .logo{ width:34px; height:34px; color:#fff; flex:0 0 auto; }
-  .topbar .nom{ font-size:19px; font-weight:800; letter-spacing:.3px; }
-  .topbar .sep{
-    width:1px; height:24px; background:rgba(255,255,255,.3); flex:0 0 auto;
-    display:none;
-  }
+  .topbar-ligne1{ display:flex; align-items:center; gap:10px; }
+  .topbar .logo{ width:30px; height:30px; color:#fff; flex:0 0 auto; }
+  .topbar .nom{ font-size:17px; font-weight:800; letter-spacing:.2px; flex:1; }
+  .topbar .sep{ display:none; width:1px; height:22px; background:rgba(255,255,255,.3); }
   .topbar .appli{
-    font-size:11.5px; letter-spacing:2.4px; text-transform:uppercase;
-    color:rgba(255,255,255,.72); display:none;
+    display:none; font-size:11px; letter-spacing:2.2px;
+    text-transform:uppercase; color:rgba(255,255,255,.72);
   }
-  @media (min-width:640px){
-    .topbar .sep, .topbar .appli{ display:block; }
+  .pill-admin{
+    width:36px; height:36px; border-radius:50%; flex:0 0 auto;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px; text-decoration:none;
   }
+  .pill-admin:active{ background:rgba(255,255,255,.3); }
   
-  .topbar-actions{ display:flex; align-items:center; gap:10px; flex:0 0 auto; }
+  .topbar-ligne2{ margin-top:9px; }
   .pill-chantier{
-    display:flex; align-items:center; gap:8px;
-    background:rgba(255,255,255,.13);
-    border:1px solid rgba(255,255,255,.22);
-    border-radius:999px; padding:5px 8px 5px 12px;
+    display:flex; align-items:center; gap:8px; width:100%;
+    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 10px 4px 13px;
   }
-  .pill-chantier .pill-ico{ font-size:15px; }
+  .pill-chantier .pill-ico{ font-size:14px; flex:0 0 auto; }
+  .pill-chantier > div{ flex:1; min-width:0; }
   .pill-chantier .pigvs-select{
-    background:transparent; border:none; color:#fff;
-    font-size:14px; font-weight:600; padding:4px 2px;
-    max-width:180px; cursor:pointer;
+    width:100%; background:transparent; border:none; color:#fff;
+    font-size:14.5px; font-weight:600; padding:6px 2px; cursor:pointer;
   }
   .pill-chantier .pigvs-select option{ color:var(--text); }
   .pill-chantier .pigvs-select:focus{ outline:none; }
   
-  .pill-admin{
-    width:38px; height:38px; border-radius:50%;
-    background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22);
-    display:flex; align-items:center; justify-content:center;
-    font-size:17px; text-decoration:none; flex:0 0 auto;
-  }
-  .pill-admin:active{ background:rgba(255,255,255,.3); }
-  
   /* ============================================================
      ACCUEIL — BANNIÈRE
      ============================================================ */
-  .page{ max-width:1180px; margin:0 auto; padding:0 16px 28px; }
+  .page{ max-width:1180px; margin:0 auto; padding:0 14px 24px; }
   
   .banniere{
     position:relative; overflow:hidden;
     background:linear-gradient(120deg,#0B2C5C 0%,#124a86 55%,#1b6fb8 100%);
     border-radius:0 0 var(--radius) var(--radius);
-    margin:0 -16px 20px;
-    padding:22px 16px 26px;
+    margin:0 -14px 16px; padding:16px 14px 20px;
   }
   .banniere .filigrane{
-    position:absolute; right:-40px; top:50%; transform:translateY(-50%);
-    width:230px; height:230px; color:#fff; opacity:.08; pointer-events:none;
+    position:absolute; right:-46px; top:50%; transform:translateY(-50%);
+    width:180px; height:180px; color:#fff; opacity:.08; pointer-events:none;
   }
   .banniere-carte{
-    position:relative;
-    background:rgba(255,255,255,.96);
-    border-radius:var(--radius);
-    padding:20px 18px;
-    box-shadow:var(--shadow-lg);
-    max-width:820px;
+    position:relative; background:rgba(255,255,255,.96);
+    border-radius:var(--radius); padding:15px 14px;
+    box-shadow:var(--shadow-lg); max-width:820px;
   }
   .banniere-carte h1{
-    margin:0 0 4px; font-size:26px; font-weight:800; color:var(--marine);
-    letter-spacing:.2px;
+    margin:0 0 3px; font-size:20px; font-weight:800;
+    color:var(--marine); letter-spacing:.2px;
   }
   .banniere-carte h1 span{ color:var(--primary); }
-  .banniere-carte .accroche{ margin:0 0 16px; font-size:14px; color:var(--muted); }
+  .banniere-carte .accroche{ margin:0 0 12px; font-size:13px; color:var(--muted); }
   
-  .infos-chantier{ display:flex; flex-wrap:wrap; gap:10px; }
+  /* --- Résumé compact : visible seulement sur mobile --- */
+  .resume-mobile{ display:flex; flex-wrap:wrap; gap:7px; }
+  .chip{
+    background:var(--primary-soft); color:var(--marine);
+    border:1px solid #cfe0f5; border-radius:999px;
+    padding:6px 12px; font-size:13px; font-weight:700;
+  }
+  
+  /* --- Blocs détaillés : masqués sur mobile --- */
+  .infos-chantier{ display:none; flex-wrap:wrap; gap:10px; }
   .info-bloc{
     display:flex; align-items:center; gap:10px;
     background:#f4f7fb; border:1px solid var(--border);
@@ -160,50 +150,42 @@
   .info-val{ display:block; font-size:14.5px; font-weight:700; color:var(--marine); }
   
   /* ============================================================
-     ACCUEIL — GRILLE DES MODULES
+     ACCUEIL — MODULES
+     📱 MOBILE : grille d'icônes 2 colonnes, compacte
      ============================================================ */
   .grille-modules{
-    display:grid; gap:14px; margin-bottom:20px;
-    grid-template-columns:1fr;
+    display:grid; gap:11px; margin-bottom:16px;
+    grid-template-columns:repeat(2,1fr);
   }
-  @media (min-width:640px){ .grille-modules{ grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:1000px){ .grille-modules{ grid-template-columns:repeat(3,1fr); } }
   
   .module{
-    position:relative; display:flex; flex-direction:column; justify-content:space-between;
+    position:relative; display:flex; flex-direction:column;
+    align-items:center; justify-content:flex-start; text-align:center;
     background:var(--card); border:1px solid var(--border);
     border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:18px 16px 14px; text-decoration:none; color:inherit;
-    overflow:hidden; min-height:150px;
+    padding:16px 10px 14px; text-decoration:none; color:inherit;
+    overflow:hidden; min-height:0;
     transition:transform .16s ease, box-shadow .16s ease;
   }
-  .module::after{                       /* liseré coloré en pied de carte */
-    content:""; position:absolute; left:0; right:0; bottom:0; height:5px;
+  .module::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
     background:var(--acc);
   }
-  .module:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
-  .module:active{ transform:scale(.99); }
+  .module:active{ transform:scale(.97); }
   
-  .module-head{ display:flex; align-items:flex-start; gap:14px; }
+  .module-head{ display:flex; flex-direction:column; align-items:center; gap:9px; }
   .module-ico{
     width:52px; height:52px; flex:0 0 auto; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    font-size:24px; background:var(--acc); color:#fff;
-    box-shadow:0 3px 10px color-mix(in srgb, var(--acc) 40%, transparent);
+    font-size:25px; background:var(--acc); color:#fff;
   }
-  .module h2{ margin:2px 0 2px; font-size:17.5px; font-weight:800; color:var(--marine); }
-  .module p{ margin:0; font-size:13.5px; color:var(--primary); font-weight:600; }
-  
-  .module-foot{
-    display:flex; align-items:flex-end; justify-content:space-between;
-    gap:12px; margin-top:14px;
+  .module h2{
+    margin:0; font-size:14.5px; font-weight:800; color:var(--marine);
+    line-height:1.2;
   }
-  .module .tags{ font-size:12.5px; color:var(--muted); line-height:1.35; }
-  .module .fleche{
-    width:38px; height:38px; flex:0 0 auto; border-radius:50%;
-    background:var(--acc); color:#fff; display:flex; align-items:center;
-    justify-content:center; font-size:17px; font-weight:700;
-  }
+  /* Sous-titre et tags masqués sur mobile : gain de place */
+  .module p, .module .tags{ display:none; }
+  .module-foot{ display:none; }
   
   /* Couleurs par module */
   .module.bleu   { --acc:var(--primary); }
@@ -215,43 +197,107 @@
   .module.ambre  { --acc:var(--ambre); }
   
   /* ============================================================
-     ACCUEIL — BANDEAU DE SYNTHÈSE
+     ACCUEIL — SYNTHÈSE
      ============================================================ */
   .synthese{
     background:var(--card); border:1px solid var(--border);
     border-radius:var(--radius); box-shadow:var(--shadow);
-    padding:14px 16px; display:flex; flex-wrap:wrap;
-    align-items:center; gap:16px;
+    padding:12px 14px; display:flex; flex-direction:column; gap:11px;
   }
-  .synth-bloc{ display:flex; align-items:center; gap:11px; flex:1 1 210px; min-width:0; }
+  .synth-bloc{ display:flex; align-items:center; gap:11px; min-width:0; }
   .synth-ico{
-    width:38px; height:38px; flex:0 0 auto; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; font-size:17px;
+    width:34px; height:34px; flex:0 0 auto; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
   }
   .synth-ico.jaune{ background:#fef3c7; }
   .synth-ico.bleu { background:#dbeafe; }
   .synth-ico.vert { background:#dcfce7; }
-  .synth-titre{ display:block; font-size:11px; text-transform:uppercase;
+  .synth-titre{ display:block; font-size:10.5px; text-transform:uppercase;
     letter-spacing:.7px; color:var(--muted); font-weight:700; }
-  .synth-val{ display:block; font-size:14.5px; font-weight:700; color:var(--marine);
+  .synth-val{ display:block; font-size:14px; font-weight:700; color:var(--marine);
     overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .synth-lien{
     background:var(--primary-soft); color:var(--primary);
     border-radius:999px; padding:9px 16px; font-size:13.5px; font-weight:700;
-    text-decoration:none; flex:0 0 auto;
+    text-decoration:none; text-align:center;
   }
   
   /* ============================================================
      PIED DE PAGE
      ============================================================ */
   .pied{
-    max-width:1180px; margin:0 auto; padding:16px;
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-    font-size:12px; color:var(--muted);
+    max-width:1180px; margin:0 auto; padding:14px;
+    display:flex; justify-content:center; flex-wrap:wrap; gap:6px;
+    font-size:11.5px; color:var(--muted); text-align:center;
   }
+  .pied-version{ display:none; }
   .app-footer{ text-align:center; padding:20px 16px 26px; font-size:12px; color:var(--muted); }
   .app-footer .logo-mini{ width:20px; height:20px; vertical-align:-5px;
     margin-right:6px; color:var(--muted); opacity:.6; }
+  
+  /* ============================================================
+     💻 TABLETTE ET ORDINATEUR  (≥ 720 px)
+     Retour aux cartes détaillées
+     ============================================================ */
+  @media (min-width:720px){
+  
+    /* Barre du haut sur une seule ligne */
+    .topbar{ display:flex; align-items:center; gap:14px; padding:10px 18px; }
+    .topbar-ligne1{ flex:1; }
+    .topbar-ligne2{ margin-top:0; flex:0 0 auto; }
+    .topbar .nom{ font-size:19px; flex:0 0 auto; }
+    .topbar .sep, .topbar .appli{ display:block; }
+    .topbar .appli{ flex:1; }
+    .pill-chantier{ width:auto; }
+    .pill-chantier .pigvs-select{ max-width:200px; }
+    /* le bouton admin repasse à droite de la barre */
+    .topbar-ligne1 .pill-admin{ order:9; }
+  
+    /* Bannière plus généreuse */
+    .page{ padding:0 16px 28px; }
+    .banniere{ margin:0 -16px 20px; padding:22px 16px 26px; }
+    .banniere .filigrane{ right:-30px; width:230px; height:230px; }
+    .banniere-carte{ padding:20px 18px; }
+    .banniere-carte h1{ font-size:26px; margin-bottom:4px; }
+    .banniere-carte .accroche{ font-size:14px; margin-bottom:16px; }
+    .resume-mobile{ display:none; }
+    .infos-chantier{ display:flex; }
+  
+    /* Cartes détaillées : icône à gauche, texte à droite */
+    .grille-modules{ grid-template-columns:repeat(2,1fr); gap:14px; }
+    .module{
+      flex-direction:column; align-items:stretch; text-align:left;
+      justify-content:space-between; padding:18px 16px 14px; min-height:150px;
+    }
+    .module::after{ height:5px; }
+    .module:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+    .module-head{ flex-direction:row; align-items:flex-start; gap:14px; }
+    .module h2{ font-size:17.5px; margin:2px 0; }
+    .module p{ display:block; margin:0; font-size:13.5px; color:var(--primary); font-weight:600; }
+    .module-foot{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:12px; margin-top:14px;
+    }
+    .module .tags{ display:block; font-size:12.5px; color:var(--muted); line-height:1.35; }
+    .module .fleche{
+      width:38px; height:38px; flex:0 0 auto; border-radius:50%;
+      background:var(--acc); color:#fff; display:flex; align-items:center;
+      justify-content:center; font-size:17px; font-weight:700;
+    }
+  
+    /* Synthèse en ligne */
+    .synthese{ flex-direction:row; flex-wrap:wrap; align-items:center; gap:16px; padding:14px 16px; }
+    .synth-bloc{ flex:1 1 210px; }
+    .synth-ico{ width:38px; height:38px; font-size:17px; }
+    .synth-lien{ flex:0 0 auto; }
+  
+    .pied{ justify-content:space-between; font-size:12px; }
+    .pied-version{ display:block; }
+  }
+  
+  @media (min-width:1000px){
+    .grille-modules{ grid-template-columns:repeat(3,1fr); }
+  }
   
   /* ============================================================
      COMPOSANTS COMMUNS (pages internes)

@@ -15,7 +15,7 @@
 
 <!-- ===================== BARRE SUPÉRIEURE ===================== -->
 <header class="topbar">
-  <div class="topbar-marque">
+  <div class="topbar-ligne1">
     <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Westinghouse">
       <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6"/>
       <path d="M27 33 L38 62 L50 38 L62 62 L73 33" fill="none" stroke="currentColor"
@@ -28,14 +28,14 @@
     <span class="nom">Westinghouse</span>
     <span class="sep"></span>
     <span class="appli">PIGVS Operations</span>
+    <a class="pill-admin" href="admin.html" title="Administration">⚙️</a>
   </div>
 
-  <div class="topbar-actions">
+  <div class="topbar-ligne2">
     <div class="pill-chantier">
       <span class="pill-ico">🏭</span>
       <div id="chantierSelector"></div>
     </div>
-    <a class="pill-admin" href="admin.html" title="Administration">⚙️</a>
   </div>
 </header>
 
@@ -57,7 +57,15 @@
       <h1>Bienvenue sur <span>PIGVS</span></h1>
       <p class="accroche">Votre application terrain pour la maintenance et le suivi du matériel.</p>
 
-      <div class="infos-chantier" id="infosChantier">
+      <!-- Résumé compact (mobile) -->
+      <div class="resume-mobile" id="resumeMobile">
+        <span class="chip" id="cSite">—</span>
+        <span class="chip" id="cType">—</span>
+        <span class="chip" id="cGV">—</span>
+      </div>
+
+      <!-- Blocs détaillés (ordinateur) -->
+      <div class="infos-chantier">
         <div class="info-bloc">
           <span class="info-ico">🏭</span>
           <div><span class="info-lab">Site</span><span class="info-val" id="iSite">—</span></div>
@@ -81,6 +89,20 @@
   <!-- ===================== MODULES ===================== -->
   <section class="grille-modules">
 
+    <a class="module vert" href="fdm.html">
+      <div class="module-head">
+        <span class="module-ico">📋</span>
+        <div>
+          <h2>Fiche de maintenance</h2>
+          <p>Déclarer une intervention</p>
+        </div>
+      </div>
+      <div class="module-foot">
+        <span class="tags">Incident · Action corrective · Photos</span>
+        <span class="fleche">→</span>
+      </div>
+    </a>
+
     <a class="module bleu" href="photos.html">
       <div class="module-head">
         <span class="module-ico">📷</span>
@@ -90,7 +112,7 @@
         </div>
       </div>
       <div class="module-foot">
-        <span class="tags">Colisage · Portées de joint · FCS · Autre</span>
+        <span class="tags">Colisage · Portées de joint · FCS</span>
         <span class="fleche">→</span>
       </div>
     </a>
@@ -109,16 +131,16 @@
       </div>
     </a>
 
-    <a class="module vert" href="fdm.html">
+    <a class="module cyan" href="materiel.html">
       <div class="module-head">
-        <span class="module-ico">📋</span>
+        <span class="module-ico">📊</span>
         <div>
-          <h2>Fiche de maintenance</h2>
-          <p>Déclarer une intervention</p>
+          <h2>État matériel</h2>
+          <p>Suivi du matériel</p>
         </div>
       </div>
       <div class="module-foot">
-        <span class="tags">Incident · Action corrective · Photos</span>
+        <span class="tags">Disponibilité · Interventions · Statut</span>
         <span class="fleche">→</span>
       </div>
     </a>
@@ -133,20 +155,6 @@
       </div>
       <div class="module-foot">
         <span class="tags">Technique · Organisationnel · Amélioration</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module cyan" href="materiel.html">
-      <div class="module-head">
-        <span class="module-ico">📊</span>
-        <div>
-          <h2>État matériel</h2>
-          <p>Suivi du matériel</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Disponibilité · Interventions · Statut</span>
         <span class="fleche">→</span>
       </div>
     </a>
@@ -169,7 +177,7 @@
       <div class="module-head">
         <span class="module-ico">🎯</span>
         <div>
-          <h2>Quizz procédures</h2>
+          <h2>Quizz</h2>
           <p>Tester ses connaissances</p>
         </div>
       </div>
@@ -216,7 +224,6 @@
 
 <script src="pigvs-chantier.js"></script>
 <script>
-/* ---- Sélecteur de chantier + remplissage des infos ---- */
 PIGVS.loadChantiers().then(function () {
   PIGVS.renderSelector(document.getElementById('chantierSelector'), majAccueil);
   majAccueil();
@@ -229,34 +236,37 @@ fetch('centrales.json')
   .catch(() => {});
 
 function norm(s){ return (s||'').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+function set(id, val){ const e = document.getElementById(id); if(e) e.textContent = val; }
 
 function majAccueil(){
   const c = PIGVS.getChantier();
   const site = c ? c.site : '';
 
-  document.getElementById('iSite').textContent = site || '—';
-  document.getElementById('iOp').textContent   = c ? (c.nom || '—') : '—';
+  set('iSite', site || '—');
+  set('iOp',   c ? (c.nom || '—') : '—');
 
-  /* Type de GV et dénominations depuis centrales.json */
   const cle = Object.keys(CENTRALES).find(k => norm(k) === norm(site));
   const ref = cle ? CENTRALES[cle] : null;
 
-  document.getElementById('iType').textContent = ref ? (ref.typeGV || '—') : '—';
+  set('iType', ref ? (ref.typeGV || '—') : '—');
   if(ref && ref.gv && ref.gv.length){
-    document.getElementById('iNbGV').textContent = ref.gv.length + ' GV';
-    document.getElementById('iGV').textContent   = ref.gv.join(' · ');
+    set('iNbGV', ref.gv.length + ' GV');
+    set('iGV',   ref.gv.join(' · '));
   } else {
-    document.getElementById('iNbGV').textContent = 'GV';
-    document.getElementById('iGV').textContent   = '—';
+    set('iNbGV','GV'); set('iGV','—');
   }
 
-  /* Synthèse depuis le fichier info du chantier */
+  /* Version compacte pour mobile */
+  set('cSite', site ? '🏭 ' + site : '🏭 —');
+  set('cType', ref && ref.typeGV ? '⚙️ ' + ref.typeGV : '⚙️ —');
+  set('cGV',   ref && ref.gv ? '🔧 ' + ref.gv.length + ' GV' : '🔧 —');
+
   if(c && c.infoData){
     fetch(c.infoData).then(r => r.json()).then(d => {
-      document.getElementById('sFin').textContent    = d.finPrev || '—';
-      document.getElementById('sAvance').textContent = (d.avancement != null ? d.avancement + ' %' : '—');
+      set('sFin',    d.finPrev || '—');
+      set('sAvance', (d.avancement != null ? d.avancement + ' %' : '—'));
       const a = (d.alertes && d.alertes.length) ? d.alertes[0] : null;
-      document.getElementById('sAlerte').textContent = a ? a.titre : 'Aucun';
+      set('sAlerte', a ? a.titre : 'Aucun');
     }).catch(() => {});
   }
 }
