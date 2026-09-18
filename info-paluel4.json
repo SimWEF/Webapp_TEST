@@ -1,6 +1,8 @@
 {
   "titre": "PIGVS PAL4",
   "operation": "Opération PIGVS PAL4",
+  "lot": "Lot C",
+  "delai": "réduit",
   "avancement": 62,
   "jour": "J+14",
   "finPrev": "18/07",

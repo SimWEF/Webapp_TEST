@@ -99,7 +99,7 @@
   .pill-chantier .pigvs-select:focus{ outline:none; }
   
   /* ============================================================
-     ACCUEIL — BANNIÈRE
+     BANNIÈRE
      ============================================================ */
   .page{ max-width:1180px; margin:0 auto; padding:0 14px 24px; }
   
@@ -125,7 +125,6 @@
   .banniere-carte h1 span{ color:var(--primary); }
   .banniere-carte .accroche{ margin:0 0 12px; font-size:13px; color:var(--muted); }
   
-  /* --- Résumé compact : visible seulement sur mobile --- */
   .resume-mobile{ display:flex; flex-wrap:wrap; gap:7px; }
   .chip{
     background:var(--primary-soft); color:var(--marine);
@@ -133,7 +132,6 @@
     padding:6px 12px; font-size:13px; font-weight:700;
   }
   
-  /* --- Blocs détaillés : masqués sur mobile --- */
   .infos-chantier{ display:none; flex-wrap:wrap; gap:10px; }
   .info-bloc{
     display:flex; align-items:center; gap:10px;
@@ -149,8 +147,14 @@
     letter-spacing:.8px; color:var(--muted); font-weight:700; }
   .info-val{ display:block; font-size:14.5px; font-weight:700; color:var(--marine); }
   
+  /* Sous-titre de page (ex : "Choisissez le type de photo") */
+  .sous-titre{
+    margin:16px 4px 12px; font-size:12px; font-weight:700; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.8px;
+  }
+  
   /* ============================================================
-     ACCUEIL — MODULES
+     MODULES
      📱 MOBILE : grille d'icônes 2 colonnes, compacte
      ============================================================ */
   .grille-modules{
@@ -180,10 +184,8 @@
     font-size:25px; background:var(--acc); color:#fff;
   }
   .module h2{
-    margin:0; font-size:14.5px; font-weight:800; color:var(--marine);
-    line-height:1.2;
+    margin:0; font-size:14.5px; font-weight:800; color:var(--marine); line-height:1.2;
   }
-  /* Sous-titre et tags masqués sur mobile : gain de place */
   .module p, .module .tags{ display:none; }
   .module-foot{ display:none; }
   
@@ -195,9 +197,10 @@
   .module.cyan   { --acc:var(--cyan); }
   .module.marine { --acc:var(--marine); }
   .module.ambre  { --acc:var(--ambre); }
+  .module.gris   { --acc:#64748b; }
   
   /* ============================================================
-     ACCUEIL — SYNTHÈSE
+     SYNTHÈSE
      ============================================================ */
   .synthese{
     background:var(--card); border:1px solid var(--border);
@@ -236,12 +239,10 @@
     margin-right:6px; color:var(--muted); opacity:.6; }
   
   /* ============================================================
-     💻 TABLETTE ET ORDINATEUR  (≥ 720 px)
-     Retour aux cartes détaillées
+     💻 TABLETTE ET ORDINATEUR (≥ 720 px)
      ============================================================ */
   @media (min-width:720px){
   
-    /* Barre du haut sur une seule ligne */
     .topbar{ display:flex; align-items:center; gap:14px; padding:10px 18px; }
     .topbar-ligne1{ flex:1; }
     .topbar-ligne2{ margin-top:0; flex:0 0 auto; }
@@ -250,10 +251,8 @@
     .topbar .appli{ flex:1; }
     .pill-chantier{ width:auto; }
     .pill-chantier .pigvs-select{ max-width:200px; }
-    /* le bouton admin repasse à droite de la barre */
     .topbar-ligne1 .pill-admin{ order:9; }
   
-    /* Bannière plus généreuse */
     .page{ padding:0 16px 28px; }
     .banniere{ margin:0 -16px 20px; padding:22px 16px 26px; }
     .banniere .filigrane{ right:-30px; width:230px; height:230px; }
@@ -263,7 +262,6 @@
     .resume-mobile{ display:none; }
     .infos-chantier{ display:flex; }
   
-    /* Cartes détaillées : icône à gauche, texte à droite */
     .grille-modules{ grid-template-columns:repeat(2,1fr); gap:14px; }
     .module{
       flex-direction:column; align-items:stretch; text-align:left;
@@ -285,7 +283,6 @@
       justify-content:center; font-size:17px; font-weight:700;
     }
   
-    /* Synthèse en ligne */
     .synthese{ flex-direction:row; flex-wrap:wrap; align-items:center; gap:16px; padding:14px 16px; }
     .synth-bloc{ flex:1 1 210px; }
     .synth-ico{ width:38px; height:38px; font-size:17px; }

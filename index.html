@@ -58,10 +58,10 @@
       <p class="accroche">Votre application terrain pour la maintenance et le suivi du matériel.</p>
 
       <!-- Résumé compact (mobile) -->
-      <div class="resume-mobile" id="resumeMobile">
+      <div class="resume-mobile">
         <span class="chip" id="cSite">—</span>
         <span class="chip" id="cType">—</span>
-        <span class="chip" id="cGV">—</span>
+        <span class="chip" id="cLot">—</span>
       </div>
 
       <!-- Blocs détaillés (ordinateur) -->
@@ -75,8 +75,8 @@
           <div><span class="info-lab">Type GV</span><span class="info-val" id="iType">—</span></div>
         </div>
         <div class="info-bloc">
-          <span class="info-ico">🔧</span>
-          <div><span class="info-lab" id="iNbGV">GV</span><span class="info-val" id="iGV">—</span></div>
+          <span class="info-ico">📑</span>
+          <div><span class="info-lab">Prestation</span><span class="info-val" id="iLot">—</span></div>
         </div>
         <div class="info-bloc">
           <span class="info-ico">📅</span>
@@ -190,7 +190,7 @@
   </section>
 
   <!-- ===================== BANDEAU DE SYNTHÈSE ===================== -->
-  <section class="synthese" id="synthese">
+  <section class="synthese">
     <div class="synth-bloc">
       <span class="synth-ico jaune">🔔</span>
       <div>
@@ -245,29 +245,28 @@ function majAccueil(){
   set('iSite', site || '—');
   set('iOp',   c ? (c.nom || '—') : '—');
 
+  /* Type de GV depuis centrales.json */
   const cle = Object.keys(CENTRALES).find(k => norm(k) === norm(site));
   const ref = cle ? CENTRALES[cle] : null;
-
   set('iType', ref ? (ref.typeGV || '—') : '—');
-  if(ref && ref.gv && ref.gv.length){
-    set('iNbGV', ref.gv.length + ' GV');
-    set('iGV',   ref.gv.join(' · '));
-  } else {
-    set('iNbGV','GV'); set('iGV','—');
-  }
 
-  /* Version compacte pour mobile */
   set('cSite', site ? '🏭 ' + site : '🏭 —');
   set('cType', ref && ref.typeGV ? '⚙️ ' + ref.typeGV : '⚙️ —');
-  set('cGV',   ref && ref.gv ? '🔧 ' + ref.gv.length + ' GV' : '🔧 —');
 
+  /* Lot + délai : lus dans le fichier info du chantier */
   if(c && c.infoData){
     fetch(c.infoData).then(r => r.json()).then(d => {
+      const lot = [d.lot, d.delai].filter(Boolean).join(' ') || '—';
+      set('iLot', lot);
+      set('cLot', '📑 ' + lot);
+
       set('sFin',    d.finPrev || '—');
       set('sAvance', (d.avancement != null ? d.avancement + ' %' : '—'));
       const a = (d.alertes && d.alertes.length) ? d.alertes[0] : null;
       set('sAlerte', a ? a.titre : 'Aucun');
-    }).catch(() => {});
+    }).catch(() => { set('iLot','—'); set('cLot','📑 —'); });
+  } else {
+    set('iLot','—'); set('cLot','📑 —');
   }
 }
 

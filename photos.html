@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photos — PIGVS</title>
+  <title>Reporting Photo — PIGVS</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .back-link { display:inline-block; margin:10px 0; text-decoration:none; color:#0078D7; font-weight:bold; }
-  </style>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0078D7">
+  <meta name="theme-color" content="#0B2C5C">
   <link rel="apple-touch-icon" href="icon-192.png">
 <script src="pigvs-auth.js"></script>
 <script>PIGVS_AUTH.protegerPage();</script>
@@ -19,65 +16,125 @@
     <a class="back" href="index.html">‹</a>
     <h1>📷 Reporting Photo</h1>
   </header>
-  <div class="container">
-    <p class="info" style="color:var(--muted)">Choisissez le type de photo</p>
 
-    <a class="card clickable" href="photo.html?type=calage-arrimage"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">📦</div>
-      <div><div style="font-size:17px;font-weight:700">Calage / Arrimage</div>
-      <div style="font-size:13px;color:var(--muted)">Site · Conteneur</div></div>
-    </a>
+  <div class="page">
+    <p class="sous-titre">Choisissez le type de photo</p>
 
-    <a class="card clickable" href="photo.html?type=colisage-caisse"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">🧰</div>
-      <div><div style="font-size:17px;font-weight:700">Colisage caisse</div>
-      <div style="font-size:13px;color:var(--muted)">Site · Caisse</div></div>
-    </a>
+    <section class="grille-modules">
 
-    <a class="card clickable" href="photo.html?type=feuilles-colisage"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">📄</div>
-      <div><div style="font-size:17px;font-weight:700">Feuilles de colisage</div>
-      <div style="font-size:13px;color:var(--muted)">Site · Conteneur</div></div>
-    </a>
+      <a class="module orange" href="photo.html?type=calage-arrimage">
+        <div class="module-head">
+          <span class="module-ico">📦</span>
+          <div>
+            <h2>Calage / Arrimage</h2>
+            <p>Sécurisation du chargement</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">Site · Conteneur</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
-    <a class="card clickable" href="photo.html?type=cahier-quart"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">📓</div>
-      <div><div style="font-size:17px;font-weight:700">Cahier de quart</div>
-      <div style="font-size:13px;color:var(--muted)">Site · GV · Activité · Date · Poste</div></div>
-    </a>
+      <a class="module bleu" href="photo.html?type=colisage-caisse">
+        <div class="module-head">
+          <span class="module-ico">🧰</span>
+          <div>
+            <h2>Colisage caisse</h2>
+            <p>Contenu des caisses</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">Site · Caisse</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
-    <a class="card clickable" href="photo.html?type=portee-joint"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">🔩</div>
-      <div><div style="font-size:17px;font-weight:700">Portée de joint</div>
-      <div style="font-size:13px;color:var(--muted)">Site · GV · Entrée/Sortie</div></div>
-    </a>
+      <a class="module cyan" href="photo.html?type=feuilles-colisage">
+        <div class="module-head">
+          <span class="module-ico">📄</span>
+          <div>
+            <h2>Feuilles de colisage</h2>
+            <p>Documents de chargement</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">Site · Conteneur</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
-    <a class="card clickable" href="photo.html?type=fcs"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">📋</div>
-      <div><div style="font-size:17px;font-weight:700">FCS</div>
-      <div style="font-size:13px;color:var(--muted)">Site · N° de FCS par photo</div></div>
-    </a>
+      <a class="module vert" href="photo.html?type=cahier-quart">
+        <div class="module-head">
+          <span class="module-ico">📓</span>
+          <div>
+            <h2>Cahier de quart</h2>
+            <p>Suivi par poste</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">GV · Activité · Date · Poste</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
-    <a class="card clickable" href="photo.html?type=condition-acces"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">🚪</div>
-      <div><div style="font-size:17px;font-weight:700">Condition d'accès</div>
-      <div style="font-size:13px;color:var(--muted)">Site · Commentaire</div></div>
-    </a>
+      <a class="module violet" href="photo.html?type=portee-joint">
+        <div class="module-head">
+          <span class="module-ico">🔩</span>
+          <div>
+            <h2>Portée de joint</h2>
+            <p>Par trou d'accès</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">GV · Entrée / Sortie</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
-    <a class="card clickable" href="photo.html?type=autre"
-       style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit">
-      <div style="font-size:32px">🗂️</div>
-      <div><div style="font-size:17px;font-weight:700">Autre</div>
-      <div style="font-size:13px;color:var(--muted)">Site · Commentaire</div></div>
-    </a>
+      <a class="module ambre" href="photo.html?type=fcs">
+        <div class="module-head">
+          <span class="module-ico">📋</span>
+          <div>
+            <h2>FCS</h2>
+            <p>Fiches de constat</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">N° de FCS par photo</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
 
+      <a class="module marine" href="photo.html?type=condition-acces">
+        <div class="module-head">
+          <span class="module-ico">🚪</span>
+          <div>
+            <h2>Condition d'accès</h2>
+            <p>État des accès chantier</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">Site</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
+
+      <a class="module gris" href="photo.html?type=autre">
+        <div class="module-head">
+          <span class="module-ico">🗂️</span>
+          <div>
+            <h2>Autre</h2>
+            <p>Photo hors catégorie</p>
+          </div>
+        </div>
+        <div class="module-foot">
+          <span class="tags">Site</span>
+          <span class="fleche">→</span>
+        </div>
+      </a>
+
+    </section>
   </div>
 </body>
 </html>

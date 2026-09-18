@@ -1,6 +1,8 @@
 {
   "titre": "PIGVS CAT3",
   "operation": "Opération PIGVS CAT3",
+  "lot": "Lot C",
+  "delai": "standard",
   "avancement": 25,
   "jour": "J+5",
   "finPrev": "02/08",
