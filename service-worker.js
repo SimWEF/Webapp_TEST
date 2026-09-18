@@ -6,7 +6,7 @@
    ========================================================== */
 
    const APP_CACHE = "pigvs-app-v16";
-   const DATA_CACHE = "pigvs-data-v7";
+   const DATA_CACHE = "pigvs-data-v8";
    
    /* ==========================================================
       Fichiers statiques
