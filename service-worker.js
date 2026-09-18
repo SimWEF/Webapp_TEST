@@ -5,8 +5,8 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v16";
-   const DATA_CACHE = "pigvs-data-v8";
+   const APP_CACHE = "pigvs-app-v17";
+   const DATA_CACHE = "pigvs-data-v9";
    
    /* ==========================================================
       Fichiers statiques
@@ -36,7 +36,9 @@
    "detailSousEnsemble.html",
    "quizz.html",
    "centrales.json",
-   "logo-wetinghouse.svg"
+   "logo-wetinghouse.svg",
+   "depannage.html",
+   "depannage-data.json"
    ];
    
    /* ==========================================================

@@ -1,0 +1,131 @@
+{
+    "_note": "Arbres de décision pour l'assistance dépannage. {LANCE} et {AUTRE} sont remplacés automatiquement selon la lance choisie au départ.",
+  
+    "pannes": [
+      {
+        "id": "lance-erreur",
+        "titre": "Erreur sur une lance",
+        "sousTitre": "Système de lançage — index / oscillation",
+        "ico": "⚡",
+        "couleur": "orange",
+  
+        "variables": [
+          {
+            "id": "LANCE",
+            "question": "Sur quelle lance l'erreur est-elle apparue ?",
+            "options": [
+              { "label": "Lance 1", "valeur": "Lance 1", "oppose": "Lance 2" },
+              { "label": "Lance 2", "valeur": "Lance 2", "oppose": "Lance 1" }
+            ]
+          }
+        ],
+  
+        "depart": "montage",
+  
+        "etapes": {
+  
+          "montage": {
+            "type": "question",
+            "texte": "Le montage de la {LANCE} est-il bon ?",
+            "aide": "Vérifier le serrage, le positionnement et l'absence de jeu.",
+            "choix": [
+              { "label": "Oui",  "vers": "inverser-cables" },
+              { "label": "Non",  "vers": "reprendre-montage" }
+            ]
+          },
+  
+          "reprendre-montage": {
+            "type": "action",
+            "texte": "Reprendre le montage correctement",
+            "aide": "Démonter, vérifier chaque point de fixation, puis remonter.",
+            "vers": "erreur-encore"
+          },
+  
+          "erreur-encore": {
+            "type": "question",
+            "texte": "L'erreur est-elle encore présente ?",
+            "choix": [
+              { "label": "Oui", "vers": "inverser-cables" },
+              { "label": "Non", "vers": "regle" }
+            ]
+          },
+  
+          "inverser-cables": {
+            "type": "action",
+            "texte": "Inverser les câbles à l'enclosure",
+            "aide": "Permuter les câbles de la {LANCE} et de la {AUTRE} au niveau de l'enclosure.",
+            "vers": "meme-lance-logiciel"
+          },
+  
+          "meme-lance-logiciel": {
+            "type": "question",
+            "texte": "Après inversion, le logiciel signale-t-il toujours l'erreur sur la {LANCE} ?",
+            "aide": "Si l'erreur suit le câble, elle change de lance. Si elle reste sur la {LANCE}, le défaut vient de l'enclosure.",
+            "choix": [
+              { "label": "Oui, toujours sur la {LANCE}", "vers": "changer-enclosure" },
+              { "label": "Non, elle est passée sur la {AUTRE}", "vers": "echanger-splitters" }
+            ]
+          },
+  
+          "changer-enclosure": {
+            "type": "action",
+            "texte": "Changer l'enclosure",
+            "aide": "Le défaut est localisé dans l'enclosure : la remplacer.",
+            "vers": "regle"
+          },
+  
+          "echanger-splitters": {
+            "type": "action",
+            "texte": "Échanger les splitters entre les deux lances",
+            "aide": "Permuter les splitters de la {LANCE} et de la {AUTRE}.",
+            "vers": "meme-lance-etape-precedente"
+          },
+  
+          "meme-lance-etape-precedente": {
+            "type": "question",
+            "texte": "L'erreur est-elle sur la même lance qu'à l'étape précédente ?",
+            "aide": "Comparer avec le résultat obtenu après l'inversion des câbles.",
+            "choix": [
+              { "label": "Oui", "vers": "index-ou-oscillation" },
+              { "label": "Non", "vers": "changer-splitters" }
+            ]
+          },
+  
+          "changer-splitters": {
+            "type": "action",
+            "texte": "Changer les splitters branchés sur la lance en défaut",
+            "aide": "Le défaut suit les splitters : remplacer ceux de la lance concernée.",
+            "vers": "regle"
+          },
+  
+          "index-ou-oscillation": {
+            "type": "question",
+            "texte": "Le problème concerne-t-il l'index ou l'oscillation ?",
+            "choix": [
+              { "label": "Index",       "vers": "changer-moteur-index" },
+              { "label": "Oscillation", "vers": "changer-moteur-oscillation" }
+            ]
+          },
+  
+          "changer-moteur-index": {
+            "type": "action",
+            "texte": "Changer le moteur d'index de la {LANCE}",
+            "vers": "regle"
+          },
+  
+          "changer-moteur-oscillation": {
+            "type": "action",
+            "texte": "Changer le moteur d'oscillation de la {LANCE}",
+            "vers": "regle"
+          },
+  
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Si le défaut réapparaît, recommencer le diagnostic ou ouvrir une fiche de maintenance."
+          }
+        }
+      }
+    ]
+  }
+  

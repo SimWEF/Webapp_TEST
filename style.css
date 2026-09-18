@@ -198,6 +198,7 @@
   .module.marine { --acc:var(--marine); }
   .module.ambre  { --acc:var(--ambre); }
   .module.gris   { --acc:#64748b; }
+  .module.rouge  { --acc:var(--rouge); }
   
   /* ============================================================
      SYNTHÈSE
