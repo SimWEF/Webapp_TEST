@@ -584,3 +584,105 @@ select {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ============================================
+   FORMULAIRES (FDM, ETV, FCS…)
+   ============================================ */
+
+   .field-group {
+    margin-bottom: 14px;
+  }
+  
+  .field-group > label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--marine);
+  }
+  
+  .req {
+    color: var(--rouge);
+    font-weight: 700;
+  }
+  
+  .info {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+  
+  .field-wrap {
+    position: relative;
+  }
+  
+  /* --- Dropdown autocomplétion --- */
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
+    margin-top: 4px;
+  }
+  
+  .dropdown > div {
+    padding: 12px 14px;
+    font-size: 15px;
+    border-bottom: 1px solid #eef1f6;
+    cursor: pointer;
+  }
+  
+  .dropdown > div:last-child {
+    border-bottom: 0;
+  }
+  
+  .dropdown > div:hover {
+    background: var(--primary-soft);
+  }
+  
+  /* --- Boutons de choix (Matériel utilisable ?) --- */
+  
+  .choice-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .choice-group button {
+    flex: 1 1 0;
+    min-width: 90px;
+    min-height: 48px;
+    padding: 12px 10px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--marine);
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      background 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+  }
+  
+  .choice-group button:hover {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+  }
+  
+  .choice-group button.active {
+    background: var(--primary);
+    border-color: var(--primary-dark);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 120, 215, 0.3);
+  }
