@@ -1,6 +1,5 @@
 {
-    "_note": "Arbres de décision pour l'assistance dépannage. {LANCE} et {AUTRE} sont remplacés automatiquement selon la lance choisie au départ.",
-  
+    "_note": "Arbres de décision PIGVS. Les branches CART sont structurées à partir de Maintenance de niveau 1 V1.docx. Les actions sensibles restent réservées au personnel habilité.",
     "pannes": [
       {
         "id": "lance-erreur",
@@ -8,124 +7,726 @@
         "sousTitre": "Système de lançage — index / oscillation",
         "ico": "⚡",
         "couleur": "orange",
-  
         "variables": [
           {
             "id": "LANCE",
             "question": "Sur quelle lance l'erreur est-elle apparue ?",
             "options": [
-              { "label": "Lance 1", "valeur": "Lance 1", "oppose": "Lance 2" },
-              { "label": "Lance 2", "valeur": "Lance 2", "oppose": "Lance 1" }
+              {
+                "label": "Lance 1",
+                "valeur": "Lance 1",
+                "oppose": "Lance 2"
+              },
+              {
+                "label": "Lance 2",
+                "valeur": "Lance 2",
+                "oppose": "Lance 1"
+              }
             ]
           }
         ],
-  
         "depart": "montage",
-  
         "etapes": {
-  
           "montage": {
             "type": "question",
             "texte": "Le montage de la {LANCE} est-il bon ?",
             "aide": "Vérifier le serrage, le positionnement et l'absence de jeu.",
             "choix": [
-              { "label": "Oui",  "vers": "inverser-cables" },
-              { "label": "Non",  "vers": "reprendre-montage" }
+              {
+                "label": "Oui",
+                "vers": "inverser-cables"
+              },
+              {
+                "label": "Non",
+                "vers": "reprendre-montage"
+              }
             ]
           },
-  
           "reprendre-montage": {
             "type": "action",
             "texte": "Reprendre le montage correctement",
             "aide": "Démonter, vérifier chaque point de fixation, puis remonter.",
             "vers": "erreur-encore"
           },
-  
           "erreur-encore": {
             "type": "question",
             "texte": "L'erreur est-elle encore présente ?",
             "choix": [
-              { "label": "Oui", "vers": "inverser-cables" },
-              { "label": "Non", "vers": "regle" }
+              {
+                "label": "Oui",
+                "vers": "inverser-cables"
+              },
+              {
+                "label": "Non",
+                "vers": "regle"
+              }
             ]
           },
-  
           "inverser-cables": {
             "type": "action",
             "texte": "Inverser les câbles à l'enclosure",
             "aide": "Permuter les câbles de la {LANCE} et de la {AUTRE} au niveau de l'enclosure.",
             "vers": "meme-lance-logiciel"
           },
-  
           "meme-lance-logiciel": {
             "type": "question",
             "texte": "Après inversion, le logiciel signale-t-il toujours l'erreur sur la {LANCE} ?",
             "aide": "Si l'erreur suit le câble, elle change de lance. Si elle reste sur la {LANCE}, le défaut vient de l'enclosure.",
             "choix": [
-              { "label": "Oui, toujours sur la {LANCE}", "vers": "changer-enclosure" },
-              { "label": "Non, elle est passée sur la {AUTRE}", "vers": "echanger-splitters" }
+              {
+                "label": "Oui, toujours sur la {LANCE}",
+                "vers": "changer-enclosure"
+              },
+              {
+                "label": "Non, elle est passée sur la {AUTRE}",
+                "vers": "echanger-splitters"
+              }
             ]
           },
-  
           "changer-enclosure": {
             "type": "action",
             "texte": "Changer l'enclosure",
             "aide": "Le défaut est localisé dans l'enclosure : la remplacer.",
             "vers": "regle"
           },
-  
           "echanger-splitters": {
             "type": "action",
             "texte": "Échanger les splitters entre les deux lances",
             "aide": "Permuter les splitters de la {LANCE} et de la {AUTRE}.",
             "vers": "meme-lance-etape-precedente"
           },
-  
           "meme-lance-etape-precedente": {
             "type": "question",
             "texte": "L'erreur est-elle sur la même lance qu'à l'étape précédente ?",
             "aide": "Comparer avec le résultat obtenu après l'inversion des câbles.",
             "choix": [
-              { "label": "Oui", "vers": "index-ou-oscillation" },
-              { "label": "Non", "vers": "changer-splitters" }
+              {
+                "label": "Oui",
+                "vers": "index-ou-oscillation"
+              },
+              {
+                "label": "Non",
+                "vers": "changer-splitters"
+              }
             ]
           },
-  
           "changer-splitters": {
             "type": "action",
             "texte": "Changer les splitters branchés sur la lance en défaut",
             "aide": "Le défaut suit les splitters : remplacer ceux de la lance concernée.",
             "vers": "regle"
           },
-  
           "index-ou-oscillation": {
             "type": "question",
             "texte": "Le problème concerne-t-il l'index ou l'oscillation ?",
             "choix": [
-              { "label": "Index",       "vers": "changer-moteur-index" },
-              { "label": "Oscillation", "vers": "changer-moteur-oscillation" }
+              {
+                "label": "Index",
+                "vers": "changer-moteur-index"
+              },
+              {
+                "label": "Oscillation",
+                "vers": "changer-moteur-oscillation"
+              }
             ]
           },
-  
           "changer-moteur-index": {
             "type": "action",
             "texte": "Changer le moteur d'index de la {LANCE}",
             "vers": "regle"
           },
-  
           "changer-moteur-oscillation": {
             "type": "action",
             "texte": "Changer le moteur d'oscillation de la {LANCE}",
             "vers": "regle"
           },
-  
           "regle": {
             "type": "fin",
             "texte": "Problème réglé",
             "aide": "Si le défaut réapparaît, recommencer le diagnostic ou ouvrir une fiche de maintenance."
           }
         }
+      },
+      {
+        "id": "cart-vision-ne-tourne-pas",
+        "titre": "Tête de vision ne tourne pas",
+        "sousTitre": "CART — bloc tête de vision",
+        "ico": "📷",
+        "couleur": "bleu",
+        "variables": [],
+        "depart": "securite",
+        "etapes": {
+          "securite": {
+            "type": "action",
+            "texte": "Déconnecter le CART avant le contrôle manuel",
+            "aide": "Respecter les règles de consignation et les exigences du site. Les opérations de démontage, réglage ou remplacement doivent être réalisées uniquement par une personne habilitée.",
+            "vers": "tourne-vide"
+          },
+          "tourne-vide": {
+            "type": "question",
+            "texte": "En tournant manuellement la tête de vision, tourne-t-elle dans le vide ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "courroie"
+              },
+              {
+                "label": "Non",
+                "vers": "alimentation"
+              }
+            ]
+          },
+          "courroie": {
+            "type": "action",
+            "texte": "Contrôler la courroie sous le capot 1",
+            "aide": "Si la courroie s'est délogée des roues dentées : ouvrir le capot 1, remettre correctement la courroie, puis refermer le capot.",
+            "vers": "tester"
+          },
+          "alimentation": {
+            "type": "question",
+            "texte": "Le logiciel indique-t-il que la motorisation est alimentée ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "escalade"
+              },
+              {
+                "label": "Non",
+                "vers": "changer-cart"
+              }
+            ]
+          },
+          "tester": {
+            "type": "action",
+            "texte": "Reconnecter et tester la rotation de la tête de vision",
+            "vers": "resolu"
+          },
+          "resolu": {
+            "type": "question",
+            "texte": "La tête de vision tourne-t-elle normalement ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "regle"
+              },
+              {
+                "label": "Non",
+                "vers": "changer-cart"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
+      },
+      {
+        "id": "cart-vision-rotation-incomplete",
+        "titre": "Tête de vision bloquée ou rotation incomplète",
+        "sousTitre": "CART — bloc tête de vision",
+        "ico": "🎥",
+        "couleur": "violet",
+        "variables": [],
+        "depart": "securite",
+        "etapes": {
+          "securite": {
+            "type": "action",
+            "texte": "Mettre le CART en sécurité avant contrôle",
+            "aide": "Respecter les règles de consignation et les exigences du site. Les opérations de démontage, réglage ou remplacement doivent être réalisées uniquement par une personne habilitée.",
+            "vers": "vis-touche"
+          },
+          "vis-touche": {
+            "type": "question",
+            "texte": "La vis d'initialisation touche-t-elle la carcasse bleue ?",
+            "aide": "Contrôler l'espace entre la carcasse et la tête de vision.",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "creer-espace"
+              },
+              {
+                "label": "Non",
+                "vers": "axes-alignes"
+              }
+            ]
+          },
+          "creer-espace": {
+            "type": "action",
+            "texte": "Créer légèrement plus d'espace entre la vis et la carcasse",
+            "aide": "Donner un léger coup de tournevis plat, sans forcer.",
+            "vers": "tester"
+          },
+          "axes-alignes": {
+            "type": "question",
+            "texte": "Les parties 2 et 3 sont-elles correctement alignées ?",
+            "aide": "Un désaxage des axes de rotation peut empêcher la rotation correcte de la tête.",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "escalade"
+              },
+              {
+                "label": "Non",
+                "vers": "realigner"
+              }
+            ]
+          },
+          "realigner": {
+            "type": "action",
+            "texte": "Réaligner les parties 2 et 3",
+            "aide": "Desserrer les 4 vis indiquées dans le document, jouer sur les tolérances, tester la rotation, puis resserrer lorsque la rotation est correcte. Après changement d'entretoise, contrôler systématiquement l'absence de désaxage.",
+            "vers": "tester"
+          },
+          "tester": {
+            "type": "action",
+            "texte": "Tester manuellement la bonne rotation de la tête de vision",
+            "vers": "resolu"
+          },
+          "resolu": {
+            "type": "question",
+            "texte": "La rotation est-elle désormais complète et sans blocage ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "regle"
+              },
+              {
+                "label": "Non",
+                "vers": "escalade"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
+      },
+      {
+        "id": "cart-rotation-etrier",
+        "titre": "Rotation du bloc étrier en défaut",
+        "sousTitre": "CART — rotation site",
+        "ico": "↻",
+        "couleur": "orange",
+        "variables": [],
+        "depart": "deconnecter",
+        "etapes": {
+          "deconnecter": {
+            "type": "action",
+            "texte": "Déconnecter le CART et contrôler manuellement la rotation du bloc étrier",
+            "aide": "Respecter les règles de consignation et les exigences du site. Les opérations de démontage, réglage ou remplacement doivent être réalisées uniquement par une personne habilitée.",
+            "vers": "comportement"
+          },
+          "comportement": {
+            "type": "question",
+            "texte": "Quel comportement constatez-vous ?",
+            "choix": [
+              {
+                "label": "La rotation tourne dans le vide",
+                "vers": "changer-cart"
+              },
+              {
+                "label": "La rotation présente un point dur ou un blocage",
+                "vers": "reconnecter"
+              },
+              {
+                "label": "La rotation manuelle est normale",
+                "vers": "reconnecter"
+              }
+            ]
+          },
+          "reconnecter": {
+            "type": "action",
+            "texte": "Reconnecter le CART et commander une rotation du bloc étrier",
+            "vers": "retour-logiciel"
+          },
+          "retour-logiciel": {
+            "type": "question",
+            "texte": "La valeur de rotation évolue-t-elle dans le logiciel ?",
+            "choix": [
+              {
+                "label": "Non",
+                "vers": "changer-cart"
+              },
+              {
+                "label": "Oui, mais la rotation se bloque",
+                "vers": "cause-blocage"
+              },
+              {
+                "label": "Oui, fonctionnement normal",
+                "vers": "regle"
+              }
+            ]
+          },
+          "cause-blocage": {
+            "type": "question",
+            "texte": "Le bloc tête de vision touche-t-il la carcasse du bloc étrier ?",
+            "aide": "Un jeu peut créer des points durs si la tête n'est pas correctement centrée.",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "centrer"
+              },
+              {
+                "label": "Non",
+                "vers": "corps-etranger"
+              }
+            ]
+          },
+          "centrer": {
+            "type": "action",
+            "texte": "Centrer la tête de vision dans l'étrier",
+            "aide": "Avec une clé Allen de 3, visser ou dévisser les petites vis sans tête pour obtenir le même espace à gauche et à droite. Ne pas poursuivre hors habilitation.",
+            "vers": "tester"
+          },
+          "corps-etranger": {
+            "type": "question",
+            "texte": "Un corps étranger est-il visible entre le bloc étrier et la tête de vision ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "escalade"
+              },
+              {
+                "label": "Non",
+                "vers": "escalade"
+              }
+            ]
+          },
+          "tester": {
+            "type": "action",
+            "texte": "Tester la rotation du bloc étrier",
+            "vers": "resolu"
+          },
+          "resolu": {
+            "type": "question",
+            "texte": "La rotation est-elle fluide et correctement suivie dans le logiciel ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "regle"
+              },
+              {
+                "label": "Non",
+                "vers": "escalade"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
+      },
+      {
+        "id": "cart-moteurs-avance-recul",
+        "titre": "Moteurs avance / recul en défaut",
+        "sousTitre": "CART — bloc moteur",
+        "ico": "🛞",
+        "couleur": "rouge",
+        "variables": [],
+        "depart": "connecter",
+        "etapes": {
+          "connecter": {
+            "type": "action",
+            "texte": "Connecter le CART au CAVALRI et ouvrir le logiciel",
+            "aide": "Respecter les règles de consignation et les exigences du site. Les opérations de démontage, réglage ou remplacement doivent être réalisées uniquement par une personne habilitée.",
+            "vers": "commander"
+          },
+          "commander": {
+            "type": "action",
+            "texte": "Commander une avance du CART",
+            "vers": "moteurs-bougent"
+          },
+          "moteurs-bougent": {
+            "type": "question",
+            "texte": "Les indicateurs du moteur droit et du moteur gauche évoluent-ils dans le logiciel ?",
+            "choix": [
+              {
+                "label": "Un moteur ou les deux ne bougent pas",
+                "vers": "changer-cart"
+              },
+              {
+                "label": "Les deux moteurs sont alimentés",
+                "vers": "avance-recul"
+              }
+            ]
+          },
+          "avance-recul": {
+            "type": "action",
+            "texte": "Effectuer une avance puis un recul",
+            "aide": "Observer si un corps étranger est coincé entre une roue et la carcasse et bloque la rotation.",
+            "vers": "corps-etranger"
+          },
+          "corps-etranger": {
+            "type": "question",
+            "texte": "Un corps étranger bloque-t-il une roue ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "escalade"
+              },
+              {
+                "label": "Non, mais le problème persiste",
+                "vers": "changer-cart"
+              },
+              {
+                "label": "Non, le fonctionnement est rétabli",
+                "vers": "regle"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
+      },
+      {
+        "id": "cart-codeur-tete",
+        "titre": "Codeur de tête de vision déréglé",
+        "sousTitre": "CART — calibration angle site",
+        "ico": "📐",
+        "couleur": "cyan",
+        "variables": [],
+        "depart": "position-zero",
+        "etapes": {
+          "position-zero": {
+            "type": "action",
+            "texte": "Placer la tête de vision à 0° par rapport à l'étrier",
+            "aide": "S'assurer que la tête ne bouge pas avant la mise sous tension. Cette calibration est réservée au personnel autorisé.",
+            "vers": "connexion"
+          },
+          "connexion": {
+            "type": "action",
+            "texte": "Brancher le CART au CAVALRI et démarrer le CAVALRI et la baie",
+            "aide": "Vérifier que la communication entre le CART, le CAVALRI et la baie est correcte.",
+            "vers": "ouvrir-maintenance"
+          },
+          "ouvrir-maintenance": {
+            "type": "action",
+            "texte": "Démarrer le logiciel Maintenance CART",
+            "aide": "Chemin indiqué dans le document : C:\\Soft Alliance Vision\\MaintenanceCrawler.exe",
+            "vers": "port-com"
+          },
+          "port-com": {
+            "type": "action",
+            "texte": "Ouvrir le port COM12",
+            "aide": "La fenêtre ACK doit afficher « Init OK ».",
+            "vers": "retour-angle"
+          },
+          "retour-angle": {
+            "type": "action",
+            "texte": "Sélectionner « Tête de vision » puis ouvrir le « Mode avancé »",
+            "vers": "setup"
+          },
+          "setup": {
+            "type": "action",
+            "texte": "Sélectionner Setup puis Offset Tilt",
+            "vers": "reset"
+          },
+          "reset": {
+            "type": "action",
+            "texte": "Entrer 00 dans MSB et 00 dans LSB, puis relever la valeur d'inclinaison",
+            "aide": "Cette étape réinitialise le codeur absolu et affiche sa valeur usine.",
+            "vers": "calcul"
+          },
+          "calcul": {
+            "type": "action",
+            "texte": "Calculer l'offset à appliquer",
+            "aide": "MSB agit par pas de 25,6°. LSB agit par pas de 0,1°. Le document indique que MSB peut être négatif et que LSB ne peut pas être négatif. Pour l'exemple d'une erreur de +57°, le document utilise MSB = -03 puis LSB = 198.",
+            "vers": "appliquer"
+          },
+          "appliquer": {
+            "type": "action",
+            "texte": "Saisir les valeurs MSB et LSB calculées puis envoyer la commande",
+            "aide": "Ne pas dépasser les limites indiquées dans la procédure : valeurs maximales 256. Conserver la valeur MSB lors de l'affinage LSB.",
+            "vers": "valider"
+          },
+          "valider": {
+            "type": "action",
+            "texte": "Vérifier 0°, aller jusqu'à 135°, puis revenir à 0°",
+            "vers": "resolu"
+          },
+          "resolu": {
+            "type": "question",
+            "texte": "La valeur et la rotation sont-elles correctes sur toute la course ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "regle"
+              },
+              {
+                "label": "Non",
+                "vers": "escalade"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
+      },
+      {
+        "id": "cart-inclinometre",
+        "titre": "Inclinomètre déréglé",
+        "sousTitre": "CART — calibration inclinaison",
+        "ico": "📏",
+        "couleur": "marine",
+        "variables": [],
+        "depart": "horizontal",
+        "etapes": {
+          "horizontal": {
+            "type": "action",
+            "texte": "Placer le CART à l'horizontale à l'aide d'un niveau",
+            "aide": "Le document montre la configuration d'insertion à gauche dans le GV. Calibration réservée au personnel autorisé.",
+            "vers": "connexion"
+          },
+          "connexion": {
+            "type": "action",
+            "texte": "Brancher le CART au CAVALRI et démarrer le CAVALRI et la CCU",
+            "aide": "Vérifier que la communication entre le CART, le CAVALRI et la CCU est correcte.",
+            "vers": "ouvrir-maintenance"
+          },
+          "ouvrir-maintenance": {
+            "type": "action",
+            "texte": "Démarrer Maintenance CART et ouvrir le port COM12",
+            "aide": "L'ACK doit afficher « Init OK ».",
+            "vers": "inclinaison"
+          },
+          "inclinaison": {
+            "type": "action",
+            "texte": "Sélectionner « Inclinaison », ouvrir « Mode avancé », puis Setup / Offset Pitch",
+            "vers": "reset"
+          },
+          "reset": {
+            "type": "action",
+            "texte": "Entrer 00 dans MSB et 00 dans LSB, puis relever l'inclinaison",
+            "aide": "Le document indique qu'en configuration d'insertion à gauche la valeur attendue est -90°.",
+            "vers": "sens-erreur"
+          },
+          "sens-erreur": {
+            "type": "question",
+            "texte": "La valeur affichée est-elle plus négative ou moins négative que -90° ?",
+            "choix": [
+              {
+                "label": "Plus négative (ex. -90,2°)",
+                "vers": "corriger-lsb"
+              },
+              {
+                "label": "Moins négative (ex. -88°)",
+                "vers": "corriger-msb"
+              },
+              {
+                "label": "Elle affiche -90°",
+                "vers": "regle"
+              }
+            ]
+          },
+          "corriger-lsb": {
+            "type": "action",
+            "texte": "Corriger avec le LSB",
+            "aide": "LSB agit par pas de 0,1°. Exemple documenté : pour -90,2°, envoyer MSB 00 et LSB 02 pour atteindre -90°.",
+            "vers": "valider"
+          },
+          "corriger-msb": {
+            "type": "action",
+            "texte": "Compenser d'abord avec MSB, puis affiner avec LSB",
+            "aide": "Exemple documenté : pour -88°, MSB = -01 donne -113,6°, puis LSB = 236 ramène à -90°.",
+            "vers": "valider"
+          },
+          "valider": {
+            "type": "action",
+            "texte": "Vérifier que l'inclinaison affichée correspond à la position réelle du CART",
+            "vers": "resolu"
+          },
+          "resolu": {
+            "type": "question",
+            "texte": "La valeur est-elle correcte ?",
+            "choix": [
+              {
+                "label": "Oui",
+                "vers": "regle"
+              },
+              {
+                "label": "Non",
+                "vers": "escalade"
+              }
+            ]
+          },
+          "regle": {
+            "type": "fin",
+            "texte": "Problème réglé",
+            "aide": "Valider le fonctionnement. Si le défaut réapparaît, ouvrir une fiche de maintenance."
+          },
+          "changer-cart": {
+            "type": "fin",
+            "texte": "Changer de CART",
+            "aide": "Le document de maintenance conclut à un remplacement du CART pour ce diagnostic. Ouvrir une fiche de maintenance pour assurer la traçabilité."
+          },
+          "escalade": {
+            "type": "fin",
+            "texte": "Mettre le CART de côté et faire intervenir une personne agréée",
+            "aide": "Ne pas poursuivre le démontage hors habilitation. Ouvrir une fiche de maintenance."
+          }
+        }
       }
     ]
   }
-  
