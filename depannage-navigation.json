@@ -1,0 +1,92 @@
+{
+  "activites": [
+    {
+      "id": "lancage",
+      "titre": "Lançage",
+      "ico": "💧",
+      "couleur": "bleu",
+      "systemes": [
+        {
+          "id": "gibr",
+          "titre": "GIBR",
+          "ico": "⚙️",
+          "disponible": false,
+          "pannes": []
+        },
+        {
+          "id": "controle-lances",
+          "titre": "Contrôle commande des lances",
+          "ico": "🎛️",
+          "disponible": true,
+          "pannes": [
+            "lance-erreur"
+          ]
+        },
+        {
+          "id": "dav",
+          "titre": "Système DAV",
+          "ico": "🖥️",
+          "disponible": false,
+          "pannes": []
+        }
+      ]
+    },
+    {
+      "id": "etv",
+      "titre": "ETV",
+      "ico": "📹",
+      "couleur": "violet",
+      "systemes": [
+        {
+          "id": "cart",
+          "titre": "CART",
+          "ico": "🤖",
+          "disponible": true,
+          "pannes": [
+            "cart-vision-ne-tourne-pas",
+            "cart-vision-rotation-incomplete",
+            "cart-rotation-etrier",
+            "cart-moteurs-avance-recul",
+            "cart-codeur-tete",
+            "cart-inclinometre"
+          ]
+        },
+        {
+          "id": "baie",
+          "titre": "BAIE",
+          "ico": "🗄️",
+          "disponible": false,
+          "pannes": []
+        },
+        {
+          "id": "cavalri",
+          "titre": "CAVALRI",
+          "ico": "🎚️",
+          "disponible": false,
+          "pannes": []
+        },
+        {
+          "id": "spice",
+          "titre": "SPICE",
+          "ico": "🦾",
+          "disponible": false,
+          "pannes": []
+        },
+        {
+          "id": "sabre",
+          "titre": "SABRE",
+          "ico": "📏",
+          "disponible": false,
+          "pannes": []
+        },
+        {
+          "id": "perche",
+          "titre": "PERCHE",
+          "ico": "🔭",
+          "disponible": false,
+          "pannes": []
+        }
+      ]
+    }
+  ]
+}

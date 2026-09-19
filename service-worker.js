@@ -5,7 +5,7 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v18";
+   const APP_CACHE = "pigvs-app-v19";
    const DATA_CACHE = "pigvs-data-v10";
    
    /* ==========================================================
@@ -38,7 +38,8 @@
    "centrales.json",
    "logo-wetinghouse.svg",
    "depannage.html",
-   "depannage-data.json"
+   "depannage-data.json",
+   "depannage-navigation.json"
    ];
    
    /* ==========================================================
