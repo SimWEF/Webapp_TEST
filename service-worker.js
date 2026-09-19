@@ -5,8 +5,8 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v19";
-   const DATA_CACHE = "pigvs-data-v10";
+   const APP_CACHE = "pigvs-app-v20";
+   const DATA_CACHE = "pigvs-data-v11";
    
    /* ==========================================================
       Fichiers statiques

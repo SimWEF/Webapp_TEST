@@ -1,297 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIGVS Operations</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0B2C5C">
-  <link rel="apple-touch-icon" href="icon-192.png">
-<script src="pigvs-auth.js"></script>
-<script>PIGVS_AUTH.protegerPage();</script>
-</head>
-<body class="accueil">
-
-<!-- ===================== BARRE SUPÉRIEURE ===================== -->
-<header class="topbar">
-  <div class="topbar-ligne1">
-    <svg class="logo" viewBox="0 0 100 100" role="img" aria-label="Westinghouse">
-      <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6"/>
-      <path d="M27 33 L38 62 L50 38 L62 62 L73 33" fill="none" stroke="currentColor"
-            stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="27" cy="33" r="7.5" fill="currentColor"/>
-      <circle cx="50" cy="35" r="7.5" fill="currentColor"/>
-      <circle cx="73" cy="33" r="7.5" fill="currentColor"/>
-      <rect x="33" y="68" width="34" height="9" rx="4.5" fill="currentColor"/>
-    </svg>
-    <span class="nom">Westinghouse</span>
-    <span class="sep"></span>
-    <span class="appli">PIGVS Operations</span>
-    <a class="pill-admin" href="admin.html" title="Administration">⚙️</a>
-  </div>
-
-  <div class="topbar-ligne2">
-    <div class="pill-chantier">
-      <span class="pill-ico">🏭</span>
-      <div id="chantierSelector"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIGVS Operations</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0B2C5C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <script src="pigvs-auth.js"></script>
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
+  <body class="accueil">
+    <header class="topbar">
+      <div class="topbar-ligne1">
+        <img class="logo-pigvs" src="logo-pigvs.png" alt="Logo PIGVS" />
+        <span class="nom">Westinghouse</span>
+        <span class="sep"></span>
+        <span class="appli">PIGVS Operations</span>
+        <a class="pill-admin" href="admin.html" title="Administration">⚙️</a>
+      </div>
+      <div class="topbar-ligne2">
+        <div class="pill-chantier">
+          <span class="pill-ico">🏭</span>
+          <div id="chantierSelector"></div>
+        </div>
+      </div>
+    </header>
+    <div class="page">
+      <section class="banniere">
+        <img
+          class="filigrane filigrane-image"
+          src="logo-pigvs.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <div class="banniere-carte">
+          <h1>Bienvenue sur <span>PIGVS</span></h1>
+          <p class="accroche">
+            Votre application terrain pour la maintenance et le suivi du
+            matériel.
+          </p>
+          <div class="resume-mobile">
+            <span class="chip" id="cSite">—</span
+            ><span class="chip" id="cType">—</span
+            ><span class="chip" id="cLot">—</span>
+          </div>
+          <div class="infos-chantier">
+            <div class="info-bloc">
+              <span class="info-ico">🏭</span>
+              <div>
+                <span class="info-lab">Site</span
+                ><span class="info-val" id="iSite">—</span>
+              </div>
+            </div>
+            <div class="info-bloc">
+              <span class="info-ico">⚙️</span>
+              <div>
+                <span class="info-lab">Type GV</span
+                ><span class="info-val" id="iType">—</span>
+              </div>
+            </div>
+            <div class="info-bloc">
+              <span class="info-ico">📑</span>
+              <div>
+                <span class="info-lab">Prestation</span
+                ><span class="info-val" id="iLot">—</span>
+              </div>
+            </div>
+            <div class="info-bloc">
+              <span class="info-ico">📅</span>
+              <div>
+                <span class="info-lab">Opération</span
+                ><span class="info-val" id="iOp">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="grille-modules">
+        <a class="module vert" href="fdm.html"
+          ><div class="module-head">
+            <span class="module-ico">📋</span>
+            <div>
+              <h2>Fiche de maintenance</h2>
+              <p>Déclarer une intervention</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Incident · Action corrective · Photos</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module rouge" href="depannage.html"
+          ><div class="module-head">
+            <span class="module-ico">🛟</span>
+            <div>
+              <h2>Assistance Dépannage</h2>
+              <p>Diagnostic guidé pas à pas</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Lançage · ETV · Logigrammes</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module bleu" href="photos.html"
+          ><div class="module-head">
+            <span class="module-ico">📷</span>
+            <div>
+              <h2>Reporting Photo</h2>
+              <p>Prendre et envoyer des photos</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Colisage · Portées de joint · FCS</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module orange" href="colisage.html"
+          ><div class="module-head">
+            <span class="module-ico">📦</span>
+            <div>
+              <h2>Colisage</h2>
+              <p>Naviguer dans le colisage</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Conteneurs · Caisses · Matériel</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module cyan" href="materiel.html"
+          ><div class="module-head">
+            <span class="module-ico">📊</span>
+            <div>
+              <h2>État matériel</h2>
+              <p>Suivi du matériel</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Disponibilité · Interventions · Statut</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module violet" href="rex.html"
+          ><div class="module-head">
+            <span class="module-ico">💬</span>
+            <div>
+              <h2>REX</h2>
+              <p>Retour d'expérience</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Technique · Organisationnel · Amélioration</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module marine" href="info.html"
+          ><div class="module-head">
+            <span class="module-ico">ℹ️</span>
+            <div>
+              <h2>Info chantier</h2>
+              <p>Planning &amp; informations</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">Avancement · Alertes · Points clés</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+        <a class="module ambre" href="quizz.html"
+          ><div class="module-head">
+            <span class="module-ico">🎯</span>
+            <div>
+              <h2>Quizz</h2>
+              <p>Tester ses connaissances</p>
+            </div>
+          </div>
+          <div class="module-foot">
+            <span class="tags">ETV · Lançage · PIGVS</span
+            ><span class="fleche">→</span>
+          </div></a
+        >
+      </section>
+      <section class="synthese">
+        <div class="synth-bloc">
+          <span class="synth-ico jaune">🔔</span>
+          <div>
+            <span class="synth-titre">Point d'attention</span
+            ><span class="synth-val" id="sAlerte">—</span>
+          </div>
+        </div>
+        <div class="synth-bloc">
+          <span class="synth-ico bleu">📅</span>
+          <div>
+            <span class="synth-titre">Fin prévisionnelle</span
+            ><span class="synth-val" id="sFin">—</span>
+          </div>
+        </div>
+        <div class="synth-bloc">
+          <span class="synth-ico vert">✅</span>
+          <div>
+            <span class="synth-titre">Avancement</span
+            ><span class="synth-val" id="sAvance">—</span>
+          </div>
+        </div>
+        <a class="synth-lien" href="info.html">Voir le détail ›</a>
+      </section>
     </div>
-  </div>
-</header>
-
-<div class="page">
-
-  <!-- ===================== BANNIÈRE ===================== -->
-  <section class="banniere">
-    <svg class="filigrane" viewBox="0 0 100 100" aria-hidden="true">
-      <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5"/>
-      <path d="M27 33 L38 62 L50 38 L62 62 L73 33" fill="none" stroke="currentColor"
-            stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="27" cy="33" r="7" fill="currentColor"/>
-      <circle cx="50" cy="35" r="7" fill="currentColor"/>
-      <circle cx="73" cy="33" r="7" fill="currentColor"/>
-      <rect x="33" y="68" width="34" height="9" rx="4.5" fill="currentColor"/>
-    </svg>
-
-    <div class="banniere-carte">
-      <h1>Bienvenue sur <span>PIGVS</span></h1>
-      <p class="accroche">Votre application terrain pour la maintenance et le suivi du matériel.</p>
-
-      <!-- Résumé compact (mobile) -->
-      <div class="resume-mobile">
-        <span class="chip" id="cSite">—</span>
-        <span class="chip" id="cType">—</span>
-        <span class="chip" id="cLot">—</span>
-      </div>
-
-      <!-- Blocs détaillés (ordinateur) -->
-      <div class="infos-chantier">
-        <div class="info-bloc">
-          <span class="info-ico">🏭</span>
-          <div><span class="info-lab">Site</span><span class="info-val" id="iSite">—</span></div>
-        </div>
-        <div class="info-bloc">
-          <span class="info-ico">⚙️</span>
-          <div><span class="info-lab">Type GV</span><span class="info-val" id="iType">—</span></div>
-        </div>
-        <div class="info-bloc">
-          <span class="info-ico">📑</span>
-          <div><span class="info-lab">Prestation</span><span class="info-val" id="iLot">—</span></div>
-        </div>
-        <div class="info-bloc">
-          <span class="info-ico">📅</span>
-          <div><span class="info-lab">Opération</span><span class="info-val" id="iOp">—</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MODULES ===================== -->
-  <section class="grille-modules">
-
-    <a class="module vert" href="fdm.html">
-      <div class="module-head">
-        <span class="module-ico">📋</span>
-        <div>
-          <h2>Fiche de maintenance</h2>
-          <p>Déclarer une intervention</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Incident · Action corrective · Photos</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-    
-    <a class="module rouge" href="depannage.html">
-      <div class="module-head">
-        <span class="module-ico">🛟</span>
-        <div>
-          <h2>Assistance Dépannage</h2>
-          <p>Diagnostic guidé pas à pas</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Lançage · Logigrammes · Pannes</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-
-    <a class="module bleu" href="photos.html">
-      <div class="module-head">
-        <span class="module-ico">📷</span>
-        <div>
-          <h2>Reporting Photo</h2>
-          <p>Prendre et envoyer des photos</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Colisage · Portées de joint · FCS</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module orange" href="colisage.html">
-      <div class="module-head">
-        <span class="module-ico">📦</span>
-        <div>
-          <h2>Colisage</h2>
-          <p>Naviguer dans le colisage</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Conteneurs · Caisses · Matériel</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module cyan" href="materiel.html">
-      <div class="module-head">
-        <span class="module-ico">📊</span>
-        <div>
-          <h2>État matériel</h2>
-          <p>Suivi du matériel</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Disponibilité · Interventions · Statut</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module violet" href="rex.html">
-      <div class="module-head">
-        <span class="module-ico">💬</span>
-        <div>
-          <h2>REX</h2>
-          <p>Retour d'expérience</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Technique · Organisationnel · Amélioration</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module marine" href="info.html">
-      <div class="module-head">
-        <span class="module-ico">ℹ️</span>
-        <div>
-          <h2>Info chantier</h2>
-          <p>Planning &amp; informations</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">Avancement · Alertes · Points clés</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-    <a class="module ambre" href="quizz.html">
-      <div class="module-head">
-        <span class="module-ico">🎯</span>
-        <div>
-          <h2>Quizz</h2>
-          <p>Tester ses connaissances</p>
-        </div>
-      </div>
-      <div class="module-foot">
-        <span class="tags">ETV · Lançage · PIGVS</span>
-        <span class="fleche">→</span>
-      </div>
-    </a>
-
-  </section>
-
-  <!-- ===================== BANDEAU DE SYNTHÈSE ===================== -->
-  <section class="synthese">
-    <div class="synth-bloc">
-      <span class="synth-ico jaune">🔔</span>
-      <div>
-        <span class="synth-titre">Point d'attention</span>
-        <span class="synth-val" id="sAlerte">—</span>
-      </div>
-    </div>
-    <div class="synth-bloc">
-      <span class="synth-ico bleu">📅</span>
-      <div>
-        <span class="synth-titre">Fin prévisionnelle</span>
-        <span class="synth-val" id="sFin">—</span>
-      </div>
-    </div>
-    <div class="synth-bloc">
-      <span class="synth-ico vert">✅</span>
-      <div>
-        <span class="synth-titre">Avancement</span>
-        <span class="synth-val" id="sAvance">—</span>
-      </div>
-    </div>
-    <a class="synth-lien" href="info.html">Voir le détail ›</a>
-  </section>
-
-</div>
-
-<footer class="pied">
-  <span>PIGVS Operations &nbsp;|&nbsp; Westinghouse Electric Company</span>
-  <span class="pied-version">Version 1.0</span>
-</footer>
-
-<script src="pigvs-chantier.js"></script>
-<script>
-PIGVS.loadChantiers().then(function () {
-  PIGVS.renderSelector(document.getElementById('chantierSelector'), majAccueil);
-  majAccueil();
-});
-
-let CENTRALES = {};
-fetch('centrales.json')
-  .then(r => r.json())
-  .then(d => { CENTRALES = d.centrales || {}; majAccueil(); })
-  .catch(() => {});
-
-function norm(s){ return (s||'').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
-function set(id, val){ const e = document.getElementById(id); if(e) e.textContent = val; }
-
-function majAccueil(){
-  const c = PIGVS.getChantier();
-  const site = c ? c.site : '';
-
-  set('iSite', site || '—');
-  set('iOp',   c ? (c.nom || '—') : '—');
-
-  /* Type de GV depuis centrales.json */
-  const cle = Object.keys(CENTRALES).find(k => norm(k) === norm(site));
-  const ref = cle ? CENTRALES[cle] : null;
-  set('iType', ref ? (ref.typeGV || '—') : '—');
-
-  set('cSite', site ? '🏭 ' + site : '🏭 —');
-  set('cType', ref && ref.typeGV ? '⚙️ ' + ref.typeGV : '⚙️ —');
-
-  /* Lot + délai : lus dans le fichier info du chantier */
-  if(c && c.infoData){
-    fetch(c.infoData).then(r => r.json()).then(d => {
-      const lot = [d.lot, d.delai].filter(Boolean).join(' ') || '—';
-      set('iLot', lot);
-      set('cLot', '📑 ' + lot);
-
-      set('sFin',    d.finPrev || '—');
-      set('sAvance', (d.avancement != null ? d.avancement + ' %' : '—'));
-      const a = (d.alertes && d.alertes.length) ? d.alertes[0] : null;
-      set('sAlerte', a ? a.titre : 'Aucun');
-    }).catch(() => { set('iLot','—'); set('cLot','📑 —'); });
-  } else {
-    set('iLot','—'); set('cLot','📑 —');
-  }
-}
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function(){ console.log('PWA prete'); })
-      .catch(function(err){ console.error('SW erreur', err); });
-  });
-}
-</script>
-</body>
+    <footer class="pied">
+      <span>PIGVS Operations &nbsp;|&nbsp; Westinghouse Electric Company</span
+      ><span class="pied-version">Version 1.0</span>
+    </footer>
+    <script src="pigvs-chantier.js"></script>
+    <script>
+      PIGVS.loadChantiers().then(function () {
+        PIGVS.renderSelector(
+          document.getElementById("chantierSelector"),
+          majAccueil,
+        );
+        majAccueil();
+      });
+      let CENTRALES = {};
+      fetch("centrales.json")
+        .then((r) => r.json())
+        .then((d) => {
+          CENTRALES = d.centrales || {};
+          majAccueil();
+        })
+        .catch(() => {});
+      function norm(s) {
+        return (s || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+      }
+      function set(id, val) {
+        const e = document.getElementById(id);
+        if (e) e.textContent = val;
+      }
+      function majAccueil() {
+        const c = PIGVS.getChantier(),
+          site = c ? c.site : "";
+        set("iSite", site || "—");
+        set("iOp", c ? c.nom || "—" : "—");
+        const cle = Object.keys(CENTRALES).find((k) => norm(k) === norm(site)),
+          ref = cle ? CENTRALES[cle] : null;
+        set("iType", ref ? ref.typeGV || "—" : "—");
+        set("cSite", site ? "🏭 " + site : "🏭 —");
+        set("cType", ref && ref.typeGV ? "⚙️ " + ref.typeGV : "⚙️ —");
+        if (c && c.infoData) {
+          fetch(c.infoData)
+            .then((r) => r.json())
+            .then((d) => {
+              const lot = [d.lot, d.delai].filter(Boolean).join(" ") || "—";
+              set("iLot", lot);
+              set("cLot", "📑 " + lot);
+              set("sFin", d.finPrev || "—");
+              set("sAvance", d.avancement != null ? d.avancement + " %" : "—");
+              const a = d.alertes && d.alertes.length ? d.alertes[0] : null;
+              set("sAlerte", a ? a.titre : "Aucun");
+            })
+            .catch(() => {
+              set("iLot", "—");
+              set("cLot", "📑 —");
+            });
+        } else {
+          set("iLot", "—");
+          set("cLot", "📑 —");
+        }
+      }
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () =>
+          navigator.serviceWorker
+            .register("service-worker.js")
+            .catch(console.error),
+        );
+      }
+    </script>
+  </body>
 </html>
