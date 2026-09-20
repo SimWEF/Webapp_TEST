@@ -91,7 +91,6 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="pigvs-colisage.js"></script>
 <script>
 
 const $ = id => document.getElementById(id);
@@ -127,26 +126,30 @@ function versTexte(data, garderAbsents){
   return copie;
 }
 
-/* Chargement automatique du colisage de reference (SharePoint via flux, GitHub en secours) */
+/* Chargement automatique du colisage de l'application */
+const CHEMINS = ['colisage-data.json','../colisage-data.json','data/colisage-data.json',
+                 'Data/colisage-data.json','../data/colisage-data.json'];
+
 async function chargerAppli(silencieux){
-  try{
-    const d = await PIGVS_COLISAGE.lireColisage();
-    if(!d || !Array.isArray(d.conteneurs)) throw new Error('Format colisage invalide');
-    const sourceReelle = d._source === 'flux' ? 'SharePoint (flux)' : 'GitHub (secours)';
-    delete d._source;
-    DATA = versObjets(d);
-    ORIGINAL = JSON.parse(JSON.stringify(DATA));
-    courant = DATA.conteneurs[0]?.id || null;
-    plies.clear(); remplirSelect(); rendre();
-    $('source').textContent = '📄 Colisage chargé depuis : ' + sourceReelle;
-    if(!silencieux) toast('Colisage de référence rechargé');
-    return true;
-  }catch(e){
-    console.error(e);
-    $('liste').innerHTML = "<div class='vide'>Colisage de référence indisponible.<br>Utilisez « 📂 Importer » en secours.</div>";
-    $('source').textContent = '';
-    return false;
+  for(const p of CHEMINS){
+    try{
+      const r = await fetch(p, { cache:'no-store' });
+      if(!r.ok) continue;
+      const d = await r.json();
+      if(!d || !Array.isArray(d.conteneurs)) continue;
+      DATA = versObjets(d);
+      ORIGINAL = JSON.parse(JSON.stringify(DATA));
+      courant = DATA.conteneurs[0]?.id || null;
+      plies.clear(); remplirSelect(); rendre();
+      $('source').textContent = '📄 Colisage chargé depuis : ' + p;
+      if(!silencieux) toast('Colisage de l\u2019appli rechargé');
+      return true;
+    }catch(e){ /* chemin suivant */ }
   }
+  $('liste').innerHTML = "<div class='vide'>Colisage introuvable automatiquement.<br>"
+    + "Placez ce fichier à côté de <b>colisage-data.json</b>, ou utilisez « 📂 Importer ».</div>";
+  $('source').textContent = '';
+  return false;
 }
 chargerAppli(true);
 

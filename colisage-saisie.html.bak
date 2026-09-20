@@ -631,8 +631,7 @@
     <script src="pigvs-chantier.js"></script>
     <script src="pigvs-envoi.js"></script>
     <script src="pigvs-scan.js"></script>
-    <script src="pigvs-colisage.js"></script>
-<script>
+    <script>
       /* =========================================================
          CONFIGURATION
          ========================================================= */
@@ -822,7 +821,8 @@
          CHARGEMENT DES RÉFÉRENTIELS
          ========================================================= */
       Promise.all([
-        PIGVS_COLISAGE.lireColisage()
+        fetch("colisage-data.json", { cache: "no-store" })
+          .then((r) => r.json())
           .catch(() => ({ conteneurs: [] })),
         fetch("caisses.json", { cache: "no-store" })
           .then((r) => r.json())
