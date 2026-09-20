@@ -8,8 +8,8 @@
    changer APP_CACHE pour voir un colisage mis a jour.
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v26";
-   const DATA_CACHE = "pigvs-data-v12";
+   const APP_CACHE = "pigvs-app-v27";
+   const DATA_CACHE = "pigvs-data-v13";
    
    /* ==========================================================
       Fichiers de DONNEES
@@ -70,6 +70,7 @@
      "pigvs-envoi.js",
      "pigvs-auth.js",
      "pigvs-scan.js",
+     "pigvs-colisage.js",
    
      /* --- Images --- */
      "icon-192.png",
