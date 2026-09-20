@@ -105,7 +105,7 @@
         border: 1px solid #ccd4e0;
         border-radius: 10px;
         margin-top: 4px;
-        max-height: 230px;
+        max-height: 260px;
         overflow-y: auto;
         display: none;
         z-index: 800;
@@ -130,6 +130,20 @@
       .ac-list .ac-empty {
         color: var(--muted);
         cursor: default;
+      }
+
+      .ac-list .ac-sous {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      .ac-list mark {
+        background: #fff2a8;
+        color: inherit;
+        padding: 0 1px;
+        border-radius: 3px;
       }
 
       /* ---------- Bandeau caisse ---------- */
@@ -467,7 +481,7 @@
 
   <body>
     <header class="app-header">
-      <a class="back" href="index.html">‹</a>
+      <a class="back" href="colisage.html">‹</a>
       <h1>📝 Saisie du colisage</h1>
     </header>
 
@@ -504,7 +518,7 @@
             <input
               type="text"
               id="champCaisse"
-              placeholder="Ex : BOX #40, CART #03…"
+              placeholder="Ex : BOX 40, cart 3, cap4…"
               autocomplete="off"
               autocapitalize="off"
               spellcheck="false"
@@ -571,12 +585,7 @@
         <div class="bloc">
           <h2>3. Photos (facultatif)</h2>
 
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            id="camInput"
-          />
+          <input type="file" accept="image/*" capture="environment" id="camInput" />
           <input type="file" accept="image/*" multiple id="galInput" />
 
           <div class="btns-photo">
@@ -596,9 +605,7 @@
           <h2>4. Valider et envoyer</h2>
 
           <div class="field-group">
-            <label for="operateur">
-              Opérateur <span class="req">*</span>
-            </label>
+            <label for="operateur">Opérateur <span class="req">*</span></label>
             <input type="text" id="operateur" placeholder="Votre nom" />
           </div>
 
@@ -643,7 +650,7 @@
          ÉTAT
          ========================================================= */
       let COLISAGE = { conteneurs: [] };
-      let CAISSES = [];
+      let CAISSES = [];   /* [{ nom, conteneur, nbItems }] */
       let CODES = {};
 
       let caisseActive = null;
@@ -651,13 +658,26 @@
       let photos = [];
 
       /* =========================================================
-         OUTILS
+         NORMALISATION PERMISSIVE
+         « BOX 40 », « BOX #40 », « box-40 » -> « box40 »
          ========================================================= */
       function norm(s) {
         return (s || "")
+          .toString()
           .toLowerCase()
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "");
+      }
+
+      function cleKey(s) {
+        return norm(s).replace(/[^a-z0-9]/g, "");
+      }
+
+      /* Sépare lettres et chiffres collés : « box40 » -> « box 40 » */
+      function eclater(s) {
+        return norm(s)
+          .replace(/([a-z])(\d)/g, "$1 $2")
+          .replace(/(\d)([a-z])/g, "$1 $2");
       }
 
       function echapper(texte) {
@@ -668,12 +688,119 @@
           .replace(/>/g, "&gt;");
       }
 
-      /* Conserve le # (accepté par SharePoint), nettoie le reste */
+      /* =========================================================
+         MOTEUR DE RECHERCHE
+         ========================================================= */
+      function editDistance(a, b) {
+        const dp = [];
+        for (let i = 0; i <= a.length; i++) { dp[i] = []; dp[i][0] = i; }
+        for (let j = 0; j <= b.length; j++) { dp[0][j] = j; }
+        for (let i = 1; i <= a.length; i++) {
+          for (let j = 1; j <= b.length; j++) {
+            const c = a[i - 1] === b[j - 1] ? 0 : 1;
+            dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + c);
+            if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+              dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + 1);
+            }
+          }
+        }
+        return dp[a.length][b.length];
+      }
+
+      function wordScore(s, t) {
+        if (!s) return 1;
+        if (t === s) return 120;
+        if (t.startsWith(s)) return 100;
+        if (t.includes(s)) return 80;
+        const tp = t.substring(0, s.length);
+        const d = Math.min(editDistance(s, t), editDistance(s, tp));
+        let th = 0;
+        if (s.length <= 3) th = 0;
+        else if (s.length <= 5) th = 1;
+        else if (s.length <= 9) th = 2;
+        else th = 3;
+        return d <= th ? 60 - d * 10 : 0;
+      }
+
+      function scoreMots(q, text) {
+        const qw = q.split(/\s+/).filter(Boolean);
+        const tw = text.split(/\s+/).filter(Boolean);
+        if (!qw.length) return 1;
+        let tot = 0;
+        for (const w of qw) {
+          let b = 0;
+          for (const t of tw) { const sc = wordScore(w, t); if (sc > b) b = sc; }
+          if (b === 0) return 0;
+          tot += b;
+        }
+        if (text.startsWith(q)) tot += 50;
+        if (text.includes(q)) tot += 30;
+        return tot;
+      }
+
+      /* Score : clé sans ponctuation, puis mot à mot, puis forme éclatée */
+      function itemScore(search, texte) {
+        const q = norm(search);
+        if (!q) return 1;
+
+        const kq = cleKey(search);
+        const kt = cleKey(texte);
+        if (kq) {
+          if (kt === kq) return 200;
+          if (kt.startsWith(kq)) return 170;
+          if (kt.includes(kq)) return 150;
+        }
+
+        const score = scoreMots(q, norm(texte));
+        if (score > 0) return score;
+
+        return scoreMots(eclater(search), eclater(texte));
+      }
+
+      function surligner(texte, search) {
+        const mots = norm(search).split(/\s+/).filter(Boolean);
+        const brut = norm(texte);
+        const marques = new Array(texte.length).fill(false);
+
+        mots.forEach(function (w) {
+          let i = brut.indexOf(w);
+          while (i >= 0) {
+            for (let k = i; k < i + w.length && k < marques.length; k++) marques[k] = true;
+            i = brut.indexOf(w, i + w.length);
+          }
+        });
+
+        /* Rien trouvé mot à mot : on surligne via la clé sans ponctuation */
+        if (!marques.some(Boolean)) {
+          const kq = cleKey(search);
+          if (kq) {
+            const map = [];
+            let kt = "";
+            for (let i = 0; i < texte.length; i++) {
+              const c = norm(texte[i]).replace(/[^a-z0-9]/g, "");
+              if (c) { kt += c; map.push(i); }
+            }
+            const pos = kt.indexOf(kq);
+            if (pos >= 0) {
+              for (let k = pos; k < pos + kq.length && k < map.length; k++) marques[map[k]] = true;
+            }
+          }
+        }
+
+        let out = "", ouvert = false;
+        for (let i = 0; i < texte.length; i++) {
+          if (marques[i] && !ouvert) { out += "<mark>"; ouvert = true; }
+          if (!marques[i] && ouvert) { out += "</mark>"; ouvert = false; }
+          out += echapper(texte[i]);
+        }
+        return out + (ouvert ? "</mark>" : "");
+      }
+
+      /* =========================================================
+         OUTILS
+         ========================================================= */
       function sanitizePath(s) {
-        return (s || "")
-          .toString()
-          .trim()
-          .replace(/[\\\/:*?"<>|]/g, "-");
+        return (s || "").toString().trim().replace(/[\\\/:*?"<>|]/g, "-");
       }
 
       function versNomFichier(s) {
@@ -694,26 +821,43 @@
          CHARGEMENT DES RÉFÉRENTIELS
          ========================================================= */
       Promise.all([
-        fetch("colisage-data.json")
+        fetch("colisage-data.json", { cache: "no-store" })
           .then((r) => r.json())
           .catch(() => ({ conteneurs: [] })),
-        fetch("caisses.json")
+        fetch("caisses.json", { cache: "no-store" })
           .then((r) => r.json())
           .catch(() => []),
-        fetch("codes-sap.json")
+        fetch("codes-sap.json", { cache: "no-store" })
           .then((r) => r.json())
           .catch(() => ({ codes: {} })),
       ]).then(function (resultats) {
         COLISAGE = resultats[0] || { conteneurs: [] };
-        CAISSES = resultats[1] || [];
+        const listeBrute = resultats[1] || [];
         CODES = (resultats[2] && resultats[2].codes) || {};
 
+        /* Caisses du colisage : on conserve le conteneur et le nb d'éléments */
+        const vues = {};
         (COLISAGE.conteneurs || []).forEach(function (conteneur) {
           (conteneur.caisses || []).forEach(function (caisse) {
-            if (!CAISSES.some((c) => norm(c) === norm(caisse.nom))) {
-              CAISSES.push(caisse.nom);
+            const k = cleKey(caisse.nom);
+            if (!vues[k]) {
+              vues[k] = true;
+              CAISSES.push({
+                nom: caisse.nom,
+                conteneur: conteneur.nom,
+                nbItems: (caisse.items || []).length,
+              });
             }
           });
+        });
+
+        /* Caisses de caisses.json absentes du colisage */
+        listeBrute.forEach(function (nom) {
+          const k = cleKey(nom);
+          if (!vues[k]) {
+            vues[k] = true;
+            CAISSES.push({ nom: nom, conteneur: "", nbItems: null });
+          }
         });
 
         const params = new URLSearchParams(location.search);
@@ -742,6 +886,16 @@
         afficherSuggestions(champCaisse.value);
       });
 
+      champCaisse.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        const premiere = listeCaisses.querySelector("div[data-nom]");
+        if (premiere) {
+          listeCaisses.style.display = "none";
+          selectionnerCaisse(premiere.dataset.nom);
+        }
+      });
+
       document.addEventListener("click", function (e) {
         if (!e.target.closest(".ac-wrap")) {
           listeCaisses.style.display = "none";
@@ -749,24 +903,58 @@
       });
 
       function afficherSuggestions(filtre) {
-        const valeur = norm(filtre);
-        const resultats = CAISSES.filter(function (nom) {
-          return norm(nom).includes(valeur);
-        }).slice(0, 80);
+        const saisie = (filtre || "").trim();
+
+        let resultats;
+        if (!saisie) {
+          resultats = CAISSES.slice(0, 80).map(function (c) {
+            return { caisse: c, score: 1 };
+          });
+        } else {
+          resultats = CAISSES.map(function (c) {
+            return { caisse: c, score: itemScore(saisie, c.nom) };
+          })
+            .filter(function (r) { return r.score > 0; })
+            .sort(function (a, b) {
+              return b.score - a.score || a.caisse.nom.localeCompare(b.caisse.nom);
+            })
+            .slice(0, 80);
+        }
 
         if (!resultats.length) {
           listeCaisses.innerHTML =
             "<div class='ac-empty'>Aucune caisse trouvée</div>";
         } else {
           listeCaisses.innerHTML = resultats
-            .map((nom) => "<div>" + echapper(nom) + "</div>")
+            .map(function (r) {
+              const c = r.caisse;
+              const libelle = saisie ? surligner(c.nom, saisie) : echapper(c.nom);
+              let sous = "";
+              if (c.conteneur) {
+                sous =
+                  "<span class='ac-sous'>" +
+                  echapper(c.conteneur) +
+                  (c.nbItems !== null ? " · " + c.nbItems + " élément(s)" : "") +
+                  "</span>";
+              } else {
+                sous = "<span class='ac-sous'>Non référencée au colisage</span>";
+              }
+              return (
+                '<div data-nom="' +
+                echapper(c.nom).replace(/"/g, "&quot;") +
+                '">' +
+                libelle +
+                sous +
+                "</div>"
+              );
+            })
             .join("");
 
-          listeCaisses.querySelectorAll("div").forEach(function (ligne) {
+          listeCaisses.querySelectorAll("div[data-nom]").forEach(function (ligne) {
             ligne.addEventListener("mousedown", function (ev) {
               ev.preventDefault();
               listeCaisses.style.display = "none";
-              selectionnerCaisse(ligne.textContent.trim());
+              selectionnerCaisse(ligne.dataset.nom);
             });
           });
         }
@@ -797,7 +985,14 @@
 
         PIGVS_SCAN.ouvrir(
           function (code) {
-            const trouve = CODES[code];
+            let trouve = CODES[code];
+            if (!trouve) {
+              const k = Object.keys(CODES).find(function (x) {
+                return cleKey(x) === cleKey(code);
+              });
+              if (k) trouve = CODES[k];
+            }
+
             if (trouve && trouve.type === "caisse") {
               selectionnerCaisse(trouve.cible);
             } else if (trouve) {
@@ -820,13 +1015,26 @@
 
       /* --- Sélection effective --- */
       function trouverCaisse(nom) {
+        const recherche = cleKey(nom);
+        if (!recherche) return null;
+
         for (const conteneur of COLISAGE.conteneurs || []) {
           for (const caisse of conteneur.caisses || []) {
-            if (norm(caisse.nom) === norm(nom)) {
+            if (cleKey(caisse.nom) === recherche) {
               return { conteneur, caisse };
             }
           }
         }
+
+        for (const conteneur of COLISAGE.conteneurs || []) {
+          for (const caisse of conteneur.caisses || []) {
+            const k = cleKey(caisse.nom);
+            if (k && (k.includes(recherche) || recherche.includes(k))) {
+              return { conteneur, caisse };
+            }
+          }
+        }
+
         return null;
       }
 
@@ -851,8 +1059,7 @@
           );
         }
 
-        document.getElementById("caisseNom").textContent =
-          caisseActive.caisse.nom;
+        document.getElementById("caisseNom").textContent = caisseActive.caisse.nom;
         document.getElementById("caisseSous").textContent =
           "Conteneur : " + caisseActive.conteneur.nom;
 
@@ -865,17 +1072,15 @@
         window.scrollTo(0, 0);
       }
 
-      document
-        .getElementById("btnChanger")
-        .addEventListener("click", function () {
-          document.getElementById("blocInventaire").classList.add("masque");
-          document.getElementById("blocChoix").classList.remove("masque");
-          document.getElementById("pas2").classList.remove("actif");
-          document.getElementById("pas3").classList.remove("actif");
-          cacherStatus(statusChoix);
-          champCaisse.value = "";
-          window.scrollTo(0, 0);
-        });
+      document.getElementById("btnChanger").addEventListener("click", function () {
+        document.getElementById("blocInventaire").classList.add("masque");
+        document.getElementById("blocChoix").classList.remove("masque");
+        document.getElementById("pas2").classList.remove("actif");
+        document.getElementById("pas3").classList.remove("actif");
+        cacherStatus(statusChoix);
+        champCaisse.value = "";
+        window.scrollTo(0, 0);
+      });
 
       /* =========================================================
          ÉTAPE 2 — INVENTAIRE
@@ -894,26 +1099,18 @@
                 (item.ajout ? " ajout" : "");
 
               return (
-                '<div class="ligne-item' +
-                classe +
-                '"><span class="nom">' +
-                echapper(item.nom) +
-                '</span><div class="choix-etat">' +
-                '<button type="button" data-ok="' +
-                index +
-                '" class="' +
+                '<div class="ligne-item' + classe + '">' +
+                '<span class="nom">' + echapper(item.nom) + "</span>" +
+                '<div class="choix-etat">' +
+                '<button type="button" data-ok="' + index + '" class="' +
                 (item.etat === "ok" ? "actif-ok" : "") +
                 '" title="Présent">✅</button>' +
-                '<button type="button" data-ko="' +
-                index +
-                '" class="' +
+                '<button type="button" data-ko="' + index + '" class="' +
                 (item.etat === "ko" ? "actif-ko" : "") +
                 '" title="Manquant">❌</button>' +
                 "</div>" +
                 (item.ajout
-                  ? '<button type="button" class="btn-suppr" data-suppr="' +
-                    index +
-                    '">×</button>'
+                  ? '<button type="button" class="btn-suppr" data-suppr="' + index + '">×</button>'
                   : "") +
                 "</div>"
               );
@@ -936,14 +1133,12 @@
             });
           });
 
-          listeItems
-            .querySelectorAll("[data-suppr]")
-            .forEach(function (bouton) {
-              bouton.addEventListener("click", function () {
-                items.splice(+bouton.dataset.suppr, 1);
-                rendreItems();
-              });
+          listeItems.querySelectorAll("[data-suppr]").forEach(function (bouton) {
+            bouton.addEventListener("click", function () {
+              items.splice(+bouton.dataset.suppr, 1);
+              rendreItems();
             });
+          });
         }
         majCompteurs();
       }
@@ -960,24 +1155,16 @@
         document.getElementById("kPlus").textContent = plus;
       }
 
-      document
-        .getElementById("btnToutPresent")
-        .addEventListener("click", function () {
-          items.forEach(function (item) {
-            item.etat = "ok";
-          });
-          rendreItems();
-        });
+      document.getElementById("btnToutPresent").addEventListener("click", function () {
+        items.forEach(function (item) { item.etat = "ok"; });
+        rendreItems();
+      });
 
-      document
-        .getElementById("btnToutVider")
-        .addEventListener("click", function () {
-          items = items.filter((i) => !i.ajout);
-          items.forEach(function (item) {
-            item.etat = "";
-          });
-          rendreItems();
-        });
+      document.getElementById("btnToutVider").addEventListener("click", function () {
+        items = items.filter((i) => !i.ajout);
+        items.forEach(function (item) { item.etat = ""; });
+        rendreItems();
+      });
 
       const champAjout = document.getElementById("champAjout");
 
@@ -989,9 +1176,7 @@
         rendreItems();
       }
 
-      document
-        .getElementById("btnAjout")
-        .addEventListener("click", ajouterItem);
+      document.getElementById("btnAjout").addEventListener("click", ajouterItem);
 
       champAjout.addEventListener("keydown", function (e) {
         if (e.key === "Enter") ajouterItem();
@@ -1023,19 +1208,13 @@
             const img = new Image();
             img.onerror = () => reject("image invalide");
             img.onload = function () {
-              const ratio = Math.min(
-                1,
-                MAX_LARGEUR / Math.max(img.width, img.height)
-              );
+              const ratio = Math.min(1, MAX_LARGEUR / Math.max(img.width, img.height));
               const canvas = document.createElement("canvas");
               canvas.width = Math.round(img.width * ratio);
               canvas.height = Math.round(img.height * ratio);
-              canvas
-                .getContext("2d")
-                .drawImage(img, 0, 0, canvas.width, canvas.height);
+              canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
               canvas.toBlob(
-                (blob) =>
-                  blob ? resolve(blob) : reject("compression échouée"),
+                (blob) => (blob ? resolve(blob) : reject("compression échouée")),
                 "image/jpeg",
                 QUALITE_JPEG
               );
@@ -1082,18 +1261,10 @@
           setStatus(
             statusEnvoi,
             "erreur",
-            "⚠️ " +
-              ajoutees +
-              " ajoutée(s), " +
-              refusees +
-              " refusée(s) : limite de 10 Mo."
+            "⚠️ " + ajoutees + " ajoutée(s), " + refusees + " refusée(s) : limite de 10 Mo."
           );
         } else {
-          setStatus(
-            statusEnvoi,
-            "info",
-            "✅ " + ajoutees + " photo(s) ajoutée(s)."
-          );
+          setStatus(statusEnvoi, "info", "✅ " + ajoutees + " photo(s) ajoutée(s).");
         }
       }
 
@@ -1114,25 +1285,16 @@
           .map(function (photo, index) {
             const options = TYPES_PHOTO.map(
               (t) =>
-                '<option value="' +
-                t.valeur +
-                '" ' +
+                '<option value="' + t.valeur + '" ' +
                 (photo.type === t.valeur ? "selected" : "") +
-                ">" +
-                t.libelle +
-                "</option>"
+                ">" + t.libelle + "</option>"
             ).join("");
 
             return (
-              '<div class="ligne-photo"><img src="' +
-              photo.url +
-              '" alt="" /><select data-type="' +
-              index +
-              '">' +
-              options +
+              '<div class="ligne-photo"><img src="' + photo.url +
+              '" alt="" /><select data-type="' + index + '">' + options +
               '</select><button type="button" class="btn-suppr" data-photo="' +
-              index +
-              '">×</button></div>'
+              index + '">×</button></div>'
             );
           })
           .join("");
@@ -1153,10 +1315,7 @@
         });
 
         const total = tailleTotale();
-        const pourcent = Math.min(
-          100,
-          Math.round((total / LIMITE_TOTALE) * 100)
-        );
+        const pourcent = Math.min(100, Math.round((total / LIMITE_TOTALE) * 100));
 
         compteurPhotos.textContent = photos.length
           ? photos.length + " photo(s) · " + fmtMo(total) + " / 10 Mo"
@@ -1189,104 +1348,87 @@
           "Destination : /" + cheminDestination();
       }
 
-      document
-        .getElementById("btnEnvoyer")
-        .addEventListener("click", async function () {
-          const operateur = document.getElementById("operateur").value.trim();
-          const commentaire = document
-            .getElementById("commentaire")
-            .value.trim();
+      document.getElementById("btnEnvoyer").addEventListener("click", async function () {
+        const operateur = document.getElementById("operateur").value.trim();
+        const commentaire = document.getElementById("commentaire").value.trim();
 
-          if (!caisseActive) {
-            setStatus(
-              statusEnvoi,
-              "erreur",
-              "⚠️ Sélectionnez d'abord une caisse."
-            );
-            return;
-          }
+        if (!caisseActive) {
+          setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord une caisse.");
+          return;
+        }
 
-          if (!operateur) {
-            setStatus(
-              statusEnvoi,
-              "erreur",
-              "⚠️ Renseignez le nom de l'opérateur."
-            );
-            return;
-          }
+        if (!operateur) {
+          setStatus(statusEnvoi, "erreur", "⚠️ Renseignez le nom de l'opérateur.");
+          return;
+        }
 
-          const nonRenseignes = items.filter((i) => !i.etat).length;
-          if (nonRenseignes > 0) {
-            const suite = confirm(
-              nonRenseignes +
-                " élément(s) ne sont pas renseignés.\nEnvoyer quand même ?"
-            );
-            if (!suite) return;
-          }
+        const nonRenseignes = items.filter((i) => !i.etat).length;
+        if (nonRenseignes > 0) {
+          const suite = confirm(
+            nonRenseignes + " élément(s) ne sont pas renseignés.\nEnvoyer quand même ?"
+          );
+          if (!suite) return;
+        }
 
-          const bouton = this;
-          bouton.disabled = true;
-          setStatus(statusEnvoi, "info", "⏳ Envoi en cours…");
+        const bouton = this;
+        bouton.disabled = true;
+        setStatus(statusEnvoi, "info", "⏳ Envoi en cours…");
 
-          const presents = items.filter((i) => i.etat === "ok" && !i.ajout);
-          const manquants = items.filter((i) => i.etat === "ko");
-          const ajouts = items.filter((i) => i.ajout);
-          const prevus = items.filter((i) => !i.ajout);
+        const presents = items.filter((i) => i.etat === "ok" && !i.ajout);
+        const manquants = items.filter((i) => i.etat === "ko");
+        const ajouts = items.filter((i) => i.ajout);
+        const prevus = items.filter((i) => !i.ajout);
 
-          const base = versNomFichier(caisseActive.caisse.nom);
-          const compteurs = {};
+        const base = versNomFichier(caisseActive.caisse.nom);
+        const compteurs = {};
 
-          const listePhotos = photos.map(function (photo) {
-            const cle = photo.type;
-            compteurs[cle] = (compteurs[cle] || 0) + 1;
-            return {
-              file: photo.file,
-              nom: base + "_" + cle + "_" + compteurs[cle] + ".jpg",
-            };
-          });
-
-          const resultat = await PIGVS_ENVOI.envoyer({
-            type: "COLISAGE",
-            path: cheminDestination(),
-            champs: {
-              Site: siteCourant(),
-              Conteneur: caisseActive.conteneur.nom,
-              Caisse: caisseActive.caisse.nom,
-              Operateur: operateur,
-              Date: new Date().toLocaleString("fr-FR"),
-              NbPrevus: String(prevus.length),
-              NbPresents: String(presents.length),
-              NbManquants: String(manquants.length),
-              NbAjoutes: String(ajouts.length),
-              Presents: presents.map((i) => i.nom).join(" | "),
-              Manquants: manquants.map((i) => i.nom).join(" | "),
-              Ajoutes: ajouts.map((i) => i.nom).join(" | "),
-              Commentaire: commentaire,
-              NbPhotos: String(photos.length),
-            },
-            photos: listePhotos,
-          });
-
-          if (resultat.ok) {
-            setStatus(
-              statusEnvoi,
-              "ok",
-              "✅ Colisage de « " +
-                echapper(caisseActive.caisse.nom) +
-                " » envoyé !"
-            );
-            document.getElementById("pas3").classList.add("actif");
-            photos.forEach((p) => URL.revokeObjectURL(p.url));
-            photos = [];
-            rendreGalerie();
-            setTimeout(function () {
-              bouton.disabled = false;
-            }, 2000);
-          } else {
-            setStatus(statusEnvoi, "erreur", "❌ " + echapper(resultat.msg));
-            bouton.disabled = false;
-          }
+        const listePhotos = photos.map(function (photo) {
+          const cle = photo.type;
+          compteurs[cle] = (compteurs[cle] || 0) + 1;
+          return {
+            file: photo.file,
+            nom: base + "_" + cle + "_" + compteurs[cle] + ".jpg",
+          };
         });
+
+        const resultat = await PIGVS_ENVOI.envoyer({
+          type: "COLISAGE",
+          path: cheminDestination(),
+          champs: {
+            Site: siteCourant(),
+            Conteneur: caisseActive.conteneur.nom,
+            Caisse: caisseActive.caisse.nom,
+            Operateur: operateur,
+            Date: new Date().toLocaleString("fr-FR"),
+            NbPrevus: String(prevus.length),
+            NbPresents: String(presents.length),
+            NbManquants: String(manquants.length),
+            NbAjoutes: String(ajouts.length),
+            Presents: presents.map((i) => i.nom).join(" | "),
+            Manquants: manquants.map((i) => i.nom).join(" | "),
+            Ajoutes: ajouts.map((i) => i.nom).join(" | "),
+            Commentaire: commentaire,
+            NbPhotos: String(photos.length),
+          },
+          photos: listePhotos,
+        });
+
+        if (resultat.ok) {
+          setStatus(
+            statusEnvoi,
+            "ok",
+            "✅ Colisage de « " + echapper(caisseActive.caisse.nom) + " » envoyé !"
+          );
+          document.getElementById("pas3").classList.add("actif");
+          photos.forEach((p) => URL.revokeObjectURL(p.url));
+          photos = [];
+          rendreGalerie();
+          setTimeout(function () { bouton.disabled = false; }, 2000);
+        } else {
+          setStatus(statusEnvoi, "erreur", "❌ " + echapper(resultat.msg));
+          bouton.disabled = false;
+        }
+      });
 </script>
   </body>
 </html>
