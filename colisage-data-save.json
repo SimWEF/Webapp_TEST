@@ -1,13 +1,11 @@
 {
-  "_note": "Colisage PIGVS. Les noms de caisses sont strictement alignes sur l'onglet Parametres_Box de PIGVS - BD_Materiel.xlsx (le # est conserve). Les ROLL ne sont PAS des caisses : leur contenu est remonte au niveau caisse.",
+  "_note": "Colisage PIGVS. Les noms de caisses sont strictement alignes sur l'onglet Parametres_Box de PIGVS - BD_Materiel.xlsx (le # est conserve). Les ROLL ne sont pas des caisses : leur contenu est remonte au niveau caisse.",
   "_source": "PIGVS - BD_Materiel.xlsx (Parametres_Box, Parametres_Conteneurs, Affectation_Box)",
   "_aValider": [
-    "Caisse à pomme #CaP_5 a #CaP_16 : la repartition precise du contenu entre chaque caisse a ete deduite du modele de l'Equipement 1 (onglet Affectation_Box). A confirmer lors du premier releve terrain.",
-    "BOX #200-1/4 a #203-4/4 (Equipement 3) : caisses presentes dans la BD mais sans contenu dans le colisage initial. A renseigner.",
+    "Caisse a pomme #CaP_5 a #CaP_16 : la repartition precise du contenu entre chaque caisse a ete deduite du modele de l'Equipement 1 (Affectation_Box). A confirmer lors du premier releve terrain.",
+    "BOX #200-1/4 a #203-4/4 (Equipement 3) : caisses presentes dans la BD mais sans contenu renseigne dans le colisage initial.",
     "BOX #227-3/3 (Equipement 1) : contenu a renseigner.",
-    "Equipement 3 : le colisage initial mentionnait 'BOX 39 - Ecrans', mais la BD affecte BOX #39 a l'Equipement 2. BOX #XX (SAP 30127709) est la caisse ecrans de l'Equipement 3 selon Emplacement_Box.",
-    "ETV3 : le colisage initial comportait une caisse SPICE GUIDE&TP 004 (guide petite x6 / grande x5). L'onglet Emplacement_Box affecte Spice Guide #04 a l'ETV4 : la caisse a donc ete retiree d'ETV3. A verifier sur le terrain.",
-    "Equipement 2 : BOX #83 (balance) est notee 'Non affectee' dans la BD mais 'Equipement 2' dans Emplacement_Box."
+    "BOX #39 apparait a la fois dans le colisage de l'Equipement 2 et de l'Equipement 3. Les deux ont ete conserves tels quels. A trancher au premier releve terrain."
   ],
   "conteneurs": [
     {
@@ -764,6 +762,13 @@
           ]
         },
         {
+          "nom": "Spice Guide #04",
+          "items": [
+            "Guide petite taille x6",
+            "Guide grande taille x5"
+          ]
+        },
+        {
           "nom": "Fibre optique #03",
           "items": [
             "Fibre + enrouleur"
@@ -990,13 +995,6 @@
             "Pige interface",
             "Sabre PE5 x2",
             "Câble télécommande déportée"
-          ]
-        },
-        {
-          "nom": "Spice Guide #04",
-          "items": [
-            "Guide petite taille x4",
-            "Guide grande taille x3"
           ]
         },
         {
@@ -1469,7 +1467,7 @@
           ]
         },
         {
-          "nom": "BOX #XX",
+          "nom": "BOX #39",
           "items": [
             "Écrans x3",
             "Alimentation x3",
