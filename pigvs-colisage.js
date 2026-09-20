@@ -19,7 +19,7 @@ window.PIGVS_COLISAGE = (function () {
 
   /* ===== 1. URL des flux ================================= */
   const URL_LECTURE_COLISAGE  = "COLLER_ICI_URL_FLUX_LIRE_COLISAGE";
-  const URL_ECRITURE_COLISAGE = "COLLER_ICI_URL_FLUX_ECRIRE_COLISAGE";
+  const URL_ECRITURE_COLISAGE = "https://default516ec17ab92f438b8594e11b6f6bec.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/29/workflows/f008674e402b48f2ab7e9949db4666b0/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8zkf8OV8-XbUMgQjXL8f9-2V49zjv-W_bdEKnx76cMU";
   const URL_LECTURE_RELEVE    = "https://default516ec17ab92f438b8594e11b6f6bec.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/23/workflows/ef014ab35c864b658f5c591b188816a6/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=cKYN8kIqKRSN3c8KMDEWNjJnRZKXymMu44qE8BN_Kyk";
 
   const TIMEOUT_MS = 30000;
