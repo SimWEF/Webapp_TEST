@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validation du colisage — PIGVS Admin</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#0B2C5C" />
+
+    <style>
+      .admin-page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      .bandeau-site {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 14px 16px;
+        margin-bottom: 16px;
+      }
+
+      .bandeau-site select {
+        width: auto;
+        min-width: 220px;
+      }
+
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .kpi {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      .kpi .val {
+        display: block;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--marine);
+      }
+
+      .kpi .lab {
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .kpi.attente .val {
+        color: var(--orange);
+      }
+      .kpi.ecart .val {
+        color: var(--rouge);
+      }
+      .kpi.ok .val {
+        color: var(--vert);
+      }
+
+      /* ---------- Carte de saisie ---------- */
+      .saisie {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-left: 6px solid var(--acc, var(--muted));
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+
+      .saisie.attente {
+        --acc: var(--orange);
+      }
+      .saisie.valide {
+        --acc: var(--vert);
+      }
+      .saisie.rejete {
+        --acc: var(--muted);
+      }
+
+      .saisie-tete {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        cursor: pointer;
+        flex-wrap: wrap;
+      }
+
+      .saisie-tete .nom {
+        flex: 1;
+        min-width: 160px;
+      }
+
+      .saisie-tete .nom b {
+        display: block;
+        font-size: 16.5px;
+        color: var(--marine);
+      }
+
+      .saisie-tete .nom span {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      .pastilles {
+        display: flex;
+        gap: 6px;
+        flex: 0 0 auto;
+      }
+
+      .pastille {
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .pastille.ok {
+        background: var(--vert);
+      }
+      .pastille.ko {
+        background: var(--rouge);
+      }
+      .pastille.plus {
+        background: var(--orange);
+      }
+      .pastille.neutre {
+        background: var(--muted);
+      }
+
+      .saisie-corps {
+        display: none;
+        padding: 0 16px 16px;
+        border-top: 1px solid #eef0f3;
+      }
+
+      .saisie.ouverte .saisie-corps {
+        display: block;
+      }
+
+      .colonnes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .colonne h4 {
+        margin: 0 0 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        color: var(--muted);
+      }
+
+      .colonne ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .colonne li {
+        font-size: 13.5px;
+        padding: 6px 9px;
+        border-radius: 7px;
+        margin-bottom: 4px;
+        background: #f6f8fb;
+      }
+
+      .colonne.ok li {
+        background: #e7f6ec;
+      }
+      .colonne.ko li {
+        background: #fdeaea;
+        text-decoration: line-through;
+        color: #8a2a2a;
+      }
+      .colonne.plus li {
+        background: #fff6e5;
+      }
+
+      .commentaire {
+        margin-top: 14px;
+        background: #f6f8fb;
+        border-radius: 10px;
+        padding: 10px 12px;
+        font-size: 13.5px;
+        color: var(--text);
+      }
+
+      .actions-saisie {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+        flex-wrap: wrap;
+      }
+
+      .actions-saisie button {
+        flex: 1;
+        min-width: 150px;
+        min-height: 46px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 14.5px;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: #eef1f6;
+        color: var(--text);
+      }
+
+      .btn-valider {
+        background: var(--vert) !important;
+        border-color: var(--vert) !important;
+        color: #fff !important;
+      }
+
+      .btn-rejeter {
+        background: #fff !important;
+        border-color: var(--rouge) !important;
+        color: var(--rouge) !important;
+      }
+
+      /* ---------- Zone export ---------- */
+      .zone-export {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 16px;
+        margin-top: 18px;
+      }
+
+      .zone-export h2 {
+        margin: 0 0 6px;
+        font-size: 17px;
+        color: var(--marine);
+      }
+
+      .zone-export p {
+        margin: 0 0 12px;
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+
+      .apercu {
+        width: 100%;
+        min-height: 220px;
+        font-family: monospace;
+        font-size: 12px;
+        border: 1px solid #ccd4e0;
+        border-radius: 10px;
+        padding: 12px;
+        background: #f8fafc;
+        resize: vertical;
+      }
+
+      .avert {
+        background: #fff8e1;
+        border: 1px solid #ffe0a3;
+        color: #8a6100;
+        border-radius: 10px;
+        padding: 11px 13px;
+        font-size: 13.5px;
+        margin-bottom: 14px;
+      }
+
+      .zone-fichier {
+        border: 2px dashed #ccd4e0;
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        margin-bottom: 14px;
+      }
+
+      .zone-fichier input {
+        width: auto;
+      }
+
+      @media (max-width: 720px) {
+        .kpis {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .colonnes {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+    <script src="pigvs-auth.js"></script>
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
+
+  <body>
+    <header class="app-header">
+      <a class="back" href="admin.html">‹</a>
+      <h1>✅ Validation du colisage</h1>
+    </header>
+
+    <div class="admin-page">
+      <div class="avert">
+        ⚠️ Cette page <b>ne modifie rien en ligne</b>. Elle compare le relevé
+        terrain au colisage de référence et génère un
+        <b>colisage-data.json</b> à déposer sur GitHub.
+      </div>
+
+      <!-- Chargement -->
+      <div class="bandeau-site">
+        <span>🏭</span>
+        <select id="selSite">
+          <option value="">— Choisir un site —</option>
+        </select>
+        <button type="button" id="btnCharger" style="width: auto; padding: 10px 18px">
+          Charger le relevé
+        </button>
+        <span id="infoMaj" style="font-size: 12.5px; color: var(--muted)"></span>
+      </div>
+
+      <div class="zone-fichier">
+        <p style="margin: 0 0 8px; font-size: 13.5px; color: var(--muted)">
+          Ou déposer manuellement un fichier <b>colisage-reel-*.json</b>
+        </p>
+        <input type="file" id="fichierReel" accept=".json" />
+      </div>
+
+      <!-- Indicateurs -->
+      <div class="kpis">
+        <div class="kpi">
+          <span class="val" id="kSaisies">0</span>
+          <span class="lab">Caisses relevées</span>
+        </div>
+        <div class="kpi attente">
+          <span class="val" id="kAttente">0</span>
+          <span class="lab">En attente</span>
+        </div>
+        <div class="kpi ecart">
+          <span class="val" id="kEcarts">0</span>
+          <span class="lab">Avec écart</span>
+        </div>
+        <div class="kpi ok">
+          <span class="val" id="kValides">0</span>
+          <span class="lab">Validées</span>
+        </div>
+      </div>
+
+      <div id="liste"></div>
+
+      <!-- Export -->
+      <div class="zone-export" id="zoneExport" style="display: none">
+        <h2>📤 Injecter dans le colisage de référence</h2>
+        <p>
+          Seules les caisses <b>validées</b> sont injectées. Le contenu réel
+          remplace le contenu théorique de ces caisses uniquement — le reste de
+          <b>colisage-data.json</b> est conservé à l'identique.
+        </p>
+
+        <div class="actions-saisie" style="margin-top: 0">
+          <button type="button" id="btnGenerer" class="btn-valider">
+            Générer le colisage-data.json
+          </button>
+          <button type="button" id="btnTelecharger">⬇️ Télécharger</button>
+          <button type="button" id="btnCopier">📋 Copier</button>
+        </div>
+
+        <textarea class="apercu" id="apercu" readonly placeholder="Le fichier généré s'affichera ici…"></textarea>
+        <div id="resumeInjection" style="margin-top: 10px; font-size: 13.5px"></div>
+      </div>
+    </div>
+
+    <script>
+      let COLISAGE = { conteneurs: [] };
+      let REEL = null;
+      let CHANTIERS = [];
+
+      const liste = document.getElementById("liste");
+      const zoneExport = document.getElementById("zoneExport");
+
+      /* ---------- Outils ---------- */
+      function norm(s) {
+        return (s || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .trim();
+      }
+
+      function ech(t) {
+        return (t || "")
+          .toString()
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      /* ---------- Chargement des référentiels ---------- */
+      fetch("colisage-data.json")
+        .then((r) => r.json())
+        .then((d) => (COLISAGE = d))
+        .catch(() => alert("colisage-data.json introuvable."));
+
+      fetch("chantiers.json")
+        .then((r) => r.json())
+        .then((d) => {
+          CHANTIERS = d.chantiers || d || [];
+          const sel = document.getElementById("selSite");
+          const sites = [...new Set(CHANTIERS.map((c) => c.site).filter(Boolean))];
+          sites.forEach((s) => {
+            const o = document.createElement("option");
+            o.value = s;
+            o.textContent = s;
+            sel.appendChild(o);
+          });
+        })
+        .catch(() => {});
+
+      /* ---------- Chargement du relevé ---------- */
+      document.getElementById("btnCharger").addEventListener("click", function () {
+        const site = document.getElementById("selSite").value;
+        if (!site) {
+          alert("Choisissez un site.");
+          return;
+        }
+        const nom = "colisage-reel-" + norm(site).replace(/\s+/g, "") + ".json";
+        fetch(nom)
+          .then((r) => {
+            if (!r.ok) throw new Error();
+            return r.json();
+          })
+          .then((d) => appliquer(d))
+          .catch(() =>
+            alert(
+              "Fichier « " + nom + " » introuvable.\nDéposez-le manuellement ci-dessous."
+            )
+          );
+      });
+
+      document.getElementById("fichierReel").addEventListener("change", function (e) {
+        const f = e.target.files[0];
+        if (!f) return;
+        const lecteur = new FileReader();
+        lecteur.onload = function (ev) {
+          try {
+            appliquer(JSON.parse(ev.target.result));
+          } catch (err) {
+            alert("Fichier JSON invalide.");
+          }
+        };
+        lecteur.readAsText(f, "utf-8");
+      });
+
+      function appliquer(data) {
+        REEL = data;
+        (REEL.saisies || []).forEach(function (s) {
+          if (!s.statut) s.statut = "en-attente";
+        });
+        document.getElementById("infoMaj").textContent = REEL.derniereMaj
+          ? "Dernière mise à jour : " + REEL.derniereMaj
+          : "";
+        rendre();
+        zoneExport.style.display = "block";
+      }
+
+      /* ---------- Affichage ---------- */
+      function trouverCaisse(nom) {
+        for (const c of COLISAGE.conteneurs || []) {
+          for (const k of c.caisses || []) {
+            if (norm(k.nom) === norm(nom)) return { conteneur: c, caisse: k };
+          }
+        }
+        return null;
+      }
+
+      function rendre() {
+        const saisies = REEL.saisies || [];
+
+        document.getElementById("kSaisies").textContent = saisies.length;
+        document.getElementById("kAttente").textContent = saisies.filter(
+          (s) => s.statut === "en-attente"
+        ).length;
+        document.getElementById("kEcarts").textContent = saisies.filter(
+          (s) => (s.nbManquants || 0) > 0 || (s.nbAjoutes || 0) > 0
+        ).length;
+        document.getElementById("kValides").textContent = saisies.filter(
+          (s) => s.statut === "valide"
+        ).length;
+
+        if (!saisies.length) {
+          liste.innerHTML = "<div class='empty'>Aucune saisie dans ce relevé.</div>";
+          return;
+        }
+
+        liste.innerHTML = saisies
+          .map(function (s, i) {
+            const classe =
+              s.statut === "valide"
+                ? "valide"
+                : s.statut === "rejete"
+                ? "rejete"
+                : "attente";
+
+            const ref = trouverCaisse(s.caisse);
+            const alerte = ref
+              ? ""
+              : "<div class='avert' style='margin:12px 0 0'>⚠️ Cette caisse n'existe pas dans colisage-data.json. Elle sera <b>ajoutée</b> au conteneur « " +
+                ech(s.conteneur) +
+                " » si vous la validez.</div>";
+
+            return `
+            <div class="saisie ${classe}" data-i="${i}">
+              <div class="saisie-tete" data-toggle="${i}">
+                <span style="font-size:22px">🧰</span>
+                <div class="nom">
+                  <b>${ech(s.caisse)}</b>
+                  <span>${ech(s.conteneur)} · ${ech(s.operateur)} · ${ech(s.horodatage || "")}</span>
+                </div>
+                <div class="pastilles">
+                  <span class="pastille ok">${s.nbPresents || 0} ✅</span>
+                  <span class="pastille ko">${s.nbManquants || 0} ❌</span>
+                  <span class="pastille plus">${s.nbAjoutes || 0} ➕</span>
+                  <span class="pastille neutre">${
+                    s.statut === "valide"
+                      ? "Validée"
+                      : s.statut === "rejete"
+                      ? "Rejetée"
+                      : "En attente"
+                  }</span>
+                </div>
+              </div>
+
+              <div class="saisie-corps">
+                ${alerte}
+                <div class="colonnes">
+                  <div class="colonne ok">
+                    <h4>Présents (${(s.presents || []).length})</h4>
+                    <ul>${(s.presents || []).map((x) => "<li>" + ech(x) + "</li>").join("") || "<li style='background:none;color:#888'>—</li>"}</ul>
+                  </div>
+                  <div class="colonne ko">
+                    <h4>Manquants (${(s.manquants || []).length})</h4>
+                    <ul>${(s.manquants || []).map((x) => "<li>" + ech(x) + "</li>").join("") || "<li style='background:none;color:#888;text-decoration:none'>—</li>"}</ul>
+                  </div>
+                  <div class="colonne plus">
+                    <h4>Trouvés en plus (${(s.ajoutes || []).length})</h4>
+                    <ul>${(s.ajoutes || []).map((x) => "<li>" + ech(x) + "</li>").join("") || "<li style='background:none;color:#888'>—</li>"}</ul>
+                  </div>
+                </div>
+
+                ${
+                  s.commentaire
+                    ? "<div class='commentaire'>💬 " + ech(s.commentaire) + "</div>"
+                    : ""
+                }
+
+                <div class="actions-saisie">
+                  <button type="button" class="btn-valider" data-valider="${i}">
+                    ✅ Valider cette caisse
+                  </button>
+                  <button type="button" class="btn-rejeter" data-rejeter="${i}">
+                    ✖️ Rejeter
+                  </button>
+                </div>
+              </div>
+            </div>`;
+          })
+          .join("");
+
+        liste.querySelectorAll("[data-toggle]").forEach(function (t) {
+          t.addEventListener("click", function () {
+            t.parentElement.classList.toggle("ouverte");
+          });
+        });
+
+        liste.querySelectorAll("[data-valider]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            REEL.saisies[+b.dataset.valider].statut = "valide";
+            rendre();
+          });
+        });
+
+        liste.querySelectorAll("[data-rejeter]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            REEL.saisies[+b.dataset.rejeter].statut = "rejete";
+            rendre();
+          });
+        });
+      }
+
+      /* ---------- Génération du colisage validé ---------- */
+      let resultat = null;
+
+      document.getElementById("btnGenerer").addEventListener("click", function () {
+        const valides = (REEL.saisies || []).filter((s) => s.statut === "valide");
+
+        if (!valides.length) {
+          alert("Aucune caisse validée.");
+          return;
+        }
+
+        /* Copie profonde du colisage de référence */
+        resultat = JSON.parse(JSON.stringify(COLISAGE));
+
+        let remplacees = 0;
+        let ajoutees = 0;
+
+        valides.forEach(function (s) {
+          const contenu = [].concat(s.presents || [], s.ajoutes || []);
+          let trouve = false;
+
+          (resultat.conteneurs || []).forEach(function (c) {
+            (c.caisses || []).forEach(function (k) {
+              if (norm(k.nom) === norm(s.caisse)) {
+                k.items = contenu;
+                trouve = true;
+                remplacees++;
+              }
+            });
+          });
+
+          if (!trouve) {
+            let cible = (resultat.conteneurs || []).find(
+              (c) => norm(c.nom) === norm(s.conteneur)
+            );
+            if (!cible) {
+              cible = { nom: s.conteneur || "Non affecté", caisses: [] };
+              resultat.conteneurs.push(cible);
+            }
+            cible.caisses.push({ nom: s.caisse, items: contenu });
+            ajoutees++;
+          }
+        });
+
+        const texte = JSON.stringify(resultat, null, 2);
+        document.getElementById("apercu").value = texte;
+
+        document.getElementById("resumeInjection").innerHTML =
+          "✅ <b>" +
+          remplacees +
+          "</b> caisse(s) mise(s) à jour · <b>" +
+          ajoutees +
+          "</b> ajoutée(s) · " +
+          (texte.length / 1024).toFixed(1) +
+          " Ko";
+      });
+
+      document.getElementById("btnTelecharger").addEventListener("click", function () {
+        if (!resultat) {
+          alert("Générez d'abord le fichier.");
+          return;
+        }
+        const blob = new Blob([JSON.stringify(resultat, null, 2)], {
+          type: "application/json",
+        });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "colisage-data.json";
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+
+      document.getElementById("btnCopier").addEventListener("click", function () {
+        const zone = document.getElementById("apercu");
+        if (!zone.value) {
+          alert("Générez d'abord le fichier.");
+          return;
+        }
+        navigator.clipboard
+          .writeText(zone.value)
+          .then(() => alert("Copié dans le presse-papiers."))
+          .catch(() => {
+            zone.removeAttribute("readonly");
+            zone.select();
+            document.execCommand("copy");
+            zone.setAttribute("readonly", "");
+          });
+      });
+    </script>
+  </body>
+</html>

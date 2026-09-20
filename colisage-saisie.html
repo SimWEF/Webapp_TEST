@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saisie du colisage — PIGVS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0B2C5C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <style>
+      /* ---------- Étapes ---------- */
+      .etapes {
+        display: flex;
+        gap: 6px;
+        margin: 14px 0 16px;
+      }
+
+      .etapes .pas {
+        flex: 1;
+        height: 5px;
+        border-radius: 3px;
+        background: var(--border);
+      }
+
+      .etapes .pas.actif {
+        background: var(--primary);
+      }
+
+      .bloc {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .bloc > h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+        color: var(--marine);
+      }
+
+      /* ---------- Choix de la caisse ---------- */
+      .btn-scan {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 58px;
+        font-size: 17px;
+        font-weight: 700;
+        color: #fff;
+        background: var(--primary);
+        border: 0;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+
+      .separateur {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 16px 0 12px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+
+      .separateur::before,
+      .separateur::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .ac-wrap {
+        position: relative;
+      }
+
+      .ac-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border: 1px solid #ccd4e0;
+        border-radius: 10px;
+        margin-top: 4px;
+        max-height: 230px;
+        overflow-y: auto;
+        display: none;
+        z-index: 800;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .ac-list div {
+        padding: 12px 13px;
+        font-size: 15px;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f2f6;
+      }
+
+      .ac-list div:last-child {
+        border-bottom: 0;
+      }
+
+      .ac-list div:hover {
+        background: var(--primary-soft);
+      }
+
+      .ac-list .ac-empty {
+        color: var(--muted);
+        cursor: default;
+      }
+
+      /* ---------- Bandeau caisse ---------- */
+      .bandeau-caisse {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--primary-soft);
+        border: 1px solid #cfe0f5;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin-bottom: 14px;
+      }
+
+      .bandeau-caisse .ico {
+        font-size: 26px;
+      }
+
+      .bandeau-caisse .txt {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .bandeau-caisse .nom {
+        font-size: 16.5px;
+        font-weight: 800;
+        color: var(--marine);
+      }
+
+      .bandeau-caisse .sous {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      .bandeau-caisse button {
+        flex: 0 0 auto;
+        background: #fff;
+        border: 1px solid #cfe0f5;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 13px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+      }
+
+      /* ---------- Compteurs ---------- */
+      .compteurs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+        margin-bottom: 12px;
+      }
+
+      .compteurs .kpi {
+        background: #f4f7fb;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 9px 4px;
+        text-align: center;
+      }
+
+      .compteurs .val {
+        display: block;
+        font-size: 19px;
+        font-weight: 800;
+        color: var(--marine);
+      }
+
+      .compteurs .lab {
+        display: block;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .compteurs .kpi.ok .val {
+        color: var(--vert);
+      }
+
+      .compteurs .kpi.ko .val {
+        color: var(--rouge);
+      }
+
+      .compteurs .kpi.plus .val {
+        color: var(--orange);
+      }
+
+      /* ---------- Inventaire ---------- */
+      .ligne-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eef0f3;
+      }
+
+      .ligne-item:last-of-type {
+        border-bottom: 0;
+      }
+
+      .ligne-item .nom {
+        flex: 1;
+        min-width: 0;
+        font-size: 14.5px;
+        line-height: 1.3;
+      }
+
+      .ligne-item.est-ko .nom {
+        color: var(--muted);
+        text-decoration: line-through;
+      }
+
+      .ligne-item.ajout .nom::before {
+        content: "➕ ";
+      }
+
+      .choix-etat {
+        display: flex;
+        gap: 5px;
+        flex: 0 0 auto;
+      }
+
+      .choix-etat button {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+        border-radius: 10px;
+        border: 1px solid #ccd4e0;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      .choix-etat button.actif-ok {
+        background: var(--vert);
+        border-color: var(--vert);
+      }
+
+      .choix-etat button.actif-ko {
+        background: var(--rouge);
+        border-color: var(--rouge);
+      }
+
+      .btn-suppr {
+        width: 36px;
+        height: 36px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        border: 2px solid var(--rouge);
+        background: #fff;
+        color: var(--rouge);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .barre-rapide {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .barre-rapide button {
+        flex: 1;
+        min-height: 44px;
+        font-size: 13.5px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #eef1f6;
+        cursor: pointer;
+      }
+
+      .ajout-zone {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .ajout-zone input {
+        flex: 1;
+      }
+
+      .ajout-zone button {
+        flex: 0 0 auto;
+        padding: 0 18px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #eef1f6;
+        cursor: pointer;
+      }
+
+      /* ---------- Photos ---------- */
+      #camInput,
+      #galInput {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      .btns-photo {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .btn-photo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 700;
+        border: 0;
+        border-radius: 12px;
+        cursor: pointer;
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .btn-photo.gal {
+        background: #4b5563;
+      }
+
+      #galerie {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+        margin-top: 12px;
+      }
+
+      #galerie .ligne-photo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #d0d7de;
+        border-radius: 10px;
+        padding: 8px;
+      }
+
+      #galerie img {
+        width: 62px;
+        height: 62px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex: 0 0 auto;
+      }
+
+      #galerie select {
+        flex: 1;
+        padding: 10px;
+        font-size: 14.5px;
+      }
+
+      .compteur {
+        font-size: 13.5px;
+        color: var(--muted);
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .jauge {
+        height: 8px;
+        background: #e5e9ef;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 8px;
+      }
+
+      .jauge > div {
+        height: 100%;
+        width: 0%;
+        background: var(--vert);
+        transition: width 0.2s, background 0.2s;
+      }
+
+      .chemin {
+        font-size: 12px;
+        font-family: monospace;
+        color: #083f78;
+        background: #eef4fb;
+        border-radius: 8px;
+        padding: 8px;
+        margin-top: 10px;
+        word-break: break-all;
+      }
+
+      .status {
+        text-align: center;
+        font-size: 15px;
+        font-weight: 700;
+        padding: 14px;
+        border-radius: 12px;
+        margin-top: 10px;
+        display: none;
+      }
+
+      .status.info {
+        display: block;
+        background: #e7f0fb;
+        color: #083f78;
+      }
+
+      .status.ok {
+        display: block;
+        background: #e4f6ec;
+        color: var(--vert);
+      }
+
+      .status.erreur {
+        display: block;
+        background: #fdecec;
+        color: var(--rouge);
+      }
+
+      .masque {
+        display: none;
+      }
+    </style>
+
+    pigvs-auth.js
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
+
+  <body>
+    <header class="app-header">
+      <a class="back" href="index.html">‹</a>
+      <h1>📝 Saisie du colisage</h1>
+    </header>
+
+    <div class="page">
+      <div class="etapes">
+        <div class="pas actif" id="pas1"></div>
+        <div class="pas" id="pas2"></div>
+        <div class="pas" id="pas3"></div>
+      </div>
+
+      <!-- ============ ÉTAPE 1 : CHOIX DE LA CAISSE ============ -->
+      <section class="bloc" id="blocChoix">
+        <h2>1. Identifier la caisse</h2>
+
+        <button type="button" class="btn-scan" id="btnScan">
+          📷 Scanner le code-barres
+        </button>
+
+        <div class="separateur">ou</div>
+
+        <div class="field-group">
+          <label for="champCaisse">Rechercher une caisse</label>
+          <div class="ac-wrap">
+            <input
+              type="text"
+              id="champCaisse"
+              placeholder="Ex : BOX #40, CART #03…"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            />
+            <div class="ac-list" id="listeCaisses"></div>
+          </div>
+        </div>
+
+        <div class="status" id="statusChoix"></div>
+      </section>
+
+      <!-- ============ ÉTAPE 2 : INVENTAIRE ============ -->
+      <section class="masque" id="blocInventaire">
+        <div class="bandeau-caisse">
+          <span class="ico">🧰</span>
+          <div class="txt">
+            <div class="nom" id="caisseNom">—</div>
+            <div class="sous" id="caisseSous">—</div>
+          </div>
+          <button type="button" id="btnChanger">Changer</button>
+        </div>
+
+        <div class="bloc">
+          <h2>2. Contenu réel de la caisse</h2>
+
+          <div class="compteurs">
+            <div class="kpi">
+              <span class="val" id="kTotal">0</span>
+              <span class="lab">Prévus</span>
+            </div>
+            <div class="kpi ok">
+              <span class="val" id="kOk">0</span>
+              <span class="lab">Présents</span>
+            </div>
+            <div class="kpi ko">
+              <span class="val" id="kKo">0</span>
+              <span class="lab">Manquants</span>
+            </div>
+            <div class="kpi plus">
+              <span class="val" id="kPlus">0</span>
+              <span class="lab">En plus</span>
+            </div>
+          </div>
+
+          <div class="barre-rapide">
+            <button type="button" id="btnToutPresent">✅ Tout présent</button>
+            <button type="button" id="btnToutVider">↺ Réinitialiser</button>
+          </div>
+
+          <div id="listeItems"></div>
+
+          <div class="ajout-zone">
+            <input
+              type="text"
+              id="champAjout"
+              placeholder="Élément trouvé en plus…"
+              autocomplete="off"
+            />
+            <button type="button" id="btnAjout">+</button>
+          </div>
+        </div>
+
+        <!-- ============ PHOTOS ============ -->
+        <div class="bloc">
+          <h2>3. Photos (facultatif)</h2>
+
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            id="camInput"
+          />
+          <input type="file" accept="image/*" multiple id="galInput" />
+
+          <div class="btns-photo">
+            <label for="camInput" class="btn-photo">📸 Prendre une photo</label>
+            <label for="galInput" class="btn-photo gal">
+              🖼️ Choisir dans la galerie
+            </label>
+          </div>
+
+          <div id="galerie"></div>
+          <div class="compteur" id="compteurPhotos"></div>
+          <div class="jauge"><div id="jaugeFill"></div></div>
+        </div>
+
+        <!-- ============ ENVOI ============ -->
+        <div class="bloc">
+          <h2>4. Valider et envoyer</h2>
+
+          <div class="field-group">
+            <label for="operateur">
+              Opérateur <span class="req">*</span>
+            </label>
+            <input type="text" id="operateur" placeholder="Votre nom" />
+          </div>
+
+          <div class="field-group">
+            <label for="commentaire">Commentaire</label>
+            <textarea
+              id="commentaire"
+              placeholder="Observation, état de la caisse, anomalie…"
+            ></textarea>
+          </div>
+
+          <div class="chemin" id="apercuChemin">Destination : …</div>
+
+          <button class="btn" id="btnEnvoyer" style="margin-top: 12px">
+            ✅ Envoyer le colisage 📤
+          </button>
+
+          <div class="status" id="statusEnvoi"></div>
+        </div>
+      </section>
+    </div>
+
+    pigvs-chantier.js
+    pigvs-auth.js
+    pigvs-envoi.js
+    pigvs-scan.js
+    <script>
+      /* =========================================================
+         CONFIGURATION
+         ========================================================= */
+      const QUALITE_JPEG = 0.9;
+      const MAX_LARGEUR = 2500;
+      const LIMITE_TOTALE = 10 * 1024 * 1024;
+
+      const TYPES_PHOTO = [
+        { valeur: "exterieur", libelle: "Extérieur de la caisse" },
+        { valeur: "interieur", libelle: "Intérieur de la caisse" },
+        { valeur: "etiquette", libelle: "Étiquette / code-barres" },
+        { valeur: "anomalie", libelle: "Anomalie constatée" }
+      ];
+
+      /* =========================================================
+         ÉTAT
+         ========================================================= */
+      let COLISAGE = { conteneurs: [] };
+      let CAISSES = [];
+      let CODES = {};
+
+      let caisseActive = null; /* { conteneur, caisse } */
+      let items = []; /* [{ nom, etat, ajout }] etat: "", "ok", "ko" */
+      let photos = []; /* [{ file, url, type }] */
+
+      /* =========================================================
+         OUTILS
+         ========================================================= */
+      function norm(s) {
+        return (s || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "");
+      }
+
+      function echapper(texte) {
+        return (texte || "")
+          .toString()
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function attrib(texte) {
+        return (texte || "").toString().replace(/"/g, "&quot;");
+      }
+
+      /* Conserve le # (accepté par SharePoint), nettoie le reste */
+      function sanitizePath(s) {
+        return (s || "")
+          .toString()
+          .trim()
+          .replace(/[\\\/:*?"<>|]/g, "-");
+      }
+
+      function versNomFichier(s) {
+        return sanitizePath(s).replace(/\s+/g, "_");
+      }
+
+      function setStatus(element, type, message) {
+        element.className = "status " + type;
+        element.innerHTML = message;
+      }
+
+      function cacherStatus(element) {
+        element.className = "status";
+        element.innerHTML = "";
+      }
+
+      /* =========================================================
+         CHARGEMENT DES RÉFÉRENTIELS
+         ========================================================= */
+      Promise.all([
+        fetch("colisage-data.json")
+          .then((r) => r.json())
+          .catch(() => ({ conteneurs: [] })),
+        fetch("caisses.json")
+          .then((r) => r.json())
+          .catch(() => []),
+        fetch("codes-sap.json")
+          .then((r) => r.json())
+          .catch(() => ({ codes: {} }))
+      ]).then(function ([colisage, caisses, codes]) {
+        COLISAGE = colisage || { conteneurs: [] };
+        CAISSES = caisses || [];
+        CODES = (codes && codes.codes) || {};
+
+        /* Complète la liste avec les caisses présentes dans le colisage */
+        (COLISAGE.conteneurs || []).forEach(function (conteneur) {
+          (conteneur.caisses || []).forEach(function (caisse) {
+            if (!CAISSES.some((c) => norm(c) === norm(caisse.nom))) {
+              CAISSES.push(caisse.nom);
+            }
+          });
+        });
+
+        /* Caisse passée en paramètre depuis scan.html */
+        const params = new URLSearchParams(location.search);
+        const demandee = params.get("caisse");
+        if (demandee) {
+          selectionnerCaisse(demandee);
+        }
+      });
+
+      if (window.PIGVS) {
+        PIGVS.loadChantiers().then(majChemin);
+      }
+
+      /* =========================================================
+         ÉTAPE 1 — CHOIX DE LA CAISSE
+         ========================================================= */
+      const champCaisse = document.getElementById("champCaisse");
+      const listeCaisses = document.getElementById("listeCaisses");
+      const statusChoix = document.getElementById("statusChoix");
+
+      champCaisse.addEventListener("focus", function () {
+        afficherSuggestions(champCaisse.value);
+      });
+
+      champCaisse.addEventListener("input", function () {
+        afficherSuggestions(champCaisse.value);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".ac-wrap")) {
+          listeCaisses.style.display = "none";
+        }
+      });
+
+      function afficherSuggestions(filtre) {
+        const valeur = norm(filtre);
+        const resultats = CAISSES.filter(function (nom) {
+          return norm(nom).includes(valeur);
+        }).slice(0, 80);
+
+        if (!resultats.length) {
+          listeCaisses.innerHTML =
+            "<div class='ac-empty'>Aucune caisse trouvée</div>";
+        } else {
+          listeCaisses.innerHTML = resultats
+            .map((nom) => `<div>${echapper(nom)}</div>`)
+            .join("");
+
+          listeCaisses.querySelectorAll("div").forEach(function (ligne) {
+            ligne.addEventListener("mousedown", function (ev) {
+              ev.preventDefault();
+              listeCaisses.style.display = "none";
+              selectionnerCaisse(ligne.textContent.trim());
+            });
+          });
+        }
+        listeCaisses.style.display = "block";
+      }
+
+      /* --- Scanner --- */
+      const btnScan = document.getElementById("btnScan");
+
+      if (!PIGVS_SCAN.disponible()) {
+        btnScan.disabled = true;
+        btnScan.style.opacity = "0.5";
+        setStatus(
+          statusChoix,
+          "info",
+          "ℹ️ Scan caméra indisponible ici. Utilisez la recherche ci-dessous."
+        );
+      }
+
+      btnScan.addEventListener("click", function () {
+        PIGVS_SCAN.ouvrir(
+          function (code) {
+            const trouve = CODES[code];
+            if (trouve && trouve.type === "caisse") {
+              selectionnerCaisse(trouve.cible);
+            } else if (trouve) {
+              setStatus(
+                statusChoix,
+                "erreur",
+                "⚠️ Ce code correspond à un " +
+                  echapper(trouve.type) +
+                  ", pas à une caisse."
+              );
+            } else {
+              selectionnerCaisse(code);
+            }
+          },
+          function (message) {
+            setStatus(statusChoix, "erreur", "❌ " + echapper(message));
+          }
+        );
+      });
+
+      /* --- Sélection effective --- */
+      function trouverCaisse(nom) {
+        for (const conteneur of COLISAGE.conteneurs || []) {
+          for (const caisse of conteneur.caisses || []) {
+            if (norm(caisse.nom) === norm(nom)) {
+              return { conteneur, caisse };
+            }
+          }
+        }
+        return null;
+      }
+
+      function selectionnerCaisse(nom) {
+        const resultat = trouverCaisse(nom);
+
+        if (resultat) {
+          caisseActive = resultat;
+          items = (resultat.caisse.items || []).map(function (libelle) {
+            return { nom: libelle, etat: "", ajout: false };
+          });
+        } else {
+          /* Caisse non répertoriée : inventaire vierge */
+          caisseActive = {
+            conteneur: { nom: "—" },
+            caisse: { nom: nom, items: [] }
+          };
+          items = [];
+          setStatus(
+            statusChoix,
+            "info",
+            "ℹ️ Caisse non répertoriée : saisissez son contenu manuellement."
+          );
+        }
+
+        document.getElementById("caisseNom").textContent =
+          caisseActive.caisse.nom;
+        document.getElementById("caisseSous").textContent =
+          "Conteneur : " + caisseActive.conteneur.nom;
+
+        document.getElementById("blocChoix").classList.add("masque");
+        document.getElementById("blocInventaire").classList.remove("masque");
+        document.getElementById("pas2").classList.add("actif");
+
+        rendreItems();
+        majChemin();
+        window.scrollTo(0, 0);
+      }
+
+      document
+        .getElementById("btnChanger")
+        .addEventListener("click", function () {
+          document.getElementById("blocInventaire").classList.add("masque");
+          document.getElementById("blocChoix").classList.remove("masque");
+          document.getElementById("pas2").classList.remove("actif");
+          document.getElementById("pas3").classList.remove("actif");
+          cacherStatus(statusChoix);
+          champCaisse.value = "";
+          window.scrollTo(0, 0);
+        });
+
+      /* =========================================================
+         ÉTAPE 2 — INVENTAIRE
+         ========================================================= */
+      const listeItems = document.getElementById("listeItems");
+
+      function rendreItems() {
+        if (!items.length) {
+          listeItems.innerHTML =
+            "<p class='empty' style='padding:20px 0'>Aucun élément prévu.<br>Ajoutez le contenu constaté ci-dessous.</p>";
+        } else {
+          listeItems.innerHTML = items
+            .map(function (item, index) {
+              const classe =
+                (item.etat === "ko" ? " est-ko" : "") +
+                (item.ajout ? " ajout" : "");
+              return `
+                <div class="ligne-item${classe}">
+                  <span class="nom">${echapper(item.nom)}</span>
+                  <div class="choix-etat">
+                    <button
+                      type="button"
+                      data-ok="${index}"
+                      class="${item.etat === "ok" ? "actif-ok" : ""}"
+                      title="Présent"
+                    >✅</button>
+                    <button
+                      type="button"
+                      data-ko="${index}"
+                      class="${item.etat === "ko" ? "actif-ko" : ""}"
+                      title="Manquant"
+                    >❌</button>
+                  </div>
+                  ${
+                    item.ajout
+                      ? `<button type="button" class="btn-suppr" data-suppr="${index}">×</button>`
+                      : ""
+                  }
+                </div>
+              `;
+            })
+            .join("");
+
+          listeItems.querySelectorAll("[data-ok]").forEach(function (bouton) {
+            bouton.addEventListener("click", function () {
+              const i = +bouton.dataset.ok;
+              items[i].etat = items[i].etat === "ok" ? "" : "ok";
+              rendreItems();
+            });
+          });
+
+          listeItems.querySelectorAll("[data-ko]").forEach(function (bouton) {
+            bouton.addEventListener("click", function () {
+              const i = +bouton.dataset.ko;
+              items[i].etat = items[i].etat === "ko" ? "" : "ko";
+              rendreItems();
+            });
+          });
+
+          listeItems.querySelectorAll("[data-suppr]").forEach(function (bouton) {
+            bouton.addEventListener("click", function () {
+              items.splice(+bouton.dataset.suppr, 1);
+              rendreItems();
+            });
+          });
+        }
+        majCompteurs();
+      }
+
+      function majCompteurs() {
+        const prevus = items.filter((i) => !i.ajout).length;
+        const ok = items.filter((i) => i.etat === "ok").length;
+        const ko = items.filter((i) => i.etat === "ko").length;
+        const plus = items.filter((i) => i.ajout).length;
+
+        document.getElementById("kTotal").textContent = prevus;
+        document.getElementById("kOk").textContent = ok;
+        document.getElementById("kKo").textContent = ko;
+        document.getElementById("kPlus").textContent = plus;
+      }
+
+      document
+        .getElementById("btnToutPresent")
+        .addEventListener("click", function () {
+          items.forEach(function (item) {
+            item.etat = "ok";
+          });
+          rendreItems();
+        });
+
+      document
+        .getElementById("btnToutVider")
+        .addEventListener("click", function () {
+          items = items.filter((i) => !i.ajout);
+          items.forEach(function (item) {
+            item.etat = "";
+          });
+          rendreItems();
+        });
+
+      const champAjout = document.getElementById("champAjout");
+
+      function ajouterItem() {
+        const valeur = champAjout.value.trim();
+        if (!valeur) return;
+        items.push({ nom: valeur, etat: "ok", ajout: true });
+        champAjout.value = "";
+        rendreItems();
+      }
+
+      document.getElementById("btnAjout").addEventListener("click", ajouterItem);
+      champAjout.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") ajouterItem();
+      });
+
+      /* =========================================================
+         PHOTOS
+         ========================================================= */
+      const camInput = document.getElementById("camInput");
+      const galInput = document.getElementById("galInput");
+      const galerie = document.getElementById("galerie");
+      const compteurPhotos = document.getElementById("compteurPhotos");
+      const jaugeFill = document.getElementById("jaugeFill");
+      const statusEnvoi = document.getElementById("statusEnvoi");
+
+      function tailleTotale() {
+        return photos.reduce((somme, p) => somme + p.file.size, 0);
+      }
+
+      function fmtMo(octets) {
+        return (octets / 1048576).toFixed(1);
+      }
+
+      function compresser(fichier) {
+        return new Promise(function (resolve, reject) {
+          const lecteur = new FileReader();
+          lecteur.onerror = () => reject("lecture impossible");
+          lecteur.onload = function (ev) {
+            const img = new Image();
+            img.onerror = () => reject("image invalide");
+            img.onload = function () {
+              const ratio = Math.min(
+                1,
+                MAX_LARGEUR / Math.max(img.width, img.height)
+              );
+              const canvas = document.createElement("canvas");
+              canvas.width = Math.round(img.width * ratio);
+              canvas.height = Math.round(img.height * ratio);
+              canvas
+                .getContext("2d")
+                .drawImage(img, 0, 0, canvas.width, canvas.height);
+              canvas.toBlob(
+                (blob) => (blob ? resolve(blob) : reject("compression échouée")),
+                "image/jpeg",
+                QUALITE_JPEG
+              );
+            };
+            img.src = ev.target.result;
+          };
+          lecteur.readAsDataURL(fichier);
+        });
+      }
+
+      async function traiterFichiers(fichiers) {
+        if (!fichiers.length) return;
+        setStatus(statusEnvoi, "info", "⏳ Compression en cours…");
+
+        let ajoutees = 0;
+        let refusees = 0;
+
+        for (const fichier of fichiers) {
+          let blob;
+          try {
+            blob = await compresser(fichier);
+          } catch (err) {
+            refusees++;
+            continue;
+          }
+          if (tailleTotale() + blob.size > LIMITE_TOTALE) {
+            refusees++;
+            continue;
+          }
+          const file = new File([blob], `tmp_${Date.now()}.jpg`, {
+            type: "image/jpeg"
+          });
+          photos.push({
+            file: file,
+            url: URL.createObjectURL(file),
+            type: photos.length === 0 ? "exterieur" : "interieur"
+          });
+          ajoutees++;
+        }
+
+        rendreGalerie();
+
+        if (refusees > 0) {
+          setStatus(
+            statusEnvoi,
+            "erreur",
+            `⚠️ ${ajoutees} ajoutée(s), ${refusees} refusée(s) : limite de 10 Mo.`
+          );
+        } else {
+          setStatus(statusEnvoi, "info", `✅ ${ajoutees} photo(s) ajoutée(s).`);
+        }
+      }
+
+      camInput.addEventListener("change", async function (e) {
+        const fichiers = Array.from(e.target.files || []);
+        camInput.value = "";
+        await traiterFichiers(fichiers);
+      });
+
+      galInput.addEventListener("change", async function (e) {
+        const fichiers = Array.from(e.target.files || []);
+        galInput.value = "";
+        await traiterFichiers(fichiers);
+      });
+
+      function rendreGalerie() {
+        galerie.innerHTML = photos
+          .map(function (photo, index) {
+            const options = TYPES_PHOTO.map(
+              (t) =>
+                `<option value="${t.valeur}" ${
+                  photo.type === t.valeur ? "selected" : ""
+                }>${t.libelle}</option>`
+            ).join("");
+            return `
+              <div class="ligne-photo">
+                <img src="${photo.url}" alt="" />
+                <select data-type="${index}">${options}</select>
+                <button type="button" class="btn-suppr" data-photo="${index}">×</button>
+              </div>
+            `;
+          })
+          .join("");
+
+        galerie.querySelectorAll("[data-type]").forEach(function (select) {
+          select.addEventListener("change", function () {
+            photos[+select.dataset.type].type = select.value;
+          });
+        });
+
+        galerie.querySelectorAll("[data-photo]").forEach(function (bouton) {
+          bouton.addEventListener("click", function () {
+            const i = +bouton.dataset.photo;
+            URL.revokeObjectURL(photos[i].url);
+            photos.splice(i, 1);
+            rendreGalerie();
+          });
+        });
+
+        const total = tailleTotale();
+        const pourcent = Math.min(
+          100,
+          Math.round((total / LIMITE_TOTALE) * 100)
+        );
+
+        compteurPhotos.textContent = photos.length
+          ? `${photos.length} photo(s) · ${fmtMo(total)} / 10 Mo`
+          : "";
+        jaugeFill.style.width = pourcent + "%";
+        jaugeFill.style.background =
+          pourcent >= 90 ? "#dc2626" : pourcent >= 70 ? "#f59e0b" : "#16a34a";
+      }
+
+      /* =========================================================
+         ENVOI
+         ========================================================= */
+      function siteCourant() {
+        const chantier = window.PIGVS ? PIGVS.getChantier() : null;
+        return chantier && chantier.site ? chantier.site : "SITE";
+      }
+
+      function cheminDestination() {
+        if (!caisseActive) return "…";
+        return (
+          "colisage/" +
+          sanitizePath(siteCourant()) +
+          "/" +
+          sanitizePath(caisseActive.caisse.nom)
+        );
+      }
+
+      function majChemin() {
+        document.getElementById("apercuChemin").textContent =
+          "Destination : /" + cheminDestination();
+      }
+
+      document
+        .getElementById("btnEnvoyer")
+        .addEventListener("click", async function () {
+          const operateur = document.getElementById("operateur").value.trim();
+          const commentaire = document
+            .getElementById("commentaire")
+            .value.trim();
+
+          if (!caisseActive) {
+            setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord une caisse.");
+            return;
+          }
+
+          if (!operateur) {
+            setStatus(statusEnvoi, "erreur", "⚠️ Renseignez le nom de l'opérateur.");
+            return;
+          }
+
+          const nonRenseignes = items.filter((i) => !i.etat).length;
+          if (nonRenseignes > 0) {
+            const suite = confirm(
+              `${nonRenseignes} élément(s) ne sont pas renseignés.\nEnvoyer quand même ?`
+            );
+            if (!suite) return;
+          }
+
+          const bouton = this;
+          bouton.disabled = true;
+          setStatus(statusEnvoi, "info", "⏳ Envoi en cours…");
+
+          const presents = items.filter((i) => i.etat === "ok" && !i.ajout);
+          const manquants = items.filter((i) => i.etat === "ko");
+          const ajouts = items.filter((i) => i.ajout);
+          const prevus = items.filter((i) => !i.ajout);
+
+          const base = versNomFichier(caisseActive.caisse.nom);
+          const compteurs = {};
+
+          const listePhotos = photos.map(function (photo, index) {
+            const cle = photo.type;
+            compteurs[cle] = (compteurs[cle] || 0) + 1;
+            return {
+              file: photo.file,
+              nom: `${base}_${cle}_${compteurs[cle]}.jpg`
+            };
+          });
+
+          const resultat = await PIGVS_ENVOI.envoyer({
+            type: "COLISAGE",
+            path: cheminDestination(),
+            champs: {
+              Site: siteCourant(),
+              Conteneur: caisseActive.conteneur.nom,
+              Caisse: caisseActive.caisse.nom,
+              Operateur: operateur,
+              Date: new Date().toLocaleString("fr-FR"),
+              NbPrevus: String(prevus.length),
+              NbPresents: String(presents.length),
+              NbManquants: String(manquants.length),
+              NbAjoutes: String(ajouts.length),
+              Presents: presents.map((i) => i.nom).join(" | "),
+              Manquants: manquants.map((i) => i.nom).join(" | "),
+              Ajoutes: ajouts.map((i) => i.nom).join(" | "),
+              Commentaire: commentaire,
+              NbPhotos: String(photos.length)
+            },
+            photos: listePhotos
+          });
+
+          if (resultat.ok) {
+            setStatus(
+              statusEnvoi,
+              "ok",
+              `✅ Colisage de « ${echapper(caisseActive.caisse.nom)} » envoyé !`
+            );
+            document.getElementById("pas3").classList.add("actif");
+            photos.forEach((p) => URL.revokeObjectURL(p.url));
+            photos = [];
+            rendreGalerie();
+            setTimeout(function () {
+              bouton.disabled = false;
+            }, 2000);
+          } else {
+            setStatus(statusEnvoi, "erreur", "❌ " + echapper(resultat.msg));
+            bouton.disabled = false;
+          }
+        });
+    </script>
+  </body>
+</html>

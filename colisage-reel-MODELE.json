@@ -1,0 +1,54 @@
+{
+  "_note": "Fichier de colisage REEL d'un site. Un fichier par site. Alimente par les envois de colisage-saisie.html via Power Automate. Ne remplace PAS colisage-data.json : c'est le releve terrain, en attente de validation.",
+
+  "site": "PAL4",
+  "chantier": "PIGVS PAL4",
+  "derniereMaj": "2026-09-20T11:30:00+02:00",
+
+  "_structure": {
+    "saisies": "Une entree par caisse relevee. Si une caisse est relevee plusieurs fois, la plus recente fait foi (tri par horodatage).",
+    "statut": "en-attente | valide | rejete"
+  },
+
+  "saisies": [
+    {
+      "id": "PAL4-BOX40-20260920-0930",
+      "horodatage": "2026-09-20T09:30:00+02:00",
+      "site": "PAL4",
+      "conteneur": "Equipement 2 (LGTN 017003-0)",
+      "caisse": "BOX #40",
+      "operateur": "Dupont",
+      "statut": "en-attente",
+
+      "nbPrevus": 13,
+      "nbPresents": 11,
+      "nbManquants": 2,
+      "nbAjoutes": 1,
+
+      "presents": [
+        "Splitter Power_1",
+        "Splitter Power_2",
+        "Splitter Power_3",
+        "Splitter Power_4",
+        "Splitter Codeur_1",
+        "Splitter Codeur_2",
+        "Splitter Codeur_3",
+        "Splitter Codeur_4",
+        "Cable Enclosure - 50_1",
+        "Cable Enclosure - 50_2",
+        "Cable Enclosure - 100_1"
+      ],
+      "manquants": [
+        "Cable Enclosure - 50_3",
+        "Cable Enclosure - 100_2"
+      ],
+      "ajoutes": [
+        "Rallonge 220V 25m"
+      ],
+
+      "commentaire": "Caisse en bon etat. Deux cables manquants, a rechercher dans BOX #43.",
+      "nbPhotos": 3,
+      "dossierPhotos": "colisage/PAL4/BOX #40/"
+    }
+  ]
+}

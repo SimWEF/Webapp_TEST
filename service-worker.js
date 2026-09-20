@@ -5,8 +5,8 @@
    Version : 3.0
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v20";
-   const DATA_CACHE = "pigvs-data-v11";
+   const APP_CACHE = "pigvs-app-v21";
+   const DATA_CACHE = "pigvs-data-v12";
    
    /* ==========================================================
       Fichiers statiques
@@ -39,7 +39,12 @@
    "logo-wetinghouse.svg",
    "depannage.html",
    "depannage-data.json",
-   "depannage-navigation.json"
+   "depannage-navigation.json",
+   "scan.html",
+   "colisage-saisie.html",
+   "pigvs-scan.js",
+   "codes-sap.json",
+   "admin-colisage-validation.html"
    ];
    
    /* ==========================================================

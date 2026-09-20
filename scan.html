@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scanner — PIGVS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0B2C5C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <style>
+      .scan-zone {
+        text-align: center;
+        padding: 26px 16px 20px;
+      }
+
+      .scan-zone .grand-ico {
+        font-size: 64px;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .scan-zone h2 {
+        margin: 0 0 6px;
+        font-size: 20px;
+        color: var(--marine);
+      }
+
+      .scan-zone p {
+        margin: 0 0 18px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .btn-scan {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 62px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        background: var(--primary);
+        border: 0;
+        border-radius: 14px;
+        cursor: pointer;
+        box-shadow: 0 3px 12px rgba(0, 120, 215, 0.3);
+      }
+
+      .separateur {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0 14px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+
+      .separateur::before,
+      .separateur::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .saisie-manuelle {
+        display: flex;
+        gap: 8px;
+      }
+
+      .saisie-manuelle input {
+        flex: 1;
+      }
+
+      .saisie-manuelle button {
+        flex: 0 0 auto;
+        padding: 0 18px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: #eef1f6;
+        cursor: pointer;
+      }
+
+      .resultat {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-top: 5px solid var(--acc, var(--primary));
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        padding: 18px 16px;
+        margin-top: 18px;
+      }
+
+      .resultat .type {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--acc, var(--primary));
+        margin-bottom: 6px;
+      }
+
+      .resultat h3 {
+        margin: 0 0 4px;
+        font-size: 19px;
+        color: var(--marine);
+      }
+
+      .resultat .code-lu {
+        font-family: monospace;
+        font-size: 13px;
+        color: var(--muted);
+        background: #f4f7fb;
+        border-radius: 8px;
+        padding: 6px 10px;
+        display: inline-block;
+        margin-bottom: 14px;
+      }
+
+      .actions-resultat {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .actions-resultat a,
+      .actions-resultat button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 54px;
+        padding: 13px 16px;
+        font-size: 15.5px;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text);
+        background: #fff;
+        border: 1px solid #ccd4e0;
+        border-radius: 12px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .actions-resultat .indispo {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .actions-resultat .fl {
+        color: var(--primary);
+        font-size: 18px;
+      }
+
+      .liste-contenu {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      .liste-contenu li {
+        padding: 10px 12px;
+        border-bottom: 1px solid #eef0f3;
+        font-size: 14.5px;
+        display: flex;
+        gap: 9px;
+      }
+
+      .liste-contenu li::before {
+        content: "🔧";
+      }
+
+      .liste-contenu li:last-child {
+        border-bottom: 0;
+      }
+
+      .alerte-scan {
+        background: #fff8e1;
+        border: 1px solid #ffe0a3;
+        color: #8a6100;
+        border-radius: 10px;
+        padding: 11px 13px;
+        font-size: 13.5px;
+        margin-top: 14px;
+      }
+    </style>
+
+    pigvs-auth.js
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
+
+  <body>
+    <header class="app-header">
+      <a class="back" href="index.html">‹</a>
+      <h1>📸 Scanner</h1>
+    </header>
+
+    <div class="page">
+      <div class="scan-zone">
+        <span class="grand-ico">📸</span>
+        <h2>Scanner un code</h2>
+        <p>Code-barres ou QR code d'une caisse, d'un conteneur ou d'un équipement.</p>
+
+        <button type="button" class="btn-scan" id="btnScan">
+          📷 Ouvrir la caméra
+        </button>
+
+        <div class="separateur">ou</div>
+
+        <div class="saisie-manuelle">
+          <input
+            type="text"
+            id="codeManuel"
+            placeholder="Saisir le code manuellement"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+          />
+          <button type="button" id="btnValiderCode">OK</button>
+        </div>
+
+        <div class="alerte-scan" id="alerteScan" style="display: none"></div>
+      </div>
+
+      <div id="resultat"></div>
+    </div>
+
+    pigvs-scan.js
+    pigvs-chantier.js
+    <script>
+      const CODES = { codes: {} };
+      let COLISAGE = { conteneurs: [] };
+
+      const zoneResultat = document.getElementById("resultat");
+      const alerteScan = document.getElementById("alerteScan");
+
+      /* ---------- Chargement des référentiels ---------- */
+      fetch("codes-sap.json")
+        .then((r) => r.json())
+        .then((d) => {
+          CODES.codes = d.codes || {};
+        })
+        .catch(() => {
+          afficherAlerte("⚠️ Table des codes indisponible (codes-sap.json).");
+        });
+
+      fetch("colisage-data.json")
+        .then((r) => r.json())
+        .then((d) => {
+          COLISAGE = d;
+        })
+        .catch(() => {});
+
+      if (window.PIGVS) {
+        PIGVS.loadChantiers();
+      }
+
+      /* ---------- Scanner ---------- */
+      const btnScan = document.getElementById("btnScan");
+
+      if (!PIGVS_SCAN.disponible()) {
+        btnScan.disabled = true;
+        btnScan.style.opacity = "0.5";
+        afficherAlerte(
+          "ℹ️ Le scan par caméra n'est pas disponible sur cet appareil. Utilisez la saisie manuelle ci-dessous."
+        );
+      }
+
+      btnScan.addEventListener("click", function () {
+        PIGVS_SCAN.ouvrir(traiterCode, afficherAlerte);
+      });
+
+      document
+        .getElementById("btnValiderCode")
+        .addEventListener("click", function () {
+          const code = document.getElementById("codeManuel").value.trim();
+          if (code) traiterCode(code);
+        });
+
+      document
+        .getElementById("codeManuel")
+        .addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            const code = e.target.value.trim();
+            if (code) traiterCode(code);
+          }
+        });
+
+      function afficherAlerte(message) {
+        alerteScan.textContent = message;
+        alerteScan.style.display = "block";
+      }
+
+      /* ---------- Normalisation et recherche ---------- */
+      function norm(s) {
+        return (s || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function chercherCode(code) {
+        const propre = code.trim();
+
+        if (CODES.codes[propre]) {
+          return Object.assign({ code: propre }, CODES.codes[propre]);
+        }
+
+        /* Recherche insensible à la casse et aux espaces */
+        const cle = Object.keys(CODES.codes).find(
+          (k) => norm(k) === norm(propre)
+        );
+        if (cle) {
+          return Object.assign({ code: propre }, CODES.codes[cle]);
+        }
+
+        /* Le code scanné correspond-il directement à un nom de caisse ? */
+        for (const conteneur of COLISAGE.conteneurs || []) {
+          for (const caisse of conteneur.caisses || []) {
+            if (norm(caisse.nom) === norm(propre)) {
+              return {
+                code: propre,
+                type: "caisse",
+                cible: caisse.nom,
+                libelle: caisse.nom
+              };
+            }
+          }
+        }
+
+        return null;
+      }
+
+      function trouverCaisse(nom) {
+        for (const conteneur of COLISAGE.conteneurs || []) {
+          for (const caisse of conteneur.caisses || []) {
+            if (norm(caisse.nom) === norm(nom)) {
+              return { conteneur, caisse };
+            }
+          }
+        }
+        return null;
+      }
+
+      /* ---------- Aiguillage selon le type de code ---------- */
+      function traiterCode(code) {
+        alerteScan.style.display = "none";
+        const trouve = chercherCode(code);
+
+        if (!trouve) {
+          zoneResultat.innerHTML = `
+            <div class="resultat" style="--acc: var(--orange)">
+              <span class="type">Code inconnu</span>
+              <h3>Aucune correspondance</h3>
+              <div class="code-lu">${echapper(code)}</div>
+              <p style="font-size: 14px; color: var(--muted); margin: 0 0 14px">
+                Ce code n'est pas répertorié dans <b>codes-sap.json</b>.
+              </p>
+              <div class="actions-resultat">
+                <a href="colisage.html">
+                  <span>🔍 Chercher manuellement dans le colisage</span>
+                  <span class="fl">›</span>
+                </a>
+                <a href="colisage-saisie.html">
+                  <span>📝 Saisir un colisage</span>
+                  <span class="fl">›</span>
+                </a>
+              </div>
+            </div>
+          `;
+          window.scrollTo(0, 0);
+          return;
+        }
+
+        if (trouve.type === "caisse") return afficherCaisse(trouve);
+        if (trouve.type === "conteneur") return afficherConteneur(trouve);
+        return afficherEquipement(trouve);
+      }
+
+      /* ---------- Cas : CAISSE ---------- */
+      function afficherCaisse(info) {
+        const resultat = trouverCaisse(info.cible);
+        let contenu = "";
+
+        if (resultat) {
+          const items = resultat.caisse.items || [];
+          contenu = `
+            <p style="font-size: 13px; color: var(--muted); margin: 14px 0 0">
+              Contenu théorique — ${items.length} élément(s)
+              · Conteneur : <b>${echapper(resultat.conteneur.nom)}</b>
+            </p>
+            <ul class="liste-contenu">
+              ${items.map((i) => `<li>${echapper(i)}</li>`).join("")}
+            </ul>
+          `;
+        } else {
+          contenu = `
+            <p style="font-size: 14px; color: var(--muted); margin: 14px 0 0">
+              Cette caisse n'a pas encore de contenu renseigné dans le colisage.
+            </p>
+          `;
+        }
+
+        zoneResultat.innerHTML = `
+          <div class="resultat" style="--acc: var(--primary)">
+            <span class="type">🧰 Caisse</span>
+            <h3>${echapper(info.cible)}</h3>
+            <div class="code-lu">${echapper(info.code)}</div>
+
+            <div class="actions-resultat">
+              <a href="colisage-saisie.html?caisse=${encodeURIComponent(info.cible)}">
+                <span>📝 Renseigner le colisage de cette caisse</span>
+                <span class="fl">›</span>
+              </a>
+              <a href="photo.html?type=colisage-caisse">
+                <span>📷 Prendre des photos de colisage</span>
+                <span class="fl">›</span>
+              </a>
+            </div>
+
+            ${contenu}
+          </div>
+        `;
+        window.scrollTo(0, 0);
+      }
+
+      /* ---------- Cas : CONTENEUR ---------- */
+      function afficherConteneur(info) {
+        zoneResultat.innerHTML = `
+          <div class="resultat" style="--acc: var(--orange)">
+            <span class="type">📦 Conteneur</span>
+            <h3>${echapper(info.cible)}</h3>
+            <div class="code-lu">${echapper(info.code)}</div>
+
+            <div class="actions-resultat">
+              <a href="photo.html?type=calage-arrimage">
+                <span>🔗 Photos de calage / arrimage</span>
+                <span class="fl">›</span>
+              </a>
+              <a href="photo.html?type=feuilles-colisage">
+                <span>📄 Photos des feuilles de colisage</span>
+                <span class="fl">›</span>
+              </a>
+              <a href="colisage.html">
+                <span>🔍 Consulter le contenu du conteneur</span>
+                <span class="fl">›</span>
+              </a>
+            </div>
+          </div>
+        `;
+        window.scrollTo(0, 0);
+      }
+
+      /* ---------- Cas : ÉQUIPEMENT ---------- */
+      function afficherEquipement(info) {
+        zoneResultat.innerHTML = `
+          <div class="resultat" style="--acc: var(--cyan)">
+            <span class="type">🔧 Équipement</span>
+            <h3>${echapper(info.cible)}</h3>
+            <div class="code-lu">${echapper(info.code)}</div>
+
+            <div class="actions-resultat">
+              <button type="button" class="indispo">
+                <span>📊 État de l'équipement — à venir</span>
+                <span class="fl">›</span>
+              </button>
+              <a href="fdm.html">
+                <span>📋 Ouvrir une fiche de maintenance</span>
+                <span class="fl">›</span>
+              </a>
+              <a href="colisage.html">
+                <span>🔍 Localiser dans le colisage</span>
+                <span class="fl">›</span>
+              </a>
+            </div>
+
+            <div class="alerte-scan" style="display: block">
+              ℹ️ Le module « État matériel » par équipement sera raccordé
+              ultérieurement.
+            </div>
+          </div>
+        `;
+        window.scrollTo(0, 0);
+      }
+
+      function echapper(texte) {
+        return (texte || "")
+          .toString()
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+    </script>
+  </body>
+</html>
