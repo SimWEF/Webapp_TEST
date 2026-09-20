@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reporting Photo — PIGVS</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0B2C5C">
-  <link rel="apple-touch-icon" href="icon-192.png">
-<script src="pigvs-auth.js"></script>
-<script>PIGVS_AUTH.protegerPage();</script>
-</head>
-<body>
-  <header class="app-header">
-    <a class="back" href="index.html">‹</a>
-    <h1>📷 Reporting Photo</h1>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporting Photo — PIGVS</title>
 
-  <div class="page">
-    <p class="sous-titre">Choisissez le type de photo</p>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0B2C5C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
 
-    <section class="grille-modules">
+    <script src="pigvs-auth.js"></script>
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
 
+  <body>
+    <header class="app-header">
+      <a class="back" href="index.html">‹</a>
+      <h1>📷 Reporting Photo</h1>
+    </header>
+
+    <div class="page">
+      <p class="sous-titre">Choisissez le type de photo</p>
+
+      <section class="grille-modules">
       <a class="module orange" href="photo.html?type=calage-arrimage">
         <div class="module-head">
           <span class="module-ico">📦</span>
@@ -35,21 +39,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
-      <a class="module bleu" href="photo.html?type=colisage-caisse">
-        <div class="module-head">
-          <span class="module-ico">🧰</span>
-          <div>
-            <h2>Colisage caisse</h2>
-            <p>Contenu des caisses</p>
-          </div>
-        </div>
-        <div class="module-foot">
-          <span class="tags">Site · Caisse</span>
-          <span class="fleche">→</span>
-        </div>
-      </a>
-
       <a class="module cyan" href="photo.html?type=feuilles-colisage">
         <div class="module-head">
           <span class="module-ico">📄</span>
@@ -63,7 +52,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
       <a class="module vert" href="photo.html?type=cahier-quart">
         <div class="module-head">
           <span class="module-ico">📓</span>
@@ -77,7 +65,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
       <a class="module violet" href="photo.html?type=portee-joint">
         <div class="module-head">
           <span class="module-ico">🔩</span>
@@ -91,7 +78,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
       <a class="module ambre" href="photo.html?type=fcs">
         <div class="module-head">
           <span class="module-ico">📋</span>
@@ -105,7 +91,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
       <a class="module marine" href="photo.html?type=condition-acces">
         <div class="module-head">
           <span class="module-ico">🚪</span>
@@ -119,7 +104,6 @@
           <span class="fleche">→</span>
         </div>
       </a>
-
       <a class="module gris" href="photo.html?type=autre">
         <div class="module-head">
           <span class="module-ico">🗂️</span>
@@ -133,8 +117,22 @@
           <span class="fleche">→</span>
         </div>
       </a>
+      </section>
 
-    </section>
-  </div>
-</body>
+      <div
+        style="
+          background: #eef4fb;
+          border: 1px solid #cfe0f5;
+          border-radius: 10px;
+          padding: 12px 14px;
+          font-size: 13.5px;
+          color: #083f78;
+          margin-top: 4px;
+        "
+      >
+        ℹ️ Les photos de colisage se prennent désormais directement dans
+        <b>Colisage → Renseigner le colisage</b>, avec l'inventaire de la caisse.
+      </div>
+    </div>
+  </body>
 </html>

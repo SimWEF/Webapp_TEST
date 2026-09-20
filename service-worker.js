@@ -3,8 +3,8 @@
    Version : 3.1
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v21";
-   const DATA_CACHE = "pigvs-data-v11";
+   const APP_CACHE = "pigvs-app-v22";
+   const DATA_CACHE = "pigvs-data-v12";
    
    /* ==========================================================
       Fichiers statiques
@@ -28,6 +28,7 @@
      "depannage.html",
      "login.html",
      "admin-colisage-validation.html",
+     "colisage-consultation.html",
    
      /* --- Styles et manifeste --- */
      "style.css",
