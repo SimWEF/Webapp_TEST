@@ -440,7 +440,7 @@
           alert("Choisissez un site.");
           return;
         }
-        const nom = "colisage-reel-" + norm(site).replace(/\s+/g, "") + ".json";
+        const nom = "Data-colisage-chantiers/colisage-reel-" + norm(site).replace(/\s+/g, "") + ".json";
         fetch(nom)
           .then((r) => {
             if (!r.ok) throw new Error();

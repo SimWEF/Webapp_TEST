@@ -16,10 +16,19 @@
         padding: 26px 16px 20px;
       }
 
-      .scan-zone .grand-ico {
-        font-size: 64px;
+      .ico-barcode {
+        width: 76px;
+        height: 76px;
         display: block;
-        margin-bottom: 8px;
+        margin: 0 auto 10px;
+        fill: var(--marine);
+      }
+
+      .ico-barcode-btn {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+        flex: 0 0 auto;
       }
 
       .scan-zone h2 {
@@ -38,7 +47,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
         min-height: 62px;
         font-size: 18px;
@@ -49,6 +58,11 @@
         border-radius: 14px;
         cursor: pointer;
         box-shadow: 0 3px 12px rgba(0, 120, 215, 0.3);
+      }
+
+      .btn-scan:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
 
       .separateur {
@@ -194,7 +208,7 @@
       }
     </style>
 
-    pigvs-auth.js
+    <script src="pigvs-auth.js"></script>
     <script>
       PIGVS_AUTH.protegerPage();
     </script>
@@ -203,17 +217,39 @@
   <body>
     <header class="app-header">
       <a class="back" href="index.html">‹</a>
-      <h1>📸 Scanner</h1>
+      <h1>Scanner</h1>
     </header>
 
     <div class="page">
       <div class="scan-zone">
-        <span class="grand-ico">📸</span>
+        <svg class="ico-barcode" viewBox="0 0 64 64" role="img" aria-label="Code-barres">
+          <rect x="4"  y="14" width="4"  height="36" rx="1" />
+          <rect x="12" y="14" width="2"  height="36" rx="1" />
+          <rect x="18" y="14" width="5"  height="36" rx="1" />
+          <rect x="27" y="14" width="2"  height="36" rx="1" />
+          <rect x="33" y="14" width="4"  height="36" rx="1" />
+          <rect x="41" y="14" width="2"  height="36" rx="1" />
+          <rect x="47" y="14" width="5"  height="36" rx="1" />
+          <rect x="56" y="14" width="4"  height="36" rx="1" />
+        </svg>
         <h2>Scanner un code</h2>
-        <p>Code-barres ou QR code d'une caisse, d'un conteneur ou d'un équipement.</p>
+        <p>
+          Code-barres ou QR code d'une caisse, d'un conteneur ou d'un
+          équipement.
+        </p>
 
         <button type="button" class="btn-scan" id="btnScan">
-          📷 Ouvrir la caméra
+          <svg class="ico-barcode-btn" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4"  y="14" width="4"  height="36" rx="1" />
+            <rect x="12" y="14" width="2"  height="36" rx="1" />
+            <rect x="18" y="14" width="5"  height="36" rx="1" />
+            <rect x="27" y="14" width="2"  height="36" rx="1" />
+            <rect x="33" y="14" width="4"  height="36" rx="1" />
+            <rect x="41" y="14" width="2"  height="36" rx="1" />
+            <rect x="47" y="14" width="5"  height="36" rx="1" />
+            <rect x="56" y="14" width="4"  height="36" rx="1" />
+          </svg>
+          <span>Ouvrir le scanner</span>
         </button>
 
         <div class="separateur">ou</div>
@@ -236,8 +272,8 @@
       <div id="resultat"></div>
     </div>
 
-    pigvs-scan.js
-    pigvs-chantier.js
+    <script src="pigvs-scan.js"></script>
+    <script src="pigvs-chantier.js"></script>
     <script>
       const CODES = { codes: {} };
       let COLISAGE = { conteneurs: [] };
@@ -269,15 +305,20 @@
       /* ---------- Scanner ---------- */
       const btnScan = document.getElementById("btnScan");
 
-      if (!PIGVS_SCAN.disponible()) {
+      if (typeof PIGVS_SCAN === "undefined") {
         btnScan.disabled = true;
-        btnScan.style.opacity = "0.5";
         afficherAlerte(
-          "ℹ️ Le scan par caméra n'est pas disponible sur cet appareil. Utilisez la saisie manuelle ci-dessous."
+          "❌ Module de scan non chargé. Vérifiez que pigvs-scan.js est bien en ligne."
+        );
+      } else if (!PIGVS_SCAN.disponible()) {
+        btnScan.disabled = true;
+        afficherAlerte(
+          "ℹ️ Le scan par caméra nécessite Chrome sur Android, en HTTPS. Utilisez la saisie manuelle ci-dessous."
         );
       }
 
       btnScan.addEventListener("click", function () {
+        if (typeof PIGVS_SCAN === "undefined") return;
         PIGVS_SCAN.ouvrir(traiterCode, afficherAlerte);
       });
 
@@ -319,7 +360,6 @@
           return Object.assign({ code: propre }, CODES.codes[propre]);
         }
 
-        /* Recherche insensible à la casse et aux espaces */
         const cle = Object.keys(CODES.codes).find(
           (k) => norm(k) === norm(propre)
         );
@@ -327,7 +367,6 @@
           return Object.assign({ code: propre }, CODES.codes[cle]);
         }
 
-        /* Le code scanné correspond-il directement à un nom de caisse ? */
         for (const conteneur of COLISAGE.conteneurs || []) {
           for (const caisse of conteneur.caisses || []) {
             if (norm(caisse.nom) === norm(propre)) {
@@ -335,7 +374,7 @@
                 code: propre,
                 type: "caisse",
                 cible: caisse.nom,
-                libelle: caisse.nom
+                libelle: caisse.nom,
               };
             }
           }
@@ -361,26 +400,20 @@
         const trouve = chercherCode(code);
 
         if (!trouve) {
-          zoneResultat.innerHTML = `
-            <div class="resultat" style="--acc: var(--orange)">
-              <span class="type">Code inconnu</span>
-              <h3>Aucune correspondance</h3>
-              <div class="code-lu">${echapper(code)}</div>
-              <p style="font-size: 14px; color: var(--muted); margin: 0 0 14px">
-                Ce code n'est pas répertorié dans <b>codes-sap.json</b>.
-              </p>
-              <div class="actions-resultat">
-                <a href="colisage.html">
-                  <span>🔍 Chercher manuellement dans le colisage</span>
-                  <span class="fl">›</span>
-                </a>
-                <a href="colisage-saisie.html">
-                  <span>📝 Saisir un colisage</span>
-                  <span class="fl">›</span>
-                </a>
-              </div>
-            </div>
-          `;
+          zoneResultat.innerHTML =
+            '<div class="resultat" style="--acc: var(--orange)">' +
+            '<span class="type">Code inconnu</span>' +
+            "<h3>Aucune correspondance</h3>" +
+            '<div class="code-lu">' +
+            echapper(code) +
+            "</div>" +
+            '<p style="font-size:14px;color:var(--muted);margin:0 0 14px">' +
+            "Ce code n'est pas répertorié dans <b>codes-sap.json</b>." +
+            "</p>" +
+            '<div class="actions-resultat">' +
+            '<a href="colisage.html"><span>🔍 Chercher manuellement dans le colisage</span><span class="fl">›</span></a>' +
+            '<a href="colisage-saisie.html"><span>📝 Saisir un colisage</span><span class="fl">›</span></a>' +
+            "</div></div>";
           window.scrollTo(0, 0);
           return;
         }
@@ -397,102 +430,81 @@
 
         if (resultat) {
           const items = resultat.caisse.items || [];
-          contenu = `
-            <p style="font-size: 13px; color: var(--muted); margin: 14px 0 0">
-              Contenu théorique — ${items.length} élément(s)
-              · Conteneur : <b>${echapper(resultat.conteneur.nom)}</b>
-            </p>
-            <ul class="liste-contenu">
-              ${items.map((i) => `<li>${echapper(i)}</li>`).join("")}
-            </ul>
-          `;
+          contenu =
+            '<p style="font-size:13px;color:var(--muted);margin:14px 0 0">' +
+            "Contenu théorique — " +
+            items.length +
+            " élément(s) · Conteneur : <b>" +
+            echapper(resultat.conteneur.nom) +
+            "</b></p>" +
+            '<ul class="liste-contenu">' +
+            items.map((i) => "<li>" + echapper(i) + "</li>").join("") +
+            "</ul>";
         } else {
-          contenu = `
-            <p style="font-size: 14px; color: var(--muted); margin: 14px 0 0">
-              Cette caisse n'a pas encore de contenu renseigné dans le colisage.
-            </p>
-          `;
+          contenu =
+            '<p style="font-size:14px;color:var(--muted);margin:14px 0 0">' +
+            "Cette caisse n'a pas encore de contenu renseigné dans le colisage." +
+            "</p>";
         }
 
-        zoneResultat.innerHTML = `
-          <div class="resultat" style="--acc: var(--primary)">
-            <span class="type">🧰 Caisse</span>
-            <h3>${echapper(info.cible)}</h3>
-            <div class="code-lu">${echapper(info.code)}</div>
-
-            <div class="actions-resultat">
-              <a href="colisage-saisie.html?caisse=${encodeURIComponent(info.cible)}">
-                <span>📝 Renseigner le colisage de cette caisse</span>
-                <span class="fl">›</span>
-              </a>
-              <a href="photo.html?type=colisage-caisse">
-                <span>📷 Prendre des photos de colisage</span>
-                <span class="fl">›</span>
-              </a>
-            </div>
-
-            ${contenu}
-          </div>
-        `;
+        zoneResultat.innerHTML =
+          '<div class="resultat" style="--acc: var(--primary)">' +
+          '<span class="type">🧰 Caisse</span>' +
+          "<h3>" +
+          echapper(info.cible) +
+          "</h3>" +
+          '<div class="code-lu">' +
+          echapper(info.code) +
+          "</div>" +
+          '<div class="actions-resultat">' +
+          '<a href="colisage-saisie.html?caisse=' +
+          encodeURIComponent(info.cible) +
+          '"><span>📝 Renseigner le colisage de cette caisse</span><span class="fl">›</span></a>' +
+          '<a href="photo.html?type=colisage-caisse"><span>📷 Prendre des photos de colisage</span><span class="fl">›</span></a>' +
+          "</div>" +
+          contenu +
+          "</div>";
         window.scrollTo(0, 0);
       }
 
       /* ---------- Cas : CONTENEUR ---------- */
       function afficherConteneur(info) {
-        zoneResultat.innerHTML = `
-          <div class="resultat" style="--acc: var(--orange)">
-            <span class="type">📦 Conteneur</span>
-            <h3>${echapper(info.cible)}</h3>
-            <div class="code-lu">${echapper(info.code)}</div>
-
-            <div class="actions-resultat">
-              <a href="photo.html?type=calage-arrimage">
-                <span>🔗 Photos de calage / arrimage</span>
-                <span class="fl">›</span>
-              </a>
-              <a href="photo.html?type=feuilles-colisage">
-                <span>📄 Photos des feuilles de colisage</span>
-                <span class="fl">›</span>
-              </a>
-              <a href="colisage.html">
-                <span>🔍 Consulter le contenu du conteneur</span>
-                <span class="fl">›</span>
-              </a>
-            </div>
-          </div>
-        `;
+        zoneResultat.innerHTML =
+          '<div class="resultat" style="--acc: var(--orange)">' +
+          '<span class="type">📦 Conteneur</span>' +
+          "<h3>" +
+          echapper(info.cible) +
+          "</h3>" +
+          '<div class="code-lu">' +
+          echapper(info.code) +
+          "</div>" +
+          '<div class="actions-resultat">' +
+          '<a href="photo.html?type=calage-arrimage"><span>🔗 Photos de calage / arrimage</span><span class="fl">›</span></a>' +
+          '<a href="photo.html?type=feuilles-colisage"><span>📄 Photos des feuilles de colisage</span><span class="fl">›</span></a>' +
+          '<a href="colisage.html"><span>🔍 Consulter le contenu du conteneur</span><span class="fl">›</span></a>' +
+          "</div></div>";
         window.scrollTo(0, 0);
       }
 
       /* ---------- Cas : ÉQUIPEMENT ---------- */
       function afficherEquipement(info) {
-        zoneResultat.innerHTML = `
-          <div class="resultat" style="--acc: var(--cyan)">
-            <span class="type">🔧 Équipement</span>
-            <h3>${echapper(info.cible)}</h3>
-            <div class="code-lu">${echapper(info.code)}</div>
-
-            <div class="actions-resultat">
-              <button type="button" class="indispo">
-                <span>📊 État de l'équipement — à venir</span>
-                <span class="fl">›</span>
-              </button>
-              <a href="fdm.html">
-                <span>📋 Ouvrir une fiche de maintenance</span>
-                <span class="fl">›</span>
-              </a>
-              <a href="colisage.html">
-                <span>🔍 Localiser dans le colisage</span>
-                <span class="fl">›</span>
-              </a>
-            </div>
-
-            <div class="alerte-scan" style="display: block">
-              ℹ️ Le module « État matériel » par équipement sera raccordé
-              ultérieurement.
-            </div>
-          </div>
-        `;
+        zoneResultat.innerHTML =
+          '<div class="resultat" style="--acc: var(--cyan)">' +
+          '<span class="type">🔧 Équipement</span>' +
+          "<h3>" +
+          echapper(info.cible) +
+          "</h3>" +
+          '<div class="code-lu">' +
+          echapper(info.code) +
+          "</div>" +
+          '<div class="actions-resultat">' +
+          '<button type="button" class="indispo"><span>📊 État de l\'équipement — à venir</span><span class="fl">›</span></button>' +
+          '<a href="fdm.html"><span>📋 Ouvrir une fiche de maintenance</span><span class="fl">›</span></a>' +
+          '<a href="colisage.html"><span>🔍 Localiser dans le colisage</span><span class="fl">›</span></a>' +
+          "</div>" +
+          '<div class="alerte-scan" style="display:block">' +
+          "ℹ️ Le module « État matériel » par équipement sera raccordé ultérieurement." +
+          "</div></div>";
         window.scrollTo(0, 0);
       }
 

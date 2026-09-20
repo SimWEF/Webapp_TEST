@@ -293,6 +293,12 @@ body {
   background: var(--acc);
   color: #fff;
 }
+.ico-module-svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
 .module h2 {
   margin: 0;
   font-size: 14.5px;
@@ -522,6 +528,7 @@ select {
     padding: 18px 16px 14px;
     min-height: 150px;
   }
+  
   .module-head {
     flex-direction: row;
     align-items: flex-start;

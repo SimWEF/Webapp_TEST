@@ -49,7 +49,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
         min-height: 58px;
         font-size: 17px;
@@ -59,6 +59,18 @@
         border: 0;
         border-radius: 12px;
         cursor: pointer;
+      }
+
+      .btn-scan:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .ico-barcode-btn {
+        width: 26px;
+        height: 26px;
+        fill: #fff;
+        flex: 0 0 auto;
       }
 
       .separateur {
@@ -447,7 +459,7 @@
       }
     </style>
 
-    pigvs-auth.js
+    <script src="pigvs-auth.js"></script>
     <script>
       PIGVS_AUTH.protegerPage();
     </script>
@@ -471,7 +483,17 @@
         <h2>1. Identifier la caisse</h2>
 
         <button type="button" class="btn-scan" id="btnScan">
-          📷 Scanner le code-barres
+          <svg class="ico-barcode-btn" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4"  y="14" width="4"  height="36" rx="1" />
+            <rect x="12" y="14" width="2"  height="36" rx="1" />
+            <rect x="18" y="14" width="5"  height="36" rx="1" />
+            <rect x="27" y="14" width="2"  height="36" rx="1" />
+            <rect x="33" y="14" width="4"  height="36" rx="1" />
+            <rect x="41" y="14" width="2"  height="36" rx="1" />
+            <rect x="47" y="14" width="5"  height="36" rx="1" />
+            <rect x="56" y="14" width="4"  height="36" rx="1" />
+          </svg>
+          <span>Scanner le code-barres</span>
         </button>
 
         <div class="separateur">ou</div>
@@ -599,10 +621,9 @@
       </section>
     </div>
 
-    pigvs-chantier.js
-    pigvs-auth.js
-    pigvs-envoi.js
-    pigvs-scan.js
+    <script src="pigvs-chantier.js"></script>
+    <script src="pigvs-envoi.js"></script>
+    <script src="pigvs-scan.js"></script>
     <script>
       /* =========================================================
          CONFIGURATION
@@ -615,7 +636,7 @@
         { valeur: "exterieur", libelle: "Extérieur de la caisse" },
         { valeur: "interieur", libelle: "Intérieur de la caisse" },
         { valeur: "etiquette", libelle: "Étiquette / code-barres" },
-        { valeur: "anomalie", libelle: "Anomalie constatée" }
+        { valeur: "anomalie", libelle: "Anomalie constatée" },
       ];
 
       /* =========================================================
@@ -625,9 +646,9 @@
       let CAISSES = [];
       let CODES = {};
 
-      let caisseActive = null; /* { conteneur, caisse } */
-      let items = []; /* [{ nom, etat, ajout }] etat: "", "ok", "ko" */
-      let photos = []; /* [{ file, url, type }] */
+      let caisseActive = null;
+      let items = [];
+      let photos = [];
 
       /* =========================================================
          OUTILS
@@ -645,10 +666,6 @@
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;");
-      }
-
-      function attrib(texte) {
-        return (texte || "").toString().replace(/"/g, "&quot;");
       }
 
       /* Conserve le # (accepté par SharePoint), nettoie le reste */
@@ -685,13 +702,12 @@
           .catch(() => []),
         fetch("codes-sap.json")
           .then((r) => r.json())
-          .catch(() => ({ codes: {} }))
-      ]).then(function ([colisage, caisses, codes]) {
-        COLISAGE = colisage || { conteneurs: [] };
-        CAISSES = caisses || [];
-        CODES = (codes && codes.codes) || {};
+          .catch(() => ({ codes: {} })),
+      ]).then(function (resultats) {
+        COLISAGE = resultats[0] || { conteneurs: [] };
+        CAISSES = resultats[1] || [];
+        CODES = (resultats[2] && resultats[2].codes) || {};
 
-        /* Complète la liste avec les caisses présentes dans le colisage */
         (COLISAGE.conteneurs || []).forEach(function (conteneur) {
           (conteneur.caisses || []).forEach(function (caisse) {
             if (!CAISSES.some((c) => norm(c) === norm(caisse.nom))) {
@@ -700,7 +716,6 @@
           });
         });
 
-        /* Caisse passée en paramètre depuis scan.html */
         const params = new URLSearchParams(location.search);
         const demandee = params.get("caisse");
         if (demandee) {
@@ -744,7 +759,7 @@
             "<div class='ac-empty'>Aucune caisse trouvée</div>";
         } else {
           listeCaisses.innerHTML = resultats
-            .map((nom) => `<div>${echapper(nom)}</div>`)
+            .map((nom) => "<div>" + echapper(nom) + "</div>")
             .join("");
 
           listeCaisses.querySelectorAll("div").forEach(function (ligne) {
@@ -761,9 +776,15 @@
       /* --- Scanner --- */
       const btnScan = document.getElementById("btnScan");
 
-      if (!PIGVS_SCAN.disponible()) {
+      if (typeof PIGVS_SCAN === "undefined") {
         btnScan.disabled = true;
-        btnScan.style.opacity = "0.5";
+        setStatus(
+          statusChoix,
+          "erreur",
+          "❌ Module de scan non chargé. Vérifiez pigvs-scan.js."
+        );
+      } else if (!PIGVS_SCAN.disponible()) {
+        btnScan.disabled = true;
         setStatus(
           statusChoix,
           "info",
@@ -772,6 +793,8 @@
       }
 
       btnScan.addEventListener("click", function () {
+        if (typeof PIGVS_SCAN === "undefined") return;
+
         PIGVS_SCAN.ouvrir(
           function (code) {
             const trouve = CODES[code];
@@ -816,10 +839,9 @@
             return { nom: libelle, etat: "", ajout: false };
           });
         } else {
-          /* Caisse non répertoriée : inventaire vierge */
           caisseActive = {
             conteneur: { nom: "—" },
-            caisse: { nom: nom, items: [] }
+            caisse: { nom: nom, items: [] },
           };
           items = [];
           setStatus(
@@ -870,30 +892,31 @@
               const classe =
                 (item.etat === "ko" ? " est-ko" : "") +
                 (item.ajout ? " ajout" : "");
-              return `
-                <div class="ligne-item${classe}">
-                  <span class="nom">${echapper(item.nom)}</span>
-                  <div class="choix-etat">
-                    <button
-                      type="button"
-                      data-ok="${index}"
-                      class="${item.etat === "ok" ? "actif-ok" : ""}"
-                      title="Présent"
-                    >✅</button>
-                    <button
-                      type="button"
-                      data-ko="${index}"
-                      class="${item.etat === "ko" ? "actif-ko" : ""}"
-                      title="Manquant"
-                    >❌</button>
-                  </div>
-                  ${
-                    item.ajout
-                      ? `<button type="button" class="btn-suppr" data-suppr="${index}">×</button>`
-                      : ""
-                  }
-                </div>
-              `;
+
+              return (
+                '<div class="ligne-item' +
+                classe +
+                '"><span class="nom">' +
+                echapper(item.nom) +
+                '</span><div class="choix-etat">' +
+                '<button type="button" data-ok="' +
+                index +
+                '" class="' +
+                (item.etat === "ok" ? "actif-ok" : "") +
+                '" title="Présent">✅</button>' +
+                '<button type="button" data-ko="' +
+                index +
+                '" class="' +
+                (item.etat === "ko" ? "actif-ko" : "") +
+                '" title="Manquant">❌</button>' +
+                "</div>" +
+                (item.ajout
+                  ? '<button type="button" class="btn-suppr" data-suppr="' +
+                    index +
+                    '">×</button>'
+                  : "") +
+                "</div>"
+              );
             })
             .join("");
 
@@ -913,12 +936,14 @@
             });
           });
 
-          listeItems.querySelectorAll("[data-suppr]").forEach(function (bouton) {
-            bouton.addEventListener("click", function () {
-              items.splice(+bouton.dataset.suppr, 1);
-              rendreItems();
+          listeItems
+            .querySelectorAll("[data-suppr]")
+            .forEach(function (bouton) {
+              bouton.addEventListener("click", function () {
+                items.splice(+bouton.dataset.suppr, 1);
+                rendreItems();
+              });
             });
-          });
         }
         majCompteurs();
       }
@@ -964,7 +989,10 @@
         rendreItems();
       }
 
-      document.getElementById("btnAjout").addEventListener("click", ajouterItem);
+      document
+        .getElementById("btnAjout")
+        .addEventListener("click", ajouterItem);
+
       champAjout.addEventListener("keydown", function (e) {
         if (e.key === "Enter") ajouterItem();
       });
@@ -1006,7 +1034,8 @@
                 .getContext("2d")
                 .drawImage(img, 0, 0, canvas.width, canvas.height);
               canvas.toBlob(
-                (blob) => (blob ? resolve(blob) : reject("compression échouée")),
+                (blob) =>
+                  blob ? resolve(blob) : reject("compression échouée"),
                 "image/jpeg",
                 QUALITE_JPEG
               );
@@ -1036,13 +1065,13 @@
             refusees++;
             continue;
           }
-          const file = new File([blob], `tmp_${Date.now()}.jpg`, {
-            type: "image/jpeg"
+          const file = new File([blob], "tmp_" + Date.now() + ".jpg", {
+            type: "image/jpeg",
           });
           photos.push({
             file: file,
             url: URL.createObjectURL(file),
-            type: photos.length === 0 ? "exterieur" : "interieur"
+            type: photos.length === 0 ? "exterieur" : "interieur",
           });
           ajoutees++;
         }
@@ -1053,10 +1082,18 @@
           setStatus(
             statusEnvoi,
             "erreur",
-            `⚠️ ${ajoutees} ajoutée(s), ${refusees} refusée(s) : limite de 10 Mo.`
+            "⚠️ " +
+              ajoutees +
+              " ajoutée(s), " +
+              refusees +
+              " refusée(s) : limite de 10 Mo."
           );
         } else {
-          setStatus(statusEnvoi, "info", `✅ ${ajoutees} photo(s) ajoutée(s).`);
+          setStatus(
+            statusEnvoi,
+            "info",
+            "✅ " + ajoutees + " photo(s) ajoutée(s)."
+          );
         }
       }
 
@@ -1077,17 +1114,26 @@
           .map(function (photo, index) {
             const options = TYPES_PHOTO.map(
               (t) =>
-                `<option value="${t.valeur}" ${
-                  photo.type === t.valeur ? "selected" : ""
-                }>${t.libelle}</option>`
+                '<option value="' +
+                t.valeur +
+                '" ' +
+                (photo.type === t.valeur ? "selected" : "") +
+                ">" +
+                t.libelle +
+                "</option>"
             ).join("");
-            return `
-              <div class="ligne-photo">
-                <img src="${photo.url}" alt="" />
-                <select data-type="${index}">${options}</select>
-                <button type="button" class="btn-suppr" data-photo="${index}">×</button>
-              </div>
-            `;
+
+            return (
+              '<div class="ligne-photo"><img src="' +
+              photo.url +
+              '" alt="" /><select data-type="' +
+              index +
+              '">' +
+              options +
+              '</select><button type="button" class="btn-suppr" data-photo="' +
+              index +
+              '">×</button></div>'
+            );
           })
           .join("");
 
@@ -1113,7 +1159,7 @@
         );
 
         compteurPhotos.textContent = photos.length
-          ? `${photos.length} photo(s) · ${fmtMo(total)} / 10 Mo`
+          ? photos.length + " photo(s) · " + fmtMo(total) + " / 10 Mo"
           : "";
         jaugeFill.style.width = pourcent + "%";
         jaugeFill.style.background =
@@ -1152,19 +1198,28 @@
             .value.trim();
 
           if (!caisseActive) {
-            setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord une caisse.");
+            setStatus(
+              statusEnvoi,
+              "erreur",
+              "⚠️ Sélectionnez d'abord une caisse."
+            );
             return;
           }
 
           if (!operateur) {
-            setStatus(statusEnvoi, "erreur", "⚠️ Renseignez le nom de l'opérateur.");
+            setStatus(
+              statusEnvoi,
+              "erreur",
+              "⚠️ Renseignez le nom de l'opérateur."
+            );
             return;
           }
 
           const nonRenseignes = items.filter((i) => !i.etat).length;
           if (nonRenseignes > 0) {
             const suite = confirm(
-              `${nonRenseignes} élément(s) ne sont pas renseignés.\nEnvoyer quand même ?`
+              nonRenseignes +
+                " élément(s) ne sont pas renseignés.\nEnvoyer quand même ?"
             );
             if (!suite) return;
           }
@@ -1181,12 +1236,12 @@
           const base = versNomFichier(caisseActive.caisse.nom);
           const compteurs = {};
 
-          const listePhotos = photos.map(function (photo, index) {
+          const listePhotos = photos.map(function (photo) {
             const cle = photo.type;
             compteurs[cle] = (compteurs[cle] || 0) + 1;
             return {
               file: photo.file,
-              nom: `${base}_${cle}_${compteurs[cle]}.jpg`
+              nom: base + "_" + cle + "_" + compteurs[cle] + ".jpg",
             };
           });
 
@@ -1207,16 +1262,18 @@
               Manquants: manquants.map((i) => i.nom).join(" | "),
               Ajoutes: ajouts.map((i) => i.nom).join(" | "),
               Commentaire: commentaire,
-              NbPhotos: String(photos.length)
+              NbPhotos: String(photos.length),
             },
-            photos: listePhotos
+            photos: listePhotos,
           });
 
           if (resultat.ok) {
             setStatus(
               statusEnvoi,
               "ok",
-              `✅ Colisage de « ${echapper(caisseActive.caisse.nom)} » envoyé !`
+              "✅ Colisage de « " +
+                echapper(caisseActive.caisse.nom) +
+                " » envoyé !"
             );
             document.getElementById("pas3").classList.add("actif");
             photos.forEach((p) => URL.revokeObjectURL(p.url));
@@ -1230,6 +1287,6 @@
             bouton.disabled = false;
           }
         });
-    </script>
+</script>
   </body>
 </html>
