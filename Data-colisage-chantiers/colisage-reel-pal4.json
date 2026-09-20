@@ -1,5 +1,1 @@
-{
-  "site": "PAL4",
-  "derniereMaj": "",
-  "saisies": []
-}
+{"site":"PAL4","derniereMaj":"2026-09-20T15:47:23","saisies":[{"id":"PAL4-20260920-134638","horodatage":"2026-09-20T15:46:38","site":"PAL4","conteneur":"Equipement 2","caisse":"BOX #40","operateur":"Ok","statut":"en-attente","nbPrevus":13,"nbPresents":11,"nbManquants":2,"nbAjoutes":0,"presents":["Splitter Power_1","Splitter Power_2","Splitter Power_3","Splitter Power_4","Splitter Codeur_1","Splitter Codeur_2","Splitter Codeur_3","Splitter Codeur_4","Cable Enclosure - 50_1","Cable Enclosure - 50_2","Cable Enclosure - 50_3"],"manquants":["Cable Enclosure - 100_1","Cable Enclosure - 100_2"],"ajoutes":[],"commentaire":"","nbPhotos":0,"dossierPhotos":"colisage/PAL4/BOX #40/"},{"id":"PAL4-20260920-134723","horodatage":"2026-09-20T15:47:23","site":"PAL4","conteneur":"Equipement 1","caisse":"BOX #220-2/6","operateur":"Ok","statut":"en-attente","nbPrevus":4,"nbPresents":4,"nbManquants":0,"nbAjoutes":0,"presents":["JP TP J25 / J35 / J26 / J24 / J50 / J33","JP TO 68/19 J30 / J34 / J38","JP TO 51B séchage J12","Série 1 L56 / L57 / L61"],"manquants":[],"ajoutes":[],"commentaire":"","nbPhotos":0,"dossierPhotos":"colisage/PAL4/BOX #220-2-6/"}]}
