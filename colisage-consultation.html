@@ -42,7 +42,7 @@
     .section-titre { display:flex; align-items:center; gap:10px; margin:18px 0 8px; font-weight:700; color:#334; }
     .item-list { list-style:none; padding:0; margin:0; }
     .item-list li { padding:12px 14px; border-bottom:1px solid #eef0f3; font-size:15px; display:flex; gap:10px; }
-    .item-list li:before { content:"🔧"; }
+    .item-list li:before { content:"\1F527"; }
 
     .result { background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:12px 14px;
       margin-bottom:10px; width:100%; text-align:left; cursor:pointer; display:block; }
@@ -57,18 +57,18 @@
     .vide { text-align:center; color:#8a94a1; padding:30px 10px; }
 
     .res-caisse { border-left:4px solid #0078D7; }
-    .res-caisse .item:before { content:"📦 "; }
     .res-caisse .apercu { font-size:12px; color:#8a94a1; margin-top:5px; line-height:1.45; }
     .badge-approx { display:inline-block; background:#fff4e0; color:#95610a; border:1px solid #f3d7a4;
       font-size:11px; font-weight:700; padding:1px 7px; border-radius:10px; margin-left:6px; vertical-align:2px; }
     mark { background:#fff2a8; color:inherit; padding:0 1px; border-radius:3px; }
     .sous-titre-inline { font-size:12px; color:#8a94a1; font-weight:400; margin-left:auto; }
 
-    /* Bouton de saisie depuis la caisse ouverte */
     .btn-saisir { display:flex; align-items:center; justify-content:space-between; gap:10px;
       width:100%; min-height:52px; padding:13px 16px; margin-bottom:12px;
       font-size:15.5px; font-weight:700; text-decoration:none;
       background:var(--primary,#0078D7); color:#fff; border:0; border-radius:12px; }
+
+    .maj-info { font-size:11.5px; color:#8a94a1; text-align:center; margin-top:18px; }
     </style>
 
     <script src="pigvs-auth.js"></script>
@@ -88,7 +88,7 @@
         <input
           type="text"
           id="search"
-          placeholder="🔍 Rechercher un matériel ou une caisse (ex : SPICE, sécheur, L23…)"
+          placeholder="🔍 Rechercher (ex : BOX 40, SPICE, sécheur, L23…)"
           autocomplete="off"
           autocapitalize="off"
           spellcheck="false"
@@ -98,6 +98,7 @@
 
       <div class="breadcrumb" id="breadcrumb"></div>
       <div id="contenu"></div>
+      <div class="maj-info" id="majInfo"></div>
     </div>
 
     <script>
@@ -110,12 +111,24 @@ const clearBtn    = document.getElementById('clearBtn');
 
 let vue = { conteneurId:null, caisseIdx:null };
 
-function normalize(s){ return (s||'').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+function normalize(s){
+  return (s||'').toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+
+/* Cle ultra-permissive : ne garde que lettres et chiffres.
+   « BOX 40 », « BOX #40 », « box-40 » donnent tous « box40 ». */
 function cleKey(s){ return normalize(s).replace(/[^a-z0-9]/g,''); }
+
+/* Separe lettres et chiffres : « box40 » -> « box 40 »
+   Permet de retrouver « BOX #40 » en tapant « box40 » d'un seul bloc. */
+function eclater(s){
+  return normalize(s).replace(/([a-z])(\d)/g,'$1 $2').replace(/(\d)([a-z])/g,'$1 $2');
+}
+
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 /* ======================================================================
-   MOTEUR DE RECHERCHE APPROXIMATIVE
+   MOTEUR DE RECHERCHE
    ====================================================================== */
 function editDistance(a,b){
   const dp=[]; for(let i=0;i<=a.length;i++){dp[i]=[];dp[i][0]=i;} for(let j=0;j<=b.length;j++){dp[0][j]=j;}
@@ -131,44 +144,114 @@ function wordScore(s,t){
   let th=0; if(s.length<=3)th=0; else if(s.length<=5)th=1; else if(s.length<=9)th=2; else th=3;
   return d<=th?60-d*10:0;
 }
-function itemScore(search,texte){
-  const q=normalize(search),text=normalize(texte); if(!q)return 1;
-  const qw=q.split(/\s+/).filter(Boolean),tw=text.split(/\s+/).filter(Boolean); let tot=0;
-  for(const w of qw){let b=0;for(const t of tw){const sc=wordScore(w,t);if(sc>b)b=sc;}if(b===0)return 0;tot+=b;}
-  if(text.startsWith(q))tot+=50; if(text.includes(q))tot+=30; return tot;
+
+/* Score principal.
+   1. Comparaison sur la cle sans ponctuation  -> « BOX 40 » trouve « BOX #40 »
+   2. Comparaison mot a mot avec tolerance aux fautes
+   3. Comparaison sur la version eclatee        -> « box40 » trouve « BOX #40 » */
+function itemScore(search, texte){
+  const q = normalize(search);
+  if(!q) return 1;
+
+  const kq = cleKey(search), kt = cleKey(texte);
+  if(kq){
+    if(kt === kq)          return 200;
+    if(kt.startsWith(kq))  return 170;
+    if(kt.includes(kq))    return 150;
+  }
+
+  const score = scoreMots(q, normalize(texte));
+  if(score > 0) return score;
+
+  /* Dernier essai sur la forme eclatee */
+  return scoreMots(eclater(search), eclater(texte));
 }
+
+function scoreMots(q, text){
+  const qw = q.split(/\s+/).filter(Boolean);
+  const tw = text.split(/\s+/).filter(Boolean);
+  if(!qw.length) return 1;
+  let tot = 0;
+  for(const w of qw){
+    let b = 0;
+    for(const t of tw){ const sc = wordScore(w,t); if(sc>b) b=sc; }
+    if(b === 0) return 0;
+    tot += b;
+  }
+  if(text.startsWith(q)) tot += 50;
+  if(text.includes(q))   tot += 30;
+  return tot;
+}
+
 function estApproximatif(search,texte){
-  const t=normalize(texte);
+  const kq = cleKey(search), kt = cleKey(texte);
+  if(kq && kt.includes(kq)) return false;
+  const t = normalize(texte);
   return !normalize(search).split(/\s+/).filter(Boolean).every(w=>t.includes(w));
 }
+
 function surligner(texte,search){
-  const mots=normalize(search).split(/\s+/).filter(Boolean);
-  const brut=normalize(texte); const marques=new Array(texte.length).fill(false);
-  mots.forEach(w=>{ let i=brut.indexOf(w);
-    while(i>=0){ for(let k=i;k<i+w.length&&k<marques.length;k++) marques[k]=true; i=brut.indexOf(w,i+w.length); } });
-  let out='',ouvert=false;
+  const mots = normalize(search).split(/\s+/).filter(Boolean);
+  const brut = normalize(texte);
+  const marques = new Array(texte.length).fill(false);
+
+  mots.forEach(w=>{
+    let i = brut.indexOf(w);
+    while(i>=0){ for(let k=i;k<i+w.length&&k<marques.length;k++) marques[k]=true; i=brut.indexOf(w,i+w.length); }
+  });
+
+  /* Si rien n'a matche mot a mot, on surligne via la cle sans ponctuation */
+  if(!marques.some(Boolean)){
+    const kq = cleKey(search);
+    if(kq){
+      const map = [];
+      let kt = '';
+      for(let i=0;i<texte.length;i++){
+        const c = normalize(texte[i]).replace(/[^a-z0-9]/g,'');
+        if(c){ kt += c; map.push(i); }
+      }
+      const pos = kt.indexOf(kq);
+      if(pos >= 0){
+        for(let k=pos;k<pos+kq.length&&k<map.length;k++) marques[map[k]] = true;
+      }
+    }
+  }
+
+  let out='', ouvert=false;
   for(let i=0;i<texte.length;i++){
     if(marques[i]&&!ouvert){ out+='<mark>'; ouvert=true; }
     if(!marques[i]&&ouvert){ out+='</mark>'; ouvert=false; }
-    out+=esc(texte[i]);
+    out += esc(texte[i]);
   }
-  return out+(ouvert?'</mark>':'');
+  return out + (ouvert?'</mark>':'');
 }
 
-/* ---------- Chargement ---------- */
-fetch('colisage-data.json')
+/* ======================================================================
+   CHARGEMENT  (toujours la derniere version)
+   ====================================================================== */
+fetch('colisage-data.json', { cache: 'no-store' })
   .then(r=>r.json())
-  .then(d=>{ DATA = d; ouvertureDirecte(); render(); })
-  .catch(()=>{ contenu.innerHTML = "<div class='vide'>⚠️ Impossible de charger colisage-data.json</div>"; });
+  .then(d=>{
+    DATA = d;
+    afficherMaj();
+    ouvertureDirecte();
+    render();
+  })
+  .catch(()=>{
+    contenu.innerHTML = "<div class='vide'>⚠️ Impossible de charger colisage-data.json</div>";
+  });
 
-/* ---------- Ouverture directe depuis le scanner ----------
-   colisage-consultation.html?caisse=BOX%20%2340
-   colisage-consultation.html?conteneur=ETV2
-   ------------------------------------------------------- */
+function afficherMaj(){
+  const nb = (DATA.conteneurs||[]).reduce((s,c)=>s+(c.caisses||[]).length,0);
+  const el = document.getElementById('majInfo');
+  if(el) el.textContent = nb + ' caisses référencées' + (DATA.derniereMaj ? ' · maj ' + DATA.derniereMaj : '');
+}
+
+/* ---------- Ouverture directe depuis le scanner ---------- */
 function ouvertureDirecte(){
   const p = new URLSearchParams(location.search);
-  const caisseDemandee    = p.get('caisse');
-  const conteneurDemande  = p.get('conteneur');
+  const caisseDemandee   = p.get('caisse');
+  const conteneurDemande = p.get('conteneur');
 
   if(caisseDemandee){
     const rech = cleKey(caisseDemandee);
@@ -179,7 +262,6 @@ function ouvertureDirecte(){
       });
       if(idx>=0){ vue = { conteneurId:c.id, caisseIdx:idx }; return; }
     }
-    /* non trouvée : on bascule en recherche texte */
     searchInput.value = caisseDemandee;
     clearBtn.style.display = 'block';
     return;
@@ -324,7 +406,7 @@ function renderRecherche(saisie){
                    + (r.caisse.items.length>4 ? ` … +${r.caisse.items.length-4}` : '');
       const approx = !r.parConteneur && estApproximatif(saisie, r.caisse.nom);
       html += `<button class="result res-caisse" onclick="ouvrirDepuisRecherche('${r.conteneur.id}',${r.idx})">
-        <div class="item">${r.parConteneur ? esc(r.caisse.nom) : surligner(r.caisse.nom, saisie)}
+        <div class="item">📦 ${r.parConteneur ? esc(r.caisse.nom) : surligner(r.caisse.nom, saisie)}
           ${approx ? '<span class="badge-approx">approchant</span>' : ''}</div>
         <div class="loc">
           <span class="chip" style="background:${r.conteneur.couleur}"><span class="dot"></span>${esc(r.conteneur.nom)}</span>
@@ -365,7 +447,6 @@ function ouvrirDepuisRecherche(idCont, idxCaisse){
   render(); window.scrollTo(0,0);
 }
 
-/* Bouton retour : remonte d'un niveau, sinon menu Colisage */
 document.getElementById('backLink').addEventListener('click', function(e){
   if(searchInput.value){ e.preventDefault(); searchInput.value=''; clearBtn.style.display='none'; render(); return; }
   if(vue.caisseIdx!==null){ e.preventDefault(); retourConteneur(); return; }

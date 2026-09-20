@@ -1,15 +1,46 @@
 /* ==========================================================
    PIGVS Service Worker
-   Version : 3.1
+   Version : 4.0
+
+   PRINCIPE
+   Les fichiers de DONNEES ne sont jamais servis depuis le
+   cache quand le reseau est disponible. Plus besoin de
+   changer APP_CACHE pour voir un colisage mis a jour.
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v24";
+   const APP_CACHE = "pigvs-app-v25";
    const DATA_CACHE = "pigvs-data-v12";
    
    /* ==========================================================
-      Fichiers statiques
-      ⚠️ Ne PAS ajouter les fichiers colisage-reel-*.json :
-         ils changent en permanence, le cache les figerait.
+      Fichiers de DONNEES
+      Toujours rafraichis depuis le reseau (Network First strict).
+      Le cache ne sert que de secours hors ligne.
+      ========================================================== */
+   const FICHIERS_DONNEES = [
+     "colisage-data.json",
+     "chantiers.json",
+     "centrales.json",
+     "codes-sap.json",
+     "caisses.json",
+     "conteneurs.json",
+     "sites.json",
+     "equipements.json",
+     "depannage-data.json",
+     "depannage-navigation.json",
+     "sousEnsemble.json",
+     "etatEquipements.json",
+   ];
+   
+   function estFichierDonnees(pathname) {
+     if (pathname.includes("/Data-colisage-chantiers/")) return true;
+     if (/\/info-[^/]+\.json$/i.test(pathname)) return true;
+     if (/\/colisage-reel-[^/]+\.json$/i.test(pathname)) return true;
+     return FICHIERS_DONNEES.some((nom) => pathname.endsWith("/" + nom));
+   }
+   
+   /* ==========================================================
+      Fichiers d'APPLICATION
+      Mis en cache a l'installation.
       ========================================================== */
    const APP_FILES = [
      /* --- Pages --- */
@@ -20,6 +51,7 @@
      "materiel.html",
      "detailSousEnsemble.html",
      "colisage.html",
+     "colisage-consultation.html",
      "colisage-saisie.html",
      "scan.html",
      "rex.html",
@@ -28,7 +60,6 @@
      "depannage.html",
      "login.html",
      "admin-colisage-validation.html",
-     "colisage-consultation.html",
    
      /* --- Styles et manifeste --- */
      "style.css",
@@ -40,33 +71,20 @@
      "pigvs-auth.js",
      "pigvs-scan.js",
    
-     /* --- Données de référence --- */
-     "colisage-data.json",
-     "chantiers.json",
-     "centrales.json",
-     "codes-sap.json",
-     "depannage-data.json",
-     "depannage-navigation.json",
-     "info-paluel4.json",
-     "info-cattenom3.json",
-   
      /* --- Images --- */
      "icon-192.png",
      "icon-512.png",
-     "logo-wetinghouse.svg",
    ];
-   
-   
    
    /* ==========================================================
       Installation
       ========================================================== */
    self.addEventListener("install", (event) => {
      event.waitUntil(
-       caches.open(APP_CACHE).then((cache) =>
+       caches
+         .open(APP_CACHE)
          /* allSettled : un fichier manquant ne bloque pas l'installation */
-         Promise.allSettled(APP_FILES.map((url) => cache.add(url)))
-       )
+         .then((cache) => Promise.allSettled(APP_FILES.map((url) => cache.add(url))))
      );
      self.skipWaiting();
    });
@@ -93,43 +111,51 @@
       Fetch
       ========================================================== */
    self.addEventListener("fetch", (event) => {
-     if (event.request.method !== "GET") {
-       return;
-     }
+     if (event.request.method !== "GET") return;
    
      const url = new URL(event.request.url);
    
      /* ======================================================
-        CAS 1 : relevés de colisage
-        Toujours le réseau, jamais de cache.
-        Ces fichiers sont réécrits par Power Automate.
+        CAS 1 : fichiers de DONNEES
+        Reseau prioritaire, en contournant le cache HTTP.
+        Le cache local n'est utilise qu'en cas de coupure.
         ====================================================== */
-     if (url.pathname.includes("/Data-colisage-chantiers/")) {
+     if (estFichierDonnees(url.pathname)) {
        event.respondWith(
-         fetch(event.request).catch(
-           () =>
-             new Response(
-               JSON.stringify({ site: "", derniereMaj: "", saisies: [] }),
-               { headers: { "Content-Type": "application/json" } }
+         fetch(event.request, { cache: "no-store" })
+           .then((response) => {
+             if (response && response.ok) {
+               const copie = response.clone();
+               caches
+                 .open(DATA_CACHE)
+                 .then((cache) => cache.put(event.request, copie));
+             }
+             return response;
+           })
+           .catch(() =>
+             caches.match(event.request).then(
+               (cached) =>
+                 cached ||
+                 new Response("{}", {
+                   headers: { "Content-Type": "application/json" },
+                 })
              )
-         )
+           )
        );
        return;
      }
    
      /* ======================================================
-        CAS 2 : index.json des quizz
-        Toujours prioriser le réseau
+        CAS 2 : fichiers Data-quizz
         ====================================================== */
-     if (
-       url.pathname.endsWith("/Data-quizz/index.json") ||
-       url.pathname.endsWith("Data-quizz/index.json")
-     ) {
+     if (url.pathname.includes("/Data-quizz/")) {
        event.respondWith(
          fetch(event.request)
            .then((response) => {
-             const copy = response.clone();
-             caches.open(DATA_CACHE).then((cache) => cache.put(event.request, copy));
+             const copie = response.clone();
+             caches
+               .open(DATA_CACHE)
+               .then((cache) => cache.put(event.request, copie));
              return response;
            })
            .catch(() => caches.match(event.request))
@@ -138,40 +164,33 @@
      }
    
      /* ======================================================
-        CAS 3 : fichiers Data-quizz
-        Cache dynamique
-        ====================================================== */
-     if (url.pathname.includes("/Data-quizz/")) {
-       event.respondWith(
-         caches.open(DATA_CACHE).then(async (cache) => {
-           try {
-             const response = await fetch(event.request);
-             cache.put(event.request, response.clone());
-             return response;
-           } catch {
-             const cached = await cache.match(event.request);
-             if (cached) {
-               return cached;
-             }
-             throw new Error("Fichier non disponible hors ligne");
-           }
-         })
-       );
-       return;
-     }
-   
-     /* ======================================================
-        CAS 4 : application
-        Network First
+        CAS 3 : application
+        Network First, cache en secours.
         ====================================================== */
      event.respondWith(
        fetch(event.request)
          .then((response) => {
-           const copy = response.clone();
-           caches.open(APP_CACHE).then((cache) => cache.put(event.request, copy));
+           const copie = response.clone();
+           caches.open(APP_CACHE).then((cache) => cache.put(event.request, copie));
            return response;
          })
          .catch(() => caches.match(event.request))
      );
+   });
+   
+   /* ==========================================================
+      Purge manuelle du cache de donnees
+      Depuis une page :
+          navigator.serviceWorker.controller
+            .postMessage({ action: "purger-donnees" });
+      ========================================================== */
+   self.addEventListener("message", (event) => {
+     if (event.data && event.data.action === "purger-donnees") {
+       caches.delete(DATA_CACHE).then(() => {
+         if (event.source) {
+           event.source.postMessage({ action: "donnees-purgees" });
+         }
+       });
+     }
    });
    
