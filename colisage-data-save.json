@@ -1,0 +1,1826 @@
+{
+  "_note": "Colisage PIGVS. Les noms de caisses sont strictement alignes sur l'onglet Parametres_Box de PIGVS - BD_Materiel.xlsx (le # est conserve). Les ROLL ne sont PAS des caisses : leur contenu est remonte au niveau caisse.",
+  "_source": "PIGVS - BD_Materiel.xlsx (Parametres_Box, Parametres_Conteneurs, Affectation_Box)",
+  "_aValider": [
+    "Caisse à pomme #CaP_5 a #CaP_16 : la repartition precise du contenu entre chaque caisse a ete deduite du modele de l'Equipement 1 (onglet Affectation_Box). A confirmer lors du premier releve terrain.",
+    "BOX #200-1/4 a #203-4/4 (Equipement 3) : caisses presentes dans la BD mais sans contenu dans le colisage initial. A renseigner.",
+    "BOX #227-3/3 (Equipement 1) : contenu a renseigner.",
+    "Equipement 3 : le colisage initial mentionnait 'BOX 39 - Ecrans', mais la BD affecte BOX #39 a l'Equipement 2. BOX #XX (SAP 30127709) est la caisse ecrans de l'Equipement 3 selon Emplacement_Box.",
+    "ETV3 : le colisage initial comportait une caisse SPICE GUIDE&TP 004 (guide petite x6 / grande x5). L'onglet Emplacement_Box affecte Spice Guide #04 a l'ETV4 : la caisse a donc ete retiree d'ETV3. A verifier sur le terrain.",
+    "Equipement 2 : BOX #83 (balance) est notee 'Non affectee' dans la BD mais 'Equipement 2' dans Emplacement_Box."
+  ],
+  "conteneurs": [
+    {
+      "id": "etv1",
+      "nom": "ETV1",
+      "ref": "WEEU 061601-3",
+      "sap": "30041536",
+      "categorie": "ETV",
+      "couleur": "#d93838",
+      "couleurNom": "Rouge",
+      "caisses": [
+        {
+          "nom": "Baie ETV #1",
+          "items": [
+            "Baie ETV #1"
+          ]
+        },
+        {
+          "nom": "Baie ETV #4",
+          "items": [
+            "Baie ETV #4",
+            "Caisse sécheur 62"
+          ]
+        },
+        {
+          "nom": "Baie ETV #7",
+          "items": [
+            "Baie ETV #7"
+          ]
+        },
+        {
+          "nom": "CART #01",
+          "items": [
+            "CART + ombilique",
+            "Entretoise 17mm",
+            "Entretoise 35mm",
+            "Entretoise 47mm"
+          ]
+        },
+        {
+          "nom": "TPO #01",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #01",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #01",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #01",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T1 #001",
+          "items": [
+            "Interface type 1",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 46 x2",
+            "Pion de centrage 47",
+            "Pion de centrage 48",
+            "Pion de centrage 49"
+          ]
+        },
+        {
+          "nom": "Spice Guide #01",
+          "items": [
+            "Guide effecteur x1",
+            "Guide petite taille x6",
+            "Guide grande taille x5"
+          ]
+        },
+        {
+          "nom": "Fibre optique #01",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T2 #001",
+          "items": [
+            "Interface type 2",
+            "Vis de fixation 33 x2",
+            "Pion de centrage 37 x2"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T2 #002",
+          "items": [
+            "Vis fixation 37 x2",
+            "Vis fixation 41 x1",
+            "Pion de centrage 32 et 37"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16315",
+          "items": [
+            "Boitier Visioprobe",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Alimentation"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #01",
+          "items": [
+            "Gabarit sans vidéo 5m 71",
+            "Gabarit sans vidéo 3m 72",
+            "Petit racloir",
+            "Grand racloir",
+            "Grand crochet en L",
+            "Pince crocodile dentelée 6m",
+            "Pince crocodile dentelée 3m",
+            "Pince dent de rat 3m"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #02",
+          "items": [
+            "Gabarit sans vidéo 5m 49",
+            "Grand crochet simple",
+            "Grand crochet en L",
+            "Petit crochet en L",
+            "Aimant",
+            "Pince dent de rat 3m",
+            "Pince dent de rat 5m"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #05",
+          "items": [
+            "Gabarit vidéo 5m 273",
+            "Alim x2",
+            "Boitier vidéo + alim"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #01",
+          "items": [
+            "Table"
+          ]
+        },
+        {
+          "nom": "CART #04",
+          "items": [
+            "CART + ombilique",
+            "Entretoise 17mm",
+            "Entretoise 35mm",
+            "Entretoise 47mm"
+          ]
+        },
+        {
+          "nom": "TPO #04",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x1",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #04",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #04",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #04",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Fibre optique #04",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T1 #002",
+          "items": [
+            "Interface type 1",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 46 x2",
+            "Pion de centrage 47",
+            "Pion de centrage 48",
+            "Pion de centrage 49"
+          ]
+        },
+        {
+          "nom": "SPICE-SAX #001",
+          "items": [
+            "Enrouleur sabre axial 151",
+            "Enrouleur sabre axial 178",
+            "Control Unit 150",
+            "Control Unit 153",
+            "Control Unit 141",
+            "Manivelle",
+            "Jeu de câble ViZaar"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16311",
+          "items": [
+            "Boitier Visioprobe",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Alimentation"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #04",
+          "items": [
+            "Table",
+            "Valise Fastner",
+            "Chaises x2"
+          ]
+        },
+        {
+          "nom": "CART #07",
+          "items": [
+            "CART + ombilique",
+            "Entretoise 17mm",
+            "Entretoise 35mm",
+            "Entretoise 47mm"
+          ]
+        },
+        {
+          "nom": "TPO #07",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #07",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x6"
+          ]
+        },
+        {
+          "nom": "CAVALRI #07",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #07",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Spice Guide #02",
+          "items": [
+            "Guide grande taille x5",
+            "Guide petite taille x6",
+            "Guide effecteur x1"
+          ]
+        },
+        {
+          "nom": "Fibre optique #07",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16314",
+          "items": [
+            "Boitier Visioprobe",
+            "Caméra F16314",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Alimentation secteur"
+          ]
+        },
+        {
+          "nom": "Extraction CART #01",
+          "items": [
+            "Pelle RR",
+            "Petite pelle",
+            "Petit crochet",
+            "Grand crochet"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #07",
+          "items": [
+            "Aspirateur",
+            "Caisse bleue divers",
+            "Tourets x3",
+            "Chaises x5"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #10",
+          "items": [
+            "Interface sécheur bleu 8",
+            "Interface sécheur bleu 1",
+            "Interface sécheur bleu 2",
+            "Sécheur bleu 1 + réchauffeur 1",
+            "Sécheur bleu 2 + réchauffeur 2",
+            "Sécheur bleu 3 + réchauffeur 3",
+            "Sécheur bleu 4 + réchauffeur 4",
+            "Interface sécheur jaune 1",
+            "Interface sécheur jaune 2",
+            "Interface sécheur jaune 3",
+            "Interface sécheur jaune 4",
+            "Sécheur jaune 1",
+            "Sécheur jaune 2",
+            "Sécheur jaune 3",
+            "Sécheur jaune 4",
+            "Sonde 6mm #01",
+            "Alimentation sonde 6mm",
+            "Câble raccord écran/sonde",
+            "Micro USB (dans écran)",
+            "Gaine séchage jaune x6",
+            "Gaine séchage bleue x4"
+          ]
+        },
+        {
+          "nom": "Sonde 6mm #01",
+          "items": [
+            "Sonde 6mm 01"
+          ]
+        },
+        {
+          "nom": "Aspirateur #Venturi 1",
+          "items": [
+            "Aspirateur Venturi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etv2",
+      "nom": "ETV2",
+      "ref": "WEEU 051702-6",
+      "sap": "30026110",
+      "categorie": "ETV",
+      "couleur": "#e8a13a",
+      "couleurNom": "Jaune",
+      "caisses": [
+        {
+          "nom": "Baie ETV #2",
+          "items": [
+            "Baie ETV #2",
+            "Caisse sécheur 60"
+          ]
+        },
+        {
+          "nom": "Baie ETV #5",
+          "items": [
+            "Baie ETV #5"
+          ]
+        },
+        {
+          "nom": "CART #02",
+          "items": [
+            "CART + ombilique",
+            "Entretoise 17mm",
+            "Entretoise 35mm",
+            "Entretoise 47mm"
+          ]
+        },
+        {
+          "nom": "TPO #02",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #02",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #02",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #02",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Spice Guide #03",
+          "items": [
+            "Guide effecteur x1",
+            "Guide petite taille x6",
+            "Guide grande taille x5"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16307",
+          "items": [
+            "Boitier Visioprobe",
+            "Caméra F16307",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Chargeur secteur"
+          ]
+        },
+        {
+          "nom": "Fibre optique #02",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #03",
+          "items": [
+            "Gabarit sans vidéo 3m 73",
+            "Gabarit sans vidéo 5m 70",
+            "Gabarit sans vidéo 2m 008",
+            "Grand crochet simple",
+            "Grand crochet en L",
+            "Petit racloir",
+            "Grand racloir",
+            "Aimant",
+            "Pince croco 3m",
+            "Pince dent de rat 3m",
+            "Pince dent de rat 6m"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #06",
+          "items": [
+            "Gabarit vidéo 5m 182",
+            "Boitier vidéo + alim",
+            "Gabarit sans vidéo 3m 98"
+          ]
+        },
+        {
+          "nom": "Extraction CART #02",
+          "items": [
+            "Pelle RR",
+            "Petite pelle",
+            "Petit crochet",
+            "Grand crochet"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #02",
+          "items": [
+            "Sacoche d'extraction N4",
+            "Rallonge 380 V x2"
+          ]
+        },
+        {
+          "nom": "CART #05",
+          "items": [
+            "Entretoise 17mm",
+            "Entretoise 35mm",
+            "Entretoise 47mm"
+          ]
+        },
+        {
+          "nom": "TPO #05",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #05",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #05",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #05",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Fibre optique #05",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T1 #003",
+          "items": [
+            "Interface type 1",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 46 x2",
+            "Pion de centrage 47",
+            "Pion de centrage 48"
+          ]
+        },
+        {
+          "nom": "SPICE-SAX #002",
+          "items": [
+            "Enrouleur sabre axial 152",
+            "Control Unit 140",
+            "Control Unit 142",
+            "Control Unit 163",
+            "Jeu de câble ViZaar"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16145",
+          "items": [
+            "Boitier Visioprobe",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Chargeur secteur"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T2 #003",
+          "items": [
+            "Interface type 2",
+            "Vis de fixation 33 x2",
+            "Pion de centrage 32 x2"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #08",
+          "items": [
+            "Interface séchage 5",
+            "Interface séchage 6",
+            "Sécheur jaune 5",
+            "Sécheur jaune 6",
+            "Interface sécheur bleu 5",
+            "Interface sécheur bleu 6",
+            "Sécheur bleu 5 + réchauffeur 5",
+            "Sécheur bleu 6 + réchauffeur 6",
+            "Sonde 6mm #02",
+            "Gaine séchage jaune x1",
+            "Gaine séchage bleue x1",
+            "Aspirateur",
+            "Sacoche FASTNER",
+            "Table",
+            "Caisse divers 04"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #05",
+          "items": []
+        },
+        {
+          "nom": "Sonde 6mm #02",
+          "items": [
+            "Sonde 6mm 02"
+          ]
+        },
+        {
+          "nom": "Aspirateur #Venturi 2",
+          "items": [
+            "Aspirateur Venturi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etv3",
+      "nom": "ETV3",
+      "ref": "WEEU 051703-1",
+      "sap": "30026111",
+      "categorie": "ETV",
+      "couleur": "#1f9d55",
+      "couleurNom": "Vert",
+      "caisses": [
+        {
+          "nom": "Baie ETV #3",
+          "items": [
+            "Baie ETV #3",
+            "Caisse sécheur 61"
+          ]
+        },
+        {
+          "nom": "Baie ETV #6",
+          "items": [
+            "Baie ETV #6"
+          ]
+        },
+        {
+          "nom": "CART #03",
+          "items": [
+            "CART + ombilique",
+            "Entretoise 35mm"
+          ]
+        },
+        {
+          "nom": "TPO #03",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 18 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #03",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #03",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #03",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Fibre optique #03",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16313",
+          "items": [
+            "Boitier Visioprobe",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Chargeur secteur"
+          ]
+        },
+        {
+          "nom": "Extraction Corps #04",
+          "items": [
+            "Gabarit sans vidéo 3m 74",
+            "Gabarit sans vidéo 5m 68",
+            "Petit crochet en L",
+            "Grand crochet en L",
+            "Petit racloir",
+            "Grand racloir",
+            "Aimant",
+            "Pince dent de rat 3m",
+            "Pince croco 5m",
+            "Pince dent de rat 5m"
+          ]
+        },
+        {
+          "nom": "Extraction CART #03",
+          "items": [
+            "Pelle RR",
+            "Petite pelle",
+            "Petit crochet",
+            "Grand crochet"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #03",
+          "items": [
+            "Aspirateur",
+            "Chaises x3"
+          ]
+        },
+        {
+          "nom": "CART #06",
+          "items": []
+        },
+        {
+          "nom": "TPO #06",
+          "items": [
+            "Interface GV",
+            "Bloc motorisation",
+            "Clé allen",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 33 x2",
+            "Vis fixation 41 x2",
+            "Vis fixation 46 x2"
+          ]
+        },
+        {
+          "nom": "SPICE #06",
+          "items": [
+            "Bloc principal",
+            "Galet entrainement sabre",
+            "Clé allen",
+            "Vis x2"
+          ]
+        },
+        {
+          "nom": "CAVALRI #06",
+          "items": [
+            "Boitier CAVALRI",
+            "Connecteurs Harting"
+          ]
+        },
+        {
+          "nom": "Sac de câble #06",
+          "items": [
+            "A1",
+            "R1",
+            "R2, R3, R4",
+            "V1 (PTZ)",
+            "V2",
+            "Casque audio",
+            "Rallonge audio",
+            "C2"
+          ]
+        },
+        {
+          "nom": "Fibre optique #06",
+          "items": [
+            "Fibre + enrouleur"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T1 #004",
+          "items": [
+            "Interface type 1",
+            "Vis fixation 16 x2",
+            "Vis fixation 17 x2",
+            "Vis fixation 46 x2",
+            "Pion de centrage 47",
+            "Pion de centrage 48",
+            "Pion de centrage 49"
+          ]
+        },
+        {
+          "nom": "PERCHE #F16312",
+          "items": [
+            "Boitier Visioprobe",
+            "Caméra F16312",
+            "Perche",
+            "Câble caméra",
+            "Chargeur batterie",
+            "Chargeur secteur"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #06",
+          "items": [
+            "Chaises x4",
+            "Table"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T2 #004",
+          "items": [
+            "Interface type 2",
+            "Vis de fixation 33 x2",
+            "Pion de centrage 32 x2"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T3 #001",
+          "items": [
+            "Interface type 3",
+            "Vis fixation 30 x2",
+            "Vis fixation 35 x2"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T3 #002",
+          "items": [
+            "Interface type 3",
+            "Vis fixation 30 x2",
+            "Vis fixation 35 x2"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T4 #001",
+          "items": [
+            "Interface type 4"
+          ]
+        },
+        {
+          "nom": "SPICE-TP-T4 #002",
+          "items": [
+            "Interface type 4"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #09",
+          "items": [
+            "Interface sécheur jaune 7",
+            "Interface sécheur jaune 8",
+            "Sécheur jaune 7",
+            "Sécheur jaune 8",
+            "Interface sécheur bleu 7",
+            "Interface sécheur bleu 8",
+            "Sécheur bleu 7 + réchauffeur 7",
+            "Sécheur bleu 8 + réchauffeur 8",
+            "Sonde 6mm #03",
+            "Gaine séchage bleue x1",
+            "Gaine séchage jaune x3",
+            "Tourets x4",
+            "Coffret DS6/DS1"
+          ]
+        },
+        {
+          "nom": "Sonde 6mm #03",
+          "items": [
+            "Sonde 6mm 03"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etv4",
+      "nom": "ETV4",
+      "ref": "WEEU 051701-0",
+      "sap": "30026109",
+      "categorie": "ETV",
+      "couleur": "#0078D7",
+      "couleurNom": "Bleu",
+      "caisses": [
+        {
+          "nom": "Altimétrie #001",
+          "items": [
+            "Altimétrie"
+          ]
+        },
+        {
+          "nom": "SPICE-SAX #003",
+          "items": [
+            "Guide déflecteur PE1/6",
+            "Jeu de câbles Vizaar x4",
+            "Manivelles",
+            "Sabre 20° 142",
+            "Control Unit 148 / 151 / 152"
+          ]
+        },
+        {
+          "nom": "SPICE-PE5 #003",
+          "items": [
+            "Guide déflecteur PE5",
+            "Malette coussin d'air",
+            "Control Unit PE5",
+            "Télécommandes déportées 155 / 156",
+            "Jeu de câbles Vizaar",
+            "Pige interface",
+            "Sabre PE5 x2",
+            "Câble télécommande déportée"
+          ]
+        },
+        {
+          "nom": "Spice Guide #04",
+          "items": [
+            "Guide petite taille x4",
+            "Guide grande taille x3"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #11",
+          "items": [
+            "Caisse divers + détendeur d'air",
+            "Tuyaux d'air"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equip1",
+      "nom": "Equipement 1",
+      "ref": "WEEU 120821-1",
+      "sap": "1610976",
+      "categorie": "Équipement",
+      "couleur": "#6b21a8",
+      "couleurNom": "Violet",
+      "caisses": [
+        {
+          "nom": "BOX #150",
+          "items": [
+            "PC GIBR + alim (ancien)",
+            "PC NUC + alim (nouveau)",
+            "Hub USBC/USB",
+            "Pied multi-bras",
+            "Souris",
+            "Clavier x2"
+          ]
+        },
+        {
+          "nom": "BOX #21",
+          "items": [
+            "RJ45 80M x3",
+            "RJ45 30M x6",
+            "RJ45 5M x5",
+            "Enrouleur 220V x2",
+            "Alimentation 220V",
+            "Multiprise",
+            "Prise Maréchal 220V x2"
+          ]
+        },
+        {
+          "nom": "BOX #38",
+          "items": [
+            "Écrans x3",
+            "Alimentation x3",
+            "Câble DisplayPort",
+            "Câble HDMI x2"
+          ]
+        },
+        {
+          "nom": "BOX #DAV 2",
+          "items": [
+            "Caméra x4",
+            "Switch + alim x2",
+            "Boitier phonie x3",
+            "Casque x3"
+          ]
+        },
+        {
+          "nom": "BOX #128",
+          "items": [
+            "S6 (décalé)",
+            "S26 (décalé)",
+            "S12 (droit)",
+            "S13 (droit)",
+            "Drive Unit 15 / 19 / 98"
+          ]
+        },
+        {
+          "nom": "BOX #82",
+          "items": [
+            "Balance #40004928 (27/11/28)"
+          ]
+        },
+        {
+          "nom": "BOX #219-1/6",
+          "items": [
+            "Pige TP P38",
+            "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+            "Aspi TO A26 / A27 / A71"
+          ]
+        },
+        {
+          "nom": "BOX #220-2/6",
+          "items": [
+            "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+            "JP TO 68/19 J30 / J34 / J38",
+            "JP TO 51B séchage J12",
+            "Série 1 L56 / L57 / L61"
+          ]
+        },
+        {
+          "nom": "BOX #221-3/6",
+          "items": [
+            "Mini Lance L23 (horizontale)",
+            "Mini Lance L26 / L27",
+            "Pige TO P18 / P42",
+            "Bride étanche B42 / B47",
+            "Adaptateur gauche B32 / B38"
+          ]
+        },
+        {
+          "nom": "BOX #222-4/6",
+          "items": [
+            "Tape TO pleine B6 / B7",
+            "Tape TO séchage B99 / B52 / B4 / B8",
+            "PDR moteur 92",
+            "Caisse fastners 6819 / 138"
+          ]
+        },
+        {
+          "nom": "BOX #225-1/3",
+          "items": [
+            "Pige TP P38",
+            "Aspi TP A27"
+          ]
+        },
+        {
+          "nom": "BOX #226-2/3",
+          "items": [
+            "Pige TO P90 / P21 / P23",
+            "Tape pleine TO C2 / C4 / C5 / C9 / C12"
+          ]
+        },
+        {
+          "nom": "BOX #227-3/3",
+          "items": []
+        },
+        {
+          "nom": "Caisse à pomme #CaP_1",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_2",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_3",
+          "items": [
+            "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_4",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
+            "Inline filter box",
+            "Caisse sécheur"
+          ]
+        },
+        {
+          "nom": "Caisse Raccord #Rac_2",
+          "items": [
+            "T HP",
+            "T JP",
+            "T Wilden",
+            "Raccord SED 1300 GPL/1\"M",
+            "Raccord SED 900 RBE11/1\"M",
+            "Raccord 1,5\"M/Staubli RBE11 x2",
+            "Collier anti-fouettement x10"
+          ]
+        },
+        {
+          "nom": "Servante #Serv_2",
+          "items": [
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #53",
+          "items": [
+            "Enclosure 53"
+          ]
+        },
+        {
+          "nom": "Enclosure #54",
+          "items": [
+            "Enclosure 54"
+          ]
+        },
+        {
+          "nom": "BOX #110",
+          "items": [
+            "Fixture S1 110"
+          ]
+        },
+        {
+          "nom": "BOX #103",
+          "items": [
+            "Fixture S1 103"
+          ]
+        },
+        {
+          "nom": "BOX #100",
+          "items": [
+            "Fixture S1 100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equip2",
+      "nom": "Equipement 2",
+      "ref": "LGTN 017003-0",
+      "sap": "30083797",
+      "categorie": "Équipement",
+      "couleur": "#0e7490",
+      "couleurNom": "Cyan",
+      "caisses": [
+        {
+          "nom": "BOX #151",
+          "items": [
+            "PC GIBR + alim (ancien)",
+            "PC NUC 3 + alim + dongle",
+            "Hub USBC/USB",
+            "Pied multi-bras",
+            "Multiprise",
+            "Souris + tapis",
+            "Clavier x2"
+          ]
+        },
+        {
+          "nom": "BOX #22",
+          "items": [
+            "RJ45 80M x4",
+            "RJ45 30M x7",
+            "RJ45 5M x5",
+            "Enrouleur 220V x2",
+            "Multiprise",
+            "Prise Maréchal 220V x2"
+          ]
+        },
+        {
+          "nom": "BOX #39",
+          "items": [
+            "Écrans x3",
+            "Alimentation x3",
+            "Câble DisplayPort",
+            "Câble HDMI x3"
+          ]
+        },
+        {
+          "nom": "BOX #DAV 3",
+          "items": [
+            "Caméra x4",
+            "Switch + alim x2",
+            "Boitiers phonie x2",
+            "Casque x3"
+          ]
+        },
+        {
+          "nom": "BOX #127",
+          "items": [
+            "S1 / S2 / S10 / S15",
+            "Drive Unit 14/17 x2",
+            "Drive Unit 20/99 x2"
+          ]
+        },
+        {
+          "nom": "BOX #83",
+          "items": [
+            "Balance #40004377 (28/11/2028)"
+          ]
+        },
+        {
+          "nom": "BOX #40",
+          "items": [
+            "Splitter Power_1",
+            "Splitter Power_2",
+            "Splitter Power_3",
+            "Splitter Power_4",
+            "Splitter Codeur_1",
+            "Splitter Codeur_2",
+            "Splitter Codeur_3",
+            "Splitter Codeur_4",
+            "Cable Enclosure - 50_1",
+            "Cable Enclosure - 50_2",
+            "Cable Enclosure - 50_3",
+            "Cable Enclosure - 100_1",
+            "Cable Enclosure - 100_2"
+          ]
+        },
+        {
+          "nom": "BOX #214-1/5",
+          "items": [
+            "Pige TP P45 / P0 / P40",
+            "Aspi TP A23 / A24 / A19 / A28",
+            "Aspi TO A24 / A50 / A49 / A25 / A51",
+            "JP TP J25 / J29 / J27 / J28",
+            "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40"
+          ]
+        },
+        {
+          "nom": "BOX #215-2/5",
+          "items": [
+            "Série 1 L58 / L59 / L60"
+          ]
+        },
+        {
+          "nom": "BOX #216-3/5",
+          "items": [
+            "Mini Lance L21 (horizontale)",
+            "Mini Lance L28 / L24 / L25",
+            "Pige TO P14/P15 / P16/P99",
+            "Bride étanche B40/B41 / B43/B48",
+            "Adaptateur droit B32/B33 / B37/B41",
+            "Adaptateur gauche B6/B30 / B38/B40"
+          ]
+        },
+        {
+          "nom": "BOX #217-4/5",
+          "items": [
+            "Série 1 L64",
+            "Caisse fastners 6819 / 135"
+          ]
+        },
+        {
+          "nom": "BOX #218-5/5",
+          "items": [
+            "Tape TP B2 / B3 / B4",
+            "Tape TO pleine B24/B62 / B63/B64",
+            "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+            "Box 95 PDR moteur",
+            "Caisse fastners 6819 / 136"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_5",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_6",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_7",
+          "items": [
+            "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_8",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
+            "Inline filter box",
+            "Caisse sécheur x2"
+          ]
+        },
+        {
+          "nom": "Caisse Raccord #Rac_4",
+          "items": [
+            "T HP",
+            "T JP",
+            "T Wilden",
+            "Raccord SED 1300 GPL/1\"M",
+            "Raccord SED 900 RBE11/1\"M",
+            "Raccord 1,5\"M/Staubli RBE11 x2",
+            "Collier anti-fouettement x10"
+          ]
+        },
+        {
+          "nom": "Servante #Serv_1",
+          "items": [
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #51",
+          "items": [
+            "Enclosure 51"
+          ]
+        },
+        {
+          "nom": "Enclosure #55",
+          "items": [
+            "Enclosure 55"
+          ]
+        },
+        {
+          "nom": "BOX #36",
+          "items": [
+            "Écrans x3"
+          ]
+        },
+        {
+          "nom": "BOX #30",
+          "items": [
+            "PC Portable"
+          ]
+        },
+        {
+          "nom": "BOX #41",
+          "items": [
+            "Cables Enclosure"
+          ]
+        },
+        {
+          "nom": "BOX #111",
+          "items": [
+            "Fixture S1 111"
+          ]
+        },
+        {
+          "nom": "BOX #109",
+          "items": [
+            "Fixture S1 109"
+          ]
+        },
+        {
+          "nom": "BOX #105",
+          "items": [
+            "Fixture S1 105"
+          ]
+        },
+        {
+          "nom": "BOX #102",
+          "items": [
+            "Fixture S1 102"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equip3",
+      "nom": "Equipement 3",
+      "ref": "TPSU 210109-3",
+      "sap": "224034",
+      "categorie": "Équipement",
+      "couleur": "#b45309",
+      "couleurNom": "Orange",
+      "caisses": [
+        {
+          "nom": "BOX #152",
+          "items": [
+            "PC GIBR + alim (ancien)",
+            "PC NUC + alim (nouveau)",
+            "Hub USBC/USB",
+            "Pied multi-bras",
+            "Souris + tapis",
+            "Clavier x2"
+          ]
+        },
+        {
+          "nom": "BOX #23",
+          "items": [
+            "RJ45 80M x3",
+            "RJ45 30M x6",
+            "RJ45 5M x5",
+            "Enrouleur 220V x2",
+            "Alimentation 220V",
+            "Multiprise",
+            "Prise Maréchal 220V x2"
+          ]
+        },
+        {
+          "nom": "BOX #XX",
+          "items": [
+            "Écrans x3",
+            "Alimentation x3",
+            "Câble DisplayPort",
+            "Câble HDMI x2"
+          ]
+        },
+        {
+          "nom": "BOX #DAV 1",
+          "items": [
+            "Caméra x4",
+            "Switch + alim x2",
+            "Boitier phonie x3",
+            "Casque x3"
+          ]
+        },
+        {
+          "nom": "BOX #121",
+          "items": [
+            "S93 / S4",
+            "Drive Unit D2 / D4 / D6 / D7"
+          ]
+        },
+        {
+          "nom": "BOX #122",
+          "items": [
+            "S92 / S6",
+            "Drive Unit D1 / D3 / D5"
+          ]
+        },
+        {
+          "nom": "BOX #81",
+          "items": [
+            "Balance 81"
+          ]
+        },
+        {
+          "nom": "BOX #206-1/3",
+          "items": [
+            "JP TP J23 / J26 / J34 / J36",
+            "Aspi TP A17 / A18 / A45",
+            "Pige P1 / P2 / P3 / P12 / P13 / P15"
+          ]
+        },
+        {
+          "nom": "BOX #207-2/3",
+          "items": [
+            "L5 / L6",
+            "Caisse fastners 4722 / 133"
+          ]
+        },
+        {
+          "nom": "BOX #208-3/3",
+          "items": [
+            "Mini Lance L1 / L2 / L3 / L4",
+            "Bride étanche E4 / E8",
+            "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+            "T 02 / T 03"
+          ]
+        },
+        {
+          "nom": "BOX #200-1/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #201-2/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #202-3/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #203-4/4",
+          "items": []
+        },
+        {
+          "nom": "Caisse à pomme #CaP_10",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_11",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_13",
+          "items": [
+            "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_16",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
+            "Inline filter box",
+            "Caisse sécheur"
+          ]
+        },
+        {
+          "nom": "Caisse Raccord #Rac_3",
+          "items": [
+            "T HP",
+            "T JP",
+            "T Wilden",
+            "Raccord SED 1300 GPL/1\"M",
+            "Raccord SED 900 RBE11/1\"M",
+            "Raccord 1,5\"M/Staubli RBE11 x2",
+            "Collier anti-fouettement x10"
+          ]
+        },
+        {
+          "nom": "Servante #Serv_3",
+          "items": [
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #58",
+          "items": [
+            "Enclosure 58"
+          ]
+        },
+        {
+          "nom": "demi Enclosure #56",
+          "items": [
+            "demi Enclosure 56"
+          ]
+        },
+        {
+          "nom": "demi Enclosure #57",
+          "items": [
+            "demi Enclosure 57"
+          ]
+        },
+        {
+          "nom": "BOX #42",
+          "items": [
+            "Cables Enclosure"
+          ]
+        },
+        {
+          "nom": "BOX #32",
+          "items": [
+            "PC"
+          ]
+        },
+        {
+          "nom": "BOX #124",
+          "items": [
+            "Drive Unit LH"
+          ]
+        },
+        {
+          "nom": "BOX #123",
+          "items": [
+            "Drive Unit LH"
+          ]
+        },
+        {
+          "nom": "BOX #108",
+          "items": [
+            "Fixture S1 108"
+          ]
+        },
+        {
+          "nom": "BOX #107",
+          "items": [
+            "Fixture S1 107"
+          ]
+        },
+        {
+          "nom": "BOX #106",
+          "items": [
+            "Fixture S1 106"
+          ]
+        },
+        {
+          "nom": "BOX #104",
+          "items": [
+            "Fixture S1 104"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "equip4",
+      "nom": "Equipement 4 Palette",
+      "ref": "WEEU 112003-3",
+      "sap": "30042923",
+      "categorie": "Équipement",
+      "couleur": "#4d7c0f",
+      "couleurNom": "Olive",
+      "caisses": [
+        {
+          "nom": "BOX #153",
+          "items": [
+            "PC GIBR + alim (ancien)",
+            "PC NUC N°4 + alim + dongle",
+            "Hub USBC/USB",
+            "Pied multi-bras",
+            "Multiprise x2",
+            "Souris + tapis x4",
+            "Clavier x2",
+            "Alim 220V x4"
+          ]
+        },
+        {
+          "nom": "BOX #24",
+          "items": [
+            "RJ45 80M x3",
+            "RJ45 30M x7",
+            "RJ45 5M x5",
+            "Multiprise x2",
+            "Enrouleur 220V x2",
+            "Alim 220V",
+            "Câble phonie"
+          ]
+        },
+        {
+          "nom": "BOX #37",
+          "items": [
+            "Écran x3",
+            "Alimentation x3",
+            "Câble DisplayPort x2",
+            "Câble HDMI x2"
+          ]
+        },
+        {
+          "nom": "BOX #DAV 4",
+          "items": [
+            "Caméra x4",
+            "Switch + alim x2",
+            "Boitiers phonie x2",
+            "Casque x3"
+          ]
+        },
+        {
+          "nom": "BOX #129",
+          "items": [
+            "S25 / S27 / S28 / S93 (décalé)",
+            "Drive Unit 6819 D16 / D18 / D21"
+          ]
+        },
+        {
+          "nom": "BOX #80",
+          "items": [
+            "Balance #40004928 (27/11/2028)"
+          ]
+        },
+        {
+          "nom": "BOX #43",
+          "items": [
+            "Câbles 50' x3",
+            "Câbles 100' x2",
+            "Splitters codeur x4",
+            "Splitters moteur x4",
+            "Enclosure 51 / 52 + alim 220V"
+          ]
+        },
+        {
+          "nom": "BOX #210-1/4",
+          "items": [
+            "Mini Lance L20 / L22 (horizontales)",
+            "Mini Lance L19",
+            "Pige TO SUP P01/P02",
+            "Pige TO P19/P20/P22"
+          ]
+        },
+        {
+          "nom": "BOX #211-2/4",
+          "items": [
+            "Aspi TP 5519/4722 A19/A34",
+            "Aspi TP A28/A41",
+            "Aspi TP A33"
+          ]
+        },
+        {
+          "nom": "BOX #212-3/4",
+          "items": [
+            "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+            "Tape TO pleine T01",
+            "Bride étanche E1/E3/E6",
+            "PDR moteur 94",
+            "Caisse fastners 4722 / 132 & 134"
+          ]
+        },
+        {
+          "nom": "BOX #213-4/4",
+          "items": [
+            "JP TP J37/J38",
+            "JP TP J19/J20"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_9",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_12",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_14",
+          "items": [
+            "12 Tuyaux 2\" 8M"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_15",
+          "items": [
+            "12 Tuyaux 1,5\"",
+            "7 Tuyaux 1,5\" court",
+            "9 Tuyaux 1\" long",
+            "1 Rétention",
+            "1 Tuyaux 1\" SED"
+          ]
+        },
+        {
+          "nom": "Caisse Raccord #Rac_1",
+          "items": []
+        },
+        {
+          "nom": "Servante #Serv_4",
+          "items": [
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #52",
+          "items": [
+            "Enclosure 52"
+          ]
+        },
+        {
+          "nom": "BOX #33",
+          "items": [
+            "PC"
+          ]
+        }
+      ]
+    }
+  ]
+}
