@@ -1,35 +1,45 @@
 {
-  "_note": "POC colisage PIGVS. Structure : conteneurs > caisses > items. Les ROLL ne sont PAS des caisses : leur contenu (CART, TPO, SPICE, CAVALRI, perches...) est remonté au niveau caisse.",
+  "_note": "Colisage PIGVS. Les noms de caisses sont strictement alignes sur l'onglet Parametres_Box de PIGVS - BD_Materiel.xlsx (le # est conserve). Les ROLL ne sont PAS des caisses : leur contenu est remonte au niveau caisse.",
+  "_source": "PIGVS - BD_Materiel.xlsx (Parametres_Box, Parametres_Conteneurs, Affectation_Box)",
+  "_aValider": [
+    "Caisse à pomme #CaP_5 a #CaP_16 : la repartition precise du contenu entre chaque caisse a ete deduite du modele de l'Equipement 1 (onglet Affectation_Box). A confirmer lors du premier releve terrain.",
+    "BOX #200-1/4 a #203-4/4 (Equipement 3) : caisses presentes dans la BD mais sans contenu dans le colisage initial. A renseigner.",
+    "BOX #227-3/3 (Equipement 1) : contenu a renseigner.",
+    "Equipement 3 : le colisage initial mentionnait 'BOX 39 - Ecrans', mais la BD affecte BOX #39 a l'Equipement 2. BOX #XX (SAP 30127709) est la caisse ecrans de l'Equipement 3 selon Emplacement_Box.",
+    "ETV3 : le colisage initial comportait une caisse SPICE GUIDE&TP 004 (guide petite x6 / grande x5). L'onglet Emplacement_Box affecte Spice Guide #04 a l'ETV4 : la caisse a donc ete retiree d'ETV3. A verifier sur le terrain.",
+    "Equipement 2 : BOX #83 (balance) est notee 'Non affectee' dans la BD mais 'Equipement 2' dans Emplacement_Box."
+  ],
   "conteneurs": [
     {
       "id": "etv1",
       "nom": "ETV1",
       "ref": "WEEU 061601-3",
+      "sap": "30041536",
       "categorie": "ETV",
       "couleur": "#d93838",
       "couleurNom": "Rouge",
       "caisses": [
         {
-          "nom": "Baie 1",
+          "nom": "Baie ETV #1",
           "items": [
-            "Baie 1"
+            "Baie ETV #1"
           ]
         },
         {
-          "nom": "Baie 4",
+          "nom": "Baie ETV #4",
           "items": [
-            "Baie 4",
+            "Baie ETV #4",
             "Caisse sécheur 62"
           ]
         },
         {
-          "nom": "Baie 7",
+          "nom": "Baie ETV #7",
           "items": [
-            "Baie 7"
+            "Baie ETV #7"
           ]
         },
         {
-          "nom": "CART 01",
+          "nom": "CART #01",
           "items": [
             "CART + ombilique",
             "Entretoise 17mm",
@@ -38,7 +48,7 @@
           ]
         },
         {
-          "nom": "TPO 01",
+          "nom": "TPO #01",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -52,7 +62,7 @@
           ]
         },
         {
-          "nom": "SPICE 01",
+          "nom": "SPICE #01",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -61,14 +71,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 01",
+          "nom": "CAVALRI #01",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 01",
+          "nom": "Sac de câble #01",
           "items": [
             "A1",
             "R1",
@@ -81,7 +91,7 @@
           ]
         },
         {
-          "nom": "SPICE-TP-T1-001",
+          "nom": "SPICE-TP-T1 #001",
           "items": [
             "Interface type 1",
             "Vis fixation 16 x2",
@@ -94,7 +104,7 @@
           ]
         },
         {
-          "nom": "SPICE GUIDE&TP 001",
+          "nom": "Spice Guide #01",
           "items": [
             "Guide effecteur x1",
             "Guide petite taille x6",
@@ -102,13 +112,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 01",
+          "nom": "Fibre optique #01",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "SPICE-TP-T2-001",
+          "nom": "SPICE-TP-T2 #001",
           "items": [
             "Interface type 2",
             "Vis de fixation 33 x2",
@@ -116,7 +126,7 @@
           ]
         },
         {
-          "nom": "SPICE-TP-T2-002",
+          "nom": "SPICE-TP-T2 #002",
           "items": [
             "Vis fixation 37 x2",
             "Vis fixation 41 x1",
@@ -124,7 +134,7 @@
           ]
         },
         {
-          "nom": "PERCHE F16315",
+          "nom": "PERCHE #F16315",
           "items": [
             "Boitier Visioprobe",
             "Perche",
@@ -134,7 +144,7 @@
           ]
         },
         {
-          "nom": "Extraction corps 01",
+          "nom": "Extraction Corps #01",
           "items": [
             "Gabarit sans vidéo 5m 71",
             "Gabarit sans vidéo 3m 72",
@@ -147,7 +157,7 @@
           ]
         },
         {
-          "nom": "Extraction corps 02",
+          "nom": "Extraction Corps #02",
           "items": [
             "Gabarit sans vidéo 5m 49",
             "Grand crochet simple",
@@ -159,7 +169,7 @@
           ]
         },
         {
-          "nom": "Extraction corps 05",
+          "nom": "Extraction Corps #05",
           "items": [
             "Gabarit vidéo 5m 273",
             "Alim x2",
@@ -167,13 +177,13 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 01",
+          "nom": "Vrac Roll #01",
           "items": [
             "Table"
           ]
         },
         {
-          "nom": "CART 04",
+          "nom": "CART #04",
           "items": [
             "CART + ombilique",
             "Entretoise 17mm",
@@ -182,7 +192,7 @@
           ]
         },
         {
-          "nom": "TPO 04",
+          "nom": "TPO #04",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -196,7 +206,7 @@
           ]
         },
         {
-          "nom": "SPICE 04",
+          "nom": "SPICE #04",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -205,14 +215,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 04",
+          "nom": "CAVALRI #04",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 04",
+          "nom": "Sac de câble #04",
           "items": [
             "A1",
             "R1",
@@ -225,13 +235,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 04",
+          "nom": "Fibre optique #04",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "SPICE-TP-T1-002",
+          "nom": "SPICE-TP-T1 #002",
           "items": [
             "Interface type 1",
             "Vis fixation 16 x2",
@@ -244,7 +254,7 @@
           ]
         },
         {
-          "nom": "SPICE-SAX-001",
+          "nom": "SPICE-SAX #001",
           "items": [
             "Enrouleur sabre axial 151",
             "Enrouleur sabre axial 178",
@@ -256,7 +266,7 @@
           ]
         },
         {
-          "nom": "PERCHE F16311",
+          "nom": "PERCHE #F16311",
           "items": [
             "Boitier Visioprobe",
             "Perche",
@@ -266,7 +276,7 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 04",
+          "nom": "Vrac Roll #04",
           "items": [
             "Table",
             "Valise Fastner",
@@ -274,7 +284,7 @@
           ]
         },
         {
-          "nom": "CART 07",
+          "nom": "CART #07",
           "items": [
             "CART + ombilique",
             "Entretoise 17mm",
@@ -283,7 +293,7 @@
           ]
         },
         {
-          "nom": "TPO 07",
+          "nom": "TPO #07",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -297,7 +307,7 @@
           ]
         },
         {
-          "nom": "SPICE 07",
+          "nom": "SPICE #07",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -306,14 +316,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 07",
+          "nom": "CAVALRI #07",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 07",
+          "nom": "Sac de câble #07",
           "items": [
             "A1",
             "R1",
@@ -326,7 +336,7 @@
           ]
         },
         {
-          "nom": "SPICE GUIDE & TP 002",
+          "nom": "Spice Guide #02",
           "items": [
             "Guide grande taille x5",
             "Guide petite taille x6",
@@ -334,13 +344,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 07",
+          "nom": "Fibre optique #07",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "PERCHE F16314",
+          "nom": "PERCHE #F16314",
           "items": [
             "Boitier Visioprobe",
             "Caméra F16314",
@@ -351,7 +361,7 @@
           ]
         },
         {
-          "nom": "Extraction CART 01",
+          "nom": "Extraction CART #01",
           "items": [
             "Pelle RR",
             "Petite pelle",
@@ -360,7 +370,7 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 07",
+          "nom": "Vrac Roll #07",
           "items": [
             "Aspirateur",
             "Caisse bleue divers",
@@ -369,7 +379,7 @@
           ]
         },
         {
-          "nom": "Séchage (ROLL 10)",
+          "nom": "Vrac Roll #10",
           "items": [
             "Interface sécheur bleu 8",
             "Interface sécheur bleu 1",
@@ -386,12 +396,24 @@
             "Sécheur jaune 2",
             "Sécheur jaune 3",
             "Sécheur jaune 4",
-            "Sonde 6mm 01",
+            "Sonde 6mm #01",
             "Alimentation sonde 6mm",
             "Câble raccord écran/sonde",
             "Micro USB (dans écran)",
             "Gaine séchage jaune x6",
             "Gaine séchage bleue x4"
+          ]
+        },
+        {
+          "nom": "Sonde 6mm #01",
+          "items": [
+            "Sonde 6mm 01"
+          ]
+        },
+        {
+          "nom": "Aspirateur #Venturi 1",
+          "items": [
+            "Aspirateur Venturi"
           ]
         }
       ]
@@ -400,25 +422,26 @@
       "id": "etv2",
       "nom": "ETV2",
       "ref": "WEEU 051702-6",
+      "sap": "30026110",
       "categorie": "ETV",
       "couleur": "#e8a13a",
       "couleurNom": "Jaune",
       "caisses": [
         {
-          "nom": "Baie 2",
+          "nom": "Baie ETV #2",
           "items": [
-            "Baie 2",
+            "Baie ETV #2",
             "Caisse sécheur 60"
           ]
         },
         {
-          "nom": "Baie 5",
+          "nom": "Baie ETV #5",
           "items": [
-            "Baie 5"
+            "Baie ETV #5"
           ]
         },
         {
-          "nom": "CART 02",
+          "nom": "CART #02",
           "items": [
             "CART + ombilique",
             "Entretoise 17mm",
@@ -427,7 +450,7 @@
           ]
         },
         {
-          "nom": "TPO 02",
+          "nom": "TPO #02",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -440,7 +463,7 @@
           ]
         },
         {
-          "nom": "SPICE 02",
+          "nom": "SPICE #02",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -449,14 +472,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 02",
+          "nom": "CAVALRI #02",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 02",
+          "nom": "Sac de câble #02",
           "items": [
             "A1",
             "R1",
@@ -469,7 +492,7 @@
           ]
         },
         {
-          "nom": "SPICE GUIDE&TP 003",
+          "nom": "Spice Guide #03",
           "items": [
             "Guide effecteur x1",
             "Guide petite taille x6",
@@ -477,7 +500,7 @@
           ]
         },
         {
-          "nom": "PERCHE F16307",
+          "nom": "PERCHE #F16307",
           "items": [
             "Boitier Visioprobe",
             "Caméra F16307",
@@ -488,13 +511,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 02",
+          "nom": "Fibre optique #02",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "Extraction corps 03",
+          "nom": "Extraction Corps #03",
           "items": [
             "Gabarit sans vidéo 3m 73",
             "Gabarit sans vidéo 5m 70",
@@ -510,7 +533,7 @@
           ]
         },
         {
-          "nom": "Extraction corps 06",
+          "nom": "Extraction Corps #06",
           "items": [
             "Gabarit vidéo 5m 182",
             "Boitier vidéo + alim",
@@ -518,7 +541,7 @@
           ]
         },
         {
-          "nom": "Extraction CART 02",
+          "nom": "Extraction CART #02",
           "items": [
             "Pelle RR",
             "Petite pelle",
@@ -527,14 +550,14 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 02",
+          "nom": "Vrac Roll #02",
           "items": [
-            "Sacoche d’extraction N4",
+            "Sacoche d'extraction N4",
             "Rallonge 380 V x2"
           ]
         },
         {
-          "nom": "CART 05",
+          "nom": "CART #05",
           "items": [
             "Entretoise 17mm",
             "Entretoise 35mm",
@@ -542,7 +565,7 @@
           ]
         },
         {
-          "nom": "TPO 05",
+          "nom": "TPO #05",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -556,7 +579,7 @@
           ]
         },
         {
-          "nom": "SPICE 05",
+          "nom": "SPICE #05",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -565,14 +588,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 05",
+          "nom": "CAVALRI #05",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 05",
+          "nom": "Sac de câble #05",
           "items": [
             "A1",
             "R1",
@@ -585,13 +608,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 05",
+          "nom": "Fibre optique #05",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "SPICE-TP-T1-003",
+          "nom": "SPICE-TP-T1 #003",
           "items": [
             "Interface type 1",
             "Vis fixation 16 x2",
@@ -603,7 +626,7 @@
           ]
         },
         {
-          "nom": "SPICE-SAX-002",
+          "nom": "SPICE-SAX #002",
           "items": [
             "Enrouleur sabre axial 152",
             "Control Unit 140",
@@ -613,7 +636,7 @@
           ]
         },
         {
-          "nom": "PERCHE F16145",
+          "nom": "PERCHE #F16145",
           "items": [
             "Boitier Visioprobe",
             "Perche",
@@ -623,7 +646,7 @@
           ]
         },
         {
-          "nom": "SPICE-TP-T2-003",
+          "nom": "SPICE-TP-T2 #003",
           "items": [
             "Interface type 2",
             "Vis de fixation 33 x2",
@@ -631,7 +654,7 @@
           ]
         },
         {
-          "nom": "Séchage (ROLL 08)",
+          "nom": "Vrac Roll #08",
           "items": [
             "Interface séchage 5",
             "Interface séchage 6",
@@ -641,13 +664,29 @@
             "Interface sécheur bleu 6",
             "Sécheur bleu 5 + réchauffeur 5",
             "Sécheur bleu 6 + réchauffeur 6",
-            "Sonde 6mm 002",
+            "Sonde 6mm #02",
             "Gaine séchage jaune x1",
             "Gaine séchage bleue x1",
             "Aspirateur",
             "Sacoche FASTNER",
             "Table",
             "Caisse divers 04"
+          ]
+        },
+        {
+          "nom": "Vrac Roll #05",
+          "items": []
+        },
+        {
+          "nom": "Sonde 6mm #02",
+          "items": [
+            "Sonde 6mm 02"
+          ]
+        },
+        {
+          "nom": "Aspirateur #Venturi 2",
+          "items": [
+            "Aspirateur Venturi"
           ]
         }
       ]
@@ -656,32 +695,33 @@
       "id": "etv3",
       "nom": "ETV3",
       "ref": "WEEU 051703-1",
+      "sap": "30026111",
       "categorie": "ETV",
       "couleur": "#1f9d55",
       "couleurNom": "Vert",
       "caisses": [
         {
-          "nom": "Baie 3",
+          "nom": "Baie ETV #3",
           "items": [
-            "Baie 3",
+            "Baie ETV #3",
             "Caisse sécheur 61"
           ]
         },
         {
-          "nom": "Baie 5",
+          "nom": "Baie ETV #6",
           "items": [
-            "Baie 5"
+            "Baie ETV #6"
           ]
         },
         {
-          "nom": "CART 03",
+          "nom": "CART #03",
           "items": [
             "CART + ombilique",
             "Entretoise 35mm"
           ]
         },
         {
-          "nom": "TPO 03",
+          "nom": "TPO #03",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -695,7 +735,7 @@
           ]
         },
         {
-          "nom": "SPICE 03",
+          "nom": "SPICE #03",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -704,14 +744,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 03",
+          "nom": "CAVALRI #03",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 03",
+          "nom": "Sac de câble #03",
           "items": [
             "A1",
             "R1",
@@ -724,20 +764,13 @@
           ]
         },
         {
-          "nom": "SPICE GUIDE&TP 004",
-          "items": [
-            "Guide petite taille x6",
-            "Guide grande taille x5"
-          ]
-        },
-        {
-          "nom": "Fibre optique 03",
+          "nom": "Fibre optique #03",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "PERCHE F16313",
+          "nom": "PERCHE #F16313",
           "items": [
             "Boitier Visioprobe",
             "Perche",
@@ -747,7 +780,7 @@
           ]
         },
         {
-          "nom": "Extraction corps 04",
+          "nom": "Extraction Corps #04",
           "items": [
             "Gabarit sans vidéo 3m 74",
             "Gabarit sans vidéo 5m 68",
@@ -762,7 +795,7 @@
           ]
         },
         {
-          "nom": "Extraction CART 03",
+          "nom": "Extraction CART #03",
           "items": [
             "Pelle RR",
             "Petite pelle",
@@ -771,14 +804,18 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 03",
+          "nom": "Vrac Roll #03",
           "items": [
             "Aspirateur",
             "Chaises x3"
           ]
         },
         {
-          "nom": "TPO 06",
+          "nom": "CART #06",
+          "items": []
+        },
+        {
+          "nom": "TPO #06",
           "items": [
             "Interface GV",
             "Bloc motorisation",
@@ -791,7 +828,7 @@
           ]
         },
         {
-          "nom": "SPICE 06",
+          "nom": "SPICE #06",
           "items": [
             "Bloc principal",
             "Galet entrainement sabre",
@@ -800,14 +837,14 @@
           ]
         },
         {
-          "nom": "CAVALRI 06",
+          "nom": "CAVALRI #06",
           "items": [
             "Boitier CAVALRI",
             "Connecteurs Harting"
           ]
         },
         {
-          "nom": "SAC DE CABLE 06",
+          "nom": "Sac de câble #06",
           "items": [
             "A1",
             "R1",
@@ -820,13 +857,13 @@
           ]
         },
         {
-          "nom": "Fibre optique 06",
+          "nom": "Fibre optique #06",
           "items": [
             "Fibre + enrouleur"
           ]
         },
         {
-          "nom": "SPICE-TP-T1-004",
+          "nom": "SPICE-TP-T1 #004",
           "items": [
             "Interface type 1",
             "Vis fixation 16 x2",
@@ -838,7 +875,7 @@
           ]
         },
         {
-          "nom": "PERCHE F16312",
+          "nom": "PERCHE #F16312",
           "items": [
             "Boitier Visioprobe",
             "Caméra F16312",
@@ -849,14 +886,14 @@
           ]
         },
         {
-          "nom": "Vrac ROLL 06",
+          "nom": "Vrac Roll #06",
           "items": [
             "Chaises x4",
             "Table"
           ]
         },
         {
-          "nom": "SPICE-TP-T2-004",
+          "nom": "SPICE-TP-T2 #004",
           "items": [
             "Interface type 2",
             "Vis de fixation 33 x2",
@@ -864,7 +901,7 @@
           ]
         },
         {
-          "nom": "SPICE-TO-T3-001",
+          "nom": "SPICE-TP-T3 #001",
           "items": [
             "Interface type 3",
             "Vis fixation 30 x2",
@@ -872,7 +909,7 @@
           ]
         },
         {
-          "nom": "SPICE-TO-T3-002",
+          "nom": "SPICE-TP-T3 #002",
           "items": [
             "Interface type 3",
             "Vis fixation 30 x2",
@@ -880,19 +917,19 @@
           ]
         },
         {
-          "nom": "SPICE-TO-T4-001",
+          "nom": "SPICE-TP-T4 #001",
           "items": [
             "Interface type 4"
           ]
         },
         {
-          "nom": "SPICE-TO-T4-002",
+          "nom": "SPICE-TP-T4 #002",
           "items": [
             "Interface type 4"
           ]
         },
         {
-          "nom": "Séchage (ROLL 09)",
+          "nom": "Vrac Roll #09",
           "items": [
             "Interface sécheur jaune 7",
             "Interface sécheur jaune 8",
@@ -902,11 +939,17 @@
             "Interface sécheur bleu 8",
             "Sécheur bleu 7 + réchauffeur 7",
             "Sécheur bleu 8 + réchauffeur 8",
-            "Sonde 6mm 003",
+            "Sonde 6mm #03",
             "Gaine séchage bleue x1",
             "Gaine séchage jaune x3",
             "Tourets x4",
             "Coffret DS6/DS1"
+          ]
+        },
+        {
+          "nom": "Sonde 6mm #03",
+          "items": [
+            "Sonde 6mm 03"
           ]
         }
       ]
@@ -915,18 +958,19 @@
       "id": "etv4",
       "nom": "ETV4",
       "ref": "WEEU 051701-0",
+      "sap": "30026109",
       "categorie": "ETV",
       "couleur": "#0078D7",
       "couleurNom": "Bleu",
       "caisses": [
         {
-          "nom": "Caisse Altimétrie",
+          "nom": "Altimétrie #001",
           "items": [
             "Altimétrie"
           ]
         },
         {
-          "nom": "SPICE-SAX-003",
+          "nom": "SPICE-SAX #003",
           "items": [
             "Guide déflecteur PE1/6",
             "Jeu de câbles Vizaar x4",
@@ -936,7 +980,7 @@
           ]
         },
         {
-          "nom": "ETV SPICE PE5 003",
+          "nom": "SPICE-PE5 #003",
           "items": [
             "Guide déflecteur PE5",
             "Malette coussin d'air",
@@ -949,14 +993,14 @@
           ]
         },
         {
-          "nom": "SPICE GUIDE 002",
+          "nom": "Spice Guide #04",
           "items": [
             "Guide petite taille x4",
             "Guide grande taille x3"
           ]
         },
         {
-          "nom": "Divers ETV4",
+          "nom": "Vrac Roll #11",
           "items": [
             "Caisse divers + détendeur d'air",
             "Tuyaux d'air"
@@ -966,14 +1010,15 @@
     },
     {
       "id": "equip1",
-      "nom": "Équipement 1",
-      "ref": "WEEU 120821-1 (SAP 1610976) — 68/19 série",
+      "nom": "Equipement 1",
+      "ref": "WEEU 120821-1",
+      "sap": "1610976",
       "categorie": "Équipement",
       "couleur": "#6b21a8",
       "couleurNom": "Violet",
       "caisses": [
         {
-          "nom": "BOX 150 — PC GIBR / DAV",
+          "nom": "BOX #150",
           "items": [
             "PC GIBR + alim (ancien)",
             "PC NUC + alim (nouveau)",
@@ -984,7 +1029,7 @@
           ]
         },
         {
-          "nom": "BOX 21 — RJ45",
+          "nom": "BOX #21",
           "items": [
             "RJ45 80M x3",
             "RJ45 30M x6",
@@ -996,7 +1041,7 @@
           ]
         },
         {
-          "nom": "BOX 38 — Écrans",
+          "nom": "BOX #38",
           "items": [
             "Écrans x3",
             "Alimentation x3",
@@ -1005,7 +1050,7 @@
           ]
         },
         {
-          "nom": "BOX DAV 2",
+          "nom": "BOX #DAV 2",
           "items": [
             "Caméra x4",
             "Switch + alim x2",
@@ -1014,7 +1059,7 @@
           ]
         },
         {
-          "nom": "BOX 128 — Drive Units 68/19",
+          "nom": "BOX #128",
           "items": [
             "S6 (décalé)",
             "S26 (décalé)",
@@ -1024,13 +1069,13 @@
           ]
         },
         {
-          "nom": "BALANCE 82",
+          "nom": "BOX #82",
           "items": [
-            "Balance 82 — SAP 40004928 (27/11/28)"
+            "Balance #40004928 (27/11/28)"
           ]
         },
         {
-          "nom": "BOX 219 (1/6)",
+          "nom": "BOX #219-1/6",
           "items": [
             "Pige TP P38",
             "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
@@ -1038,7 +1083,7 @@
           ]
         },
         {
-          "nom": "BOX 220 (2/6)",
+          "nom": "BOX #220-2/6",
           "items": [
             "JP TP J25 / J35 / J26 / J24 / J50 / J33",
             "JP TO 68/19 J30 / J34 / J38",
@@ -1047,7 +1092,7 @@
           ]
         },
         {
-          "nom": "BOX 221 (3/6)",
+          "nom": "BOX #221-3/6",
           "items": [
             "Mini Lance L23 (horizontale)",
             "Mini Lance L26 / L27",
@@ -1057,7 +1102,7 @@
           ]
         },
         {
-          "nom": "BOX 222 (4/6)",
+          "nom": "BOX #222-4/6",
           "items": [
             "Tape TO pleine B6 / B7",
             "Tape TO séchage B99 / B52 / B4 / B8",
@@ -1066,33 +1111,54 @@
           ]
         },
         {
-          "nom": "BOX 225 (1/3)",
+          "nom": "BOX #225-1/3",
           "items": [
             "Pige TP P38",
             "Aspi TP A27"
           ]
         },
         {
-          "nom": "BOX 226 (2/3 & 3/3)",
+          "nom": "BOX #226-2/3",
           "items": [
             "Pige TO P90 / P21 / P23",
             "Tape pleine TO C2 / C4 / C5 / C9 / C12"
           ]
         },
         {
-          "nom": "Caisses à pomme 1-4",
+          "nom": "BOX #227-3/3",
+          "items": []
+        },
+        {
+          "nom": "Caisse à pomme #CaP_1",
           "items": [
-            "Tuyaux 2\" 8M x12 (x2)",
-            "Tuyaux HP 1\" x12",
-            "Tuyaux ½\" HP x3",
-            "Tuyaux 1,5\" x12",
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_2",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_3",
+          "items": [
             "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_4",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
             "Inline filter box",
             "Caisse sécheur"
           ]
         },
         {
-          "nom": "Caisse raccords hydrauliques 2",
+          "nom": "Caisse Raccord #Rac_2",
           "items": [
             "T HP",
             "T JP",
@@ -1104,23 +1170,54 @@
           ]
         },
         {
-          "nom": "Servante",
+          "nom": "Servante #Serv_2",
           "items": [
             "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #53",
+          "items": [
+            "Enclosure 53"
+          ]
+        },
+        {
+          "nom": "Enclosure #54",
+          "items": [
+            "Enclosure 54"
+          ]
+        },
+        {
+          "nom": "BOX #110",
+          "items": [
+            "Fixture S1 110"
+          ]
+        },
+        {
+          "nom": "BOX #103",
+          "items": [
+            "Fixture S1 103"
+          ]
+        },
+        {
+          "nom": "BOX #100",
+          "items": [
+            "Fixture S1 100"
           ]
         }
       ]
     },
     {
       "id": "equip2",
-      "nom": "Équipement 2",
-      "ref": "LGTN 017003-0 (SAP 30083797) — 68/19 //",
+      "nom": "Equipement 2",
+      "ref": "LGTN 017003-0",
+      "sap": "30083797",
       "categorie": "Équipement",
       "couleur": "#0e7490",
       "couleurNom": "Cyan",
       "caisses": [
         {
-          "nom": "BOX 151 — PC GIBR / DAV",
+          "nom": "BOX #151",
           "items": [
             "PC GIBR + alim (ancien)",
             "PC NUC 3 + alim + dongle",
@@ -1132,7 +1229,7 @@
           ]
         },
         {
-          "nom": "BOX 22 — RJ45",
+          "nom": "BOX #22",
           "items": [
             "RJ45 80M x4",
             "RJ45 30M x7",
@@ -1143,7 +1240,7 @@
           ]
         },
         {
-          "nom": "BOX Écrans",
+          "nom": "BOX #39",
           "items": [
             "Écrans x3",
             "Alimentation x3",
@@ -1152,7 +1249,7 @@
           ]
         },
         {
-          "nom": "BOX DAV 1",
+          "nom": "BOX #DAV 3",
           "items": [
             "Caméra x4",
             "Switch + alim x2",
@@ -1161,7 +1258,7 @@
           ]
         },
         {
-          "nom": "BOX 127 — Drive Units 68/19",
+          "nom": "BOX #127",
           "items": [
             "S1 / S2 / S10 / S15",
             "Drive Unit 14/17 x2",
@@ -1169,13 +1266,31 @@
           ]
         },
         {
-          "nom": "BALANCE 80",
+          "nom": "BOX #83",
           "items": [
-            "Balance 80 — SAP 40004377 (28/11/2028)"
+            "Balance #40004377 (28/11/2028)"
           ]
         },
         {
-          "nom": "BOX 214 (1/5)",
+          "nom": "BOX #40",
+          "items": [
+            "Splitter Power_1",
+            "Splitter Power_2",
+            "Splitter Power_3",
+            "Splitter Power_4",
+            "Splitter Codeur_1",
+            "Splitter Codeur_2",
+            "Splitter Codeur_3",
+            "Splitter Codeur_4",
+            "Cable Enclosure - 50_1",
+            "Cable Enclosure - 50_2",
+            "Cable Enclosure - 50_3",
+            "Cable Enclosure - 100_1",
+            "Cable Enclosure - 100_2"
+          ]
+        },
+        {
+          "nom": "BOX #214-1/5",
           "items": [
             "Pige TP P45 / P0 / P40",
             "Aspi TP A23 / A24 / A19 / A28",
@@ -1185,13 +1300,13 @@
           ]
         },
         {
-          "nom": "BOX 215 (2/5)",
+          "nom": "BOX #215-2/5",
           "items": [
             "Série 1 L58 / L59 / L60"
           ]
         },
         {
-          "nom": "BOX 216 (3/5)",
+          "nom": "BOX #216-3/5",
           "items": [
             "Mini Lance L21 (horizontale)",
             "Mini Lance L28 / L24 / L25",
@@ -1202,14 +1317,14 @@
           ]
         },
         {
-          "nom": "BOX 217 (4/5)",
+          "nom": "BOX #217-4/5",
           "items": [
             "Série 1 L64",
             "Caisse fastners 6819 / 135"
           ]
         },
         {
-          "nom": "BOX 218 (5/5)",
+          "nom": "BOX #218-5/5",
           "items": [
             "Tape TP B2 / B3 / B4",
             "Tape TO pleine B24/B62 / B63/B64",
@@ -1219,19 +1334,36 @@
           ]
         },
         {
-          "nom": "Caisses à pomme 5-8",
+          "nom": "Caisse à pomme #CaP_5",
           "items": [
-            "Tuyaux 2\" 8M x12 (x2)",
-            "Tuyaux HP 1\" x12",
-            "Tuyaux ½\" HP x3",
-            "Tuyaux 1,5\" x12",
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_6",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_7",
+          "items": [
             "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_8",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
             "Inline filter box",
             "Caisse sécheur x2"
           ]
         },
         {
-          "nom": "Caisse raccords hydrauliques 3",
+          "nom": "Caisse Raccord #Rac_4",
           "items": [
             "T HP",
             "T JP",
@@ -1243,23 +1375,78 @@
           ]
         },
         {
-          "nom": "Servante 2",
+          "nom": "Servante #Serv_1",
           "items": [
-            "Servante 2"
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #51",
+          "items": [
+            "Enclosure 51"
+          ]
+        },
+        {
+          "nom": "Enclosure #55",
+          "items": [
+            "Enclosure 55"
+          ]
+        },
+        {
+          "nom": "BOX #36",
+          "items": [
+            "Écrans x3"
+          ]
+        },
+        {
+          "nom": "BOX #30",
+          "items": [
+            "PC Portable"
+          ]
+        },
+        {
+          "nom": "BOX #41",
+          "items": [
+            "Cables Enclosure"
+          ]
+        },
+        {
+          "nom": "BOX #111",
+          "items": [
+            "Fixture S1 111"
+          ]
+        },
+        {
+          "nom": "BOX #109",
+          "items": [
+            "Fixture S1 109"
+          ]
+        },
+        {
+          "nom": "BOX #105",
+          "items": [
+            "Fixture S1 105"
+          ]
+        },
+        {
+          "nom": "BOX #102",
+          "items": [
+            "Fixture S1 102"
           ]
         }
       ]
     },
     {
       "id": "equip3",
-      "nom": "Équipement 3",
-      "ref": "TPSU 210109-3 (SAP 224034) — 4722 51B 51BR",
+      "nom": "Equipement 3",
+      "ref": "TPSU 210109-3",
+      "sap": "224034",
       "categorie": "Équipement",
       "couleur": "#b45309",
       "couleurNom": "Orange",
       "caisses": [
         {
-          "nom": "BOX 152 — PC GIBR / DAV",
+          "nom": "BOX #152",
           "items": [
             "PC GIBR + alim (ancien)",
             "PC NUC + alim (nouveau)",
@@ -1270,7 +1457,7 @@
           ]
         },
         {
-          "nom": "BOX 23 — Câbles auxiliaires",
+          "nom": "BOX #23",
           "items": [
             "RJ45 80M x3",
             "RJ45 30M x6",
@@ -1282,7 +1469,7 @@
           ]
         },
         {
-          "nom": "BOX 39 — Écrans",
+          "nom": "BOX #XX",
           "items": [
             "Écrans x3",
             "Alimentation x3",
@@ -1291,7 +1478,7 @@
           ]
         },
         {
-          "nom": "BOX DAV 3 (SAP 30049141)",
+          "nom": "BOX #DAV 1",
           "items": [
             "Caméra x4",
             "Switch + alim x2",
@@ -1300,27 +1487,27 @@
           ]
         },
         {
-          "nom": "BOX 121 — Drive Units 47/22",
+          "nom": "BOX #121",
           "items": [
             "S93 / S4",
             "Drive Unit D2 / D4 / D6 / D7"
           ]
         },
         {
-          "nom": "BOX 122 — Drive Units 47/22",
+          "nom": "BOX #122",
           "items": [
             "S92 / S6",
             "Drive Unit D1 / D3 / D5"
           ]
         },
         {
-          "nom": "BALANCE 83",
+          "nom": "BOX #81",
           "items": [
-            "Balance 83 — SAP 4000XX"
+            "Balance 81"
           ]
         },
         {
-          "nom": "BOX 206 (1/3)",
+          "nom": "BOX #206-1/3",
           "items": [
             "JP TP J23 / J26 / J34 / J36",
             "Aspi TP A17 / A18 / A45",
@@ -1328,14 +1515,14 @@
           ]
         },
         {
-          "nom": "BOX 207 (2/3)",
+          "nom": "BOX #207-2/3",
           "items": [
             "L5 / L6",
             "Caisse fastners 4722 / 133"
           ]
         },
         {
-          "nom": "BOX 208 (3/3)",
+          "nom": "BOX #208-3/3",
           "items": [
             "Mini Lance L1 / L2 / L3 / L4",
             "Bride étanche E4 / E8",
@@ -1344,19 +1531,52 @@
           ]
         },
         {
-          "nom": "Caisses à pomme 9-12",
+          "nom": "BOX #200-1/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #201-2/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #202-3/4",
+          "items": []
+        },
+        {
+          "nom": "BOX #203-4/4",
+          "items": []
+        },
+        {
+          "nom": "Caisse à pomme #CaP_10",
           "items": [
-            "Tuyaux 2\" 8M x12 (x2)",
-            "Tuyaux HP 1\" x12",
-            "Tuyaux ½\" HP x3",
-            "Tuyaux 1,5\" x12",
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_11",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_13",
+          "items": [
             "Tuyaux SED 1\" x12",
+            "Tuyaux 1,5\" x12",
+            "Tuyaux 1\" BP x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_16",
+          "items": [
+            "Tuyaux ½\" HP x3",
+            "Tuyaux HP 1\" x12",
             "Inline filter box",
             "Caisse sécheur"
           ]
         },
         {
-          "nom": "Caisse raccords hydrauliques 1",
+          "nom": "Caisse Raccord #Rac_3",
           "items": [
             "T HP",
             "T JP",
@@ -1368,23 +1588,90 @@
           ]
         },
         {
-          "nom": "Servante 04",
+          "nom": "Servante #Serv_3",
           "items": [
-            "Servante 04"
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #58",
+          "items": [
+            "Enclosure 58"
+          ]
+        },
+        {
+          "nom": "demi Enclosure #56",
+          "items": [
+            "demi Enclosure 56"
+          ]
+        },
+        {
+          "nom": "demi Enclosure #57",
+          "items": [
+            "demi Enclosure 57"
+          ]
+        },
+        {
+          "nom": "BOX #42",
+          "items": [
+            "Cables Enclosure"
+          ]
+        },
+        {
+          "nom": "BOX #32",
+          "items": [
+            "PC"
+          ]
+        },
+        {
+          "nom": "BOX #124",
+          "items": [
+            "Drive Unit LH"
+          ]
+        },
+        {
+          "nom": "BOX #123",
+          "items": [
+            "Drive Unit LH"
+          ]
+        },
+        {
+          "nom": "BOX #108",
+          "items": [
+            "Fixture S1 108"
+          ]
+        },
+        {
+          "nom": "BOX #107",
+          "items": [
+            "Fixture S1 107"
+          ]
+        },
+        {
+          "nom": "BOX #106",
+          "items": [
+            "Fixture S1 106"
+          ]
+        },
+        {
+          "nom": "BOX #104",
+          "items": [
+            "Fixture S1 104"
           ]
         }
       ]
     },
     {
       "id": "equip4",
-      "nom": "Équipement 4",
-      "ref": "WEEU 112003-3 (SAP 30042923) — 5X19",
+      "nom": "Equipement 4 Palette",
+      "ref": "WEEU 112003-3",
+      "sap": "30042923",
       "categorie": "Équipement",
       "couleur": "#4d7c0f",
       "couleurNom": "Olive",
       "caisses": [
         {
-          "nom": "BOX 153 — PC GIBR / DAV",
+          "nom": "BOX #153",
           "items": [
             "PC GIBR + alim (ancien)",
             "PC NUC N°4 + alim + dongle",
@@ -1397,7 +1684,7 @@
           ]
         },
         {
-          "nom": "BOX 24 — RJ45",
+          "nom": "BOX #24",
           "items": [
             "RJ45 80M x3",
             "RJ45 30M x7",
@@ -1409,7 +1696,7 @@
           ]
         },
         {
-          "nom": "BOX 37 — Écrans",
+          "nom": "BOX #37",
           "items": [
             "Écran x3",
             "Alimentation x3",
@@ -1418,7 +1705,7 @@
           ]
         },
         {
-          "nom": "BOX DAV 4",
+          "nom": "BOX #DAV 4",
           "items": [
             "Caméra x4",
             "Switch + alim x2",
@@ -1427,20 +1714,20 @@
           ]
         },
         {
-          "nom": "BOX 129 — Drive Units 5X19",
+          "nom": "BOX #129",
           "items": [
             "S25 / S27 / S28 / S93 (décalé)",
             "Drive Unit 6819 D16 / D18 / D21"
           ]
         },
         {
-          "nom": "BALANCE 81",
+          "nom": "BOX #80",
           "items": [
-            "Balance 81 — SAP 40004928 (27/11/2028)"
+            "Balance #40004928 (27/11/2028)"
           ]
         },
         {
-          "nom": "BOX 43",
+          "nom": "BOX #43",
           "items": [
             "Câbles 50' x3",
             "Câbles 100' x2",
@@ -1450,7 +1737,7 @@
           ]
         },
         {
-          "nom": "BOX 210 (1/4)",
+          "nom": "BOX #210-1/4",
           "items": [
             "Mini Lance L20 / L22 (horizontales)",
             "Mini Lance L19",
@@ -1459,7 +1746,7 @@
           ]
         },
         {
-          "nom": "BOX 211 (2/4)",
+          "nom": "BOX #211-2/4",
           "items": [
             "Aspi TP 5519/4722 A19/A34",
             "Aspi TP A28/A41",
@@ -1467,7 +1754,7 @@
           ]
         },
         {
-          "nom": "BOX 212 (3/4)",
+          "nom": "BOX #212-3/4",
           "items": [
             "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
             "Tape TO pleine T01",
@@ -1477,26 +1764,32 @@
           ]
         },
         {
-          "nom": "BOX 213 (4/4)",
+          "nom": "BOX #213-4/4",
           "items": [
             "JP TP J37/J38",
             "JP TP J19/J20"
           ]
         },
         {
-          "nom": "Caisse à pomme 13",
+          "nom": "Caisse à pomme #CaP_9",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_12",
+          "items": [
+            "Tuyaux 2\" 8M x12"
+          ]
+        },
+        {
+          "nom": "Caisse à pomme #CaP_14",
           "items": [
             "12 Tuyaux 2\" 8M"
           ]
         },
         {
-          "nom": "Caisse à pomme 14",
-          "items": [
-            "12 Tuyaux 2\" 8M"
-          ]
-        },
-        {
-          "nom": "Caisse à pomme 15",
+          "nom": "Caisse à pomme #CaP_15",
           "items": [
             "12 Tuyaux 1,5\"",
             "7 Tuyaux 1,5\" court",
@@ -1506,15 +1799,25 @@
           ]
         },
         {
-          "nom": "Caisse à pomme 16",
+          "nom": "Caisse Raccord #Rac_1",
+          "items": []
+        },
+        {
+          "nom": "Servante #Serv_4",
           "items": [
-            "12 Tuyaux 1\" HP",
-            "3 Tuyaux ½\" HP",
-            "2 Inline filter box",
-            "Box sécheur GV 60",
-            "Sécheur",
-            "Raccord air SAT",
-            "T de raccordement"
+            "Servante"
+          ]
+        },
+        {
+          "nom": "Enclosure #52",
+          "items": [
+            "Enclosure 52"
+          ]
+        },
+        {
+          "nom": "BOX #33",
+          "items": [
+            "PC"
           ]
         }
       ]

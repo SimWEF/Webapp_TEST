@@ -3,7 +3,7 @@
    Version : 3.1
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v22";
+   const APP_CACHE = "pigvs-app-v23";
    const DATA_CACHE = "pigvs-data-v12";
    
    /* ==========================================================
