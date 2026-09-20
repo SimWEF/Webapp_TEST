@@ -44,7 +44,8 @@
    "colisage-saisie.html",
    "pigvs-scan.js",
    "codes-sap.json",
-   "admin-colisage-validation.html"
+   "admin-colisage-validation.html",
+   "colisage-reel-MODELE.json"
    ];
    
    /* ==========================================================
