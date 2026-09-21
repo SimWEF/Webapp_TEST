@@ -707,7 +707,7 @@
         if (resultat) {
           caisseActive = resultat;
           items = (resultat.caisse.items || []).map(function (libelle) {
-            return { nom: libelle, etat: "", ajout: false };
+            return { nom: (libelle && typeof libelle === "object") ? (libelle.equipement || libelle.nom || "") : libelle, quantite: (libelle && typeof libelle === "object") ? Math.max(1,parseInt(libelle.quantite||1,10)) : 1, etat: "ok", ajout: false };
           });
         } else {
           caisseActive = {

@@ -158,7 +158,7 @@ function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
    ETAT DE VALIDATION D'UNE CAISSE
    ====================================================================== */
 function etatValidation(caisse){
-  const v = caisse && caisse.derniereValidation;
+  const v = caisse && (caisse.verif || caisse.derniereValidation);
   if(!v || !v.date) return { classe:'jamais', court:'Jamais validée', long:null };
 
   let jours = null;

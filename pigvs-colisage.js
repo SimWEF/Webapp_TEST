@@ -193,7 +193,7 @@
   
         /* Tracabilite de la verification */
         const verif = {
-          date: s.horodatage || new Date().toISOString(),
+          date: new Date().toISOString(),
           site: s.site || "",
           operateur: s.operateur || "",
           valideur: valideur || "",
