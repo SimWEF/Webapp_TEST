@@ -12,18 +12,21 @@
 
     <style>
     .search-box { position:relative; margin-bottom:14px; }
-    .search-box input { width:100%; padding:13px 40px 13px 14px; font-size:16px; border-radius:10px;
-      border:1px solid #ccc; box-sizing:border-box; }
-    .search-box .clear { position:absolute; right:10px; top:50%; transform:translateY(-50%);
-      border:none; background:transparent; font-size:20px; color:#8a94a1; cursor:pointer; display:none; }
+    .search-box input { width:100%; padding:13px 40px 13px 14px; font-size:16px;
+      border-radius:10px; border:1px solid #ccc; box-sizing:border-box; }
+    .search-box .clear { position:absolute; right:10px; top:50%;
+      transform:translateY(-50%); border:none; background:transparent;
+      font-size:20px; color:#8a94a1; cursor:pointer; display:none; }
 
-    .breadcrumb { font-size:14px; color:#5a6673; margin:4px 0 14px; display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+    .breadcrumb { font-size:14px; color:#5a6673; margin:4px 0 14px;
+      display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
     .breadcrumb a { color:#0078D7; text-decoration:none; font-weight:600; cursor:pointer; }
     .breadcrumb .sep { color:#b8c0cc; }
 
     .cards { display:flex; flex-direction:column; gap:10px; }
-    .cont-card { display:flex; align-items:center; gap:14px; padding:16px; border-radius:12px;
-      border:1px solid #e0e0e0; background:#fff; cursor:pointer; text-align:left; width:100%; }
+    .cont-card { display:flex; align-items:center; gap:14px; padding:16px;
+      border-radius:12px; border:1px solid #e0e0e0; background:#fff;
+      cursor:pointer; text-align:left; width:100%; }
     .cont-card:active { transform:scale(.99); }
     .pastille { width:20px; height:44px; border-radius:6px; flex:0 0 auto; }
     .cont-card .txt { flex:1; }
@@ -32,39 +35,66 @@
     .cont-card .chev { color:#b8c0cc; font-size:22px; }
     .cont-card .compte { font-size:12px; color:#8a94a1; }
 
-    .caisse-card { display:flex; align-items:center; gap:12px; padding:14px; border-radius:12px;
-      border:1px solid #e0e0e0; background:#fff; cursor:pointer; width:100%; text-align:left; }
+    .caisse-card { display:flex; align-items:center; gap:12px; padding:14px;
+      border-radius:12px; border:1px solid #e0e0e0; background:#fff;
+      cursor:pointer; width:100%; text-align:left; }
     .caisse-card .ico { font-size:24px; }
-    .caisse-card .titre { flex:1; font-weight:700; font-size:16px; }
+    .caisse-card .txt { flex:1; min-width:0; }
+    .caisse-card .titre { font-weight:700; font-size:16px; }
     .caisse-card .compte { font-size:12px; color:#8a94a1; }
     .caisse-card .chev { color:#b8c0cc; font-size:22px; }
 
-    .section-titre { display:flex; align-items:center; gap:10px; margin:18px 0 8px; font-weight:700; color:#334; }
+    /* ---------- Etat de validation ---------- */
+    .valide-tag { display:inline-flex; align-items:center; gap:5px;
+      font-size:11.5px; font-weight:700; border-radius:999px;
+      padding:2px 9px; margin-top:4px; }
+    .valide-tag.ok     { background:#e7f6ec; color:#14683a; border:1px solid #bfe6cd; }
+    .valide-tag.ancien { background:#fff8e1; color:#8a6100; border:1px solid #ffe0a3; }
+    .valide-tag.jamais { background:#f1f5f9; color:#64748b; border:1px solid #e2e8f0; }
+
+    .bandeau-validation {
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      border-radius:12px; padding:12px 14px; margin-bottom:14px;
+      font-size:13.5px; }
+    .bandeau-validation.ok     { background:#e7f6ec; border:1px solid #bfe6cd; color:#14683a; }
+    .bandeau-validation.ancien { background:#fff8e1; border:1px solid #ffe0a3; color:#8a6100; }
+    .bandeau-validation.jamais { background:#f1f5f9; border:1px solid #e2e8f0; color:#475569; }
+    .bandeau-validation .ico { font-size:20px; }
+    .bandeau-validation .det { flex:1; min-width:150px; }
+    .bandeau-validation b { font-weight:800; }
+
+    .section-titre { display:flex; align-items:center; gap:10px;
+      margin:18px 0 8px; font-weight:700; color:#334; }
     .item-list { list-style:none; padding:0; margin:0; }
-    .item-list li { padding:12px 14px; border-bottom:1px solid #eef0f3; font-size:15px; display:flex; gap:10px; }
+    .item-list li { padding:12px 14px; border-bottom:1px solid #eef0f3;
+      font-size:15px; display:flex; gap:10px; }
     .item-list li:before { content:"\1F527"; }
 
-    .result { background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:12px 14px;
-      margin-bottom:10px; width:100%; text-align:left; cursor:pointer; display:block; }
+    .result { background:#fff; border:1px solid #e0e0e0; border-radius:12px;
+      padding:12px 14px; margin-bottom:10px; width:100%;
+      text-align:left; cursor:pointer; display:block; }
     .result:active { transform:scale(.995); }
     .result .item { font-weight:700; font-size:15px; }
 
-    .chip { display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:14px;
-      font-size:12px; font-weight:700; color:#fff; }
+    .chip { display:inline-flex; align-items:center; gap:6px; padding:3px 10px;
+      border-radius:14px; font-size:12px; font-weight:700; color:#fff; }
     .chip .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.9); }
-    .loc { font-size:13px; color:#5a6673; margin-top:4px; display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
-    .loc .caisse { background:#eef4fb; color:#083f78; padding:3px 10px; border-radius:14px; font-weight:700; }
+    .loc { font-size:13px; color:#5a6673; margin-top:4px;
+      display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+    .loc .caisse { background:#eef4fb; color:#083f78; padding:3px 10px;
+      border-radius:14px; font-weight:700; }
     .vide { text-align:center; color:#8a94a1; padding:30px 10px; }
 
     .res-caisse { border-left:4px solid #0078D7; }
     .res-caisse .apercu { font-size:12px; color:#8a94a1; margin-top:5px; line-height:1.45; }
-    .badge-approx { display:inline-block; background:#fff4e0; color:#95610a; border:1px solid #f3d7a4;
-      font-size:11px; font-weight:700; padding:1px 7px; border-radius:10px; margin-left:6px; vertical-align:2px; }
+    .badge-approx { display:inline-block; background:#fff4e0; color:#95610a;
+      border:1px solid #f3d7a4; font-size:11px; font-weight:700;
+      padding:1px 7px; border-radius:10px; margin-left:6px; vertical-align:2px; }
     mark { background:#fff2a8; color:inherit; padding:0 1px; border-radius:3px; }
     .sous-titre-inline { font-size:12px; color:#8a94a1; font-weight:400; margin-left:auto; }
 
-    .btn-saisir { display:flex; align-items:center; justify-content:space-between; gap:10px;
-      width:100%; min-height:52px; padding:13px 16px; margin-bottom:12px;
+    .btn-saisir { display:flex; align-items:center; justify-content:space-between;
+      gap:10px; width:100%; min-height:52px; padding:13px 16px; margin-bottom:12px;
       font-size:15.5px; font-weight:700; text-decoration:none;
       background:var(--primary,#0078D7); color:#fff; border:0; border-radius:12px; }
 
@@ -102,7 +132,7 @@
     </div>
 
     <script src="pigvs-colisage.js"></script>
-<script>
+    <script>
 let DATA = { conteneurs: [] };
 
 const contenu     = document.getElementById('contenu');
@@ -112,21 +142,55 @@ const clearBtn    = document.getElementById('clearBtn');
 
 let vue = { conteneurId:null, caisseIdx:null };
 
+/* Au-dela de ce delai, la validation est consideree comme ancienne */
+const JOURS_FRAIS = 120;
+
 function normalize(s){
   return (s||'').toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
 }
-
-/* Cle ultra-permissive : ne garde que lettres et chiffres.
-   « BOX 40 », « BOX #40 », « box-40 » donnent tous « box40 ». */
 function cleKey(s){ return normalize(s).replace(/[^a-z0-9]/g,''); }
-
-/* Separe lettres et chiffres : « box40 » -> « box 40 »
-   Permet de retrouver « BOX #40 » en tapant « box40 » d'un seul bloc. */
 function eclater(s){
   return normalize(s).replace(/([a-z])(\d)/g,'$1 $2').replace(/(\d)([a-z])/g,'$1 $2');
 }
-
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ======================================================================
+   ETAT DE VALIDATION D'UNE CAISSE
+   ====================================================================== */
+function etatValidation(caisse){
+  const v = caisse && caisse.derniereValidation;
+  if(!v || !v.date) return { classe:'jamais', court:'Jamais validée', long:null };
+
+  let jours = null;
+  if(v.horodatage){
+    const d = new Date(v.horodatage);
+    if(!isNaN(d)) jours = Math.floor((Date.now() - d.getTime()) / 86400000);
+  }
+
+  const ancien = jours !== null && jours > JOURS_FRAIS;
+  const classe = ancien ? 'ancien' : 'ok';
+
+  let court = '✓ ' + v.date;
+  if(v.site) court += ' · ' + v.site;
+
+  let long = 'Colisage validé le <b>' + esc(v.date) + '</b>';
+  if(v.site) long += ' sur <b>' + esc(v.site) + '</b>';
+  if(v.operateur) long += ' · relevé par ' + esc(v.operateur);
+  if(v.valideur) long += ' · validé par ' + esc(v.valideur);
+  if(jours !== null){
+    long += jours === 0 ? " · aujourd'hui"
+          : jours === 1 ? ' · hier'
+          : ' · il y a ' + jours + ' jours';
+  }
+
+  return { classe:classe, court:court, long:long, jours:jours };
+}
+
+function tagValidation(caisse){
+  const e = etatValidation(caisse);
+  const ico = e.classe === 'ok' ? '🟢' : e.classe === 'ancien' ? '🟠' : '⚪';
+  return '<span class="valide-tag ' + e.classe + '">' + ico + ' ' + esc(e.court) + '</span>';
+}
 
 /* ======================================================================
    MOTEUR DE RECHERCHE
@@ -145,52 +209,32 @@ function wordScore(s,t){
   let th=0; if(s.length<=3)th=0; else if(s.length<=5)th=1; else if(s.length<=9)th=2; else th=3;
   return d<=th?60-d*10:0;
 }
-
-/* Score principal.
-   1. Comparaison sur la cle sans ponctuation  -> « BOX 40 » trouve « BOX #40 »
-   2. Comparaison mot a mot avec tolerance aux fautes
-   3. Comparaison sur la version eclatee        -> « box40 » trouve « BOX #40 » */
+function scoreMots(q,text){
+  const qw=q.split(/\s+/).filter(Boolean),tw=text.split(/\s+/).filter(Boolean);
+  if(!qw.length)return 1; let tot=0;
+  for(const w of qw){let b=0;for(const t of tw){const sc=wordScore(w,t);if(sc>b)b=sc;}
+  if(b===0)return 0;tot+=b;}
+  if(text.startsWith(q))tot+=50; if(text.includes(q))tot+=30; return tot;
+}
 function itemScore(search, texte){
   const q = normalize(search);
   if(!q) return 1;
-
   const kq = cleKey(search), kt = cleKey(texte);
   if(kq){
     if(kt === kq)          return 200;
     if(kt.startsWith(kq))  return 170;
     if(kt.includes(kq))    return 150;
   }
-
   const score = scoreMots(q, normalize(texte));
   if(score > 0) return score;
-
-  /* Dernier essai sur la forme eclatee */
   return scoreMots(eclater(search), eclater(texte));
 }
-
-function scoreMots(q, text){
-  const qw = q.split(/\s+/).filter(Boolean);
-  const tw = text.split(/\s+/).filter(Boolean);
-  if(!qw.length) return 1;
-  let tot = 0;
-  for(const w of qw){
-    let b = 0;
-    for(const t of tw){ const sc = wordScore(w,t); if(sc>b) b=sc; }
-    if(b === 0) return 0;
-    tot += b;
-  }
-  if(text.startsWith(q)) tot += 50;
-  if(text.includes(q))   tot += 30;
-  return tot;
-}
-
 function estApproximatif(search,texte){
   const kq = cleKey(search), kt = cleKey(texte);
   if(kq && kt.includes(kq)) return false;
   const t = normalize(texte);
   return !normalize(search).split(/\s+/).filter(Boolean).every(w=>t.includes(w));
 }
-
 function surligner(texte,search){
   const mots = normalize(search).split(/\s+/).filter(Boolean);
   const brut = normalize(texte);
@@ -201,12 +245,10 @@ function surligner(texte,search){
     while(i>=0){ for(let k=i;k<i+w.length&&k<marques.length;k++) marques[k]=true; i=brut.indexOf(w,i+w.length); }
   });
 
-  /* Si rien n'a matche mot a mot, on surligne via la cle sans ponctuation */
   if(!marques.some(Boolean)){
     const kq = cleKey(search);
     if(kq){
-      const map = [];
-      let kt = '';
+      const map = []; let kt = '';
       for(let i=0;i<texte.length;i++){
         const c = normalize(texte[i]).replace(/[^a-z0-9]/g,'');
         if(c){ kt += c; map.push(i); }
@@ -228,7 +270,7 @@ function surligner(texte,search){
 }
 
 /* ======================================================================
-   CHARGEMENT  (toujours la derniere version)
+   CHARGEMENT
    ====================================================================== */
 PIGVS_COLISAGE.lireColisage()
   .then(d=>{
@@ -238,13 +280,21 @@ PIGVS_COLISAGE.lireColisage()
     render();
   })
   .catch(()=>{
-    contenu.innerHTML = "<div class='vide'>⚠️ Impossible de charger colisage-data.json</div>";
+    contenu.innerHTML = "<div class='vide'>⚠️ Colisage de référence indisponible</div>";
   });
 
 function afficherMaj(){
   const nb = (DATA.conteneurs||[]).reduce((s,c)=>s+(c.caisses||[]).length,0);
+  let valides = 0;
+  (DATA.conteneurs||[]).forEach(c=>(c.caisses||[]).forEach(k=>{
+    if(k.derniereValidation && k.derniereValidation.date) valides++;
+  }));
+
   const el = document.getElementById('majInfo');
-  if(el) el.textContent = nb + ' caisses référencées' + (DATA.derniereMaj ? ' · maj ' + DATA.derniereMaj : '');
+  if(el){
+    el.textContent = nb + ' caisses · ' + valides + ' validée(s) sur le terrain · source : ' +
+      (DATA._source === 'flux' ? 'SharePoint' : 'fichier local');
+  }
 }
 
 /* ---------- Ouverture directe depuis le scanner ---------- */
@@ -307,12 +357,13 @@ function renderConteneurs(){
     html += `<div class="section-titre">${cat==='ETV'?'🚚':'🧰'} Conteneurs ${cat}</div><div class="cards">`;
     groupes[cat].forEach(c=>{
       const nbItems = c.caisses.reduce((s,k)=>s+k.items.length,0);
+      const nbVal = c.caisses.filter(k=>k.derniereValidation&&k.derniereValidation.date).length;
       html += `<button class="cont-card" onclick="ouvrirConteneur('${c.id}')">
         <div class="pastille" style="background:${c.couleur}"></div>
         <div class="txt">
           <div class="titre">${esc(c.nom)} <span class="compte">· ${esc(c.couleurNom||'')}</span></div>
           <div class="sous">${esc(c.ref||'')}</div>
-          <div class="compte">${c.caisses.length} caisses · ${nbItems} éléments</div>
+          <div class="compte">${c.caisses.length} caisses · ${nbItems} éléments${nbVal? ' · '+nbVal+' validée(s)':''}</div>
         </div>
         <div class="chev">›</div>
       </button>`;
@@ -333,7 +384,10 @@ function renderCaisses(){
   c.caisses.forEach((k,idx)=>{
     html += `<button class="caisse-card" onclick="ouvrirCaisse(${idx})">
       <div class="ico">📦</div>
-      <div class="titre">${esc(k.nom)}</div>
+      <div class="txt">
+        <div class="titre">${esc(k.nom)}</div>
+        ${tagValidation(k)}
+      </div>
       <div class="compte">${k.items.length} él.</div>
       <div class="chev">›</div>
     </button>`;
@@ -353,7 +407,23 @@ function renderItems(){
     `<a onclick="retourConteneur()">${esc(c.nom)}</a><span class="sep">›</span>` +
     `<span>${esc(k.nom)}</span>`;
 
-  let html = `<a class="btn-saisir" href="colisage-saisie.html?caisse=${encodeURIComponent(k.nom)}">
+  const e = etatValidation(k);
+  const ico = e.classe === 'ok' ? '🟢' : e.classe === 'ancien' ? '🟠' : '⚪';
+  const texte = e.long
+    ? e.long
+    : "Cette caisse n'a jamais fait l'objet d'un colisage validé.";
+  const conseil = e.classe === 'ancien'
+    ? "<br><span style='font-size:12.5px'>Contenu potentiellement obsolète : un nouveau relevé serait utile.</span>"
+    : (e.classe === 'jamais'
+      ? "<br><span style='font-size:12.5px'>Le contenu affiché est celui du colisage théorique.</span>"
+      : "");
+
+  let html = `<div class="bandeau-validation ${e.classe}">
+      <span class="ico">${ico}</span>
+      <div class="det">${texte}${conseil}</div>
+    </div>`;
+
+  html += `<a class="btn-saisir" href="colisage-saisie.html?caisse=${encodeURIComponent(k.nom)}">
       <span>📝 Renseigner le colisage de cette caisse</span><span>›</span></a>`;
 
   html += `<div class="section-titre">📦 ${esc(k.nom)}<span class="sous-titre-inline">${esc(c.nom)} · ${esc(c.ref||'')}</span></div>`;
@@ -384,7 +454,7 @@ function renderRecherche(saisie){
       }
       k.items.forEach(it=>{
         const sc = itemScore(saisie, it);
-        if(sc > 0) items.push({ item:it, conteneur:c, caisse:k.nom, idx, score:sc });
+        if(sc > 0) items.push({ item:it, conteneur:c, caisse:k, nomCaisse:k.nom, idx, score:sc });
       });
     });
   });
@@ -411,6 +481,7 @@ function renderRecherche(saisie){
         <div class="loc">
           <span class="chip" style="background:${r.conteneur.couleur}"><span class="dot"></span>${esc(r.conteneur.nom)}</span>
           <span class="caisse">${r.caisse.items.length} éléments</span>
+          ${tagValidation(r.caisse)}
         </div>
         <div class="apercu">${apercu}</div>
       </button>`;
@@ -426,7 +497,8 @@ function renderRecherche(saisie){
           ${approx ? '<span class="badge-approx">approchant</span>' : ''}</div>
         <div class="loc">
           <span class="chip" style="background:${r.conteneur.couleur}"><span class="dot"></span>${esc(r.conteneur.nom)}</span>
-          <span class="caisse">📦 ${esc(r.caisse)}</span>
+          <span class="caisse">📦 ${esc(r.nomCaisse)}</span>
+          ${tagValidation(r.caisse)}
         </div>
       </button>`;
     });

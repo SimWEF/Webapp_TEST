@@ -15,9 +15,9 @@
         display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
         background: #fff; border: 1px solid var(--border);
         border-radius: var(--radius); box-shadow: var(--shadow);
-        padding: 14px 16px; margin-bottom: 16px;
+        padding: 14px 16px; margin-bottom: 14px;
       }
-      .bandeau-site select { width: auto; min-width: 200px; }
+      .bandeau-site select { width: auto; min-width: 180px; }
       .bandeau-site button { width: auto; padding: 11px 18px; font-weight: 700;
         border-radius: 10px; border: 1px solid var(--border);
         background: #eef1f6; cursor: pointer; }
@@ -28,7 +28,7 @@
       .sync {
         display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
         background: #eef4fb; border: 1px solid #cfe0f5; color: #083f78;
-        border-radius: 10px; padding: 10px 14px; margin-bottom: 16px;
+        border-radius: 10px; padding: 10px 14px; margin-bottom: 14px;
         font-size: 13.5px;
       }
       .sync.err { background: #fdecec; border-color: #f5c6c6; color: #a12020; }
@@ -48,47 +48,93 @@
         font-size: 13px; cursor: pointer; user-select: none; }
       .toggle-auto input { width: auto; }
 
-      .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
-      .kpi { background: #fff; border: 1px solid var(--border); border-radius: 12px;
-        padding: 12px; text-align: center; }
-      .kpi .val { display: block; font-size: 24px; font-weight: 800; color: var(--marine); }
-      .kpi .lab { display: block; font-size: 11px; text-transform: uppercase;
-        letter-spacing: .6px; color: var(--muted); font-weight: 700; }
-      .kpi.attente .val { color: var(--orange); }
-      .kpi.ecart .val { color: var(--rouge); }
-      .kpi.ok .val { color: var(--vert); }
+      /* ---------- Filtres ---------- */
+      .filtres { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+      .filtre {
+        border: 1px solid var(--border); background: #fff; color: var(--text);
+        border-radius: 999px; padding: 8px 15px; font-size: 13.5px;
+        font-weight: 700; cursor: pointer; width: auto;
+      }
+      .filtre.actif { background: var(--marine); border-color: var(--marine); color: #fff; }
+      .filtre .n { opacity: .7; font-weight: 400; margin-left: 4px; }
 
+      /* ---------- Barre d'actions groupees ---------- */
+      .barre-lot {
+        display: none; align-items: center; gap: 9px; flex-wrap: wrap;
+        background: #fff8e1; border: 1px solid #ffe0a3;
+        border-radius: 10px; padding: 10px 14px; margin-bottom: 14px;
+        font-size: 13.5px; color: #8a6100;
+      }
+      .barre-lot.visible { display: flex; }
+      .barre-lot button { width: auto; padding: 9px 15px; font-size: 13.5px;
+        font-weight: 700; border-radius: 9px; cursor: pointer;
+        border: 1px solid var(--border); background: #fff; }
+      .barre-lot .compte { margin-left: auto; font-weight: 700; }
+
+      /* ---------- Carte de saisie ---------- */
       .saisie {
         background: #fff; border: 1px solid var(--border);
         border-left: 6px solid var(--acc, var(--muted));
         border-radius: var(--radius); box-shadow: var(--shadow);
-        margin-bottom: 12px; overflow: hidden;
+        margin-bottom: 10px; overflow: hidden;
       }
       .saisie.attente { --acc: var(--orange); }
       .saisie.valide  { --acc: var(--vert); }
-      .saisie.rejete  { --acc: var(--muted); }
+      .saisie.rejete  { --acc: var(--muted); opacity: .72; }
+      .saisie.publie  { --acc: #7c3aed; opacity: .6; }
       .saisie.neuve   { animation: apparait .5s ease; }
       @keyframes apparait {
         from { background: #fff8e1; transform: translateY(-4px); }
         to   { background: #fff; transform: none; }
       }
 
-      .saisie-tete { display: flex; align-items: center; gap: 12px;
-        padding: 14px 16px; cursor: pointer; flex-wrap: wrap; }
-      .saisie-tete .nom { flex: 1; min-width: 160px; }
-      .saisie-tete .nom b { display: block; font-size: 16.5px; color: var(--marine); }
+      .saisie-tete { display: flex; align-items: center; gap: 11px;
+        padding: 12px 14px; flex-wrap: wrap; }
+
+      .saisie-tete .chevron {
+        width: 34px; height: 34px; flex: 0 0 auto; border-radius: 9px;
+        border: 1px solid var(--border); background: #f4f7fb;
+        font-size: 17px; color: var(--muted); cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform .18s ease; padding: 0;
+      }
+      .saisie.ouverte .chevron { transform: rotate(90deg); }
+
+      .saisie-tete .nom { flex: 1; min-width: 150px; cursor: pointer; }
+      .saisie-tete .nom b { display: block; font-size: 16px; color: var(--marine); }
       .saisie-tete .nom span { font-size: 12.5px; color: var(--muted); }
 
-      .pastilles { display: flex; gap: 6px; flex: 0 0 auto; flex-wrap: wrap; }
-      .pastille { border-radius: 999px; padding: 4px 10px; font-size: 12.5px;
-        font-weight: 700; color: #fff; }
-      .pastille.ok { background: var(--vert); }
-      .pastille.ko { background: var(--rouge); }
-      .pastille.plus { background: var(--orange); }
-      .pastille.neutre { background: var(--muted); }
-      .pastille.recent { background: #7c3aed; }
+      .resume-chiffres { display: flex; gap: 5px; flex: 0 0 auto; }
+      .chiffre {
+        border-radius: 8px; padding: 4px 9px; font-size: 13px;
+        font-weight: 800; color: #fff; min-width: 34px; text-align: center;
+      }
+      .chiffre.ok { background: var(--vert); }
+      .chiffre.ko { background: var(--rouge); }
+      .chiffre.plus { background: var(--orange); }
+      .chiffre.zero { background: #cbd5e1; color: #64748b; }
 
-      .saisie-corps { display: none; padding: 0 16px 16px; border-top: 1px solid #eef0f3; }
+      /* Boutons de decision rapide */
+      .decision { display: flex; gap: 6px; flex: 0 0 auto; }
+      .decision button {
+        width: 46px; height: 42px; border-radius: 10px; font-size: 18px;
+        cursor: pointer; border: 2px solid #ccd4e0; background: #fff; padding: 0;
+      }
+      .decision button.actif-ok {
+        background: var(--vert); border-color: var(--vert);
+      }
+      .decision button.actif-ko {
+        background: var(--rouge); border-color: var(--rouge);
+      }
+
+      .etiquette {
+        border-radius: 999px; padding: 3px 10px; font-size: 11.5px;
+        font-weight: 700; flex: 0 0 auto;
+      }
+      .etiquette.recent { background: #7c3aed; color: #fff; }
+      .etiquette.publiee { background: #ede9fe; color: #5b21b6; }
+
+      .saisie-corps { display: none; padding: 0 14px 14px; border-top: 1px solid #eef0f3; }
       .saisie.ouverte .saisie-corps { display: block; }
 
       .colonnes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
@@ -104,13 +150,6 @@
       .commentaire { margin-top: 14px; background: #f6f8fb; border-radius: 10px;
         padding: 10px 12px; font-size: 13.5px; }
 
-      .actions-saisie { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-      .actions-saisie button { flex: 1; min-width: 150px; min-height: 46px;
-        border-radius: 10px; font-weight: 700; font-size: 14.5px; cursor: pointer;
-        border: 1px solid var(--border); background: #eef1f6; color: var(--text); }
-      .btn-valider { background: var(--vert) !important; border-color: var(--vert) !important; color: #fff !important; }
-      .btn-rejeter { background: #fff !important; border-color: var(--rouge) !important; color: var(--rouge) !important; }
-
       /* ---------- Publication ---------- */
       .zone-export { background: #fff; border: 1px solid var(--border);
         border-radius: var(--radius); box-shadow: var(--shadow);
@@ -125,9 +164,9 @@
         cursor: pointer; box-shadow: 0 3px 12px rgba(22,163,74,.3);
         margin-bottom: 12px;
       }
-      .btn-publier:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+      .btn-publier:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
 
-      .apercu { width: 100%; min-height: 180px; font-family: monospace;
+      .apercu { width: 100%; min-height: 160px; font-family: monospace;
         font-size: 12px; border: 1px solid #ccd4e0; border-radius: 10px;
         padding: 12px; background: #f8fafc; resize: vertical; }
 
@@ -151,8 +190,9 @@
         text-align: center; margin-top: 16px; }
 
       @media (max-width: 720px) {
-        .kpis { grid-template-columns: repeat(2, 1fr); }
         .colonnes { grid-template-columns: 1fr; }
+        .saisie-tete .nom { min-width: 100%; order: 2; }
+        .decision { order: 3; margin-left: auto; }
       }
     </style>
 
@@ -169,6 +209,12 @@
     </header>
 
     <div class="admin-page">
+      <div class="avert" id="avertReleve" style="display: none">
+        ⚠️ Le <b>4<sup>e</sup> flux</b> (écriture du relevé) n'est pas configuré.
+        Les décisions sont mémorisées sur cet appareil uniquement et les caisses
+        traitées réapparaîtront sur un autre poste.
+      </div>
+
       <div class="bandeau-site">
         <span>🏭</span>
         <select id="selSite">
@@ -187,23 +233,30 @@
         <span>Sélectionnez un site pour charger le relevé.</span>
       </div>
 
-      <div class="kpis">
-        <div class="kpi">
-          <span class="val" id="kSaisies">0</span>
-          <span class="lab">Caisses relevées</span>
-        </div>
-        <div class="kpi attente">
-          <span class="val" id="kAttente">0</span>
-          <span class="lab">En attente</span>
-        </div>
-        <div class="kpi ecart">
-          <span class="val" id="kEcarts">0</span>
-          <span class="lab">Avec écart</span>
-        </div>
-        <div class="kpi ok">
-          <span class="val" id="kValides">0</span>
-          <span class="lab">Validées</span>
-        </div>
+      <div class="filtres">
+        <button type="button" class="filtre actif" data-filtre="attente">
+          À traiter <span class="n" id="nAttente">0</span>
+        </button>
+        <button type="button" class="filtre" data-filtre="valide">
+          Validées <span class="n" id="nValide">0</span>
+        </button>
+        <button type="button" class="filtre" data-filtre="rejete">
+          Rejetées <span class="n" id="nRejete">0</span>
+        </button>
+        <button type="button" class="filtre" data-filtre="toutes">
+          Toutes <span class="n" id="nToutes">0</span>
+        </button>
+        <button type="button" class="filtre" id="btnToutValider"
+                style="margin-left: auto; border-color: var(--vert); color: var(--vert)">
+          ✅ Tout valider
+        </button>
+      </div>
+
+      <div class="barre-lot" id="barreLot">
+        <span>💾 Décisions non enregistrées</span>
+        <button type="button" id="btnEnregistrer">Enregistrer</button>
+        <button type="button" id="btnAnnulerLot">Annuler</button>
+        <span class="compte" id="compteLot"></span>
       </div>
 
       <div id="liste"></div>
@@ -223,12 +276,12 @@
         <h2>📤 Publier le colisage de référence</h2>
         <p>
           <b><span id="nbValides">0</span></b> caisse(s) validée(s) seront
-          injectées dans le colisage de référence. Le reste du fichier est
-          conservé à l'identique.
+          injectées. La date et le site de vérification seront enregistrés
+          sur chaque caisse.
         </p>
 
         <div class="field-group">
-          <label for="auteur">Votre nom (traçabilité)</label>
+          <label for="auteur">Votre nom <span class="req">*</span></label>
           <input type="text" id="auteur" placeholder="Ex : Souarn" />
         </div>
 
@@ -241,15 +294,26 @@
 
         <details class="repli" style="margin-top: 14px">
           <summary>⬇️ Export manuel (secours)</summary>
-          <div class="actions-saisie" style="margin-top: 8px">
-            <button type="button" id="btnGenerer">Générer le fichier</button>
-            <button type="button" id="btnTelecharger">⬇️ Télécharger</button>
+          <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap">
+            <button type="button" id="btnGenerer"
+                    style="flex: 1; min-height: 46px; border-radius: 10px;
+                           border: 1px solid var(--border); background: #eef1f6;
+                           font-weight: 700; cursor: pointer">
+              Générer le fichier
+            </button>
+            <button type="button" id="btnTelecharger"
+                    style="flex: 1; min-height: 46px; border-radius: 10px;
+                           border: 1px solid var(--border); background: #eef1f6;
+                           font-weight: 700; cursor: pointer">
+              ⬇️ Télécharger
+            </button>
           </div>
           <textarea
             class="apercu"
             id="apercu"
             readonly
             placeholder="Le fichier généré s'affichera ici…"
+            style="margin-top: 10px"
           ></textarea>
           <div id="resumeInjection" style="margin-top: 10px; font-size: 13.5px"></div>
         </details>
@@ -268,11 +332,14 @@
       let minuteur = null;
       let idsConnus = new Set();
       let resultat = null;
+      let filtre = "attente";
+      let decisionsEnAttente = false;
 
       const liste = document.getElementById("liste");
       const zoneExport = document.getElementById("zoneExport");
       const sync = document.getElementById("sync");
       const statusPub = document.getElementById("statusPub");
+      const barreLot = document.getElementById("barreLot");
 
       const C = window.PIGVS_COLISAGE;
 
@@ -291,6 +358,40 @@
       function setStatus(type, message) {
         statusPub.className = "status " + type;
         statusPub.innerHTML = message;
+      }
+      function siteCourant() {
+        return document.getElementById("selSite").value;
+      }
+
+      /* =========================================================
+         MEMOIRE LOCALE DES DECISIONS
+         Filet de securite si le flux d'ecriture du releve
+         n'est pas encore configure.
+         ========================================================= */
+      function cleMemoire() {
+        return "pigvs-decisions-" + C.codeSite(siteCourant());
+      }
+
+      function lireMemoire() {
+        try {
+          return JSON.parse(localStorage.getItem(cleMemoire()) || "{}");
+        } catch (e) { return {}; }
+      }
+
+      function ecrireMemoire(statuts) {
+        try {
+          localStorage.setItem(cleMemoire(), JSON.stringify(statuts));
+        } catch (e) {}
+      }
+
+      function memoriserDecisions() {
+        const statuts = {};
+        (REEL.saisies || []).forEach(function (s) {
+          if (s.id && s.statut && s.statut !== "en-attente") {
+            statuts[s.id] = s.statut;
+          }
+        });
+        ecrireMemoire(statuts);
       }
 
       /* ---------- Chargement du colisage de reference ---------- */
@@ -330,7 +431,7 @@
 
       /* ---------- Chargement du releve ---------- */
       function charger(silencieux) {
-        const site = document.getElementById("selSite").value;
+        const site = siteCourant();
         if (!site) {
           if (!silencieux) alert("Choisissez un site.");
           return;
@@ -361,10 +462,15 @@
 
       function appliquer(data, silencieux) {
         const ancien = REEL;
-        const statuts = {};
+        const memoire = lireMemoire();
+
+        /* Statuts deja pris pendant la session en cours */
+        const statutsSession = {};
         if (ancien) {
           (ancien.saisies || []).forEach(function (s) {
-            if (s.id) statuts[s.id] = s.statut;
+            if (s.id && s.statut && s.statut !== "en-attente") {
+              statutsSession[s.id] = s.statut;
+            }
           });
         }
 
@@ -373,7 +479,18 @@
 
         (REEL.saisies || []).forEach(function (s) {
           if (!s.id) s.id = (s.caisse || "?") + "-" + (s.horodatage || "");
-          s.statut = statuts[s.id] || s.statut || "en-attente";
+
+          /* Priorite : fichier > session > memoire locale */
+          if (s.statut && s.statut !== "en-attente") {
+            /* statut deja enregistre dans le fichier : on le garde */
+          } else if (statutsSession[s.id]) {
+            s.statut = statutsSession[s.id];
+          } else if (memoire[s.id]) {
+            s.statut = memoire[s.id];
+          } else {
+            s.statut = "en-attente";
+          }
+
           if (ancien && !idsConnus.has(s.id)) { s.nouveau = true; nouvelles++; }
           idsConnus.add(s.id);
         });
@@ -429,8 +546,19 @@
       });
 
       document.getElementById("selSite").addEventListener("change", function () {
-        REEL = null; idsConnus = new Set();
-        if (document.getElementById("selSite").value) charger(false);
+        REEL = null; idsConnus = new Set(); decisionsEnAttente = false;
+        if (siteCourant()) charger(false);
+      });
+
+      /* ---------- Filtres ---------- */
+      document.querySelectorAll("[data-filtre]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          filtre = b.dataset.filtre;
+          document.querySelectorAll("[data-filtre]").forEach(function (x) {
+            x.classList.toggle("actif", x === b);
+          });
+          rendre();
+        });
       });
 
       /* ---------- Affichage ---------- */
@@ -444,23 +572,46 @@
         return null;
       }
 
+      function compteurs() {
+        const s = REEL && REEL.saisies ? REEL.saisies : [];
+        return {
+          total: s.length,
+          attente: s.filter(function (x) { return x.statut === "en-attente"; }).length,
+          valide: s.filter(function (x) { return x.statut === "valide"; }).length,
+          rejete: s.filter(function (x) { return x.statut === "rejete"; }).length,
+          publie: s.filter(function (x) { return x.statut === "publie"; }).length
+        };
+      }
+
       function rendre() {
-        const saisies = REEL.saisies || [];
+        const saisies = REEL && REEL.saisies ? REEL.saisies : [];
+        const c = compteurs();
 
-        document.getElementById("kSaisies").textContent = saisies.length;
-        document.getElementById("kAttente").textContent =
-          saisies.filter(function (s) { return s.statut === "en-attente"; }).length;
-        document.getElementById("kEcarts").textContent =
-          saisies.filter(function (s) {
-            return (s.nbManquants || 0) > 0 || (s.nbAjoutes || 0) > 0;
-          }).length;
-
-        const nbValides = saisies.filter(function (s) { return s.statut === "valide"; }).length;
-        document.getElementById("kValides").textContent = nbValides;
+        document.getElementById("nAttente").textContent = c.attente;
+        document.getElementById("nValide").textContent = c.valide;
+        document.getElementById("nRejete").textContent = c.rejete;
+        document.getElementById("nToutes").textContent = c.total;
 
         const btnPub = document.getElementById("btnPublier");
-        btnPub.disabled = nbValides === 0;
-        document.getElementById("nbValides").textContent = nbValides;
+        btnPub.disabled = c.valide === 0;
+        document.getElementById("nbValides").textContent = c.valide;
+
+        /* Barre de decisions non enregistrees */
+        barreLot.classList.toggle("visible", decisionsEnAttente);
+        document.getElementById("compteLot").textContent =
+          c.valide + " validée(s) · " + c.rejete + " rejetée(s)";
+
+        /* Filtrage */
+        let visibles = saisies.slice();
+        if (filtre === "attente") {
+          visibles = visibles.filter(function (s) { return s.statut === "en-attente"; });
+        } else if (filtre === "valide") {
+          visibles = visibles.filter(function (s) { return s.statut === "valide"; });
+        } else if (filtre === "rejete") {
+          visibles = visibles.filter(function (s) {
+            return s.statut === "rejete" || s.statut === "publie";
+          });
+        }
 
         if (!saisies.length) {
           liste.innerHTML =
@@ -469,15 +620,24 @@
           return;
         }
 
-        const tri = saisies.slice().sort(function (a, b) {
+        if (!visibles.length) {
+          liste.innerHTML =
+            "<div class='empty'>✅ Rien à traiter dans ce filtre.<br>" +
+            "<span style='font-size:13px'>Utilisez « Toutes » pour revoir l'historique.</span></div>";
+          return;
+        }
+
+        /* Les plus recentes en premier */
+        visibles.sort(function (a, b) {
           return (b.horodatage || "").localeCompare(a.horodatage || "");
         });
 
-        liste.innerHTML = tri.map(function (s) {
+        liste.innerHTML = visibles.map(function (s) {
           const i = saisies.indexOf(s);
           const classe =
             (s.statut === "valide" ? "valide" :
-             s.statut === "rejete" ? "rejete" : "attente") +
+             s.statut === "rejete" ? "rejete" :
+             s.statut === "publie" ? "publie" : "attente") +
             (s.nouveau ? " neuve" : "");
 
           const ref = trouverCaisse(s.caisse);
@@ -485,22 +645,34 @@
             "<div class='avert' style='margin:12px 0 0'>⚠️ Cette caisse n'existe pas dans le colisage de référence. " +
             "Elle sera <b>ajoutée</b> au conteneur « " + ech(s.conteneur) + " » si vous la validez.</div>";
 
+          const nbKo = s.nbManquants || 0;
+          const nbPlus = s.nbAjoutes || 0;
+          const publiee = s.statut === "publie";
+
           return (
             '<div class="saisie ' + classe + '" data-i="' + i + '">' +
-              '<div class="saisie-tete" data-toggle="' + i + '">' +
-                '<span style="font-size:22px">🧰</span>' +
-                '<div class="nom"><b>' + ech(s.caisse) + "</b>" +
+              '<div class="saisie-tete">' +
+                '<button type="button" class="chevron" data-toggle="' + i + '" title="Voir le détail">›</button>' +
+                '<div class="nom" data-toggle="' + i + '"><b>' + ech(s.caisse) + "</b>" +
                   "<span>" + ech(s.conteneur) + " · " + ech(s.operateur) +
-                  " · " + ech(s.horodatage || "") + "</span></div>" +
-                '<div class="pastilles">' +
-                  (s.nouveau ? '<span class="pastille recent">Nouveau</span>' : "") +
-                  '<span class="pastille ok">' + (s.nbPresents || 0) + " ✅</span>" +
-                  '<span class="pastille ko">' + (s.nbManquants || 0) + " ❌</span>" +
-                  '<span class="pastille plus">' + (s.nbAjoutes || 0) + " ➕</span>" +
-                  '<span class="pastille neutre">' +
-                    (s.statut === "valide" ? "Validée" :
-                     s.statut === "rejete" ? "Rejetée" : "En attente") + "</span>" +
-                "</div></div>" +
+                  " · " + ech(C.dateCourte(s.horodatage)) + "</span></div>" +
+
+                (s.nouveau ? '<span class="etiquette recent">Nouveau</span>' : "") +
+                (publiee ? '<span class="etiquette publiee">Publiée</span>' : "") +
+
+                '<div class="resume-chiffres">' +
+                  '<span class="chiffre ok">' + (s.nbPresents || 0) + "</span>" +
+                  '<span class="chiffre ' + (nbKo ? "ko" : "zero") + '">' + nbKo + "</span>" +
+                  '<span class="chiffre ' + (nbPlus ? "plus" : "zero") + '">' + nbPlus + "</span>" +
+                "</div>" +
+
+                '<div class="decision">' +
+                  '<button type="button" data-valider="' + i + '" title="Valider" class="' +
+                    (s.statut === "valide" ? "actif-ok" : "") + '">✅</button>' +
+                  '<button type="button" data-rejeter="' + i + '" title="Rejeter" class="' +
+                    (s.statut === "rejete" ? "actif-ko" : "") + '">❌</button>' +
+                "</div>" +
+              "</div>" +
 
               '<div class="saisie-corps">' + alerte +
                 '<div class="colonnes">' +
@@ -515,40 +687,119 @@
                      "<li style='background:none;color:#888'>—</li>") + "</ul></div>" +
                 "</div>" +
                 (s.commentaire ? "<div class='commentaire'>💬 " + ech(s.commentaire) + "</div>" : "") +
-                '<div class="actions-saisie">' +
-                  '<button type="button" class="btn-valider" data-valider="' + i + '">✅ Valider cette caisse</button>' +
-                  '<button type="button" class="btn-rejeter" data-rejeter="' + i + '">✖️ Rejeter</button>' +
-                "</div></div></div>"
+              "</div></div>"
           );
         }).join("");
 
+        /* Ouverture du detail */
         liste.querySelectorAll("[data-toggle]").forEach(function (t) {
-          t.addEventListener("click", function () {
-            t.parentElement.classList.toggle("ouverte");
+          t.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const carte = t.closest(".saisie");
+            carte.classList.toggle("ouverte");
             const i = +t.dataset.toggle;
             if (REEL.saisies[i]) REEL.saisies[i].nouveau = false;
           });
         });
 
+        /* Decisions rapides */
         liste.querySelectorAll("[data-valider]").forEach(function (b) {
-          b.addEventListener("click", function () {
-            const s = REEL.saisies[+b.dataset.valider];
-            s.statut = "valide"; s.nouveau = false;
-            rendre();
+          b.addEventListener("click", function (e) {
+            e.stopPropagation();
+            decider(+b.dataset.valider, "valide");
           });
         });
 
         liste.querySelectorAll("[data-rejeter]").forEach(function (b) {
-          b.addEventListener("click", function () {
-            const s = REEL.saisies[+b.dataset.rejeter];
-            s.statut = "rejete"; s.nouveau = false;
-            rendre();
+          b.addEventListener("click", function (e) {
+            e.stopPropagation();
+            decider(+b.dataset.rejeter, "rejete");
           });
         });
       }
 
+      function decider(index, statut) {
+        const s = REEL.saisies[index];
+        if (!s) return;
+        /* Un second clic annule la decision */
+        s.statut = (s.statut === statut) ? "en-attente" : statut;
+        s.nouveau = false;
+        decisionsEnAttente = true;
+        memoriserDecisions();
+        rendre();
+      }
+
+      /* ---------- Actions groupees ---------- */
+      document.getElementById("btnToutValider").addEventListener("click", function () {
+        const enAttente = (REEL.saisies || []).filter(function (s) {
+          return s.statut === "en-attente";
+        });
+        if (!enAttente.length) return;
+        if (!confirm("Valider les " + enAttente.length + " saisie(s) en attente ?")) return;
+        enAttente.forEach(function (s) { s.statut = "valide"; s.nouveau = false; });
+        decisionsEnAttente = true;
+        memoriserDecisions();
+        rendre();
+      });
+
+      document.getElementById("btnAnnulerLot").addEventListener("click", function () {
+        (REEL.saisies || []).forEach(function (s) {
+          if (s.statut === "valide" || s.statut === "rejete") s.statut = "en-attente";
+        });
+        decisionsEnAttente = false;
+        memoriserDecisions();
+        rendre();
+      });
+
+      document.getElementById("btnEnregistrer").addEventListener("click", function () {
+        enregistrerDecisions(true);
+      });
+
       /* =========================================================
-         PUBLICATION DIRECTE
+         ENREGISTREMENT DURABLE DES DECISIONS
+         C'est ce qui fait disparaitre une caisse traitee.
+         ========================================================= */
+      function enregistrerDecisions(avecMessage) {
+        if (!REEL) return Promise.resolve({ ok: false });
+
+        const auteur = (document.getElementById("auteur").value || "").trim();
+
+        /* On nettoie les proprietes d'affichage avant envoi */
+        const copie = JSON.parse(JSON.stringify(REEL));
+        (copie.saisies || []).forEach(function (s) { delete s.nouveau; });
+
+        if (!C.ecritureReleveDisponible()) {
+          decisionsEnAttente = false;
+          memoriserDecisions();
+          rendre();
+          if (avecMessage) {
+            setStatus("info",
+              "💾 Décisions mémorisées sur cet appareil uniquement." +
+              "<br><span style='font-weight:400;font-size:13px'>" +
+              "Configurez le 4e flux pour qu'elles soient partagées et définitives.</span>");
+          }
+          return Promise.resolve({ ok: true, local: true });
+        }
+
+        if (avecMessage) setStatus("info", "⏳ Enregistrement des décisions…");
+
+        return C.ecrireReleve(siteCourant(), copie, auteur).then(function (r) {
+          if (r.ok) {
+            decisionsEnAttente = false;
+            memoriserDecisions();
+            rendre();
+            if (avecMessage) {
+              setStatus("ok", "✅ Décisions enregistrées. Les caisses traitées sont retirées de la liste.");
+            }
+          } else if (avecMessage) {
+            setStatus("erreur", "❌ " + ech(r.msg));
+          }
+          return r;
+        });
+      }
+
+      /* =========================================================
+         PUBLICATION
          ========================================================= */
       const btnPublier = document.getElementById("btnPublier");
 
@@ -566,6 +817,13 @@
 
         if (!valides.length) { alert("Aucune caisse validée."); return; }
 
+        const auteur = (document.getElementById("auteur").value || "").trim();
+        if (!auteur) {
+          alert("Renseignez votre nom : il sert de traçabilité sur chaque caisse.");
+          document.getElementById("auteur").focus();
+          return;
+        }
+
         const recap = valides.map(function (s) { return "· " + s.caisse; }).join("\n");
         const ok = confirm(
           "Publier le colisage de référence ?\n\n" +
@@ -577,9 +835,7 @@
         btnPublier.disabled = true;
         setStatus("info", "⏳ Publication en cours…");
 
-        const inj = C.injecter(COLISAGE, valides);
-        const auteur = (document.getElementById("auteur").value || "").trim();
-
+        const inj = C.injecter(COLISAGE, valides, auteur);
         const envoi = await C.ecrireColisage(inj.colisage, auteur);
 
         if (envoi.ok) {
@@ -587,14 +843,27 @@
           resultat = inj.colisage;
 
           valides.forEach(function (s) { s.statut = "publie"; });
+          decisionsEnAttente = true;
+
+          setStatus("ok",
+            "✅ Colisage publié · <b>" + inj.remplacees + "</b> caisse(s) mise(s) à jour" +
+            (inj.ajoutees ? " · <b>" + inj.ajoutees + "</b> ajoutée(s)" : "") +
+            "<br><span style='font-weight:400;font-size:13px'>Enregistrement des décisions…</span>");
+
+          document.getElementById("apercu").value = JSON.stringify(inj.colisage, null, 2);
+
+          /* On enregistre les statuts pour que les caisses disparaissent */
+          const r = await enregistrerDecisions(false);
 
           setStatus("ok",
             "✅ Colisage publié · <b>" + inj.remplacees + "</b> caisse(s) mise(s) à jour" +
             (inj.ajoutees ? " · <b>" + inj.ajoutees + "</b> ajoutée(s)" : "") +
             "<br><span style='font-weight:400;font-size:13px'>" +
-            "Les opérateurs verront la mise à jour au prochain chargement.</span>");
+            (r && r.local
+              ? "Décisions mémorisées localement (4e flux non configuré)."
+              : "Décisions enregistrées. Les opérateurs verront la mise à jour au prochain chargement.") +
+            "</span>");
 
-          document.getElementById("apercu").value = JSON.stringify(inj.colisage, null, 2);
           rendre();
         } else {
           setStatus("erreur", "❌ " + ech(envoi.msg));
@@ -602,14 +871,15 @@
         }
       });
 
-      /* ---------- Generation manuelle (secours) ---------- */
+      /* ---------- Export manuel ---------- */
       document.getElementById("btnGenerer").addEventListener("click", function () {
         const valides = (REEL.saisies || []).filter(function (s) {
           return s.statut === "valide" || s.statut === "publie";
         });
         if (!valides.length) { alert("Aucune caisse validée."); return; }
 
-        const inj = C.injecter(COLISAGE, valides);
+        const auteur = (document.getElementById("auteur").value || "").trim();
+        const inj = C.injecter(COLISAGE, valides, auteur);
         resultat = inj.colisage;
 
         const texte = JSON.stringify(inj.colisage, null, 2);
@@ -637,6 +907,10 @@
         setSync("", "<span>ℹ️ Synchronisation non configurée — lecture des fichiers locaux.</span>");
       } else {
         demarrerAuto();
+      }
+
+      if (!C.ecritureReleveDisponible()) {
+        document.getElementById("avertReleve").style.display = "block";
       }
 </script>
   </body>
