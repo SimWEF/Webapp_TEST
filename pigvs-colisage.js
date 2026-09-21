@@ -320,74 +320,67 @@
      Cette fonction reconstruit la liste caisses[] du conteneur
      concerne, en reutilisant les objets caisse existants (avec
      leurs equipements) quand ils sont deja connus. */
-  function injecterConteneur(colisage, saisie, valideur) {
-    const cible = (colisage.conteneurs || []).find(function (c) {
-      return cleKey(c.nom) === cleKey(saisie.conteneur || saisie.caisse);
-    });
-
-    if (!cible) {
-      console.warn(
-        "Conteneur introuvable pour l'injection :",
-        saisie.conteneur || saisie.caisse
-      );
-      return;
-    }
-
-    const nomsPresents = [].concat(saisie.presents || [], saisie.ajoutes || []);
-    const anciennes = cible.caisses || [];
-    const nouvelles = [];
-
-    nomsPresents.forEach(function (nom) {
-      let objet = anciennes.find(function (caisse) {
-        return cleKey(caisse.nom) === cleKey(nom);
+     function injecterConteneur(colisage, saisie, valideur) {
+      const cible = (colisage.conteneurs || []).find(function (c) {
+        return cleKey(c.nom) === cleKey(saisie.conteneur || saisie.caisse);
       });
-
-      if (!objet) {
-        objet = trouverCaisseDansColisage(colisage, nom);
+    
+      if (!cible) {
+        console.warn("Conteneur introuvable pour l'injection :", saisie.conteneur || saisie.caisse);
+        return;
       }
-
-      if (!objet) {
-        objet = { nom: nom, items: [] };
-      }
-
-      /* Copie profonde : evite de partager le meme objet si une
-         caisse existait deja ailleurs dans le colisage. */
-      nouvelles.push(JSON.parse(JSON.stringify(objet)));
-    });
-
-    /* Les caisses retirees du conteneur ne sont pas perdues : on
-       les archive dans colisage.caissesNonAffectees pour ne pas
-       effacer leur contenu (equipements) au cas ou elles seraient
-       simplement deplacees vers un autre conteneur plus tard. */
-    colisage.caissesNonAffectees = colisage.caissesNonAffectees || [];
-
-    const clesPresentes = {};
-    nomsPresents.forEach(function (nom) {
-      clesPresentes[cleKey(nom)] = true;
-    });
-
-    anciennes.forEach(function (caisse) {
-      if (!clesPresentes[cleKey(caisse.nom)]) {
-        const dejaArchivee = colisage.caissesNonAffectees.some(function (c) {
-          return cleKey(c.nom) === cleKey(caisse.nom);
+    
+      const cleConteneur = cleKey(cible.nom);
+    
+      /* Empeche un conteneur de contenir une "caisse" portant son propre nom */
+      const nomsPresents = [].concat(saisie.presents || [], saisie.ajoutes || [])
+        .filter(function (nom) {
+          const estValide = cleKey(nom) !== cleConteneur;
+          if (!estValide) {
+            console.warn("Ignoré : une caisse ne peut pas porter le nom du conteneur (" + nom + ")");
+          }
+          return estValide;
         });
-        if (!dejaArchivee) {
-          colisage.caissesNonAffectees.push(caisse);
+    
+      const anciennes = cible.caisses || [];
+      const nouvelles = [];
+    
+      nomsPresents.forEach(function (nom) {
+        let objet = anciennes.find(function (caisse) {
+          return cleKey(caisse.nom) === cleKey(nom);
+        });
+        if (!objet) {
+          objet = trouverCaisseDansColisage(colisage, nom);
         }
-      }
-    });
-
-    cible.caisses = nouvelles;
-
-    cible.verif = {
-      date: new Date().toISOString(),
-      site: saisie.site || "",
-      operateur: saisie.operateur || "",
-      valideur: valideur || "",
-      nbManquants: Number(saisie.nbManquants || 0),
-      nbAjoutes: Number(saisie.nbAjoutes || 0)
-    };
-  }
+        if (!objet) {
+          objet = { nom: nom, items: [] };
+        }
+        nouvelles.push(JSON.parse(JSON.stringify(objet)));
+      });
+    
+      colisage.caissesNonAffectees = colisage.caissesNonAffectees || [];
+      const clesPresentes = {};
+      nomsPresents.forEach(function (nom) { clesPresentes[cleKey(nom)] = true; });
+    
+      anciennes.forEach(function (caisse) {
+        if (!clesPresentes[cleKey(caisse.nom)]) {
+          const dejaArchivee = colisage.caissesNonAffectees.some(function (c) {
+            return cleKey(c.nom) === cleKey(caisse.nom);
+          });
+          if (!dejaArchivee) colisage.caissesNonAffectees.push(caisse);
+        }
+      });
+    
+      cible.caisses = nouvelles;
+      cible.verif = {
+        date: new Date().toISOString(),
+        site: saisie.site || "",
+        operateur: saisie.operateur || "",
+        valideur: valideur || "",
+        nbManquants: Number(saisie.nbManquants || 0),
+        nbAjoutes: Number(saisie.nbAjoutes || 0)
+      };
+    }
 
   /* Cherche une caisse (avec ses equipements) n'importe ou dans le
      colisage : dans un conteneur, ou dans les caisses archivees
