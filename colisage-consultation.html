@@ -396,6 +396,15 @@ function renderCaisses(){
   contenu.innerHTML = html;
 }
 
+function libelleItem(it){
+  if(it && typeof it === "object"){
+    const nom = it.equipement || it.nom || "";
+    const q = it.quantite || it.quantitePresente || 1;
+    return q > 1 ? nom + " ×" + q : nom;
+  }
+  return String(it || "");
+}
+
 function renderItems(){
   const c = DATA.conteneurs.find(x=>x.id===vue.conteneurId);
   if(!c){ retourAccueil(); return; }
@@ -430,7 +439,7 @@ function renderItems(){
 
   if(k.items.length){
     html += `<ul class="item-list">`;
-    k.items.forEach(it=> html += `<li>${esc(it)}</li>`);
+      k.items.forEach(it=> html += `<li>${esc(libelleItem(it))}</li>`);
     html += `</ul>`;
   } else {
     html += `<div class='vide'>Cette caisse ne contient aucun élément référencé.</div>`;
@@ -453,8 +462,9 @@ function renderRecherche(saisie){
           parConteneur: scoreNom===0 });
       }
       k.items.forEach(it=>{
-        const sc = itemScore(saisie, it);
-        if(sc > 0) items.push({ item:it, conteneur:c, caisse:k, nomCaisse:k.nom, idx, score:sc });
+        const texteItem = libelleItem(it);
+        const sc = itemScore(saisie, texteItem);
+        if(sc > 0) items.push({ item:texteItem, conteneur:c, caisse:k, nomCaisse:k.nom, idx, score:sc });
       });
     });
   });
@@ -472,8 +482,8 @@ function renderRecherche(saisie){
   if(caisses.length){
     html += `<div class="section-titre">🧰 Caisses & sous-ensembles<span class="sous-titre-inline">${caisses.length}</span></div>`;
     caisses.slice(0,40).forEach(r=>{
-      const apercu = r.caisse.items.slice(0,4).map(esc).join(' · ')
-                   + (r.caisse.items.length>4 ? ` … +${r.caisse.items.length-4}` : '');
+      const apercu = r.caisse.items.slice(0,4).map(function(it){ return esc(libelleItem(it)); }).join(' · ')
+             + (r.caisse.items.length>4 ? ` … +${r.caisse.items.length-4}` : '');
       const approx = !r.parConteneur && estApproximatif(saisie, r.caisse.nom);
       html += `<button class="result res-caisse" onclick="ouvrirDepuisRecherche('${r.conteneur.id}',${r.idx})">
         <div class="item">📦 ${r.parConteneur ? esc(r.caisse.nom) : surligner(r.caisse.nom, saisie)}

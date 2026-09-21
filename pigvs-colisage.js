@@ -182,60 +182,80 @@
        Remplace le contenu des caisses validees et ajoute
        la tracabilite de la derniere verification.
        ====================================================== */
-    function injecter(colisage, saisiesValidees, valideur) {
-      const resultat = JSON.parse(JSON.stringify(colisage));
-      let remplacees = 0;
-      let ajoutees = 0;
-  
-      (saisiesValidees || []).forEach(function (s) {
-      /* Colisage de conteneur : la saisie contient une liste
-         de CAISSES (pas d'équipements). On la traite à part. */
-      if (s && s.niveauColisage === "conteneur") {
-        injecterConteneur(resultat, s, auteur);
-        return;
-      }
-
-        const contenu = [].concat(s.presents || [], s.ajoutes || []);
-        const recherche = cleKey(s.caisse);
-  
-        /* Tracabilite de la verification */
-        const verif = {
-          date: new Date().toISOString(),
-          site: s.site || "",
-          operateur: s.operateur || "",
-          valideur: valideur || "",
-          nbManquants: s.nbManquants || 0,
-          nbAjoutes: s.nbAjoutes || 0
-        };
-  
-        let trouve = false;
-  
-        (resultat.conteneurs || []).forEach(function (c) {
-          (c.caisses || []).forEach(function (k) {
-            if (cleKey(k.nom) === recherche) {
-              k.items = contenu;
-              k.verif = verif;
-              trouve = true;
-              remplacees++;
-            }
-          });
-        });
-  
-        if (!trouve) {
-          let cible = (resultat.conteneurs || []).find(function (c) {
-            return cleKey(c.nom) === cleKey(s.conteneur);
-          });
-          if (!cible) {
-            cible = { nom: s.conteneur || "Non affecte", caisses: [] };
-            resultat.conteneurs.push(cible);
+       function injecter(colisage, saisiesValidees, valideur) {
+        const resultat = JSON.parse(JSON.stringify(colisage));
+        let remplacees = 0;
+        let ajoutees = 0;
+      
+        /* Convertit les elements d'une saisie (chaine simple, ou objet
+           {equipement, quantite} / {equipement, quantitePresente/quantitePrevue})
+           vers le format standard {equipement, quantite} utilise dans
+           colisage-data.json. */
+        function normaliserElement(x) {
+          if (x && typeof x === "object") {
+            const nom = x.equipement || x.nom || "";
+            const q = Math.max(
+              1,
+              parseInt(x.quantitePresente ?? x.quantite ?? x.quantitePrevue ?? 1, 10)
+            );
+            return { equipement: nom, quantite: q };
           }
-          cible.caisses.push({ nom: s.caisse, items: contenu, verif: verif });
-          ajoutees++;
+          /* Chaine simple (ancien format, ou nom de caisse pour un conteneur) */
+          return x;
         }
-      });
-  
-      return { colisage: resultat, remplacees: remplacees, ajoutees: ajoutees };
-    }
+      
+        function normaliserListe(liste) {
+          return (liste || []).map(normaliserElement).filter(function (x) {
+            return typeof x === "string" ? x.trim() !== "" : !!x.equipement;
+          });
+        }
+      
+        (saisiesValidees || []).forEach(function (s) {
+          if (s && s.niveauColisage === "conteneur") {
+            injecterConteneur(resultat, s, valideur);
+            return;
+          }
+      
+          const contenu = [].concat(normaliserListe(s.presents), normaliserListe(s.ajoutes));
+          const recherche = cleKey(s.caisse);
+      
+          const verif = {
+            date: new Date().toISOString(),
+            site: s.site || "",
+            operateur: s.operateur || "",
+            valideur: valideur || "",
+            nbManquants: s.nbManquants || 0,
+            nbAjoutes: s.nbAjoutes || 0
+          };
+      
+          let trouve = false;
+      
+          (resultat.conteneurs || []).forEach(function (c) {
+            (c.caisses || []).forEach(function (k) {
+              if (cleKey(k.nom) === recherche) {
+                k.items = contenu;
+                k.verif = verif;
+                trouve = true;
+                remplacees++;
+              }
+            });
+          });
+      
+          if (!trouve) {
+            let cible = (resultat.conteneurs || []).find(function (c) {
+              return cleKey(c.nom) === cleKey(s.conteneur);
+            });
+            if (!cible) {
+              cible = { nom: s.conteneur || "Non affecte", caisses: [] };
+              resultat.conteneurs.push(cible);
+            }
+            cible.caisses.push({ nom: s.caisse, items: contenu, verif: verif });
+            ajoutees++;
+          }
+        });
+      
+        return { colisage: resultat, remplacees: remplacees, ajoutees: ajoutees };
+      }
   
     /* ===== 8. Catalogue des equipements ====================
        Fusionne :
