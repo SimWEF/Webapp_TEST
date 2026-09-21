@@ -403,6 +403,19 @@
         }
         return String(x || "");
       }
+      function libelleManquant(x) {
+        if (x && typeof x === "object") {
+          const nom = x.equipement || x.nom || "";
+          let manque = x.quantiteManquante;
+          if (manque === undefined || manque === null) {
+            const prevue = Number(x.quantitePrevue || 0);
+            const presente = Number(x.quantitePresente || 0);
+            manque = Math.max(0, prevue - presente);
+          }
+          return manque > 0 ? nom + " (manque " + manque + ")" : nom;
+        }
+        return String(x || "");
+      }
       function chargerColisage() {
         return C.lireColisage().then(function (d) {
           COLISAGE = d;
@@ -688,7 +701,7 @@
                     ((s.presents || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
                      "<li style='background:none;color:#888'>—</li>") + "</ul></div>" +
                   '<div class="colonne ko"><h4>Manquants (' + (s.manquants || []).length + ")</h4><ul>" +
-                    ((s.manquants || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
+                    ((s.manquants || []).map(function (x) { return "<li>" + ech(libelleManquant(x)) + "</li>"; }).join("") ||
                      "<li style='background:none;color:#888;text-decoration:none'>—</li>") + "</ul></div>" +
                   '<div class="colonne plus"><h4>Trouvés en plus (' + (s.ajoutes || []).length + ")</h4><ul>" +
                     ((s.ajoutes || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
