@@ -83,22 +83,36 @@
       .ligne-item .zone-qte {
         display: flex;
         align-items: center;
-        gap: 5px;
+        gap: 4px;
         flex: 0 0 auto;
       }
-
       .ligne-item .zone-qte label {
         font-size: 11px;
         font-weight: 700;
         color: var(--muted);
         text-transform: uppercase;
+        margin-right: 2px;
       }
-
+      .ligne-item .zone-qte button {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
+        font-size: 19px;
+        font-weight: 700;
+        border: 1px solid #ccd4e0;
+        border-radius: 10px;
+        background: #fff;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .ligne-item .zone-qte button:active {
+        background: var(--primary-soft);
+      }
       .ligne-item .zone-qte input {
-        width: 64px;
-        height: 42px;
+        width: 52px;
+        height: 38px;
         box-sizing: border-box;
-        padding: 6px;
+        padding: 4px;
         text-align: center;
         font-size: 16px;
         font-weight: 700;
@@ -106,10 +120,24 @@
         border-radius: 10px;
         background: #fff;
       }
-
       .ligne-item .zone-qte input:focus {
         border-color: var(--primary);
         outline: 2px solid var(--primary-soft);
+      }
+      .ligne-item .btn-absent {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
+        font-size: 15px;
+        border: 1px solid var(--rouge);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--rouge);
+        cursor: pointer;
+      }
+      .ligne-item .btn-absent.actif {
+        background: var(--rouge);
+        color: #fff;
       }
 
       @media (max-width: 520px) {
@@ -835,18 +863,15 @@
             "<p class='empty' style='padding:20px 0'>Aucun élément prévu.<br>Ajoutez le contenu constaté ci-dessous.</p>";
         } else {
           listeItems.innerHTML = items.map(function (item, index) {
-            const classe = (item.etat === "ko" ? " est-ko" : "") +
-                           (item.ajout ? " ajout" : "");
+            const absent = Number(item.quantitePresente || 0) === 0;
+            const classe = (absent ? " est-ko" : "") + (item.ajout ? " ajout" : "");
+
             return (
               '<div class="ligne-item' + classe + '">' +
               '<span class="nom">' + echapper(item.nom) + "</span>" +
               '<div class="zone-qte">' +
-                '<label for="qte-' + index + '">' +
-                  (item.ajout
-                    ? 'Qté'
-                    : 'Qté / ' + item.quantitePrevue
-                  ) +
-                '</label>' +
+                (item.ajout ? '' : '<label>Qté / ' + item.quantitePrevue + '</label>') +
+                '<button type="button" data-moins="' + index + '" aria-label="Diminuer">−</button>' +
                 '<input ' +
                   'type="number" ' +
                   'id="qte-' + index + '" ' +
@@ -856,73 +881,51 @@
                   'inputmode="numeric" ' +
                   'value="' + Math.max(0, parseInt(item.quantitePresente || 0, 10)) + '" ' +
                 '/>' +
+                '<button type="button" data-plus="' + index + '" aria-label="Augmenter">+</button>' +
               '</div>' +
-              '<div class="choix-etat">' +
-              '<button type="button" data-ok="' + index + '" class="' +
-              (item.etat === "ok" ? "actif-ok" : "") + '" title="Présent">✅</button>' +
-              '<button type="button" data-ko="' + index + '" class="' +
-              (item.etat === "ko" ? "actif-ko" : "") + '" title="Manquant">❌</button>' +
-              "</div>" +
+              '<button type="button" class="btn-absent' + (absent ? ' actif' : '') +
+                '" data-absent="' + index + '" title="Marquer absent (0)">0</button>' +
               (item.ajout
                 ? '<button type="button" class="btn-suppr" data-suppr="' + index + '">×</button>'
                 : "") +
               "</div>"
             );
           }).join("");
+
           listeItems.querySelectorAll("[data-qte]").forEach(function (champ) {
             champ.addEventListener("change", function () {
               const index = Number(champ.dataset.qte);
-
               let valeur = parseInt(champ.value, 10);
-
-              if (isNaN(valeur) || valeur < 0) {
-                valeur = 0;
-              }
-
+              if (isNaN(valeur) || valeur < 0) valeur = 0;
               items[index].quantitePresente = valeur;
-              champ.value = valeur;
-
-              /*
-              * Si la quantité réelle est à zéro,
-              * l'élément est automatiquement absent.
-              */
-              if (valeur === 0) {
-                items[index].etat = "ko";
-              } else {
-                items[index].etat = "ok";
-              }
-
-              rendreItems();
-            });
-          });
-          listeItems.querySelectorAll("[data-ok]").forEach(function (b) {
-            b.addEventListener("click", function () {
-              const index = Number(b.dataset.ok);
-
-              items[index].etat = "ok";
-
-              if (items[index].ajout) {
-                items[index].quantitePresente =
-                  Math.max(1, Number(items[index].quantitePresente || 1));
-              } else {
-                items[index].quantitePresente =
-                  Number(items[index].quantitePrevue || 1);
-              }
-
               rendreItems();
             });
           });
 
-          listeItems.querySelectorAll("[data-ko]").forEach(function (b) {
+          listeItems.querySelectorAll("[data-plus]").forEach(function (b) {
             b.addEventListener("click", function () {
-              const index = Number(b.dataset.ko);
+              const index = Number(b.dataset.plus);
+              items[index].quantitePresente = Number(items[index].quantitePresente || 0) + 1;
+              rendreItems();
+            });
+          });
 
-              items[index].etat = "ko";
+          listeItems.querySelectorAll("[data-moins]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              const index = Number(b.dataset.moins);
+              items[index].quantitePresente = Math.max(0, Number(items[index].quantitePresente || 0) - 1);
+              rendreItems();
+            });
+          });
+
+          listeItems.querySelectorAll("[data-absent]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              const index = Number(b.dataset.absent);
               items[index].quantitePresente = 0;
-
               rendreItems();
             });
           });
+
           listeItems.querySelectorAll("[data-suppr]").forEach(function (b) {
             b.addEventListener("click", function () {
               items.splice(+b.dataset.suppr, 1);
@@ -978,31 +981,17 @@
       document.getElementById("btnToutPresent")
         .addEventListener("click", function () {
           items.forEach(function (item) {
-            item.etat = "ok";
-
-            if (!item.ajout) {
-              item.quantitePresente = item.quantitePrevue;
-            }
+            if (!item.ajout) item.quantitePresente = item.quantitePrevue;
           });
-
           rendreItems();
         });
 
-
-        document.getElementById("btnToutVider")
-          .addEventListener("click", function () {
-            items = items.filter(function (item) {
-              return !item.ajout;
-            });
-
-            items.forEach(function (item) {
-              item.etat = "ok";
-              item.quantitePresente = item.quantitePrevue;
-            });
-
-            rendreItems();
-          });
-
+      document.getElementById("btnToutVider")
+        .addEventListener("click", function () {
+          items = items.filter(function (item) { return !item.ajout; });
+          items.forEach(function (item) { item.quantitePresente = item.quantitePrevue; });
+          rendreItems();
+        });
 
       /* =========================================================
          AJOUT D'UN ELEMENT
