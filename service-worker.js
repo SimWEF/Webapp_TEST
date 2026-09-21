@@ -8,7 +8,7 @@
    changer APP_CACHE pour voir un colisage mis a jour.
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v33";
+   const APP_CACHE = "pigvs-app-v34";
    const DATA_CACHE = "pigvs-data-v14";
    
    /* ==========================================================
@@ -60,6 +60,7 @@
      "depannage.html",
      "login.html",
      "admin-colisage-validation.html",
+     "colisage-conteneur-saisie.html",
    
      /* --- Styles et manifeste --- */
      "style.css",

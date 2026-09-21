@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saisie du colisage conteneur — PIGVS</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0B2C5C" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+
+    <style>
+      .etapes { display: flex; gap: 6px; margin: 14px 0 16px; }
+      .etapes .pas { flex: 1; height: 5px; border-radius: 3px; background: var(--border); }
+      .etapes .pas.actif { background: var(--primary); }
+
+      .bloc { background: #fff; border: 1px solid var(--border);
+        border-radius: var(--radius); box-shadow: var(--shadow);
+        padding: 16px; margin-bottom: 14px; }
+      .bloc > h2 { margin: 0 0 12px; font-size: 16px; color: var(--marine); }
+
+      .btn-scan { display: flex; align-items: center; justify-content: center;
+        gap: 12px; width: 100%; min-height: 58px; font-size: 17px; font-weight: 700;
+        color: #fff; background: var(--primary); border: 0; border-radius: 12px; cursor: pointer; }
+      .btn-scan:disabled { opacity: .5; cursor: not-allowed; }
+      .ico-barcode-btn { width: 26px; height: 26px; fill: #fff; flex: 0 0 auto; }
+
+      .separateur { display: flex; align-items: center; gap: 12px;
+        margin: 16px 0 12px; color: var(--muted); font-size: 12px;
+        text-transform: uppercase; letter-spacing: .8px; }
+      .separateur::before, .separateur::after {
+        content: ""; flex: 1; height: 1px; background: var(--border); }
+
+      /* ---------- Choix conteneur ---------- */
+      .cont-card { display: flex; align-items: center; gap: 13px; padding: 14px;
+        border-radius: 12px; border: 1px solid var(--border); background: #fff;
+        cursor: pointer; width: 100%; text-align: left; margin-bottom: 9px; }
+      .cont-card:active { transform: scale(.99); }
+      .cont-card .pastille { width: 18px; height: 40px; border-radius: 6px; flex: 0 0 auto; }
+      .cont-card .txt { flex: 1; min-width: 0; }
+      .cont-card .titre { font-size: 16px; font-weight: 700; color: var(--marine); }
+      .cont-card .sous { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+      .cont-card .chev { color: #b8c0cc; font-size: 20px; flex: 0 0 auto; }
+
+      /* ---------- Autocompletion ---------- */
+      .ac-wrap { position: relative; }
+      .ac-list { position: absolute; top: 100%; left: 0; right: 0;
+        background: #fff; border: 1px solid #ccd4e0; border-radius: 10px;
+        margin-top: 4px; max-height: 260px; overflow-y: auto; display: none;
+        z-index: 800; box-shadow: var(--shadow-lg); }
+      .ac-list div { padding: 12px 13px; font-size: 15px; cursor: pointer;
+        border-bottom: 1px solid #f0f2f6; }
+      .ac-list div:last-child { border-bottom: 0; }
+      .ac-list div:hover { background: var(--primary-soft); }
+      .ac-list .ac-empty { color: var(--muted); cursor: default; }
+      .ac-list mark { background: #fff2a8; color: inherit; padding: 0 1px; border-radius: 3px; }
+
+      /* ---------- Bandeau conteneur ---------- */
+      .bandeau-caisse { display: flex; align-items: center; gap: 12px;
+        background: var(--primary-soft); border: 1px solid #cfe0f5;
+        border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; }
+      .bandeau-caisse .ico { font-size: 26px; }
+      .bandeau-caisse .txt { flex: 1; min-width: 0; }
+      .bandeau-caisse .nom { font-size: 16.5px; font-weight: 800; color: var(--marine); }
+      .bandeau-caisse .sous { font-size: 12.5px; color: var(--muted); }
+      .bandeau-caisse button { flex: 0 0 auto; background: #fff;
+        border: 1px solid #cfe0f5; color: var(--primary); font-weight: 700;
+        font-size: 13px; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+
+      .maj-caisse { font-size: 12px; color: var(--muted);
+        background: #f4f7fb; border: 1px solid var(--border);
+        border-radius: 8px; padding: 7px 11px; margin-bottom: 12px; }
+
+      .compteurs { display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: 7px; margin-bottom: 12px; }
+      .compteurs .kpi { background: #f4f7fb; border: 1px solid var(--border);
+        border-radius: 10px; padding: 9px 4px; text-align: center; }
+      .compteurs .val { display: block; font-size: 19px; font-weight: 800; color: var(--marine); }
+      .compteurs .lab { display: block; font-size: 10px; text-transform: uppercase;
+        letter-spacing: .5px; color: var(--muted); font-weight: 700; }
+      .compteurs .kpi.ok .val { color: var(--vert); }
+      .compteurs .kpi.ko .val { color: var(--rouge); }
+      .compteurs .kpi.plus .val { color: var(--orange); }
+
+      .ligne-item { display: flex; align-items: center; gap: 10px;
+        padding: 10px 0; border-bottom: 1px solid #eef0f3; }
+      .ligne-item:last-of-type { border-bottom: 0; }
+      .ligne-item .nom { flex: 1; min-width: 0; font-size: 14.5px; line-height: 1.3; }
+      .ligne-item.est-ko .nom { color: var(--muted); text-decoration: line-through; }
+      .ligne-item.ajout .nom::before { content: "➕ "; }
+
+      .choix-etat { display: flex; gap: 5px; flex: 0 0 auto; }
+      .choix-etat button { width: 42px; height: 42px; font-size: 17px;
+        border-radius: 10px; border: 1px solid #ccd4e0; background: #fff; cursor: pointer; }
+      .choix-etat button.actif-ok { background: var(--vert); border-color: var(--vert); }
+      .choix-etat button.actif-ko { background: var(--rouge); border-color: var(--rouge); }
+
+      .btn-suppr { width: 36px; height: 36px; flex: 0 0 auto;
+        border-radius: 50%; border: 2px solid var(--rouge); background: #fff;
+        color: var(--rouge); font-weight: 700; cursor: pointer; }
+
+      .barre-rapide { display: flex; gap: 8px; margin-bottom: 12px; }
+      .barre-rapide button { flex: 1; min-height: 44px; font-size: 13.5px;
+        font-weight: 700; border-radius: 10px; border: 1px solid var(--border);
+        background: #eef1f6; cursor: pointer; }
+
+      .ajout-zone { display: flex; gap: 8px; margin-top: 12px; }
+      .ajout-zone .ac-wrap { flex: 1; }
+      .ajout-zone input { width: 100%; }
+      .ajout-zone button { flex: 0 0 auto; padding: 0 18px; font-weight: 700;
+        border-radius: 10px; border: 1px solid var(--primary);
+        background: var(--primary-soft); color: var(--primary); cursor: pointer; }
+      .aide-ajout { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+      .avert { background: #fff8e1; border: 1px solid #ffe0a3; color: #8a6100;
+        border-radius: 10px; padding: 11px 13px; font-size: 13px; margin-bottom: 12px; }
+
+      .status { text-align: center; font-size: 15px; font-weight: 700;
+        padding: 14px; border-radius: 12px; margin-top: 10px; display: none; }
+      .status.info { display: block; background: #e7f0fb; color: #083f78; }
+      .status.ok { display: block; background: #e4f6ec; color: var(--vert); }
+      .status.erreur { display: block; background: #fdecec; color: var(--rouge); }
+
+      .chemin { font-size: 12px; font-family: monospace; color: #083f78;
+        background: #eef4fb; border-radius: 8px; padding: 8px;
+        margin-top: 10px; word-break: break-all; }
+
+      .masque { display: none; }
+    </style>
+
+    <script src="pigvs-auth.js"></script>
+    <script>
+      PIGVS_AUTH.protegerPage();
+    </script>
+  </head>
+
+  <body>
+    <header class="app-header">
+      <a class="back" href="colisage.html">‹</a>
+      <h1>🚛 Colisage conteneur</h1>
+    </header>
+
+    <div class="page">
+      <div class="etapes">
+        <div class="pas actif" id="pas1"></div>
+        <div class="pas" id="pas2"></div>
+        <div class="pas" id="pas3"></div>
+      </div>
+
+      <!-- ============ ETAPE 1 : CHOISIR LE CONTENEUR ============ -->
+      <section class="bloc" id="blocChoix">
+        <h2>1. Identifier le conteneur</h2>
+
+        <button type="button" class="btn-scan" id="btnScan">
+          <svg class="ico-barcode-btn" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4"  y="14" width="4"  height="36" rx="1" />
+            <rect x="12" y="14" width="2"  height="36" rx="1" />
+            <rect x="18" y="14" width="5"  height="36" rx="1" />
+            <rect x="27" y="14" width="2"  height="36" rx="1" />
+            <rect x="33" y="14" width="4"  height="36" rx="1" />
+            <rect x="41" y="14" width="2"  height="36" rx="1" />
+            <rect x="47" y="14" width="5"  height="36" rx="1" />
+            <rect x="56" y="14" width="4"  height="36" rx="1" />
+          </svg>
+          <span>Scanner le code-barres</span>
+        </button>
+
+        <div class="separateur">ou choisir dans la liste</div>
+
+        <div id="listeConteneurs"></div>
+
+        <div class="status" id="statusChoix"></div>
+      </section>
+
+      <!-- ============ ETAPE 2 : CONTROLE DES CAISSES ============ -->
+      <section class="masque" id="blocInventaire">
+        <div class="bandeau-caisse">
+          <span class="ico">🚛</span>
+          <div class="txt">
+            <div class="nom" id="conteneurNom">—</div>
+            <div class="sous" id="conteneurSous">—</div>
+          </div>
+          <button type="button" id="btnChanger">Changer</button>
+        </div>
+
+        <div class="maj-caisse" id="majConteneur" style="display: none"></div>
+
+        <div class="bloc">
+          <h2>2. Caisses réellement présentes</h2>
+
+          <div class="compteurs">
+            <div class="kpi">
+              <span class="val" id="kTotal">0</span>
+              <span class="lab">Prévues</span>
+            </div>
+            <div class="kpi ok">
+              <span class="val" id="kOk">0</span>
+              <span class="lab">Présentes</span>
+            </div>
+            <div class="kpi ko">
+              <span class="val" id="kKo">0</span>
+              <span class="lab">Manquantes</span>
+            </div>
+            <div class="kpi plus">
+              <span class="val" id="kPlus">0</span>
+              <span class="lab">En plus</span>
+            </div>
+          </div>
+
+          <div class="barre-rapide">
+            <button type="button" id="btnToutPresent">✅ Toutes présentes</button>
+            <button type="button" id="btnToutVider">↺ Réinitialiser</button>
+          </div>
+
+          <div id="listeItems"></div>
+
+          <div class="ajout-zone">
+            <div class="ac-wrap">
+              <input
+                type="text"
+                id="champAjout"
+                placeholder="Ajouter une caisse trouvée en plus…"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+              />
+              <div class="ac-list" id="listeAjout"></div>
+            </div>
+            <button type="button" id="btnAjout">+</button>
+          </div>
+          <div class="aide-ajout">
+            Recherche dans <b>caisses.json</b> uniquement (référentiel officiel).
+            Scanner également possible.
+          </div>
+        </div>
+
+        <!-- ============ ENVOI ============ -->
+        <div class="bloc">
+          <h2>3. Valider et envoyer</h2>
+
+          <div class="field-group">
+            <label for="operateur">Opérateur <span class="req">*</span></label>
+            <input type="text" id="operateur" placeholder="Votre nom" />
+          </div>
+
+          <div class="field-group">
+            <label for="commentaire">Commentaire</label>
+            <textarea
+              id="commentaire"
+              placeholder="Observation, anomalie, caisse endommagée…"
+            ></textarea>
+          </div>
+
+          <div class="chemin" id="apercuChemin">Destination : …</div>
+
+          <button class="btn" id="btnEnvoyer" style="margin-top: 12px">
+            ✅ Envoyer le colisage conteneur 📤
+          </button>
+
+          <div class="status" id="statusEnvoi"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="pigvs-chantier.js"></script>
+    <script src="pigvs-envoi.js"></script>
+    <script src="pigvs-scan.js"></script>
+    <script src="pigvs-colisage.js"></script>
+
+    <script>
+      const C = window.PIGVS_COLISAGE;
+
+      let COLISAGE = { conteneurs: [] };
+      let REFERENTIEL_CAISSES = [];
+      let CODES = {};
+
+      let conteneurActif = null;
+      let items = []; // { nom, etat: 'ok'|'ko', ajout: bool }
+
+      /* ---------- Normalisation permissive (identique à colisage-saisie.html) ---------- */
+      function norm(s) {
+        return (s || "").toString().toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      }
+      function cleKey(s) { return norm(s).replace(/[^a-z0-9]/g, ""); }
+      function eclater(s) {
+        return norm(s).replace(/([a-z])(\d)/g, "$1 $2").replace(/(\d)([a-z])/g, "$1 $2");
+      }
+      function echapper(t) {
+        return (t || "").toString()
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      }
+      function attr(s) { return echapper(s).replace(/"/g, "&quot;"); }
+
+      function editDistance(a, b) {
+        const dp = [];
+        for (let i = 0; i <= a.length; i++) { dp[i] = []; dp[i][0] = i; }
+        for (let j = 0; j <= b.length; j++) { dp[0][j] = j; }
+        for (let i = 1; i <= a.length; i++) {
+          for (let j = 1; j <= b.length; j++) {
+            const c = a[i - 1] === b[j - 1] ? 0 : 1;
+            dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + c);
+            if (i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]) {
+              dp[i][j] = Math.min(dp[i][j], dp[i-2][j-2] + 1);
+            }
+          }
+        }
+        return dp[a.length][b.length];
+      }
+      function wordScore(s, t) {
+        if (!s) return 1;
+        if (t === s) return 120;
+        if (t.startsWith(s)) return 100;
+        if (t.includes(s)) return 80;
+        const tp = t.substring(0, s.length);
+        const d = Math.min(editDistance(s, t), editDistance(s, tp));
+        let th = 0;
+        if (s.length <= 3) th = 0;
+        else if (s.length <= 5) th = 1;
+        else if (s.length <= 9) th = 2;
+        else th = 3;
+        return d <= th ? 60 - d * 10 : 0;
+      }
+      function scoreMots(q, text) {
+        const qw = q.split(/\s+/).filter(Boolean);
+        const tw = text.split(/\s+/).filter(Boolean);
+        if (!qw.length) return 1;
+        let tot = 0;
+        for (const w of qw) {
+          let b = 0;
+          for (const t of tw) { const sc = wordScore(w, t); if (sc > b) b = sc; }
+          if (b === 0) return 0;
+          tot += b;
+        }
+        if (text.startsWith(q)) tot += 50;
+        if (text.includes(q)) tot += 30;
+        return tot;
+      }
+      function itemScore(search, texte) {
+        const q = norm(search);
+        if (!q) return 1;
+        const kq = cleKey(search), kt = cleKey(texte);
+        if (kq) {
+          if (kt === kq) return 200;
+          if (kt.startsWith(kq)) return 170;
+          if (kt.includes(kq)) return 150;
+        }
+        const score = scoreMots(q, norm(texte));
+        if (score > 0) return score;
+        return scoreMots(eclater(search), eclater(texte));
+      }
+      function surligner(texte, search) {
+        const mots = norm(search).split(/\s+/).filter(Boolean);
+        const brut = norm(texte);
+        const marques = new Array(texte.length).fill(false);
+        mots.forEach(function (w) {
+          let i = brut.indexOf(w);
+          while (i >= 0) {
+            for (let k = i; k < i + w.length && k < marques.length; k++) marques[k] = true;
+            i = brut.indexOf(w, i + w.length);
+          }
+        });
+        let out = "", ouvert = false;
+        for (let i = 0; i < texte.length; i++) {
+          if (marques[i] && !ouvert) { out += "<mark>"; ouvert = true; }
+          if (!marques[i] && ouvert) { out += "</mark>"; ouvert = false; }
+          out += echapper(texte[i]);
+        }
+        return out + (ouvert ? "</mark>" : "");
+      }
+
+      function sanitizePath(s) {
+        return (s || "").toString().trim().replace(/[\\\/:*?"<>|]/g, "-");
+      }
+      function setStatus(el, type, msg) { el.className = "status " + type; el.innerHTML = msg; }
+      function cacherStatus(el) { el.className = "status"; el.innerHTML = ""; }
+
+      /* =========================================================
+         CHARGEMENT
+         ========================================================= */
+      Promise.all([
+        C.lireColisage().catch(function () { return { conteneurs: [] }; }),
+        fetch("caisses.json", { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .catch(function () { return []; }),
+        fetch("codes-sap.json", { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .catch(function () { return { codes: {} }; }),
+      ]).then(function (res) {
+        COLISAGE = res[0] || { conteneurs: [] };
+        REFERENTIEL_CAISSES = Array.isArray(res[1]) ? res[1] : [];
+        CODES = (res[2] && res[2].codes) || {};
+
+        afficherConteneurs();
+
+        const params = new URLSearchParams(location.search);
+        const demande = params.get("conteneur");
+        if (demande) {
+          const c = trouverConteneur(demande);
+          if (c) selectionnerConteneur(c);
+        }
+      });
+
+      if (window.PIGVS) {
+        PIGVS.loadChantiers().then(majChemin);
+      }
+
+      /* =========================================================
+         ETAPE 1 — LISTE DES CONTENEURS
+         ========================================================= */
+      function afficherConteneurs() {
+        const zone = document.getElementById("listeConteneurs");
+        const conteneurs = COLISAGE.conteneurs || [];
+
+        if (!conteneurs.length) {
+          zone.innerHTML = "<p class='empty'>Aucun conteneur dans le colisage de référence.</p>";
+          return;
+        }
+
+        zone.innerHTML = conteneurs.map(function (c, idx) {
+          const nbCaisses = (c.caisses || []).length;
+          return (
+            '<button type="button" class="cont-card" data-idx="' + idx + '">' +
+              '<span class="pastille" style="background:' + attr(c.couleur || "#64748b") + '"></span>' +
+              '<span class="txt">' +
+                '<span class="titre">' + echapper(c.nom) + "</span>" +
+                '<span class="sous">' + echapper(c.ref || "") + " · " + nbCaisses + " caisse(s)</span>" +
+              "</span>" +
+              '<span class="chev">›</span>' +
+            "</button>"
+          );
+        }).join("");
+
+        zone.querySelectorAll("[data-idx]").forEach(function (bouton) {
+          bouton.addEventListener("click", function () {
+            selectionnerConteneur(conteneurs[+bouton.dataset.idx]);
+          });
+        });
+      }
+
+      function trouverConteneur(texte) {
+        const recherche = cleKey(texte);
+        const conteneurs = COLISAGE.conteneurs || [];
+
+        let trouve = conteneurs.find(function (c) {
+          return cleKey(c.nom) === recherche || cleKey(c.ref || "") === recherche;
+        });
+        if (trouve) return trouve;
+
+        return conteneurs.find(function (c) {
+          const k = cleKey(c.nom);
+          return k && (k.includes(recherche) || recherche.includes(k));
+        }) || null;
+      }
+
+      /* --- Scanner --- */
+      const btnScan = document.getElementById("btnScan");
+      const statusChoix = document.getElementById("statusChoix");
+
+      if (typeof PIGVS_SCAN === "undefined") {
+        btnScan.disabled = true;
+        setStatus(statusChoix, "erreur", "❌ Module de scan non chargé.");
+      } else if (!PIGVS_SCAN.disponible()) {
+        btnScan.disabled = true;
+        setStatus(statusChoix, "info", "ℹ️ Scan caméra indisponible ici. Choisissez dans la liste.");
+      }
+
+      btnScan.addEventListener("click", function () {
+        if (typeof PIGVS_SCAN === "undefined") return;
+
+        PIGVS_SCAN.ouvrir(
+          function (code) {
+            let cible = code;
+            const trouveCode = CODES[code];
+            if (trouveCode && trouveCode.type === "conteneur" && trouveCode.cible) {
+              cible = trouveCode.cible;
+            }
+
+            const conteneur = trouverConteneur(cible);
+            if (!conteneur) {
+              setStatus(statusChoix, "erreur",
+                "⚠️ Code non reconnu comme conteneur : " + echapper(code));
+              return;
+            }
+            selectionnerConteneur(conteneur);
+          },
+          function (message) {
+            setStatus(statusChoix, "erreur", "❌ " + echapper(message));
+          }
+        );
+      });
+
+      /* =========================================================
+         ETAPE 2 — SELECTION ET INVENTAIRE DES CAISSES
+         ========================================================= */
+      function selectionnerConteneur(conteneur) {
+        conteneurActif = conteneur;
+
+        items = (conteneur.caisses || []).map(function (caisse) {
+          return { nom: caisse.nom, etat: "ok", ajout: false };
+        });
+
+        document.getElementById("conteneurNom").textContent = conteneur.nom;
+        document.getElementById("conteneurSous").textContent =
+          (conteneur.ref || "") + (conteneur.categorie ? " · " + conteneur.categorie : "");
+
+        const v = conteneur.verif;
+        const zoneMaj = document.getElementById("majConteneur");
+        if (v && v.date) {
+          zoneMaj.style.display = "block";
+          zoneMaj.innerHTML = "🗓️ Dernier contrôle validé le <b>" + echapper(v.date) + "</b>" +
+            (v.site ? " sur <b>" + echapper(v.site) + "</b>" : "") +
+            (v.operateur ? " · relevé par " + echapper(v.operateur) : "");
+        } else {
+          zoneMaj.style.display = "block";
+          zoneMaj.innerHTML = "🗓️ Aucun contrôle validé pour ce conteneur à ce jour.";
+        }
+
+        document.getElementById("blocChoix").classList.add("masque");
+        document.getElementById("blocInventaire").classList.remove("masque");
+        document.getElementById("pas2").classList.add("actif");
+
+        rendreItems();
+        majChemin();
+        window.scrollTo(0, 0);
+      }
+
+      document.getElementById("btnChanger").addEventListener("click", function () {
+        document.getElementById("blocInventaire").classList.add("masque");
+        document.getElementById("blocChoix").classList.remove("masque");
+        document.getElementById("pas2").classList.remove("actif");
+        document.getElementById("pas3").classList.remove("actif");
+        cacherStatus(statusChoix);
+        window.scrollTo(0, 0);
+      });
+
+      const listeItems = document.getElementById("listeItems");
+
+      function rendreItems() {
+        if (!items.length) {
+          listeItems.innerHTML =
+            "<p class='empty' style='padding:20px 0'>Aucune caisse prévue dans ce conteneur.</p>";
+        } else {
+          listeItems.innerHTML = items.map(function (item, index) {
+            const classe = (item.etat === "ko" ? " est-ko" : "") +
+                           (item.ajout ? " ajout" : "");
+            return (
+              '<div class="ligne-item' + classe + '">' +
+              '<span class="nom">' + echapper(item.nom) + "</span>" +
+              '<div class="choix-etat">' +
+              '<button type="button" data-ok="' + index + '" class="' +
+              (item.etat === "ok" ? "actif-ok" : "") + '" title="Présente">✅</button>' +
+              '<button type="button" data-ko="' + index + '" class="' +
+              (item.etat === "ko" ? "actif-ko" : "") + '" title="Manquante">❌</button>' +
+              "</div>" +
+              (item.ajout
+                ? '<button type="button" class="btn-suppr" data-suppr="' + index + '">×</button>'
+                : "") +
+              "</div>"
+            );
+          }).join("");
+
+          listeItems.querySelectorAll("[data-ok]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              items[+b.dataset.ok].etat = "ok";
+              rendreItems();
+            });
+          });
+          listeItems.querySelectorAll("[data-ko]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              items[+b.dataset.ko].etat = "ko";
+              rendreItems();
+            });
+          });
+          listeItems.querySelectorAll("[data-suppr]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              items.splice(+b.dataset.suppr, 1);
+              rendreItems();
+            });
+          });
+        }
+        majCompteurs();
+      }
+
+      function majCompteurs() {
+        const prevues = items.filter(function (i) { return !i.ajout; }).length;
+        const presentes = items.filter(function (i) { return i.etat === "ok" && !i.ajout; }).length;
+        const manquantes = items.filter(function (i) { return i.etat === "ko" && !i.ajout; }).length;
+        const ajoutees = items.filter(function (i) { return i.ajout; }).length;
+
+        document.getElementById("kTotal").textContent = prevues;
+        document.getElementById("kOk").textContent = presentes;
+        document.getElementById("kKo").textContent = manquantes;
+        document.getElementById("kPlus").textContent = ajoutees;
+      }
+
+      document.getElementById("btnToutPresent").addEventListener("click", function () {
+        items.forEach(function (i) { i.etat = "ok"; });
+        rendreItems();
+      });
+
+      document.getElementById("btnToutVider").addEventListener("click", function () {
+        items = items.filter(function (i) { return !i.ajout; });
+        items.forEach(function (i) { i.etat = "ok"; });
+        rendreItems();
+      });
+
+      /* =========================================================
+         AJOUT D'UNE CAISSE
+         Recherche exclusivement dans caisses.json (référentiel officiel)
+         + scan. Pas de saisie libre : une caisse doit exister.
+         ========================================================= */
+      const champAjout = document.getElementById("champAjout");
+      const listeAjout = document.getElementById("listeAjout");
+
+      champAjout.addEventListener("focus", function () { suggestionsAjout(champAjout.value); });
+      champAjout.addEventListener("input", function () { suggestionsAjout(champAjout.value); });
+      champAjout.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        const premiere = listeAjout.querySelector("div[data-item]");
+        if (premiere) ajouterCaisse(premiere.dataset.item);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".ac-wrap")) listeAjout.style.display = "none";
+      });
+
+      function suggestionsAjout(filtre) {
+        const saisie = (filtre || "").trim();
+        if (!saisie) {
+          listeAjout.innerHTML = "<div class='ac-empty'>Tapez le nom d'une caisse…</div>";
+          listeAjout.style.display = "block";
+          return;
+        }
+
+        const resultats = REFERENTIEL_CAISSES
+          .map(function (nom) { return { nom: nom, score: itemScore(saisie, nom) }; })
+          .filter(function (r) { return r.score > 0; })
+          .sort(function (a, b) { return b.score - a.score || a.nom.localeCompare(b.nom); })
+          .slice(0, 40);
+
+        listeAjout.innerHTML = resultats.length
+          ? resultats.map(function (r) {
+              return '<div data-item="' + attr(r.nom) + '">' +
+                surligner(r.nom, saisie) + "</div>";
+            }).join("")
+          : "<div class='ac-empty'>Aucune caisse trouvée dans caisses.json</div>";
+
+        listeAjout.querySelectorAll("div[data-item]").forEach(function (ligne) {
+          ligne.addEventListener("mousedown", function (ev) {
+            ev.preventDefault();
+            ajouterCaisse(ligne.dataset.item);
+          });
+        });
+        listeAjout.style.display = "block";
+      }
+
+      function ajouterCaisse(nom) {
+        const cle = cleKey(nom);
+
+        const existante = items.find(function (i) { return cleKey(i.nom) === cle; });
+        if (existante) {
+          existante.etat = "ok";
+          champAjout.value = "";
+          listeAjout.style.display = "none";
+          rendreItems();
+          return;
+        }
+
+        items.push({ nom: nom, etat: "ok", ajout: true });
+        champAjout.value = "";
+        listeAjout.style.display = "none";
+        rendreItems();
+      }
+
+      document.getElementById("btnAjout").addEventListener("click", function () {
+        const exact = REFERENTIEL_CAISSES.find(function (n) {
+          return cleKey(n) === cleKey(champAjout.value);
+        });
+        if (!exact) {
+          setStatus(statusEnvoi, "erreur",
+            "⚠️ Choisissez une caisse dans la liste (référentiel caisses.json).");
+          return;
+        }
+        ajouterCaisse(exact);
+      });
+
+      /* =========================================================
+         ENVOI
+         Reutilise EXACTEMENT le meme schema que le relevé de caisse
+         (Caisse / Conteneur / NbPrevus / Presents / Manquants / Ajoutes)
+         afin que le valideur admin-colisage-validation.html affiche
+         ce relevé SANS AUCUNE MODIFICATION.
+         Le champ NiveauColisage="conteneur" permet a pigvs-colisage.js
+         de savoir, au moment de la publication, qu'il doit mettre a
+         jour la liste des caisses d'un conteneur plutot que le
+         contenu d'une caisse.
+         ========================================================= */
+      function siteCourant() {
+        const chantier = window.PIGVS ? PIGVS.getChantier() : null;
+        return chantier && chantier.site ? chantier.site : "SITE";
+      }
+
+      function cheminDestination() {
+        if (!conteneurActif) return "…";
+        return "colisage/" + sanitizePath(siteCourant()) + "/conteneurs/" +
+               sanitizePath(conteneurActif.nom);
+      }
+
+      function majChemin() {
+        document.getElementById("apercuChemin").textContent =
+          "Destination : /" + cheminDestination();
+      }
+
+      const statusEnvoi = document.getElementById("statusEnvoi");
+
+      document.getElementById("btnEnvoyer").addEventListener("click", async function () {
+        const operateur = document.getElementById("operateur").value.trim();
+        const commentaire = document.getElementById("commentaire").value.trim();
+
+        if (!conteneurActif) {
+          setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord un conteneur.");
+          return;
+        }
+        if (!operateur) {
+          setStatus(statusEnvoi, "erreur", "⚠️ Renseignez le nom de l'opérateur.");
+          return;
+        }
+
+        const bouton = this;
+        bouton.disabled = true;
+        setStatus(statusEnvoi, "info", "⏳ Envoi en cours…");
+
+        const presentes = items.filter(function (i) { return i.etat === "ok" && !i.ajout; });
+        const manquantes = items.filter(function (i) { return i.etat === "ko" && !i.ajout; });
+        const ajoutees = items.filter(function (i) { return i.ajout; });
+        const prevues = items.filter(function (i) { return !i.ajout; });
+
+        const resultat = await PIGVS_ENVOI.envoyer({
+          type: "COLISAGE",
+          path: cheminDestination(),
+          champs: {
+            /* Indique a pigvs-colisage.js qu'il s'agit d'un relevé
+               de conteneur (liste de caisses), et non d'une caisse
+               (liste d'équipements). */
+            NiveauColisage: "conteneur",
+
+            Site: siteCourant(),
+            Conteneur: conteneurActif.nom,
+            Caisse: conteneurActif.nom, /* reutilise le champ existant, compatible valideur */
+            Operateur: operateur,
+            Date: new Date().toLocaleString("fr-FR"),
+
+            NbPrevus: String(prevues.length),
+            NbPresents: String(presentes.length),
+            NbManquants: String(manquantes.length),
+            NbAjoutes: String(ajoutees.length),
+
+            Presents: presentes.map(function (i) { return i.nom; }).join(" | "),
+            Manquants: manquantes.map(function (i) { return i.nom; }).join(" | "),
+            Ajoutes: ajoutees.map(function (i) { return i.nom; }).join(" | "),
+
+            Commentaire: commentaire,
+            NbPhotos: "0",
+          },
+          photos: [],
+        });
+
+        if (resultat.ok) {
+          setStatus(statusEnvoi, "ok",
+            "✅ Colisage du conteneur « " + echapper(conteneurActif.nom) + " » envoyé !");
+          document.getElementById("pas3").classList.add("actif");
+          setTimeout(function () { bouton.disabled = false; }, 2000);
+        } else {
+          setStatus(statusEnvoi, "erreur", "❌ " + echapper(resultat.msg));
+          bouton.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
