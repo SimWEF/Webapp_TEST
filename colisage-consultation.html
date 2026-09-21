@@ -338,8 +338,11 @@ function ouvertureDirecte(){
       });
       if(idx>=0){ vue = { conteneurId:c.id, caisseIdx:idx }; return; }
     }
+    /* Caisse non trouvee : on lance quand meme une recherche visible,
+       plutot que de laisser la page vide. */
     searchInput.value = caisseDemandee;
     clearBtn.style.display = 'block';
+    render();
     return;
   }
 
