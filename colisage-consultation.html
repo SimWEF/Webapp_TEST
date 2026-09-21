@@ -167,7 +167,14 @@ function cleKey(s){ return normalize(s).replace(/[^a-z0-9]/g,''); }
 function eclater(s){
   return normalize(s).replace(/([a-z])(\d)/g,'$1 $2').replace(/(\d)([a-z])/g,'$1 $2');
 }
-function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function esc(s) {
+  return String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 /* Si on vient d'un colisage conteneur, propose un retour direct */
 const paramsInit = new URLSearchParams(location.search);
@@ -298,15 +305,61 @@ function surligner(texte,search){
 /* ======================================================================
    CHARGEMENT
    ====================================================================== */
-PIGVS_COLISAGE.lireColisage()
-  .then(d=>{
-    DATA = d;
+   PIGVS_COLISAGE.lireColisage()
+  .then(function (d) {
+    DATA = d || {};
+    DATA.conteneurs = Array.isArray(DATA.conteneurs)
+      ? DATA.conteneurs
+      : [];
+
+    DATA.conteneurs.forEach(function (conteneur, indexConteneur) {
+      if (!conteneur.id) {
+        conteneur.id =
+          "conteneur-" +
+          indexConteneur +
+          "-" +
+          cleKey(conteneur.nom || "");
+      }
+
+      conteneur.caisses = Array.isArray(conteneur.caisses)
+        ? conteneur.caisses
+        : [];
+
+      conteneur.caisses = conteneur.caisses.filter(function (caisse) {
+        return caisse &&
+               typeof caisse === "object" &&
+               String(caisse.nom || "").trim() !== "";
+      });
+
+      conteneur.caisses.forEach(function (caisse) {
+        caisse.items = Array.isArray(caisse.items)
+          ? caisse.items
+          : [];
+      });
+    });
+
+    console.log(
+      "PIGVS consultation :",
+      DATA.conteneurs.length,
+      "conteneur(s) chargés"
+    );
+
     afficherMaj();
     ouvertureDirecte();
     render();
   })
-  .catch(()=>{
-    contenu.innerHTML = "<div class='vide'>⚠️ Colisage de référence indisponible</div>";
+  .catch(function (err) {
+    console.error("Erreur consultation colisage :", err);
+
+    breadcrumb.innerHTML = "";
+
+    contenu.innerHTML =
+      "<div class='vide'>" +
+        "⚠️ Impossible d’afficher le colisage.<br>" +
+        "<span style='font-size:13px'>" +
+          esc(err && err.message ? err.message : "Erreur inconnue") +
+        "</span>" +
+      "</div>";
   });
 
 function afficherMaj(){
@@ -429,14 +482,26 @@ function render(){
 function renderConteneurs(){
   breadcrumb.innerHTML = "<span>Tous les conteneurs</span>";
   const groupes = {};
-  DATA.conteneurs.forEach(c=>{ (groupes[c.categorie] = groupes[c.categorie]||[]).push(c); });
+  (DATA.conteneurs || []).forEach(function (c) { (groupes[c.categorie] = groupes[c.categorie]||[]).push(c); });
 
   let html = "";
   Object.keys(groupes).forEach(cat=>{
     html += `<div class="section-titre">${cat==='ETV'?'🚚':'🧰'} Conteneurs ${cat}</div><div class="cards">`;
     groupes[cat].forEach(c=>{
-      const nbItems = c.caisses.reduce((s,k)=>s+k.items.length,0);
-      const nbVal = c.caisses.filter(k=>k.derniereValidation&&k.derniereValidation.date).length;
+      const nbItems = (c.caisses || []).reduce(function (total, caisse) {
+  return total + (
+    Array.isArray(caisse.items)
+      ? caisse.items.length
+      : 0
+  );
+}, 0);
+    const nbVal = (c.caisses || []).filter(function (caisse) {
+      const validation =
+        caisse.verif ||
+        caisse.derniereValidation;
+
+      return validation && validation.date;
+    }).length;
       html += `<button class="cont-card" onclick="ouvrirConteneur('${c.id}')">
         <div class="pastille" style="background:${c.couleur}"></div>
         <div class="txt">
@@ -531,22 +596,36 @@ function renderRecherche(saisie){
   breadcrumb.innerHTML = `<span>Résultats pour « ${esc(saisie)} »</span>`;
   const caisses = [], items = [];
 
-  DATA.conteneurs.forEach(c=>{
-    const scoreCont = Math.max(itemScore(saisie, c.nom), itemScore(saisie, c.ref||''));
-    c.caisses.forEach((k,idx)=>{
+  (DATA.conteneurs || []).forEach(function (c) {
+  const scoreCont = Math.max(
+    itemScore(saisie, c.nom || ""),
+    itemScore(saisie, c.ref || "")
+  );
+
+  (c.caisses || []).forEach(function (k, idx) {
       const scoreNom = itemScore(saisie, k.nom);
       if(scoreNom > 0 || scoreCont > 0){
         caisses.push({ conteneur:c, caisse:k, idx,
           score: scoreNom>0 ? scoreNom + 40 : scoreCont,
           parConteneur: scoreNom===0 });
       }
-      k.items.forEach(it=>{
-        const texteItem = libelleItem(it);
-        const sc = itemScore(saisie, texteItem);
-        if(sc > 0) items.push({ item:texteItem, conteneur:c, caisse:k, nomCaisse:k.nom, idx, score:sc });
-      });
+      (k.items || []).forEach(function (it) {
+  const texteItem = libelleItem(it);
+  const sc = itemScore(saisie, texteItem);
+
+  if (sc > 0) {
+    items.push({
+      item: texteItem,
+      conteneur: c,
+      caisse: k,
+      nomCaisse: k.nom || "",
+      idx: idx,
+      score: sc
     });
+  }
+});
   });
+});
 
   caisses.sort((a,b)=> b.score-a.score || a.caisse.nom.localeCompare(b.caisse.nom));
   items.sort((a,b)=> b.score-a.score || a.item.localeCompare(b.item));
