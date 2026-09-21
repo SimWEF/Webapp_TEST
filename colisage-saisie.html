@@ -673,23 +673,31 @@
 
         /* Charge le catalogue sans bloquer la recherche de caisses. */
         if (typeof C.catalogueEquipements === "function") {
-          C.catalogueEquipements(COLISAGE)
-            .then(function (liste) {
-              CATALOGUE = Array.isArray(liste) ? liste : [];
-              console.log("PIGVS :", CAISSES.length, "caisses ;", CATALOGUE.length, "equipements");
-            })
-            .catch(function (err) {
-              console.warn("Catalogue equipements indisponible :", err);
-              CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
-            });
-        } else {
-          CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
-        }
+            C.catalogueEquipements(COLISAGE)
+              .then(function (liste) {
+                CATALOGUE = Array.isArray(liste) ? liste : [];
+                console.log("PIGVS :", CAISSES.length, "caisses ;", CATALOGUE.length, "equipements");
+                if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+              })
+              .catch(function (err) {
+                console.warn("Catalogue equipements indisponible :", err);
+                CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+                if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+              });
+          } else {
+            CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+            if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+          }
 
         const params = new URLSearchParams(location.search);
         const demandee = params.get("caisse");
         if (demandee) selectionnerCaisse(demandee);
-      });
+      
+              /* Si l'utilisateur a deja tape avant la fin du chargement,
+          on relance la recherche maintenant que les donnees sont pretes. */
+        if (champCaisse.value.trim()) {
+          afficherSuggestions(champCaisse.value);
+        }});
 
       if (window.PIGVS) {
         PIGVS.loadChantiers().then(majChemin);
