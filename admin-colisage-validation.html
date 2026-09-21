@@ -395,6 +395,14 @@
       }
 
       /* ---------- Chargement du colisage de reference ---------- */
+      function libelleItem(x) {
+        if (x && typeof x === "object") {
+          const nom = x.equipement || x.nom || "";
+          const q = x.quantite ?? x.quantitePresente ?? x.quantitePrevue;
+          return q && q > 1 ? nom + " ×" + q : nom;
+        }
+        return String(x || "");
+      }
       function chargerColisage() {
         return C.lireColisage().then(function (d) {
           COLISAGE = d;
@@ -677,13 +685,13 @@
               '<div class="saisie-corps">' + alerte +
                 '<div class="colonnes">' +
                   '<div class="colonne ok"><h4>Présents (' + (s.presents || []).length + ")</h4><ul>" +
-                    ((s.presents || []).map(function (x) { return "<li>" + ech(x) + "</li>"; }).join("") ||
+                    ((s.presents || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
                      "<li style='background:none;color:#888'>—</li>") + "</ul></div>" +
                   '<div class="colonne ko"><h4>Manquants (' + (s.manquants || []).length + ")</h4><ul>" +
-                    ((s.manquants || []).map(function (x) { return "<li>" + ech(x) + "</li>"; }).join("") ||
+                    ((s.manquants || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
                      "<li style='background:none;color:#888;text-decoration:none'>—</li>") + "</ul></div>" +
                   '<div class="colonne plus"><h4>Trouvés en plus (' + (s.ajoutes || []).length + ")</h4><ul>" +
-                    ((s.ajoutes || []).map(function (x) { return "<li>" + ech(x) + "</li>"; }).join("") ||
+                    ((s.ajoutes || []).map(function (x) { return "<li>" + ech(libelleItem(x)) + "</li>"; }).join("") ||
                      "<li style='background:none;color:#888'>—</li>") + "</ul></div>" +
                 "</div>" +
                 (s.commentaire ? "<div class='commentaire'>💬 " + ech(s.commentaire) + "</div>" : "") +
