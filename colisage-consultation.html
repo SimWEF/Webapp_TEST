@@ -324,37 +324,87 @@ function afficherMaj(){
 }
 
 /* ---------- Ouverture directe depuis le scanner ---------- */
-function ouvertureDirecte(){
+function ouvertureDirecte() {
   const p = new URLSearchParams(location.search);
-  const caisseDemandee   = p.get('caisse');
-  const conteneurDemande = p.get('conteneur');
+  const caisseDemandee = p.get("caisse");
+  const conteneurDemande = p.get("conteneur");
 
-  if(caisseDemandee){
-    const rech = cleKey(caisseDemandee);
-    for(const c of DATA.conteneurs||[]){
-      const idx = (c.caisses||[]).findIndex(k=>{
-        const kk = cleKey(k.nom);
-        return kk===rech || kk.includes(rech) || rech.includes(kk);
+  if (caisseDemandee) {
+    const rechCaisse = cleKey(caisseDemandee);
+    let conteneursAParcourir = DATA.conteneurs || [];
+
+    /* Si le conteneur est fourni, on cherche d'abord uniquement dedans. */
+    if (conteneurDemande) {
+      const rechConteneur = cleKey(conteneurDemande);
+
+      const cible = conteneursAParcourir.find(function (c) {
+        return cleKey(c.nom) === rechConteneur ||
+               cleKey(c.id) === rechConteneur ||
+               cleKey(c.ref || "") === rechConteneur;
       });
-      if(idx>=0){ vue = { conteneurId:c.id, caisseIdx:idx }; return; }
+
+      if (cible) {
+        conteneursAParcourir = [cible];
+      }
     }
-    /* Caisse non trouvee : on lance quand meme une recherche visible,
-       plutot que de laisser la page vide. */
+
+    for (const c of conteneursAParcourir) {
+      const idx = (c.caisses || []).findIndex(function (k) {
+        return cleKey(k.nom) === rechCaisse;
+      });
+
+      if (idx >= 0) {
+        vue = {
+          conteneurId: c.id,
+          caisseIdx: idx
+        };
+        searchInput.value = "";
+        clearBtn.style.display = "none";
+        return;
+      }
+    }
+
+    /* Deuxième recherche globale si le conteneur fourni ne correspond pas. */
+    for (const c of DATA.conteneurs || []) {
+      const idx = (c.caisses || []).findIndex(function (k) {
+        return cleKey(k.nom) === rechCaisse;
+      });
+
+      if (idx >= 0) {
+        vue = {
+          conteneurId: c.id,
+          caisseIdx: idx
+        };
+        searchInput.value = "";
+        clearBtn.style.display = "none";
+        return;
+      }
+    }
+
     searchInput.value = caisseDemandee;
-    clearBtn.style.display = 'block';
-    render();
+    clearBtn.style.display = "block";
     return;
   }
 
-  if(conteneurDemande){
+  if (conteneurDemande) {
     const rech = cleKey(conteneurDemande);
-    const c = (DATA.conteneurs||[]).find(x=>{
-      const kk = cleKey(x.nom), rr = cleKey(x.ref||'');
-      return kk===rech || rr===rech || kk.includes(rech) || rech.includes(kk);
+
+    const c = (DATA.conteneurs || []).find(function (x) {
+      return cleKey(x.nom) === rech ||
+             cleKey(x.id) === rech ||
+             cleKey(x.ref || "") === rech;
     });
-    if(c){ vue = { conteneurId:c.id, caisseIdx:null }; return; }
+
+    if (c) {
+      vue = {
+        conteneurId: c.id,
+        caisseIdx: null
+      };
+      return;
+    }
+
     searchInput.value = conteneurDemande;
-    clearBtn.style.display = 'block';
+    clearBtn.style.display = "block";
   }
 }
 

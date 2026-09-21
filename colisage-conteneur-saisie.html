@@ -551,7 +551,23 @@
           listeItems.innerHTML =
             "<p class='empty' style='padding:20px 0'>Aucune caisse prévue dans ce conteneur.</p>";
         } else {
-          listeItems.innerHTML = items.map(function (item, index) { var classe = (item.etat === "ko" ? " est-ko" : "") + (item.ajout ? " ajout" : ""); var urlCaisse = "colisage-consultation.html?caisse=" + encodeURIComponent(item.nom) + "&retourConteneur=" + encodeURIComponent(conteneurActif ? conteneurActif.nom : ""); var lienNom = "<a class=\"nom-lien\" href=\"" + urlCaisse + "\" target=\"_blank\" rel=\"noopener\">" + echapper(item.nom) + "</a>"; return ( "<div class=\"ligne-item" + classe + "\">" + "<span class=\"nom\">" + lienNom + "</span>" + "<div class=\"choix-etat\">" + "<button type=\"button\" data-ok=\"" + index + "\" class=\"" + (item.etat === "ok" ? "actif-ok" : "") + "\" title=\"Présente\">✅</button>" + "<button type=\"button\" data-ko=\"" + index + "\" class=\"" + (item.etat === "ko" ? "actif-ko" : "") + "\" title=\"Manquante\">❌</button>" + "</div>" + (item.ajout ? "<button type=\"button\" class=\"btn-suppr\" data-suppr=\"" + index + "\">×</button>" : "") + "</div>" ); }).join("");
+          listeItems.innerHTML = items.map(function (item, index) { 
+            var classe = (item.etat === "ko" ? " est-ko" : "") + (item.ajout ? " ajout" : ""); 
+            var nomConteneur = conteneurActif ? conteneurActif.nom : "";
+
+            var urlCaisse = "colisage-consultation.html?caisse=" +
+              encodeURIComponent(item.nom) +
+              "&conteneur=" +
+              encodeURIComponent(nomConteneur) +
+              "&retourConteneur=" +
+              encodeURIComponent(nomConteneur); 
+            var lienNom = "<a class=\"nom-lien\" href=\"" + urlCaisse + "\" target=\"_blank\" rel=\"noopener\">" + echapper(item.nom) + "</a>"; 
+            return ( "<div class=\"ligne-item" + classe + "\">" + "<span class=\"nom\">" + lienNom + "</span>" 
+              + "<div class=\"choix-etat\">" + "<button type=\"button\" data-ok=\"" + index + "\" class=\"" + 
+                (item.etat === "ok" ? "actif-ok" : "") + "\" title=\"Présente\">✅</button>" + 
+                "<button type=\"button\" data-ko=\"" + index + "\" class=\"" + (item.etat === "ko" ? "actif-ko" : "") + 
+                "\" title=\"Manquante\">❌</button>" + "</div>" + (item.ajout ? "<button type=\"button\" class=\"btn-suppr\" data-suppr=\""
+                 + index + "\">×</button>" : "") + "</div>" ); }).join("");
 
           listeItems.querySelectorAll("[data-ok]").forEach(function (b) {
             b.addEventListener("click", function () {

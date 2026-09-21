@@ -211,10 +211,22 @@
         }
       
         (saisiesValidees || []).forEach(function (s) {
-          if (s && s.niveauColisage === "conteneur") {
-            injecterConteneur(resultat, s, valideur);
-            return;
-          }
+          const estSaisieConteneur =
+            s &&
+            (
+              s.niveauColisage === "conteneur" ||
+              s.NiveauColisage === "conteneur" ||
+              (
+                cleKey(s.caisse) === cleKey(s.conteneur) &&
+                cleKey(s.conteneur) !== ""
+              )
+            );
+
+            if (estSaisieConteneur) {
+              injecterConteneur(resultat, s, valideur);
+              remplacees++;
+              return;
+            }
       
           const contenu = [].concat(normaliserListe(s.presents), normaliserListe(s.ajoutes));
           const recherche = cleKey(s.caisse);
@@ -333,13 +345,26 @@
       const cleConteneur = cleKey(cible.nom);
     
       /* Empeche un conteneur de contenir une "caisse" portant son propre nom */
-      const nomsPresents = [].concat(saisie.presents || [], saisie.ajoutes || [])
+      const nomsPresents = []
+        .concat(saisie.presents || [], saisie.ajoutes || [])
+        .map(function (nom) {
+          return typeof nom === "string"
+            ? nom.trim()
+            : String(nom || "").trim();
+        })
         .filter(function (nom) {
-          const estValide = cleKey(nom) !== cleConteneur;
-          if (!estValide) {
-            console.warn("Ignoré : une caisse ne peut pas porter le nom du conteneur (" + nom + ")");
+          if (!nom) return false;
+
+          if (cleKey(nom) === cleConteneur) {
+            console.warn(
+              "Ignoré : une caisse ne peut pas porter le nom du conteneur (" +
+              nom +
+              ")"
+            );
+            return false;
           }
-          return estValide;
+
+          return true;
         });
     
       const anciennes = cible.caisses || [];
