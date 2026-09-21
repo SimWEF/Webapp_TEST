@@ -1,0 +1,7562 @@
+[
+  {
+    "conteneur": "ETV1",
+    "caisse": "Baie ETV #1",
+    "origine": "Baie ETV #1",
+    "equipement": "Baie ETV #1",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Baie ETV #4",
+    "origine": "Baie ETV #4",
+    "equipement": "Baie ETV #4",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Baie ETV #4",
+    "origine": "Caisse sécheur 62",
+    "equipement": "Caisse sécheur 62",
+    "quantite": 1,
+    "confiance": 0.684,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Baie ETV #7",
+    "origine": "Baie ETV #7",
+    "equipement": "Baie ETV #7",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #01",
+    "origine": "CART + ombilique",
+    "equipement": "CART + ombilique",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #01",
+    "origine": "Entretoise 17mm",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #01",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #01",
+    "origine": "Entretoise 47mm",
+    "equipement": "Entretoise 47mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #01",
+    "origine": "Entretoise 12CM",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.788,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #01",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #01",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #01",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #01",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #01",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #01",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #01",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #01",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Interface type 1",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Pion de centrage 47",
+    "equipement": "Pion de centrage 47 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Pion de centrage 48",
+    "equipement": "Pion de centrage 48 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #001",
+    "origine": "Pion de centrage 49",
+    "equipement": "Pion de centrage 49 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #01",
+    "origine": "Guide effecteur x1",
+    "equipement": "Guide Effecteur #01",
+    "quantite": 1,
+    "confiance": 0.944,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #01",
+    "origine": "Guide petite taille x6",
+    "equipement": "Guide petite taille x6",
+    "quantite": 6,
+    "confiance": 0.595,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #01",
+    "origine": "Guide grande taille x5",
+    "equipement": "Guide grande taille x5",
+    "quantite": 5,
+    "confiance": 0.489,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Fibre optique #01",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #001",
+    "origine": "Interface type 2",
+    "equipement": "interface GV TPO #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #001",
+    "origine": "Vis de fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.971,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #001",
+    "origine": "Pion de centrage 37 x2",
+    "equipement": "Pion de centrage 37 x2 #01",
+    "quantite": 2,
+    "confiance": 0.987,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #002",
+    "origine": "Vis fixation 37 x2",
+    "equipement": "Vis Fixation 37 x2 #02",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #002",
+    "origine": "Vis fixation 41 x1",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T2 #002",
+    "origine": "Pion de centrage 32 et 37",
+    "equipement": "Pion de centrage 32 #03",
+    "quantite": 1,
+    "confiance": 0.894,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16315",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16315",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16315",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16315",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16315",
+    "origine": "Alimentation",
+    "equipement": "Alimentation",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Gabarit sans vidéo 5m 71",
+    "equipement": "Gabarit sans vidéo 5m 71",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Gabarit sans vidéo 3m 72",
+    "equipement": "Gabarit sans vidéo 3m 72",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Petit racloir",
+    "equipement": "Petit Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Grand racloir",
+    "equipement": "Grand Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Grand crochet en L",
+    "equipement": "Grand Crochet L #01",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Pince crocodile dentelée 6m",
+    "equipement": "Pince crocodile dentelée 6m",
+    "quantite": 1,
+    "confiance": 0.636,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Pince crocodile dentelée 3m",
+    "equipement": "Pince crocodile dentelée 3m",
+    "quantite": 1,
+    "confiance": 0.636,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #01",
+    "origine": "Pince dent de rat 3m",
+    "equipement": "Pince dent de rat 3m #01",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Gabarit sans vidéo 5m 49",
+    "equipement": "Gabarit sans vidéo 5m 49",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Grand crochet simple",
+    "equipement": "Grand Crochet Simple #02",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Grand crochet en L",
+    "equipement": "Grand Crochet L #01",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Petit crochet en L",
+    "equipement": "Petit Crochet L #02",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Aimant",
+    "equipement": "Aimant #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Pince dent de rat 3m",
+    "equipement": "Pince dent de rat 3m #01",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #02",
+    "origine": "Pince dent de rat 5m",
+    "equipement": "Pince dent de rat 5m #02",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #05",
+    "origine": "Gabarit vidéo 5m 273",
+    "equipement": "GAB 5m video 273",
+    "quantite": 1,
+    "confiance": 0.722,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #05",
+    "origine": "Alim x2",
+    "equipement": "Alim x2",
+    "quantite": 2,
+    "confiance": 0.625,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction Corps #05",
+    "origine": "Boitier vidéo + alim",
+    "equipement": "Boitier vidéo + alim",
+    "quantite": 1,
+    "confiance": 0.513,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #01",
+    "origine": "plein de bazar",
+    "equipement": "plein de bazar",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #01",
+    "origine": "Mini Lance L19",
+    "equipement": "Mini-Lance - 1300 #L19",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #04",
+    "origine": "CART + ombilique",
+    "equipement": "CART + ombilique",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #04",
+    "origine": "Entretoise 17mm",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #04",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #04",
+    "origine": "Entretoise 47mm",
+    "equipement": "Entretoise 47mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 16 x1",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #04",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #04",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #04",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #04",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #04",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #04",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #04",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #04",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Fibre optique #04",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Interface type 1",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Pion de centrage 47",
+    "equipement": "Pion de centrage 47 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Pion de centrage 48",
+    "equipement": "Pion de centrage 48 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-TP-T1 #002",
+    "origine": "Pion de centrage 49",
+    "equipement": "Pion de centrage 49 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Enrouleur sabre axial 151",
+    "equipement": "Enrouleur sabre axial 151",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Enrouleur sabre axial 178",
+    "equipement": "Enrouleur sabre axial 178",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Control Unit 150",
+    "equipement": "Control Unit 150",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Control Unit 153",
+    "equipement": "Control Unit 153",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Control Unit 141",
+    "equipement": "Control Unit 141",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Manivelle",
+    "equipement": "Manivelle #01",
+    "quantite": 1,
+    "confiance": 0.857,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE-SAX #001",
+    "origine": "Jeu de câble ViZaar",
+    "equipement": "Jeu de câble ViZaar #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16311",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16311",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16311",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16311",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16311",
+    "origine": "Alimentation",
+    "equipement": "Alimentation",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #04",
+    "origine": "Table",
+    "equipement": "Table #01",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #04",
+    "origine": "Valise Fastner",
+    "equipement": "Valise Fastner",
+    "quantite": 1,
+    "confiance": 0.606,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #04",
+    "origine": "Chaises x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #07",
+    "origine": "CART + ombilique",
+    "equipement": "CART + ombilique",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #07",
+    "origine": "Entretoise 17mm",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #07",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CART #07",
+    "origine": "Entretoise 47mm",
+    "equipement": "Entretoise 47mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "TPO #07",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #07",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #07",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #07",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "SPICE #07",
+    "origine": "Vis x6",
+    "equipement": "Vis x6",
+    "quantite": 6,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #07",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "CAVALRI #07",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sac de câble #07",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #02",
+    "origine": "Guide grande taille x5",
+    "equipement": "Guide grande taille x5",
+    "quantite": 5,
+    "confiance": 0.489,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #02",
+    "origine": "Guide petite taille x6",
+    "equipement": "Guide petite taille x6",
+    "quantite": 6,
+    "confiance": 0.595,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Spice Guide #02",
+    "origine": "Guide effecteur x1",
+    "equipement": "Guide Effecteur #01",
+    "quantite": 1,
+    "confiance": 0.944,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Fibre optique #07",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Caméra F16314",
+    "equipement": "Caméra PERCHE F16314",
+    "quantite": 1,
+    "confiance": 0.788,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "PERCHE #F16314",
+    "origine": "Alimentation secteur",
+    "equipement": "Alimentation secteur",
+    "quantite": 1,
+    "confiance": 0.489,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction CART #01",
+    "origine": "Pelle RR",
+    "equipement": "Pelle RR #01",
+    "quantite": 1,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction CART #01",
+    "origine": "Petite pelle",
+    "equipement": "Petite pelle #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction CART #01",
+    "origine": "Petit crochet",
+    "equipement": "Petit crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Extraction CART #01",
+    "origine": "Grand crochet",
+    "equipement": "Grand crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #07",
+    "origine": "Aspirateur",
+    "equipement": "Aspirateur",
+    "quantite": 1,
+    "confiance": 0.588,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #07",
+    "origine": "Caisse bleue divers",
+    "equipement": "Caisse Divers #01",
+    "quantite": 1,
+    "confiance": 0.743,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #07",
+    "origine": "Tourets x3",
+    "equipement": "Touret _03",
+    "quantite": 3,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #07",
+    "origine": "Chaises x5",
+    "equipement": "Chaises _05",
+    "quantite": 5,
+    "confiance": 0.9,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur bleu 8",
+    "equipement": "Interface sécheur bleu #08",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur bleu 1",
+    "equipement": "Interface sécheur bleu #01",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur bleu 2",
+    "equipement": "Interface sécheur bleu #02",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur bleu 1 + réchauffeur 1",
+    "equipement": "Sécheur bleu 1 + réchauffeur 1",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur bleu 2 + réchauffeur 2",
+    "equipement": "Sécheur bleu 2 + réchauffeur 2",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur bleu 3 + réchauffeur 3",
+    "equipement": "Sécheur bleu 3 + réchauffeur 3",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur bleu 4 + réchauffeur 4",
+    "equipement": "Sécheur bleu 4 + réchauffeur 4",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur jaune 1",
+    "equipement": "Interface sécheur jaune #01",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur jaune 2",
+    "equipement": "Interface sécheur jaune #02",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur jaune 3",
+    "equipement": "Interface sécheur jaune #03",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Interface sécheur jaune 4",
+    "equipement": "Interface sécheur jaune #04",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur jaune 1",
+    "equipement": "Sécheur Jaune #01",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur jaune 2",
+    "equipement": "Sécheur Jaune #02",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur jaune 3",
+    "equipement": "Sécheur Jaune #03",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sécheur jaune 4",
+    "equipement": "Sécheur Jaune #04",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Sonde 6mm #01",
+    "equipement": "Sonde 6mm 01",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Alimentation sonde 6mm",
+    "equipement": "Alimentation sonde 6mm",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Câble raccord écran/sonde",
+    "equipement": "Câble raccord écran/sonde",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Micro USB (dans écran)",
+    "equipement": "Micro USB (dans écran)",
+    "quantite": 1,
+    "confiance": 0.419,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Gaine séchage jaune x6",
+    "equipement": "Gaine sécheur jaune #06",
+    "quantite": 6,
+    "confiance": 0.864,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Vrac Roll #10",
+    "origine": "Gaine séchage bleue x4",
+    "equipement": "Gaine sécheur bleu #04",
+    "quantite": 4,
+    "confiance": 0.837,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Sonde 6mm #01",
+    "origine": "Sonde 6mm 01",
+    "equipement": "Sonde 6mm 01",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV1",
+    "caisse": "Aspirateur #Venturi 1",
+    "origine": "Aspirateur Venturi",
+    "equipement": "Aspirateur Venturi",
+    "quantite": 1,
+    "confiance": 0.714,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Baie ETV #2",
+    "origine": "Baie ETV #2",
+    "equipement": "Baie ETV #2",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Baie ETV #2",
+    "origine": "Caisse sécheur 60",
+    "equipement": "Caisse sécheur 60",
+    "quantite": 1,
+    "confiance": 0.684,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Baie ETV #5",
+    "origine": "Baie ETV #5",
+    "equipement": "Baie ETV #5",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #02",
+    "origine": "CART + ombilique",
+    "equipement": "CART + ombilique",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #02",
+    "origine": "Entretoise 17mm",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #02",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #02",
+    "origine": "Entretoise 47mm",
+    "equipement": "Entretoise 47mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #02",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #02",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #02",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #02",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #02",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CAVALRI #02",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CAVALRI #02",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #02",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Spice Guide #03",
+    "origine": "Guide effecteur x1",
+    "equipement": "Guide Effecteur #01",
+    "quantite": 1,
+    "confiance": 0.944,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Spice Guide #03",
+    "origine": "Guide petite taille x6",
+    "equipement": "Guide petite taille x6",
+    "quantite": 6,
+    "confiance": 0.595,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Spice Guide #03",
+    "origine": "Guide grande taille x5",
+    "equipement": "Guide grande taille x5",
+    "quantite": 5,
+    "confiance": 0.489,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Caméra F16307",
+    "equipement": "Caméra PERCHE F16307 ",
+    "quantite": 1,
+    "confiance": 0.788,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16307",
+    "origine": "Chargeur secteur",
+    "equipement": "Chargeur secteur",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Fibre optique #02",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Gabarit sans vidéo 3m 73",
+    "equipement": "Gabarit sans vidéo 3m 73",
+    "quantite": 1,
+    "confiance": 0.65,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Gabarit sans vidéo 5m 70",
+    "equipement": "Gabarit sans vidéo 5m 70",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Gabarit sans vidéo 2m 008",
+    "equipement": "Gabarit sans vidéo 2m 008",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Grand crochet simple",
+    "equipement": "Grand Crochet Simple #02",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Grand crochet en L",
+    "equipement": "Grand Crochet L #01",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Petit racloir",
+    "equipement": "Petit Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Grand racloir",
+    "equipement": "Grand Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Aimant",
+    "equipement": "Aimant #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Pince croco 3m",
+    "equipement": "Pince croco 3m #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Pince dent de rat 3m",
+    "equipement": "Pince dent de rat 3m #01",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #03",
+    "origine": "Pince dent de rat 6m",
+    "equipement": "Pince dent de rat 6m #03",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #06",
+    "origine": "Gabarit vidéo 5m 182",
+    "equipement": "GAB 5m video 182",
+    "quantite": 1,
+    "confiance": 0.722,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #06",
+    "origine": "Boitier vidéo + alim",
+    "equipement": "Boitier vidéo + alim",
+    "quantite": 1,
+    "confiance": 0.513,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction Corps #06",
+    "origine": "Gabarit sans vidéo 3m 98",
+    "equipement": "Gabarit sans vidéo 3m 98",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction CART #02",
+    "origine": "Pelle RR",
+    "equipement": "Pelle RR #01",
+    "quantite": 1,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction CART #02",
+    "origine": "Petite pelle",
+    "equipement": "Petite pelle #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction CART #02",
+    "origine": "Petit crochet",
+    "equipement": "Petit crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Extraction CART #02",
+    "origine": "Grand crochet",
+    "equipement": "Grand crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #02",
+    "origine": "Sacoche d'extraction N4",
+    "equipement": "Sacoche extraction N4 #01",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #02",
+    "origine": "Rallonge 380 V x2",
+    "equipement": "Rallonge 380 V x2",
+    "quantite": 2,
+    "confiance": 0.647,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #05",
+    "origine": "Entretoise 17mm",
+    "equipement": "Entretoise 17mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #05",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CART #05",
+    "origine": "Entretoise 47mm",
+    "equipement": "Entretoise 47mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "TPO #05",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #05",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #05",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #05",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE #05",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CAVALRI #05",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "CAVALRI #05",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sac de câble #05",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Fibre optique #05",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Interface type 1",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Pion de centrage 47",
+    "equipement": "Pion de centrage 47 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T1 #003",
+    "origine": "Pion de centrage 48",
+    "equipement": "Pion de centrage 48 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-SAX #002",
+    "origine": "Enrouleur sabre axial 152",
+    "equipement": "Enrouleur sabre axial 152",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-SAX #002",
+    "origine": "Control Unit 140",
+    "equipement": "Control Unit 140",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-SAX #002",
+    "origine": "Control Unit 142",
+    "equipement": "Control Unit 142",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-SAX #002",
+    "origine": "Control Unit 163",
+    "equipement": "Control Unit 163",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-SAX #002",
+    "origine": "Jeu de câble ViZaar",
+    "equipement": "Jeu de câble ViZaar #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16145",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16145",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16145",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16145",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "PERCHE #F16145",
+    "origine": "Chargeur secteur",
+    "equipement": "Chargeur secteur",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T2 #003",
+    "origine": "Interface type 2",
+    "equipement": "interface GV TPO #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T2 #003",
+    "origine": "Vis de fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.971,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "SPICE-TP-T2 #003",
+    "origine": "Pion de centrage 32 x2",
+    "equipement": "Pion de centrage 37 x2 #01",
+    "quantite": 2,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Interface séchage 5",
+    "equipement": "Interface sécheur jaune #05",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Interface séchage 6",
+    "equipement": "Interface sécheur jaune #06",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sécheur jaune 5",
+    "equipement": "Sécheur Jaune #05",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sécheur jaune 6",
+    "equipement": "Sécheur Jaune #06",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Interface sécheur bleu 5",
+    "equipement": "Interface sécheur bleu #05",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Interface sécheur bleu 6",
+    "equipement": "Interface sécheur bleu #06",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sécheur bleu 5 + réchauffeur 5",
+    "equipement": "Sécheur bleu 5 + réchauffeur 5",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sécheur bleu 6 + réchauffeur 6",
+    "equipement": "Sécheur bleu 6 + réchauffeur 6",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sonde 6mm #02",
+    "equipement": "Sonde 6mm 02",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Gaine séchage jaune x1",
+    "equipement": "Gaine sécheur jaune #01",
+    "quantite": 1,
+    "confiance": 0.864,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Gaine séchage bleue x1",
+    "equipement": "Gaine sécheur bleu #01",
+    "quantite": 1,
+    "confiance": 0.837,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Aspirateur",
+    "equipement": "Aspirateur",
+    "quantite": 1,
+    "confiance": 0.588,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Sacoche FASTNER",
+    "equipement": "Sacoche Fastener #01",
+    "quantite": 1,
+    "confiance": 0.882,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Table",
+    "equipement": "Table #01",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Vrac Roll #08",
+    "origine": "Caisse divers 04",
+    "equipement": "Caisse Divers #01",
+    "quantite": 1,
+    "confiance": 0.938,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Sonde 6mm #02",
+    "origine": "Sonde 6mm 02",
+    "equipement": "Sonde 6mm 02",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV2",
+    "caisse": "Aspirateur #Venturi 2",
+    "origine": "Aspirateur Venturi",
+    "equipement": "Aspirateur Venturi",
+    "quantite": 1,
+    "confiance": 0.714,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Baie ETV #3",
+    "origine": "Baie ETV #3",
+    "equipement": "Baie ETV #3",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Baie ETV #3",
+    "origine": "Caisse sécheur 61",
+    "equipement": "Caisse sécheur 61",
+    "quantite": 1,
+    "confiance": 0.684,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Baie ETV #6",
+    "origine": "Baie ETV #6",
+    "equipement": "Baie ETV #6",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CART #03",
+    "origine": "CART + ombilique",
+    "equipement": "CART + ombilique",
+    "quantite": 1,
+    "confiance": 0.476,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CART #03",
+    "origine": "Entretoise 35mm",
+    "equipement": "Entretoise 35mm #01",
+    "quantite": 1,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 18 x2",
+    "equipement": "vis fixation 18 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #03",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #03",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #03",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #03",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #03",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CAVALRI #03",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CAVALRI #03",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #03",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Spice Guide #04",
+    "origine": "Guide petite taille x6",
+    "equipement": "Guide petite taille x6",
+    "quantite": 6,
+    "confiance": 0.595,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Spice Guide #04",
+    "origine": "Guide grande taille x5",
+    "equipement": "Guide grande taille x5",
+    "quantite": 5,
+    "confiance": 0.489,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Fibre optique #03",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16313",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16313",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16313",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16313",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16313",
+    "origine": "Chargeur secteur",
+    "equipement": "Chargeur secteur",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Gabarit sans vidéo 3m 74",
+    "equipement": "Gabarit sans vidéo 3m 74",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Gabarit sans vidéo 5m 68",
+    "equipement": "Gabarit sans vidéo 5m 68",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Petit crochet en L",
+    "equipement": "Petit Crochet L #02",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Grand crochet en L",
+    "equipement": "Grand Crochet L #01",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Petit racloir",
+    "equipement": "Petit Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Grand racloir",
+    "equipement": "Grand Racloir #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Aimant",
+    "equipement": "Aimant #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Pince dent de rat 3m",
+    "equipement": "Pince dent de rat 3m #01",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Pince croco 5m",
+    "equipement": "Pince croco 5m #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction Corps #04",
+    "origine": "Pince dent de rat 5m",
+    "equipement": "Pince dent de rat 5m #02",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction CART #03",
+    "origine": "Pelle RR",
+    "equipement": "Pelle RR #01",
+    "quantite": 1,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction CART #03",
+    "origine": "Petite pelle",
+    "equipement": "Petite pelle #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction CART #03",
+    "origine": "Petit crochet",
+    "equipement": "Petit crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Extraction CART #03",
+    "origine": "Grand crochet",
+    "equipement": "Grand crochet #01",
+    "quantite": 1,
+    "confiance": 0.897,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #03",
+    "origine": "Aspirateur",
+    "equipement": "Aspirateur",
+    "quantite": 1,
+    "confiance": 0.588,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #03",
+    "origine": "Chaises x3",
+    "equipement": "Chaises _03",
+    "quantite": 3,
+    "confiance": 0.9,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Interface GV",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.774,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Bloc motorisation",
+    "equipement": "bloc motorisation TPO #01",
+    "quantite": 1,
+    "confiance": 0.829,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Vis fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Vis fixation 41 x2",
+    "equipement": "vis fixation 41 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "TPO #06",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #06",
+    "origine": "Bloc principal",
+    "equipement": "Bloc Principal SPICE #01",
+    "quantite": 1,
+    "confiance": 0.757,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #06",
+    "origine": "Galet entrainement sabre",
+    "equipement": "galet entrainement sabre #01",
+    "quantite": 1,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #06",
+    "origine": "Clé allen",
+    "equipement": "Clé allen",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE #06",
+    "origine": "Vis x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.914,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CAVALRI #06",
+    "origine": "Boitier CAVALRI",
+    "equipement": "Boitier CAVALRI",
+    "quantite": 1,
+    "confiance": 0.56,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "CAVALRI #06",
+    "origine": "Connecteurs Harting",
+    "equipement": "Connecteurs Harting",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "A1",
+    "equipement": "A1",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "R1",
+    "equipement": "R1",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "R2, R3, R4",
+    "equipement": "Cables R2 R3 R4 #01",
+    "quantite": 1,
+    "confiance": 0.923,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "V1 (PTZ)",
+    "equipement": "V1 (PTZ)",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "V2",
+    "equipement": "V2",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "Casque audio",
+    "equipement": "Casque Audio #01",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "Rallonge audio",
+    "equipement": "Rallonge audio #01",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sac de câble #06",
+    "origine": "C2",
+    "equipement": "C2",
+    "quantite": 1,
+    "confiance": 0.444,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Fibre optique #06",
+    "origine": "Fibre + enrouleur",
+    "equipement": "Fibre + enrouleur",
+    "quantite": 1,
+    "confiance": 0.457,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Interface type 1",
+    "equipement": "interface GV TPO #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Vis fixation 16 x2",
+    "equipement": "vis fixation 16 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Vis fixation 17 x2",
+    "equipement": "vis fixation 17 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Vis fixation 46 x2",
+    "equipement": "vis fixation 46 x2 #01",
+    "quantite": 2,
+    "confiance": 0.985,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Pion de centrage 47",
+    "equipement": "Pion de centrage 47 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Pion de centrage 48",
+    "equipement": "Pion de centrage 48 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T1 #004",
+    "origine": "Pion de centrage 49",
+    "equipement": "Pion de centrage 49 #01",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Boitier Visioprobe",
+    "equipement": "Boitier Visioprobe",
+    "quantite": 1,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Caméra F16312",
+    "equipement": "Caméra PERCHE F16312",
+    "quantite": 1,
+    "confiance": 0.788,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Perche",
+    "equipement": "Perche",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Câble caméra",
+    "equipement": "Câble caméra",
+    "quantite": 1,
+    "confiance": 0.609,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Chargeur batterie",
+    "equipement": "Chargeur batterie",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "PERCHE #F16312",
+    "origine": "Chargeur secteur",
+    "equipement": "Chargeur secteur",
+    "quantite": 1,
+    "confiance": 0.529,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #06",
+    "origine": "Chaises x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.928,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #06",
+    "origine": "Table",
+    "equipement": "Table #01",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T2 #004",
+    "origine": "Interface type 2",
+    "equipement": "interface GV TPO #02",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T2 #004",
+    "origine": "Vis de fixation 33 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.971,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T2 #004",
+    "origine": "Pion de centrage 32 x2",
+    "equipement": "Pion de centrage 37 x2 #01",
+    "quantite": 2,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #001",
+    "origine": "Interface type 3",
+    "equipement": "interface GV TPO #03",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #001",
+    "origine": "Vis fixation 30 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.974,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #001",
+    "origine": "Vis fixation 35 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.974,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #002",
+    "origine": "Interface type 3",
+    "equipement": "interface GV TPO #03",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #002",
+    "origine": "Vis fixation 30 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.974,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T3 #002",
+    "origine": "Vis fixation 35 x2",
+    "equipement": "vis fixation 33 x2 #01",
+    "quantite": 2,
+    "confiance": 0.974,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T4 #001",
+    "origine": "Interface type 4",
+    "equipement": "interface GV TPO #04",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "SPICE-TP-T4 #002",
+    "origine": "Interface type 4",
+    "equipement": "interface GV TPO #04",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Interface sécheur jaune 7",
+    "equipement": "Interface sécheur jaune #07",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Interface sécheur jaune 8",
+    "equipement": "Interface sécheur jaune #08",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Sécheur jaune 7",
+    "equipement": "Sécheur Jaune #07",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Sécheur jaune 8",
+    "equipement": "Sécheur Jaune #08",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Interface sécheur bleu 7",
+    "equipement": "Interface sécheur bleu #07",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Interface sécheur bleu 8",
+    "equipement": "Interface sécheur bleu #08",
+    "quantite": 1,
+    "confiance": 0.98,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Sécheur bleu 7 + réchauffeur 7",
+    "equipement": "Sécheur bleu 7 + réchauffeur 7",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Sécheur bleu 8 + réchauffeur 8",
+    "equipement": "Sécheur bleu 8 + réchauffeur 8",
+    "quantite": 1,
+    "confiance": 0.651,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Sonde 6mm #03",
+    "equipement": "Sonde 6mm 03",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Gaine séchage bleue x1",
+    "equipement": "Gaine sécheur bleu #01",
+    "quantite": 1,
+    "confiance": 0.837,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Gaine séchage jaune x3",
+    "equipement": "Gaine sécheur jaune #03",
+    "quantite": 3,
+    "confiance": 0.864,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Tourets x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Coffret DS6/DS1",
+    "equipement": "Coffret DS6_DS1  #01",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Vrac Roll #09",
+    "origine": "Coffret DS6/DS1",
+    "equipement": "Coffret DS6_DS1  #01",
+    "quantite": 1,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV3",
+    "caisse": "Sonde 6mm #03",
+    "origine": "Sonde 6mm 03",
+    "equipement": "Sonde 6mm 03",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "Altimétrie #001",
+    "origine": "Altimétrie",
+    "equipement": "Altimétrie",
+    "quantite": 1,
+    "confiance": 0.486,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-SAX #003",
+    "origine": "Guide déflecteur PE1/6",
+    "equipement": "Guide Effecteur #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-SAX #003",
+    "origine": "Jeu de câbles Vizaar x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-SAX #003",
+    "origine": "Manivelles",
+    "equipement": "Manivelle #01",
+    "quantite": 1,
+    "confiance": 0.818,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-SAX #003",
+    "origine": "Sabre 20° 142",
+    "equipement": "SABRE #142",
+    "quantite": 1,
+    "confiance": 0.857,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-SAX #003",
+    "origine": "Control Unit 148 / 151 / 152",
+    "equipement": "Control Unit 141",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Guide déflecteur PE5",
+    "equipement": "Pige Interface PE5 #01",
+    "quantite": 1,
+    "confiance": 0.898,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Malette coussin d'air",
+    "equipement": "Malette coussin d'air #01",
+    "quantite": 1,
+    "confiance": 0.933,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Control Unit PE5",
+    "equipement": "Control Unit PE5 #01",
+    "quantite": 1,
+    "confiance": 0.983,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Télécommandes déportées 155 / 156",
+    "equipement": "Télécommande déportée #155",
+    "quantite": 1,
+    "confiance": 0.893,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Jeu de câbles Vizaar",
+    "equipement": "Jeu de câble ViZaar #01",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Pige interface",
+    "equipement": "Pige Interface PE5 #01",
+    "quantite": 1,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Sabre PE5 x2",
+    "equipement": "SABRE #152",
+    "quantite": 2,
+    "confiance": 0.762,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "SPICE-PE5 #003",
+    "origine": "Câble télécommande déportée",
+    "equipement": "Câble télécommande déportée",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "Vrac Roll #11",
+    "origine": "Caisse divers + détendeur d'air",
+    "equipement": "Caisse divers + détendeur d'air",
+    "quantite": 1,
+    "confiance": 0.622,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "ETV4",
+    "caisse": "Vrac Roll #11",
+    "origine": "Tuyaux d'air",
+    "equipement": "Tuyaux d'air",
+    "quantite": 1,
+    "confiance": 0.593,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "PC GIBR + alim (ancien)",
+    "equipement": "PC GIBR + alim (ancien)",
+    "quantite": 1,
+    "confiance": 0.429,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "PC NUC + alim (nouveau)",
+    "equipement": "PC NUC + alim (nouveau)",
+    "quantite": 1,
+    "confiance": 0.389,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "Hub USBC/USB",
+    "equipement": "Hub USBC/USB",
+    "quantite": 1,
+    "confiance": 0.357,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "Pied multi-bras",
+    "equipement": "Pied multi-bras",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "Souris",
+    "equipement": "Souris",
+    "quantite": 1,
+    "confiance": 0.4,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #150",
+    "origine": "Clavier x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "RJ45 80M x3",
+    "equipement": "RJ45_3",
+    "quantite": 3,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "RJ45 30M x6",
+    "equipement": "RJ45_3",
+    "quantite": 6,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "RJ45 5M x5",
+    "equipement": "RJ45_1",
+    "quantite": 5,
+    "confiance": 0.925,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "Enrouleur 220V x2",
+    "equipement": "Enrouleur 220V x2",
+    "quantite": 2,
+    "confiance": 0.483,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "Alimentation 220V",
+    "equipement": "Alimentation 220V",
+    "quantite": 1,
+    "confiance": 0.538,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "Multiprise",
+    "equipement": "Multiprise",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #21",
+    "origine": "Prise Maréchal 220V x2",
+    "equipement": "Prise Maréchal 220V x2",
+    "quantite": 2,
+    "confiance": 0.452,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #38",
+    "origine": "Écrans x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #38",
+    "origine": "Alimentation x3",
+    "equipement": "Alimentation x3",
+    "quantite": 3,
+    "confiance": 0.583,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #38",
+    "origine": "Câble DisplayPort",
+    "equipement": "Câble DisplayPort",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #38",
+    "origine": "Câble HDMI x2",
+    "equipement": "Câble HDMI x2",
+    "quantite": 2,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #DAV 2",
+    "origine": "Caméra x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.917,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #DAV 2",
+    "origine": "Switch + alim x2",
+    "equipement": "Switch - DAV1_2",
+    "quantite": 2,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #DAV 2",
+    "origine": "Boitier phonie x3",
+    "equipement": "Boitier phonie - DAV1_3",
+    "quantite": 3,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #DAV 2",
+    "origine": "Casque x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #128",
+    "origine": "S6 (décalé)",
+    "equipement": "S6 (décalé)",
+    "quantite": 1,
+    "confiance": 0.452,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #128",
+    "origine": "S26 (décalé)",
+    "equipement": "S26 (décalé)",
+    "quantite": 1,
+    "confiance": 0.438,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #128",
+    "origine": "S12 (droit)",
+    "equipement": "S12 (droit)",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #128",
+    "origine": "S13 (droit)",
+    "equipement": "S13 (droit)",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #128",
+    "origine": "Drive Unit 15 / 19 / 98",
+    "equipement": "Drive Unit - 1300 #D18",
+    "quantite": 1,
+    "confiance": 0.789,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #82",
+    "origine": "Balance #40004928 (27/11/28)",
+    "equipement": "Balance  #40004928",
+    "quantite": 1,
+    "confiance": 0.78,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Pige TP P38",
+    "equipement": "Pige TP - 1300 #P38",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A27",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 1300 #A22",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A28",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 1300 #A20",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A29",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 1300 #A21",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A30",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 1300 #A26",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A31",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TP A27 / A22 / A28 / A20 / A29 / A21 / A30 / A26 / A31 / A32",
+    "equipement": "Aspi TP - 5XF #A32",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TO A26 / A27 / A71",
+    "equipement": "Aspi TO - 1300 #A26",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TO A26 / A27 / A71",
+    "equipement": "Aspi TO - 1300 #A27",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #219-1/6",
+    "origine": "Aspi TO A26 / A27 / A71",
+    "equipement": "Aspi TO - 1300 #A71",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TP - 5XF J25",
+    "quantite": 1,
+    "confiance": 0.964,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TO - 1300 #J35",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TP - 1300 #J26",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TP - 5XF #J24",
+    "quantite": 1,
+    "confiance": 0.964,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TP - 1300 #J50",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TP J25 / J35 / J26 / J24 / J50 / J33",
+    "equipement": "JP TP - 5XF J33",
+    "quantite": 1,
+    "confiance": 0.964,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TO 68/19 J30 / J34 / J38",
+    "equipement": "JP TO - 1300 #J30",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TO 68/19 J30 / J34 / J38",
+    "equipement": "JP TO - 1300 #J34",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TO 68/19 J30 / J34 / J38",
+    "equipement": "JP TO - 1300 #J38",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "JP TO 51B séchage J12",
+    "equipement": "JP TO - 51B/BR #J12",
+    "quantite": 1,
+    "confiance": 0.951,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "Série 1 L56 / L57 / L61",
+    "equipement": "Série 1 #L56",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "Série 1 L56 / L57 / L61",
+    "equipement": "Série 1 #L57",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #220-2/6",
+    "origine": "Série 1 L56 / L57 / L61",
+    "equipement": "Série 1 #L61",
+    "quantite": 1,
+    "confiance": 0.7,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Mini Lance L23 (horizontale)",
+    "equipement": "Mini-Lance - 1300 #L23",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Mini Lance L26 / L27",
+    "equipement": "Mini-Lance - 1300 #L26",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Mini Lance L26 / L27",
+    "equipement": "Mini-Lance - 1300 #L27",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Pige TO P18 / P42",
+    "equipement": "Pige TO - 900 P12",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Pige TO P18 / P42",
+    "equipement": "Pige TP - 1300 #P42",
+    "quantite": 1,
+    "confiance": 0.948,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Bride étanche B42 / B47",
+    "equipement": "Bride étanche #B42",
+    "quantite": 1,
+    "confiance": 0.564,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Bride étanche B42 / B47",
+    "equipement": "Bride étanche #B47",
+    "quantite": 1,
+    "confiance": 0.564,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Adaptateur gauche B32 / B38",
+    "equipement": "Adaptateur gauche - 1300 #B32",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #221-3/6",
+    "origine": "Adaptateur gauche B32 / B38",
+    "equipement": "Adaptateur gauche - 1300 #B38",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO pleine B6 / B7",
+    "equipement": "Obturateur TO - JP #B06",
+    "quantite": 1,
+    "confiance": 0.919,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO pleine B6 / B7",
+    "equipement": "Obturateur TO - 1300 #B07",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO séchage B99 / B52 / B4 / B8",
+    "equipement": "Tape TO séchage #B99",
+    "quantite": 1,
+    "confiance": 0.55,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO séchage B99 / B52 / B4 / B8",
+    "equipement": "Obturateur TO - 1300 #B52",
+    "quantite": 1,
+    "confiance": 0.907,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO séchage B99 / B52 / B4 / B8",
+    "equipement": "Obturateur TO - JP #B04",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Tape TO séchage B99 / B52 / B4 / B8",
+    "equipement": "Obturateur TO - JP #B08",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "PDR moteur 92",
+    "equipement": "PDR moteur 92",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #222-4/6",
+    "origine": "Caisse fastners 6819 / 138",
+    "equipement": "Fasteners 6819 138",
+    "quantite": 1,
+    "confiance": 0.81,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #225-1/3",
+    "origine": "Pige TP P38",
+    "equipement": "Pige TP - 1300 #P38",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #225-1/3",
+    "origine": "Aspi TP A27",
+    "equipement": "Aspi TP - 5XF #A27",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Pige TO P90 / P21 / P23",
+    "equipement": "Pige TO - 900 #P90",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Pige TO P90 / P21 / P23",
+    "equipement": "Pige TO - 900 #P21",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Pige TO P90 / P21 / P23",
+    "equipement": "Pige TO - 900 #P23",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Tape pleine TO C2 / C4 / C5 / C9 / C12",
+    "equipement": "Obturateur TO - 900 #C02",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Tape pleine TO C2 / C4 / C5 / C9 / C12",
+    "equipement": "Obturateur TO - 900 #C04",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Tape pleine TO C2 / C4 / C5 / C9 / C12",
+    "equipement": "Obturateur TO - 900 #C05",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Tape pleine TO C2 / C4 / C5 / C9 / C12",
+    "equipement": "Obturateur TO - 900 #C09",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #226-2/3",
+    "origine": "Tape pleine TO C2 / C4 / C5 / C9 / C12",
+    "equipement": "Obturateur TO - 900 #C12",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_1",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_2",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_3",
+    "origine": "Tuyaux SED 1\" x12",
+    "equipement": "Tuyaux SED 1\" x12",
+    "quantite": 12,
+    "confiance": 0.71,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_3",
+    "origine": "Tuyaux 1,5\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_3",
+    "origine": "Tuyaux 1\" BP x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_4",
+    "origine": "Tuyaux ½\" HP x3",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 3,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_4",
+    "origine": "Tuyaux HP 1\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.733,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_4",
+    "origine": "Inline filter box",
+    "equipement": "Inline Filter_1",
+    "quantite": 1,
+    "confiance": 0.875,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse à pomme #CaP_4",
+    "origine": "Caisse sécheur",
+    "equipement": "Caisse sécheur",
+    "quantite": 1,
+    "confiance": 0.629,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "T HP",
+    "equipement": "T HP",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "T JP",
+    "equipement": "T JP",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "T Wilden",
+    "equipement": "T Wilden",
+    "quantite": 1,
+    "confiance": 0.706,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "Raccord SED 1300 GPL/1\"M",
+    "equipement": "Raccord SED 1300 GPL/1\"M",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "Raccord SED 900 RBE11/1\"M",
+    "equipement": "Raccord SED 900 RBE11/1\"M",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "equipement": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "quantite": 2,
+    "confiance": 0.45,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Caisse Raccord #Rac_2",
+    "origine": "Collier anti-fouettement x10",
+    "equipement": "Collier anti-fouettement x10",
+    "quantite": 10,
+    "confiance": 0.473,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Servante #Serv_2",
+    "origine": "Servante",
+    "equipement": "Servante_1",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Enclosure #53",
+    "origine": "Enclosure 53",
+    "equipement": "Enclosure - 53",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "Enclosure #54",
+    "origine": "Enclosure 54",
+    "equipement": "Enclosure - 54",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #110",
+    "origine": "Fixture S1 110",
+    "equipement": "Fixture S1 - 110",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #103",
+    "origine": "Fixture S1 103",
+    "equipement": "Fixture S1 - 103",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 1",
+    "caisse": "BOX #100",
+    "origine": "Fixture S1 100",
+    "equipement": "Fixture S1 - 100",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "PC GIBR + alim (ancien)",
+    "equipement": "PC GIBR + alim (ancien)",
+    "quantite": 1,
+    "confiance": 0.429,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "PC NUC 3 + alim + dongle",
+    "equipement": "PC NUC 3 + alim + dongle",
+    "quantite": 1,
+    "confiance": 0.432,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "Hub USBC/USB",
+    "equipement": "Hub USBC/USB",
+    "quantite": 1,
+    "confiance": 0.357,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "Pied multi-bras",
+    "equipement": "Pied multi-bras",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "Multiprise",
+    "equipement": "Multiprise",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "Souris + tapis",
+    "equipement": "Souris + tapis",
+    "quantite": 1,
+    "confiance": 0.4,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #151",
+    "origine": "Clavier x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "RJ45 80M x4",
+    "equipement": "RJ45_1",
+    "quantite": 4,
+    "confiance": 0.918,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "RJ45 30M x7",
+    "equipement": "RJ45_3",
+    "quantite": 7,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "RJ45 5M x5",
+    "equipement": "RJ45_1",
+    "quantite": 5,
+    "confiance": 0.925,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "Enrouleur 220V x2",
+    "equipement": "Enrouleur 220V x2",
+    "quantite": 2,
+    "confiance": 0.483,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "Multiprise",
+    "equipement": "Multiprise",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #22",
+    "origine": "Prise Maréchal 220V x2",
+    "equipement": "Prise Maréchal 220V x2",
+    "quantite": 2,
+    "confiance": 0.452,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #39",
+    "origine": "Écrans x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #39",
+    "origine": "Alimentation x3",
+    "equipement": "Alimentation x3",
+    "quantite": 3,
+    "confiance": 0.583,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #39",
+    "origine": "Câble DisplayPort",
+    "equipement": "Câble DisplayPort",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #39",
+    "origine": "Câble HDMI x3",
+    "equipement": "Câble HDMI x3",
+    "quantite": 3,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #DAV 3",
+    "origine": "Caméra x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.917,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #DAV 3",
+    "origine": "Switch + alim x2",
+    "equipement": "Switch - DAV1_2",
+    "quantite": 2,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #DAV 3",
+    "origine": "Boitiers phonie x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #DAV 3",
+    "origine": "Casque x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "S1 / S2 / S10 / S15",
+    "equipement": " #S1",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "S1 / S2 / S10 / S15",
+    "equipement": " #S2",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "S1 / S2 / S10 / S15",
+    "equipement": " #S10",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "S1 / S2 / S10 / S15",
+    "equipement": " #S15",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "Drive Unit 14/17 x2",
+    "equipement": "Pion de centrage 37 x2 #01",
+    "quantite": 2,
+    "confiance": 0.891,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #127",
+    "origine": "Drive Unit 20/99 x2",
+    "equipement": "Drive Unit - 1300 #D99",
+    "quantite": 2,
+    "confiance": 0.789,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #83",
+    "origine": "Balance #40004377 (28/11/2028)",
+    "equipement": "Balance  #40004377",
+    "quantite": 1,
+    "confiance": 0.744,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Mini Lance L19",
+    "equipement": "Mini-Lance - 1300 #L19",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "1 Rétention",
+    "equipement": "1 Rétention",
+    "quantite": 1,
+    "confiance": 0.467,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "1 Tuyaux 1\" SED",
+    "equipement": "Tuyau 1po SED_1",
+    "quantite": 1,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Pige TP P45 / P0 / P40",
+    "equipement": "Pige TP - 1300 #P45",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Pige TP P45 / P0 / P40",
+    "equipement": "Pige TP - 1300 #P40",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Pige TP P45 / P0 / P40",
+    "equipement": "Pige TP - 1300 #P40",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TP A23 / A24 / A19 / A28",
+    "equipement": "Aspi TP - 1300 #A23",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TP A23 / A24 / A19 / A28",
+    "equipement": "Aspi TP - 1300 #A24",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TP A23 / A24 / A19 / A28",
+    "equipement": "Aspi TP - 1300 #A19",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TP A23 / A24 / A19 / A28",
+    "equipement": "Aspi TP - 5XF #A28",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TO A24 / A50 / A49 / A25 / A51",
+    "equipement": "Aspi TO - 1300 #A24",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TO A24 / A50 / A49 / A25 / A51",
+    "equipement": "Aspi TO - 1300 #A50",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TO A24 / A50 / A49 / A25 / A51",
+    "equipement": "Aspi TO - 1300 #A49",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TO A24 / A50 / A49 / A25 / A51",
+    "equipement": "Aspi TO - 1300 #A25",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "Aspi TO A24 / A50 / A49 / A25 / A51",
+    "equipement": "Aspi TO - 1300 #A51",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TP J25 / J29 / J27 / J28",
+    "equipement": "JP TP - 5XF J25",
+    "quantite": 1,
+    "confiance": 0.964,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TP J25 / J29 / J27 / J28",
+    "equipement": "JP TO - 1300 #J29",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TP J25 / J29 / J27 / J28",
+    "equipement": "JP TP - 1300 #J27",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TP J25 / J29 / J27 / J28",
+    "equipement": "JP TP - 1300 #J28",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J32",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J33",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J23",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J29",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J31",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J39",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #214-1/5",
+    "origine": "JP TO 68/19 J32 / J33 / J23 / J29 / J31 / J39 / J40",
+    "equipement": "JP TO - 1300 #J40",
+    "quantite": 1,
+    "confiance": 0.952,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #215-2/5",
+    "origine": "Série 1 L58 / L59 / L60",
+    "equipement": "Série 1 #L58",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #215-2/5",
+    "origine": "Série 1 L58 / L59 / L60",
+    "equipement": "Série 1 #L59",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #215-2/5",
+    "origine": "Série 1 L58 / L59 / L60",
+    "equipement": "Série 1 #L60",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Mini Lance L21 (horizontale)",
+    "equipement": "Mini-Lance - 1300 #L21",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Mini Lance L28 / L24 / L25",
+    "equipement": "Mini-Lance - 1300 #L28",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Mini Lance L28 / L24 / L25",
+    "equipement": "Mini-Lance - 1300 #L24",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Mini Lance L28 / L24 / L25",
+    "equipement": "Mini-Lance - 1300 #L25",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Pige TO P14/P15 / P16/P99",
+    "equipement": "Pige TO - 1300 #P14",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Pige TO P14/P15 / P16/P99",
+    "equipement": "Pige TO - 900 P15",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Pige TO P14/P15 / P16/P99",
+    "equipement": "Pige TO - 900 #P16",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Pige TO P14/P15 / P16/P99",
+    "equipement": "Pige TO - 1300 #P99",
+    "quantite": 1,
+    "confiance": 0.963,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Bride étanche B40/B41 / B43/B48",
+    "equipement": "Adaptateur gauche - 1300 #B40",
+    "quantite": 1,
+    "confiance": 0.893,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Bride étanche B40/B41 / B43/B48",
+    "equipement": "Bride étanche #B41",
+    "quantite": 1,
+    "confiance": 0.564,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Bride étanche B40/B41 / B43/B48",
+    "equipement": "Bride étanche #B43",
+    "quantite": 1,
+    "confiance": 0.564,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Bride étanche B40/B41 / B43/B48",
+    "equipement": "Bride étanche #B48",
+    "quantite": 1,
+    "confiance": 0.564,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur droit B32/B33 / B37/B41",
+    "equipement": "Adaptateur gauche - 1300 #B32",
+    "quantite": 1,
+    "confiance": 0.93,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur droit B32/B33 / B37/B41",
+    "equipement": "Adaptateur droit - 1300 #B33",
+    "quantite": 1,
+    "confiance": 0.978,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur droit B32/B33 / B37/B41",
+    "equipement": "Adaptateur droit - 1300 #B37",
+    "quantite": 1,
+    "confiance": 0.978,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur droit B32/B33 / B37/B41",
+    "equipement": "Adaptateur droit - 1300 #B41",
+    "quantite": 1,
+    "confiance": 0.978,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur gauche B6/B30 / B38/B40",
+    "equipement": "Obturateur TO - JP #B06",
+    "quantite": 1,
+    "confiance": 0.9,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur gauche B6/B30 / B38/B40",
+    "equipement": "Adaptateur gauche - 1300 #B30",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur gauche B6/B30 / B38/B40",
+    "equipement": "Adaptateur gauche - 1300 #B38",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #216-3/5",
+    "origine": "Adaptateur gauche B6/B30 / B38/B40",
+    "equipement": "Adaptateur gauche - 1300 #B40",
+    "quantite": 1,
+    "confiance": 0.979,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #217-4/5",
+    "origine": "Série 1 L64",
+    "equipement": "Série 1 L64",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #217-4/5",
+    "origine": "Caisse fastners 6819 / 135",
+    "equipement": "Fasteners 6819 138",
+    "quantite": 1,
+    "confiance": 0.762,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TP B2 / B3 / B4",
+    "equipement": "Obturateur TO - JP #B02",
+    "quantite": 1,
+    "confiance": 0.92,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TP B2 / B3 / B4",
+    "equipement": "Obturateur TO - JP #B03",
+    "quantite": 1,
+    "confiance": 0.92,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TP B2 / B3 / B4",
+    "equipement": "Obturateur TO - JP #B04",
+    "quantite": 1,
+    "confiance": 0.92,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO pleine B24/B62 / B63/B64",
+    "equipement": "Obturateur TO - 1300 #B24",
+    "quantite": 1,
+    "confiance": 0.91,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO pleine B24/B62 / B63/B64",
+    "equipement": "Obturateur TO - 1300 #B62",
+    "quantite": 1,
+    "confiance": 0.91,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO pleine B24/B62 / B63/B64",
+    "equipement": "Obturateur TO - 1300 #B63",
+    "quantite": 1,
+    "confiance": 0.91,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO pleine B24/B62 / B63/B64",
+    "equipement": "Obturateur TO - 1300 #B64",
+    "quantite": 1,
+    "confiance": 0.91,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B02",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B03",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B03",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B19",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B05",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Tape TO séchage B2/B3 / B3'/B19 / B5/B8",
+    "equipement": "Obturateur TO - JP #B08",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Box 95 PDR moteur",
+    "equipement": "Box 95 PDR moteur",
+    "quantite": 1,
+    "confiance": 0.412,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #218-5/5",
+    "origine": "Caisse fastners 6819 / 136",
+    "equipement": "Fasteners 6819 138",
+    "quantite": 1,
+    "confiance": 0.762,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_5",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_6",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_7",
+    "origine": "Tuyaux SED 1\" x12",
+    "equipement": "Tuyaux SED 1\" x12",
+    "quantite": 12,
+    "confiance": 0.71,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_7",
+    "origine": "Tuyaux 1,5\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_7",
+    "origine": "Tuyaux 1\" BP x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_8",
+    "origine": "Tuyaux ½\" HP x3",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 3,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_8",
+    "origine": "Tuyaux HP 1\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.733,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_8",
+    "origine": "Inline filter box",
+    "equipement": "Inline Filter_1",
+    "quantite": 1,
+    "confiance": 0.875,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse à pomme #CaP_8",
+    "origine": "Caisse sécheur x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.9,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "T HP",
+    "equipement": "T HP",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "T JP",
+    "equipement": "T JP",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "T Wilden",
+    "equipement": "T Wilden",
+    "quantite": 1,
+    "confiance": 0.706,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "Raccord SED 1300 GPL/1\"M",
+    "equipement": "Raccord SED 1300 GPL/1\"M",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "Raccord SED 900 RBE11/1\"M",
+    "equipement": "Raccord SED 900 RBE11/1\"M",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "equipement": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "quantite": 2,
+    "confiance": 0.45,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Caisse Raccord #Rac_4",
+    "origine": "Collier anti-fouettement x10",
+    "equipement": "Collier anti-fouettement x10",
+    "quantite": 10,
+    "confiance": 0.473,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Servante #Serv_1",
+    "origine": "Servante",
+    "equipement": "Servante_1",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Enclosure #51",
+    "origine": "Enclosure 51",
+    "equipement": "Enclosure - 51",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "Enclosure #55",
+    "origine": "Enclosure 55",
+    "equipement": "Enclosure - 55",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #36",
+    "origine": "Écrans x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #30",
+    "origine": "PC Portable",
+    "equipement": "PC Portable_1",
+    "quantite": 1,
+    "confiance": 0.917,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #41",
+    "origine": "Cables Enclosure",
+    "equipement": "Cable Enclosure - 50_1",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #111",
+    "origine": "Fixture S1 111",
+    "equipement": "Fixture S1 - 111",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #109",
+    "origine": "Fixture S1 109",
+    "equipement": "Fixture S1 - 109",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #105",
+    "origine": "Fixture S1 105",
+    "equipement": "Fixture S1 - 105",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #102",
+    "origine": "Fixture S1 102",
+    "equipement": "Fixture S1 - 102",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "PC GIBR + alim (ancien)",
+    "equipement": "PC GIBR + alim (ancien)",
+    "quantite": 1,
+    "confiance": 0.429,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "PC NUC + alim (nouveau)",
+    "equipement": "PC NUC + alim (nouveau)",
+    "quantite": 1,
+    "confiance": 0.389,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "Hub USBC/USB",
+    "equipement": "Hub USBC/USB",
+    "quantite": 1,
+    "confiance": 0.357,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "Pied multi-bras",
+    "equipement": "Pied multi-bras",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "Souris + tapis",
+    "equipement": "Souris + tapis",
+    "quantite": 1,
+    "confiance": 0.4,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #152",
+    "origine": "Clavier x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "RJ45 80M x3",
+    "equipement": "RJ45_3",
+    "quantite": 3,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "RJ45 30M x6",
+    "equipement": "RJ45_3",
+    "quantite": 6,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "RJ45 5M x5",
+    "equipement": "RJ45_1",
+    "quantite": 5,
+    "confiance": 0.925,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "Enrouleur 220V x2",
+    "equipement": "Enrouleur 220V x2",
+    "quantite": 2,
+    "confiance": 0.483,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "Alimentation 220V",
+    "equipement": "Alimentation 220V",
+    "quantite": 1,
+    "confiance": 0.538,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "Multiprise",
+    "equipement": "Multiprise",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #23",
+    "origine": "Prise Maréchal 220V x2",
+    "equipement": "Prise Maréchal 220V x2",
+    "quantite": 2,
+    "confiance": 0.452,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #39",
+    "origine": "Écrans x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #39",
+    "origine": "Alimentation x3",
+    "equipement": "Alimentation x3",
+    "quantite": 3,
+    "confiance": 0.583,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #39",
+    "origine": "Câble DisplayPort",
+    "equipement": "Câble DisplayPort",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #39",
+    "origine": "Câble HDMI x2",
+    "equipement": "Câble HDMI x2",
+    "quantite": 2,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #DAV 1",
+    "origine": "Caméra x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.917,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #DAV 1",
+    "origine": "Switch + alim x2",
+    "equipement": "Switch - DAV1_2",
+    "quantite": 2,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #DAV 1",
+    "origine": "Boitier phonie x3",
+    "equipement": "Boitier phonie - DAV1_3",
+    "quantite": 3,
+    "confiance": 0.842,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #DAV 1",
+    "origine": "Casque x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "S93 / S4",
+    "equipement": " #S93",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "S93 / S4",
+    "equipement": " #S4",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "Drive Unit D2 / D4 / D6 / D7",
+    "equipement": "Drive Unit - 1300 #D20",
+    "quantite": 1,
+    "confiance": 0.812,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "Drive Unit D2 / D4 / D6 / D7",
+    "equipement": "Drive Unit - 1300 #D15",
+    "quantite": 1,
+    "confiance": 0.75,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "Drive Unit D2 / D4 / D6 / D7",
+    "equipement": "Drive Unit - 1300 #D16",
+    "quantite": 1,
+    "confiance": 0.812,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #121",
+    "origine": "Drive Unit D2 / D4 / D6 / D7",
+    "equipement": "Drive Unit - 1300 #D17",
+    "quantite": 1,
+    "confiance": 0.812,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #122",
+    "origine": "S92 / S6",
+    "equipement": " #S92",
+    "quantite": 1,
+    "confiance": 0.375,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #122",
+    "origine": "S92 / S6",
+    "equipement": " #S6",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #122",
+    "origine": "Drive Unit D1 / D3 / D5",
+    "equipement": "Drive Unit - 1300 #D15",
+    "quantite": 1,
+    "confiance": 0.812,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #122",
+    "origine": "Drive Unit D1 / D3 / D5",
+    "equipement": "Drive Unit - 1300 #D15",
+    "quantite": 1,
+    "confiance": 0.75,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #122",
+    "origine": "Drive Unit D1 / D3 / D5",
+    "equipement": "Drive Unit - 1300 #D15",
+    "quantite": 1,
+    "confiance": 0.812,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #81",
+    "origine": "Balance 81",
+    "equipement": "Balance 81",
+    "quantite": 1,
+    "confiance": 0.692,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "JP TP J23 / J26 / J34 / J36",
+    "equipement": "JP TP - 1300 #J23",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "JP TP J23 / J26 / J34 / J36",
+    "equipement": "JP TP - 1300 #J26",
+    "quantite": 1,
+    "confiance": 0.957,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "JP TP J23 / J26 / J34 / J36",
+    "equipement": "JP TO - 1300 #J34",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "JP TP J23 / J26 / J34 / J36",
+    "equipement": "JP TP - 5XF #J36",
+    "quantite": 1,
+    "confiance": 0.964,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Aspi TP A17 / A18 / A45",
+    "equipement": "Aspi TP - 5X19/4722 #A17",
+    "quantite": 1,
+    "confiance": 0.938,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Aspi TP A17 / A18 / A45",
+    "equipement": "Aspi TP - 5X19/4722 #A18",
+    "quantite": 1,
+    "confiance": 0.938,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Aspi TP A17 / A18 / A45",
+    "equipement": "Aspi TP - 1300 #A24",
+    "quantite": 1,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 51B/BR #P01",
+    "quantite": 1,
+    "confiance": 0.912,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 900 P02",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 900 P03",
+    "quantite": 1,
+    "confiance": 0.927,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 900 P12",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 900 P13",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #206-1/3",
+    "origine": "Pige P1 / P2 / P3 / P12 / P13 / P15",
+    "equipement": "Pige TO - 900 P15",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #207-2/3",
+    "origine": "L5 / L6",
+    "equipement": " #L5",
+    "quantite": 1,
+    "confiance": 0.4,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #207-2/3",
+    "origine": "L5 / L6",
+    "equipement": " #L6",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #207-2/3",
+    "origine": "Caisse fastners 4722 / 133",
+    "equipement": "Caisse fastners 4722 / 133",
+    "quantite": 1,
+    "confiance": 0.634,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Mini Lance L1 / L2 / L3 / L4",
+    "equipement": "Mini-Lance - 900 #L01",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Mini Lance L1 / L2 / L3 / L4",
+    "equipement": "Mini-Lance - 900 #L02",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Mini Lance L1 / L2 / L3 / L4",
+    "equipement": "Mini-Lance - 900 #L03",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Mini Lance L1 / L2 / L3 / L4",
+    "equipement": "Mini-Lance - 900 #L04",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Bride étanche E4 / E8",
+    "equipement": "Bride étanche #E4",
+    "quantite": 1,
+    "confiance": 0.541,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Bride étanche E4 / E8",
+    "equipement": "Bride étanche #E8",
+    "quantite": 1,
+    "confiance": 0.541,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+    "equipement": "Obturateur TO - 900 #C06",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+    "equipement": "Obturateur TO - 900 #C07",
+    "quantite": 1,
+    "confiance": 0.895,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+    "equipement": "Obturateur TO - 900 #C10",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+    "equipement": "Obturateur TO - 900 #C11",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "Tape pleine TO C6 / C7 / C10 / C11 / C20",
+    "equipement": "Obturateur TO - 900 #C20",
+    "quantite": 1,
+    "confiance": 0.903,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #208-3/3",
+    "origine": "T 02 / T 03",
+    "equipement": "T 02 / T 03",
+    "quantite": 1,
+    "confiance": 0.556,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_10",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_11",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_13",
+    "origine": "Tuyaux SED 1\" x12",
+    "equipement": "Tuyaux SED 1\" x12",
+    "quantite": 12,
+    "confiance": 0.71,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_13",
+    "origine": "Tuyaux 1,5\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_13",
+    "origine": "Tuyaux 1\" BP x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.8,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_16",
+    "origine": "Tuyaux ½\" HP x3",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 3,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_16",
+    "origine": "Tuyaux HP 1\" x12",
+    "equipement": "Tuyaux 1po HP_1",
+    "quantite": 12,
+    "confiance": 0.733,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_16",
+    "origine": "Inline filter box",
+    "equipement": "Inline Filter_1",
+    "quantite": 1,
+    "confiance": 0.875,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse à pomme #CaP_16",
+    "origine": "Caisse sécheur",
+    "equipement": "Caisse sécheur",
+    "quantite": 1,
+    "confiance": 0.629,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "T HP",
+    "equipement": "T HP",
+    "quantite": 1,
+    "confiance": 0.421,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "T JP",
+    "equipement": "T JP",
+    "quantite": 1,
+    "confiance": 0.364,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "T Wilden",
+    "equipement": "T Wilden",
+    "quantite": 1,
+    "confiance": 0.706,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "Raccord SED 1300 GPL/1\"M",
+    "equipement": "Raccord SED 1300 GPL/1\"M",
+    "quantite": 1,
+    "confiance": 0.585,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "Raccord SED 900 RBE11/1\"M",
+    "equipement": "Raccord SED 900 RBE11/1\"M",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "equipement": "Raccord 1,5\"M/Staubli RBE11 x2",
+    "quantite": 2,
+    "confiance": 0.45,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Caisse Raccord #Rac_3",
+    "origine": "Collier anti-fouettement x10",
+    "equipement": "Collier anti-fouettement x10",
+    "quantite": 10,
+    "confiance": 0.473,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Servante #Serv_3",
+    "origine": "Servante",
+    "equipement": "Servante_1",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "Enclosure #58",
+    "origine": "Enclosure 58",
+    "equipement": "Enclosure - 58",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "demi Enclosure #56",
+    "origine": "demi Enclosure 56",
+    "equipement": "demi Enclosure - 56",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "demi Enclosure #57",
+    "origine": "demi Enclosure 57",
+    "equipement": "demi Enclosure - 57",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #42",
+    "origine": "Cables Enclosure",
+    "equipement": "Cable Enclosure - 50_1",
+    "quantite": 1,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #32",
+    "origine": "PC",
+    "equipement": "PC",
+    "quantite": 1,
+    "confiance": 0.267,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #124",
+    "origine": "Drive Unit LH",
+    "equipement": "Drive Unit LH",
+    "quantite": 1,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #123",
+    "origine": "Drive Unit LH",
+    "equipement": "Drive Unit LH",
+    "quantite": 1,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #108",
+    "origine": "Fixture S1 108",
+    "equipement": "Fixture S1 - 108",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #107",
+    "origine": "Fixture S1 107",
+    "equipement": "Fixture S1 - 107",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #106",
+    "origine": "Fixture S1 106",
+    "equipement": "Fixture S1 - 106",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 3",
+    "caisse": "BOX #104",
+    "origine": "Fixture S1 104",
+    "equipement": "Fixture S1 - 104",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "PC GIBR + alim (ancien)",
+    "equipement": "PC GIBR + alim (ancien)",
+    "quantite": 1,
+    "confiance": 0.429,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "PC NUC N°4 + alim + dongle",
+    "equipement": "PC NUC N°4 + alim + dongle",
+    "quantite": 1,
+    "confiance": 0.4,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Hub USBC/USB",
+    "equipement": "Hub USBC/USB",
+    "quantite": 1,
+    "confiance": 0.357,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Pied multi-bras",
+    "equipement": "Pied multi-bras",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Multiprise x2",
+    "equipement": "Multiprise x2",
+    "quantite": 2,
+    "confiance": 0.467,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Souris + tapis x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.907,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Clavier x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #153",
+    "origine": "Alim 220V x4",
+    "equipement": "Alim 220V x4",
+    "quantite": 4,
+    "confiance": 0.571,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "RJ45 80M x3",
+    "equipement": "RJ45_3",
+    "quantite": 3,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "RJ45 30M x7",
+    "equipement": "RJ45_3",
+    "quantite": 7,
+    "confiance": 0.941,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "RJ45 5M x5",
+    "equipement": "RJ45_1",
+    "quantite": 5,
+    "confiance": 0.925,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "Multiprise x2",
+    "equipement": "Multiprise x2",
+    "quantite": 2,
+    "confiance": 0.467,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "Enrouleur 220V x2",
+    "equipement": "Enrouleur 220V x2",
+    "quantite": 2,
+    "confiance": 0.483,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "Alim 220V",
+    "equipement": "Alim 220V",
+    "quantite": 1,
+    "confiance": 0.556,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #24",
+    "origine": "Câble phonie",
+    "equipement": "Câble phonie",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #37",
+    "origine": "Écran x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.896,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #37",
+    "origine": "Alimentation x3",
+    "equipement": "Alimentation x3",
+    "quantite": 3,
+    "confiance": 0.583,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #37",
+    "origine": "Câble DisplayPort x2",
+    "equipement": "Câble DisplayPort x2",
+    "quantite": 2,
+    "confiance": 0.581,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #37",
+    "origine": "Câble HDMI x2",
+    "equipement": "Câble HDMI x2",
+    "quantite": 2,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #DAV 4",
+    "origine": "Caméra x4",
+    "equipement": "Casques - DAV1 x4",
+    "quantite": 4,
+    "confiance": 0.917,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #DAV 4",
+    "origine": "Switch + alim x2",
+    "equipement": "Switch - DAV1_2",
+    "quantite": 2,
+    "confiance": 0.741,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #DAV 4",
+    "origine": "Boitiers phonie x2",
+    "equipement": "vis SPICE x2 #01",
+    "quantite": 2,
+    "confiance": 0.909,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #DAV 4",
+    "origine": "Casque x3",
+    "equipement": "Grand guide x3 #01",
+    "quantite": 3,
+    "confiance": 0.892,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "S25 / S27 / S28 / S93 (décalé)",
+    "equipement": " #S25",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "S25 / S27 / S28 / S93 (décalé)",
+    "equipement": " #S27",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "S25 / S27 / S28 / S93 (décalé)",
+    "equipement": " #S28",
+    "quantite": 1,
+    "confiance": 0.5,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "S25 / S27 / S28 / S93 (décalé)",
+    "equipement": " #S93",
+    "quantite": 1,
+    "confiance": 0.333,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "Drive Unit 6819 D16 / D18 / D21",
+    "equipement": "Drive Unit - 1300 #D16",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "Drive Unit 6819 D16 / D18 / D21",
+    "equipement": "Drive Unit - 1300 #D18",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #129",
+    "origine": "Drive Unit 6819 D16 / D18 / D21",
+    "equipement": "Drive Unit - 1300 #D21",
+    "quantite": 1,
+    "confiance": 0.968,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #80",
+    "origine": "Balance #40004928 (27/11/2028)",
+    "equipement": "Balance  #40004928",
+    "quantite": 1,
+    "confiance": 0.744,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #43",
+    "origine": "Câbles 50' x3",
+    "equipement": "Câbles 50' x3",
+    "quantite": 3,
+    "confiance": 0.7,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #43",
+    "origine": "Câbles 100' x2",
+    "equipement": "Cable A1 #02",
+    "quantite": 2,
+    "confiance": 0.75,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #43",
+    "origine": "Splitters codeur x4",
+    "equipement": "Petit guide x4 #01",
+    "quantite": 4,
+    "confiance": 0.9,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #43",
+    "origine": "Splitters moteur x4",
+    "equipement": "Splitter Codeur_4",
+    "quantite": 4,
+    "confiance": 0.833,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #43",
+    "origine": "Enclosure 51 / 52 + alim 220V",
+    "equipement": "Enclosure 51 / 52 + alim 220V",
+    "quantite": 1,
+    "confiance": 0.649,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Mini Lance L20 / L22 (horizontales)",
+    "equipement": "Mini-Lance - 1300 #L20",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Mini Lance L20 / L22 (horizontales)",
+    "equipement": "Mini-Lance - 1300 #L22",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Mini Lance L19",
+    "equipement": "Mini-Lance - 1300 #L19",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Pige TO SUP P01/P02",
+    "equipement": "Pige TO supp - 900 #P01",
+    "quantite": 1,
+    "confiance": 0.971,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Pige TO SUP P01/P02",
+    "equipement": "Pige TO supp - 900 #P02",
+    "quantite": 1,
+    "confiance": 0.971,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Pige TO P19/P20/P22",
+    "equipement": "Pige TO - 900 #P19",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Pige TO P19/P20/P22",
+    "equipement": "Pige TO - 900 #P20",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #210-1/4",
+    "origine": "Pige TO P19/P20/P22",
+    "equipement": "Pige TO - 900 #P22",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #211-2/4",
+    "origine": "Aspi TP 5519/4722 A19/A34",
+    "equipement": "Aspi TP - 5X19/4722 #A19",
+    "quantite": 1,
+    "confiance": 0.99,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #211-2/4",
+    "origine": "Aspi TP 5519/4722 A19/A34",
+    "equipement": "Aspi TP - 5X19/4722 #A34",
+    "quantite": 1,
+    "confiance": 0.99,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #211-2/4",
+    "origine": "Aspi TP A28/A41",
+    "equipement": "Aspi TP - 5XF #A28",
+    "quantite": 1,
+    "confiance": 0.969,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #211-2/4",
+    "origine": "Aspi TP A28/A41",
+    "equipement": "Aspi TP - 5XF #A31",
+    "quantite": 1,
+    "confiance": 0.769,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #211-2/4",
+    "origine": "Aspi TP A33",
+    "equipement": "Aspi TP - 5X19/4722 #A33",
+    "quantite": 1,
+    "confiance": 0.938,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C82",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C25",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C15",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C08",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C03",
+    "quantite": 1,
+    "confiance": 0.905,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C16",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C24",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Obturateur TO - 900 #C13",
+    "quantite": 1,
+    "confiance": 0.913,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine C82/C25/C15 / C8/C3/C16 / C24/C13/C0",
+    "equipement": "Tape TO pleine #C0",
+    "quantite": 1,
+    "confiance": 0.562,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Tape TO pleine T01",
+    "equipement": "Tape TO pleine T01",
+    "quantite": 1,
+    "confiance": 0.606,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Bride étanche E1/E3/E6",
+    "equipement": "Bride étanche #E1",
+    "quantite": 1,
+    "confiance": 0.541,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Bride étanche E1/E3/E6",
+    "equipement": "Bride étanche #E3",
+    "quantite": 1,
+    "confiance": 0.541,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Bride étanche E1/E3/E6",
+    "equipement": "Bride étanche #E6",
+    "quantite": 1,
+    "confiance": 0.545,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "PDR moteur 94",
+    "equipement": "PDR moteur 94",
+    "quantite": 1,
+    "confiance": 0.6,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #212-3/4",
+    "origine": "Caisse fastners 4722 / 132 & 134",
+    "equipement": "Caisse fastners 4722 / 132 & 134",
+    "quantite": 1,
+    "confiance": 0.578,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #213-4/4",
+    "origine": "JP TP J37/J38",
+    "equipement": "JP TP - 5X19/4722 #J37",
+    "quantite": 1,
+    "confiance": 0.929,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #213-4/4",
+    "origine": "JP TP J37/J38",
+    "equipement": "JP TO - 1300 #J38",
+    "quantite": 1,
+    "confiance": 0.939,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #213-4/4",
+    "origine": "JP TP J19/J20",
+    "equipement": "JP TP - 5X19/4722 #J19",
+    "quantite": 1,
+    "confiance": 0.929,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #213-4/4",
+    "origine": "JP TP J19/J20",
+    "equipement": "JP TP - 5X19/4722 #J20",
+    "quantite": 1,
+    "confiance": 0.929,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_9",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_12",
+    "origine": "Tuyaux 2\" 8M x12",
+    "equipement": "Tuyaux 2\" 8M x12",
+    "quantite": 12,
+    "confiance": 0.688,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_14",
+    "origine": "12 Tuyaux 2\" 8M",
+    "equipement": "12 Tuyaux 2\" 8M",
+    "quantite": 1,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_15",
+    "origine": "12 Tuyaux 1,5\"",
+    "equipement": "12 Tuyaux 1,5\"",
+    "quantite": 1,
+    "confiance": 0.71,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_15",
+    "origine": "7 Tuyaux 1,5\" court",
+    "equipement": "7 Tuyaux 1,5\" court",
+    "quantite": 1,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_15",
+    "origine": "9 Tuyaux 1\" long",
+    "equipement": "9 Tuyaux 1\" long",
+    "quantite": 1,
+    "confiance": 0.667,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_15",
+    "origine": "1 Rétention",
+    "equipement": "1 Rétention",
+    "quantite": 1,
+    "confiance": 0.467,
+    "statut": "unresolved"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Caisse à pomme #CaP_15",
+    "origine": "1 Tuyaux 1\" SED",
+    "equipement": "Tuyau 1po SED_1",
+    "quantite": 1,
+    "confiance": 0.759,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Servante #Serv_4",
+    "origine": "Servante",
+    "equipement": "Servante_1",
+    "quantite": 1,
+    "confiance": 0.889,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "Enclosure #52",
+    "origine": "Enclosure 52",
+    "equipement": "Enclosure - 52",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 4 Palette",
+    "caisse": "BOX #33",
+    "origine": "PC",
+    "equipement": "PC",
+    "quantite": 1,
+    "confiance": 0.267,
+    "statut": "unresolved"
+  }
+]

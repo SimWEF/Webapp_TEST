@@ -8,8 +8,8 @@
    changer APP_CACHE pour voir un colisage mis a jour.
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v31";
-   const DATA_CACHE = "pigvs-data-v13";
+   const APP_CACHE = "pigvs-app-v32";
+   const DATA_CACHE = "pigvs-data-v14";
    
    /* ==========================================================
       Fichiers de DONNEES
@@ -29,6 +29,7 @@
      "depannage-navigation.json",
      "sousEnsemble.json",
      "etatEquipements.json",
+     "rapport-normalisation-colisage.json"
    ];
    
    function estFichierDonnees(pathname) {
