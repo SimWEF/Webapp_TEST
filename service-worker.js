@@ -29,7 +29,6 @@
      "depannage-navigation.json",
      "sousEnsemble.json",
      "etatEquipements.json",
-     "rapport-normalisation-colisage.json"
    ];
    
    function estFichierDonnees(pathname) {

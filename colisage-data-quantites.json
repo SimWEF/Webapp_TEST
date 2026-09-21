@@ -1,6 +1,6 @@
 {
   "_note": "Colisage PIGVS. Les noms de caisses sont strictement alignes sur l'onglet Parametres_Box de PIGVS - BD_Materiel.xlsx (le # est conserve). Les ROLL ne sont pas des caisses : leur contenu est remonte au niveau caisse.",
-  "_source": "flux",
+  "_source": "PIGVS - BD_Materiel.xlsx (Parametres_Box, Parametres_Conteneurs, Affectation_Box)",
   "_aValider": [
     "Caisse a pomme #CaP_5 a #CaP_16 : la repartition precise du contenu entre chaque caisse a ete deduite du modele de l'Equipement 1 (Affectation_Box). A confirmer lors du premier releve terrain.",
     "BOX #200-1/4 a #203-4/4 (Equipement 3) : caisses presentes dans la BD mais sans contenu renseigne dans le colisage initial.",
@@ -66,20 +66,8 @@
             {
               "equipement": "Entretoise 47mm #01",
               "quantite": 1
-            },
-            {
-              "equipement": "Entretoise 17mm #01",
-              "quantite": 1
             }
-          ],
-          "verif": {
-            "date": "2026-09-21T10:10:26",
-            "site": "PAL4",
-            "operateur": "Simon",
-            "valideur": "Simon",
-            "nbManquants": 0,
-            "nbAjoutes": 1
-          }
+          ]
         },
         {
           "nom": "TPO #01",
@@ -406,22 +394,10 @@
           "nom": "Vrac Roll #01",
           "items": [
             {
-              "equipement": "plein de bazar",
-              "quantite": 1
-            },
-            {
-              "equipement": "Mini-Lance - 1300 #L19",
+              "equipement": "Table #01",
               "quantite": 1
             }
-          ],
-          "verif": {
-            "date": "2026-09-21T10:11:22",
-            "site": "PAL4",
-            "operateur": "somon",
-            "valideur": "Simon",
-            "nbManquants": 0,
-            "nbAjoutes": 2
-          }
+          ]
         },
         {
           "nom": "CART #04",
@@ -3069,26 +3045,58 @@
           "nom": "BOX #40",
           "items": [
             {
-              "equipement": "Mini-Lance - 1300 #L19",
+              "equipement": "Splitter Power_1",
               "quantite": 1
             },
             {
-              "equipement": "1 Rétention",
+              "equipement": "Splitter Power_2",
               "quantite": 1
             },
             {
-              "equipement": "Tuyau 1po SED_1",
+              "equipement": "Splitter Power_3",
+              "quantite": 1
+            },
+            {
+              "equipement": "Splitter Power_4",
+              "quantite": 1
+            },
+            {
+              "equipement": "Splitter Codeur_1",
+              "quantite": 1
+            },
+            {
+              "equipement": "Splitter Codeur_2",
+              "quantite": 1
+            },
+            {
+              "equipement": "Splitter Codeur_3",
+              "quantite": 1
+            },
+            {
+              "equipement": "Splitter Codeur_4",
+              "quantite": 1
+            },
+            {
+              "equipement": "Cable Enclosure - 50_1",
+              "quantite": 1
+            },
+            {
+              "equipement": "Cable Enclosure - 50_2",
+              "quantite": 1
+            },
+            {
+              "equipement": "Cable Enclosure - 50_3",
+              "quantite": 1
+            },
+            {
+              "equipement": "Cable Enclosure - 100_1",
+              "quantite": 1
+            },
+            {
+              "equipement": "Cable Enclosure - 100_2",
               "quantite": 1
             }
-          ],
-          "verif": {
-            "date": "2026-09-21T09:16:52.176Z",
-            "site": "PAL4",
-            "operateur": "simo",
-            "valideur": "souarn",
-            "nbManquants": 0,
-            "nbAjoutes": 2
-          }
+          ]
         },
         {
           "nom": "BOX #214-1/5",
@@ -4491,8 +4499,8 @@
   "_schemaItems": "Chaque item est un objet {equipement, quantite}. Source : equipements.json.",
   "_normalisation": {
     "source": "equipements.json",
-    "elements_mappes": 564,
-    "elements_a_verifier": 276,
+    "elements_mappes": 574,
+    "elements_a_verifier": 274,
     "rapport": "rapport-normalisation-colisage.json"
   }
 }

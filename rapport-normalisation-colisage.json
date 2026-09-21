@@ -73,15 +73,6 @@
   },
   {
     "conteneur": "ETV1",
-    "caisse": "CART #01",
-    "origine": "Entretoise 12CM",
-    "equipement": "Entretoise 17mm #01",
-    "quantite": 1,
-    "confiance": 0.788,
-    "statut": "mapped"
-  },
-  {
-    "conteneur": "ETV1",
     "caisse": "TPO #01",
     "origine": "Interface GV",
     "equipement": "interface GV TPO #01",
@@ -659,19 +650,10 @@
   {
     "conteneur": "ETV1",
     "caisse": "Vrac Roll #01",
-    "origine": "plein de bazar",
-    "equipement": "plein de bazar",
+    "origine": "Table",
+    "equipement": "Table #01",
     "quantite": 1,
-    "confiance": 0.5,
-    "statut": "unresolved"
-  },
-  {
-    "conteneur": "ETV1",
-    "caisse": "Vrac Roll #01",
-    "origine": "Mini Lance L19",
-    "equipement": "Mini-Lance - 1300 #L19",
-    "quantite": 1,
-    "confiance": 1.0,
+    "confiance": 0.769,
     "statut": "mapped"
   },
   {
@@ -5222,8 +5204,8 @@
   {
     "conteneur": "Equipement 2",
     "caisse": "BOX #40",
-    "origine": "Mini Lance L19",
-    "equipement": "Mini-Lance - 1300 #L19",
+    "origine": "Splitter Power_1",
+    "equipement": "Splitter Power_1",
     "quantite": 1,
     "confiance": 1.0,
     "statut": "mapped"
@@ -5231,19 +5213,109 @@
   {
     "conteneur": "Equipement 2",
     "caisse": "BOX #40",
-    "origine": "1 Rétention",
-    "equipement": "1 Rétention",
+    "origine": "Splitter Power_2",
+    "equipement": "Splitter Power_2",
     "quantite": 1,
-    "confiance": 0.467,
-    "statut": "unresolved"
+    "confiance": 1.0,
+    "statut": "mapped"
   },
   {
     "conteneur": "Equipement 2",
     "caisse": "BOX #40",
-    "origine": "1 Tuyaux 1\" SED",
-    "equipement": "Tuyau 1po SED_1",
+    "origine": "Splitter Power_3",
+    "equipement": "Splitter Power_3",
     "quantite": 1,
-    "confiance": 0.759,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Splitter Power_4",
+    "equipement": "Splitter Power_4",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Splitter Codeur_1",
+    "equipement": "Splitter Codeur_1",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Splitter Codeur_2",
+    "equipement": "Splitter Codeur_2",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Splitter Codeur_3",
+    "equipement": "Splitter Codeur_3",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Splitter Codeur_4",
+    "equipement": "Splitter Codeur_4",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Cable Enclosure - 50_1",
+    "equipement": "Cable Enclosure - 50_1",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Cable Enclosure - 50_2",
+    "equipement": "Cable Enclosure - 50_2",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Cable Enclosure - 50_3",
+    "equipement": "Cable Enclosure - 50_3",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Cable Enclosure - 100_1",
+    "equipement": "Cable Enclosure - 100_1",
+    "quantite": 1,
+    "confiance": 1.0,
+    "statut": "mapped"
+  },
+  {
+    "conteneur": "Equipement 2",
+    "caisse": "BOX #40",
+    "origine": "Cable Enclosure - 100_2",
+    "equipement": "Cable Enclosure - 100_2",
+    "quantite": 1,
+    "confiance": 1.0,
     "statut": "mapped"
   },
   {
