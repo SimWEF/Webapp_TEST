@@ -516,7 +516,13 @@
         }
         (colisage && colisage.conteneurs || []).forEach(function (conteneur) {
           (conteneur.caisses || []).forEach(function (caisse) {
-            (caisse.items || []).forEach(ajouter);
+            (caisse.items || []).forEach(function (item) {
+              if (item && typeof item === "object") {
+                ajouter(item.equipement || item.nom || "");
+              } else {
+                ajouter(item);
+              }
+            });
           });
         });
         const codes = (sap && sap.codes) || {};
