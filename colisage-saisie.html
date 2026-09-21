@@ -456,6 +456,34 @@
       }
 
       /* =========================================================
+         CATALOGUE LOCAL DE SECOURS
+         ========================================================= */
+      function catalogueDepuisColisageEtSap(colisage, sap) {
+        const vus = {};
+        const liste = [];
+        function ajouter(nom) {
+          const texte = (nom || "").toString().trim();
+          const k = cleKey(texte);
+          if (!k || vus[k]) return;
+          vus[k] = true;
+          liste.push(texte);
+        }
+        (colisage && colisage.conteneurs || []).forEach(function (conteneur) {
+          (conteneur.caisses || []).forEach(function (caisse) {
+            (caisse.items || []).forEach(ajouter);
+          });
+        });
+        const codes = (sap && sap.codes) || {};
+        Object.keys(codes).forEach(function (code) {
+          const entree = codes[code];
+          if (entree && entree.type === "equipement" && entree.cible) ajouter(entree.cible);
+        });
+        return liste.sort(function (a, b) {
+          return a.localeCompare(b, "fr", { sensitivity: "base" });
+        });
+      }
+
+      /* =========================================================
          OUTILS
          ========================================================= */
       function sanitizePath(s) {
@@ -489,8 +517,9 @@
         const sap = resultats[2] || { codes: {} };
         CODES = sap.codes || {};
 
-        /* Catalogue pour l'autocompletion des ajouts */
-        CATALOGUE = C.catalogue(COLISAGE, sap);
+        /* Catalogue pour l'autocompletion des ajouts.
+           Le module actuel expose catalogueEquipements(), qui est asynchrone. */
+        CATALOGUE = [];
 
         const vues = {};
         (COLISAGE.conteneurs || []).forEach(function (conteneur) {
@@ -514,6 +543,21 @@
             CAISSES.push({ nom: nom, conteneur: "", nbItems: null });
           }
         });
+
+        /* Charge le catalogue sans bloquer la recherche de caisses. */
+        if (typeof C.catalogueEquipements === "function") {
+          C.catalogueEquipements(COLISAGE)
+            .then(function (liste) {
+              CATALOGUE = Array.isArray(liste) ? liste : [];
+              console.log("PIGVS :", CAISSES.length, "caisses ;", CATALOGUE.length, "equipements");
+            })
+            .catch(function (err) {
+              console.warn("Catalogue equipements indisponible :", err);
+              CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+            });
+        } else {
+          CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+        }
 
         const params = new URLSearchParams(location.search);
         const demandee = params.get("caisse");
@@ -680,7 +724,7 @@
           "Conteneur : " + caisseActive.conteneur.nom;
 
         /* Derniere validation connue */
-        const v = caisseActive.caisse.derniereValidation;
+        const v = caisseActive.caisse.derniereValidation || caisseActive.caisse.verif;
         const zoneMaj = document.getElementById("majCaisse");
         if (v && v.date) {
           zoneMaj.style.display = "block";
