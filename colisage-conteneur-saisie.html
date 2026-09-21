@@ -706,16 +706,34 @@
          jour la liste des caisses d'un conteneur plutot que le
          contenu d'une caisse.
          ========================================================= */
-      function siteCourant() {
-        const chantier = window.PIGVS ? PIGVS.getChantier() : null;
-        return chantier && chantier.site ? chantier.site : "SITE";
-      }
+         function siteCourant() {
+          const chantier = window.PIGVS ? PIGVS.getChantier() : null;
 
-      function cheminDestination() {
-        if (!conteneurActif) return "…";
-        return "colisage/" + sanitizePath(siteCourant()) + "/conteneurs/" +
-               sanitizePath(conteneurActif.nom);
-      }
+          if (!chantier || !chantier.site) {
+            return "";
+          }
+
+          return chantier.site.trim();
+        }
+
+        function cheminDestination() {
+          const site = siteCourant();
+
+          if (!site) {
+            return "chantier-non-selectionne";
+          }
+
+          if (!conteneurActif) {
+            return "…";
+          }
+
+          return (
+            "colisage/" +
+            sanitizePath(site) +
+            "/conteneurs/" +
+            sanitizePath(conteneurActif.nom)
+          );
+        }
 
       function majChemin() {
         document.getElementById("apercuChemin").textContent =
@@ -755,7 +773,7 @@
                (liste d'équipements). */
             NiveauColisage: "conteneur",
 
-            Site: siteCourant(),
+            Site: site,
             Conteneur: conteneurActif.nom,
             Caisse: conteneurActif.nom, /* reutilise le champ existant, compatible valideur */
             Operateur: operateur,

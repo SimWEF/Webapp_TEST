@@ -1260,15 +1260,33 @@
       /* =========================================================
          ENVOI
          ========================================================= */
-      function siteCourant() {
+         function siteCourant() {
         const chantier = window.PIGVS ? PIGVS.getChantier() : null;
-        return chantier && chantier.site ? chantier.site : "SITE";
+
+        if (!chantier || !chantier.site) {
+          return "";
+        }
+
+        return chantier.site.trim();
       }
 
       function cheminDestination() {
-        if (!caisseActive) return "…";
-        return "colisage/" + sanitizePath(siteCourant()) + "/" +
-               sanitizePath(caisseActive.caisse.nom);
+        const site = siteCourant();
+
+        if (!site) {
+          return "chantier-non-selectionne";
+        }
+
+        if (!caisseActive) {
+          return "…";
+        }
+
+        return (
+          "colisage/" +
+          sanitizePath(site) +
+          "/" +
+          sanitizePath(caisseActive.caisse.nom)
+        );
       }
 
       function majChemin() {
@@ -1279,6 +1297,17 @@
       document.getElementById("btnEnvoyer").addEventListener("click", async function () {
         const operateur = document.getElementById("operateur").value.trim();
         const commentaire = document.getElementById("commentaire").value.trim();
+        const site = siteCourant();
+
+        if (!site) {
+          setStatus(
+            statusEnvoi,
+            "erreur",
+            "⚠️ Aucun chantier sélectionné. Revenez à l’accueil et choisissez un chantier avant d’envoyer le colisage."
+          );
+
+          return;
+        }
 
         if (!caisseActive) {
           setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord une caisse.");
@@ -1357,7 +1386,7 @@
           champs: {
           NiveauColisage: "caisse",
 
-          Site: siteCourant(),
+          Site: site,
           Conteneur: caisseActive.conteneur.nom,
           Caisse: caisseActive.caisse.nom,
           Operateur: operateur,
