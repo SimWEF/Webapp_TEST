@@ -178,15 +178,30 @@ function esc(s) {
 
 /* Si on vient d'un colisage conteneur, propose un retour direct */
 const paramsInit = new URLSearchParams(location.search);
-const retourConteneur = paramsInit.get('retourConteneur');
-if (retourConteneur) {
-  const bandeau = document.createElement('a');
-  bandeau.className = 'btn-retour-conteneur';
-  bandeau.href = 'colisage-conteneur-saisie.html?conteneur=' + encodeURIComponent(retourConteneur);
-  bandeau.innerHTML = '← Retour au conteneur « ' + esc(retourConteneur) + ' »';
-  document.querySelector('.container').insertBefore(bandeau, document.querySelector('.search-box'));
-}
+const retourConteneurParam =
+  paramsInit.get("retourConteneur");
 
+if (retourConteneurParam) {
+  const bandeau = document.createElement("a");
+
+  bandeau.className = "btn-retour-conteneur";
+
+  bandeau.href =
+    "colisage-conteneur-saisie.html?conteneur=" +
+    encodeURIComponent(retourConteneurParam);
+
+  bandeau.innerHTML =
+    "← Retour au conteneur « " +
+    esc(retourConteneurParam) +
+    " »";
+
+  document
+    .querySelector(".container")
+    .insertBefore(
+      bandeau,
+      document.querySelector(".search-box")
+    );
+}
 /* ======================================================================
    ETAT DE VALIDATION D'UNE CAISSE
    ====================================================================== */
