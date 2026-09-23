@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consulter le colisage — PIGVS</title>
-
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0B2C5C" />
     <link rel="apple-touch-icon" href="icon-192.png" />
-
     <style>
     .search-box { position:relative; margin-bottom:14px; }
     .search-box input { width:100%; padding:13px 40px 13px 14px; font-size:16px;
@@ -24,6 +22,7 @@
     .breadcrumb .sep { color:#b8c0cc; }
 
     .cards { display:flex; flex-direction:column; gap:10px; }
+
     .cont-card { display:flex; align-items:center; gap:14px; padding:16px;
       border-radius:12px; border:1px solid #e0e0e0; background:#fff;
       cursor:pointer; text-align:left; width:100%; }
@@ -65,6 +64,7 @@
 
     .section-titre { display:flex; align-items:center; gap:10px;
       margin:18px 0 8px; font-weight:700; color:#334; }
+
     .item-list { list-style:none; padding:0; margin:0; }
     .item-list li { padding:12px 14px; border-bottom:1px solid #eef0f3;
       font-size:15px; display:flex; gap:10px; }
@@ -79,48 +79,52 @@
     .chip { display:inline-flex; align-items:center; gap:6px; padding:3px 10px;
       border-radius:14px; font-size:12px; font-weight:700; color:#fff; }
     .chip .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.9); }
+
     .loc { font-size:13px; color:#5a6673; margin-top:4px;
       display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
     .loc .caisse { background:#eef4fb; color:#083f78; padding:3px 10px;
       border-radius:14px; font-weight:700; }
+
     .vide { text-align:center; color:#8a94a1; padding:30px 10px; }
 
     .res-caisse { border-left:4px solid #0078D7; }
     .res-caisse .apercu { font-size:12px; color:#8a94a1; margin-top:5px; line-height:1.45; }
+
     .badge-approx { display:inline-block; background:#fff4e0; color:#95610a;
       border:1px solid #f3d7a4; font-size:11px; font-weight:700;
       padding:1px 7px; border-radius:10px; margin-left:6px; vertical-align:2px; }
+
     mark { background:#fff2a8; color:inherit; padding:0 1px; border-radius:3px; }
+
     .sous-titre-inline { font-size:12px; color:#8a94a1; font-weight:400; margin-left:auto; }
 
     .btn-saisir { display:flex; align-items:center; justify-content:space-between;
       gap:10px; width:100%; min-height:52px; padding:13px 16px; margin-bottom:12px;
       font-size:15.5px; font-weight:700; text-decoration:none;
       background:var(--primary,#0078D7); color:#fff; border:0; border-radius:12px; }
-      .btn-retour-conteneur {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          background: var(--marine, #0B2C5C);
-          color: #fff;
-          text-decoration: none;
-          border-radius: 10px;
-          padding: 11px 14px;
-          font-weight: 700;
-          font-size: 14px;
-          margin-bottom: 12px;
-        }
-.btn-retour-conteneur:active { opacity: .8; }
+
+    .btn-retour-conteneur {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--marine, #0B2C5C);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .btn-retour-conteneur:active { opacity: .8; }
 
     .maj-info { font-size:11.5px; color:#8a94a1; text-align:center; margin-top:18px; }
     </style>
-
     <script src="pigvs-auth.js"></script>
     <script>
       PIGVS_AUTH.protegerPage();
     </script>
   </head>
-
   <body>
     <header class="app-header">
       <a class="back" href="colisage.html" id="backLink">‹</a>
@@ -154,7 +158,6 @@ const breadcrumb  = document.getElementById('breadcrumb');
 const searchInput = document.getElementById('search');
 const clearBtn    = document.getElementById('clearBtn');
 
-
 let vue = { conteneurId:null, caisseIdx:null };
 
 /* Au-dela de ce delai, la validation est consideree comme ancienne */
@@ -176,32 +179,31 @@ function esc(s) {
     .replace(/'/g, "&#39;");
 }
 
-/* Si on vient d'un colisage conteneur, propose un retour direct */
+/* ======================================================================
+   RETOUR AU CONTENEUR D'ORIGINE
+   ----------------------------------------------------------------------
+   ATTENTION : cette CONSTANTE doit garder un nom different de la
+   FONCTION de navigation retourConteneur() definie plus bas, sinon
+   JavaScript leve "Identifier has already been declared" et TOUT
+   le script s'arrete (recherche morte, page vide...).
+   ====================================================================== */
 const paramsInit = new URLSearchParams(location.search);
-const retourConteneurParam =
-  paramsInit.get("retourConteneur");
+const retourConteneurParam = paramsInit.get("retourConteneur");
 
 if (retourConteneurParam) {
   const bandeau = document.createElement("a");
-
   bandeau.className = "btn-retour-conteneur";
-
   bandeau.href =
     "colisage-conteneur-saisie.html?conteneur=" +
     encodeURIComponent(retourConteneurParam);
-
   bandeau.innerHTML =
-    "← Retour au conteneur « " +
-    esc(retourConteneurParam) +
-    " »";
+    "← Retour au conteneur « " + esc(retourConteneurParam) + " »";
 
   document
     .querySelector(".container")
-    .insertBefore(
-      bandeau,
-      document.querySelector(".search-box")
-    );
+    .insertBefore(bandeau, document.querySelector(".search-box"));
 }
+
 /* ======================================================================
    ETAT DE VALIDATION D'UNE CAISSE
    ====================================================================== */
@@ -210,18 +212,20 @@ function etatValidation(caisse){
   if(!v || !v.date) return { classe:'jamais', court:'Jamais validée', long:null };
 
   let jours = null;
-  if(v.horodatage){
-    const d = new Date(v.horodatage);
-    if(!isNaN(d)) jours = Math.floor((Date.now() - d.getTime()) / 86400000);
-  }
+  const d = new Date(v.date);
+  if(!isNaN(d)) jours = Math.floor((Date.now() - d.getTime()) / 86400000);
+
+  const dateAff = /^\d{4}-\d{2}-\d{2}/.test(v.date)
+    ? new Date(v.date).toLocaleDateString('fr-FR')
+    : v.date;
 
   const ancien = jours !== null && jours > JOURS_FRAIS;
   const classe = ancien ? 'ancien' : 'ok';
 
-  let court = '✓ ' + v.date;
+  let court = '✓ ' + dateAff;
   if(v.site) court += ' · ' + v.site;
 
-  let long = 'Colisage validé le <b>' + esc(v.date) + '</b>';
+  let long = 'Colisage validé le <b>' + esc(dateAff) + '</b>';
   if(v.site) long += ' sur <b>' + esc(v.site) + '</b>';
   if(v.operateur) long += ' · relevé par ' + esc(v.operateur);
   if(v.valideur) long += ' · validé par ' + esc(v.valideur);
@@ -287,12 +291,10 @@ function surligner(texte,search){
   const mots = normalize(search).split(/\s+/).filter(Boolean);
   const brut = normalize(texte);
   const marques = new Array(texte.length).fill(false);
-
   mots.forEach(w=>{
     let i = brut.indexOf(w);
     while(i>=0){ for(let k=i;k<i+w.length&&k<marques.length;k++) marques[k]=true; i=brut.indexOf(w,i+w.length); }
   });
-
   if(!marques.some(Boolean)){
     const kq = cleKey(search);
     if(kq){
@@ -307,7 +309,6 @@ function surligner(texte,search){
       }
     }
   }
-
   let out='', ouvert=false;
   for(let i=0;i<texte.length;i++){
     if(marques[i]&&!ouvert){ out+='<mark>'; ouvert=true; }
@@ -320,25 +321,17 @@ function surligner(texte,search){
 /* ======================================================================
    CHARGEMENT
    ====================================================================== */
-   PIGVS_COLISAGE.lireColisage()
+PIGVS_COLISAGE.lireColisage()
   .then(function (d) {
     DATA = d || {};
-    DATA.conteneurs = Array.isArray(DATA.conteneurs)
-      ? DATA.conteneurs
-      : [];
+    DATA.conteneurs = Array.isArray(DATA.conteneurs) ? DATA.conteneurs : [];
 
     DATA.conteneurs.forEach(function (conteneur, indexConteneur) {
       if (!conteneur.id) {
-        conteneur.id =
-          "conteneur-" +
-          indexConteneur +
-          "-" +
-          cleKey(conteneur.nom || "");
+        conteneur.id = "conteneur-" + indexConteneur + "-" + cleKey(conteneur.nom || "");
       }
 
-      conteneur.caisses = Array.isArray(conteneur.caisses)
-        ? conteneur.caisses
-        : [];
+      conteneur.caisses = Array.isArray(conteneur.caisses) ? conteneur.caisses : [];
 
       conteneur.caisses = conteneur.caisses.filter(function (caisse) {
         return caisse &&
@@ -347,17 +340,11 @@ function surligner(texte,search){
       });
 
       conteneur.caisses.forEach(function (caisse) {
-        caisse.items = Array.isArray(caisse.items)
-          ? caisse.items
-          : [];
+        caisse.items = Array.isArray(caisse.items) ? caisse.items : [];
       });
     });
 
-    console.log(
-      "PIGVS consultation :",
-      DATA.conteneurs.length,
-      "conteneur(s) chargés"
-    );
+    console.log("PIGVS consultation :", DATA.conteneurs.length, "conteneur(s) chargés");
 
     afficherMaj();
     ouvertureDirecte();
@@ -365,12 +352,10 @@ function surligner(texte,search){
   })
   .catch(function (err) {
     console.error("Erreur consultation colisage :", err);
-
     breadcrumb.innerHTML = "";
-
     contenu.innerHTML =
       "<div class='vide'>" +
-        "⚠️ Impossible d’afficher le colisage.<br>" +
+        "⚠️ Impossible d'afficher le colisage.<br>" +
         "<span style='font-size:13px'>" +
           esc(err && err.message ? err.message : "Erreur inconnue") +
         "</span>" +
@@ -381,9 +366,9 @@ function afficherMaj(){
   const nb = (DATA.conteneurs||[]).reduce((s,c)=>s+(c.caisses||[]).length,0);
   let valides = 0;
   (DATA.conteneurs||[]).forEach(c=>(c.caisses||[]).forEach(k=>{
-    if(k.derniereValidation && k.derniereValidation.date) valides++;
+    const v = k.verif || k.derniereValidation;
+    if(v && v.date) valides++;
   }));
-
   const el = document.getElementById('majInfo');
   if(el){
     el.textContent = nb + ' caisses · ' + valides + ' validée(s) sur le terrain · source : ' +
@@ -391,7 +376,7 @@ function afficherMaj(){
   }
 }
 
-/* ---------- Ouverture directe depuis le scanner ---------- */
+/* ---------- Ouverture directe (scanner ou lien depuis un conteneur) ---------- */
 function ouvertureDirecte() {
   const p = new URLSearchParams(location.search);
   const caisseDemandee = p.get("caisse");
@@ -404,13 +389,11 @@ function ouvertureDirecte() {
     /* Si le conteneur est fourni, on cherche d'abord uniquement dedans. */
     if (conteneurDemande) {
       const rechConteneur = cleKey(conteneurDemande);
-
       const cible = conteneursAParcourir.find(function (c) {
         return cleKey(c.nom) === rechConteneur ||
                cleKey(c.id) === rechConteneur ||
                cleKey(c.ref || "") === rechConteneur;
       });
-
       if (cible) {
         conteneursAParcourir = [cible];
       }
@@ -420,29 +403,21 @@ function ouvertureDirecte() {
       const idx = (c.caisses || []).findIndex(function (k) {
         return cleKey(k.nom) === rechCaisse;
       });
-
       if (idx >= 0) {
-        vue = {
-          conteneurId: c.id,
-          caisseIdx: idx
-        };
+        vue = { conteneurId: c.id, caisseIdx: idx };
         searchInput.value = "";
         clearBtn.style.display = "none";
         return;
       }
     }
 
-    /* Deuxième recherche globale si le conteneur fourni ne correspond pas. */
+    /* Deuxieme recherche globale si le conteneur fourni ne correspond pas. */
     for (const c of DATA.conteneurs || []) {
       const idx = (c.caisses || []).findIndex(function (k) {
         return cleKey(k.nom) === rechCaisse;
       });
-
       if (idx >= 0) {
-        vue = {
-          conteneurId: c.id,
-          caisseIdx: idx
-        };
+        vue = { conteneurId: c.id, caisseIdx: idx };
         searchInput.value = "";
         clearBtn.style.display = "none";
         return;
@@ -456,21 +431,15 @@ function ouvertureDirecte() {
 
   if (conteneurDemande) {
     const rech = cleKey(conteneurDemande);
-
     const c = (DATA.conteneurs || []).find(function (x) {
       return cleKey(x.nom) === rech ||
              cleKey(x.id) === rech ||
              cleKey(x.ref || "") === rech;
     });
-
     if (c) {
-      vue = {
-        conteneurId: c.id,
-        caisseIdx: null
-      };
+      vue = { conteneurId: c.id, caisseIdx: null };
       return;
     }
-
     searchInput.value = conteneurDemande;
     clearBtn.style.display = "block";
   }
@@ -497,32 +466,29 @@ function render(){
 function renderConteneurs(){
   breadcrumb.innerHTML = "<span>Tous les conteneurs</span>";
   const groupes = {};
-  (DATA.conteneurs || []).forEach(function (c) { (groupes[c.categorie] = groupes[c.categorie]||[]).push(c); });
+  (DATA.conteneurs || []).forEach(function (c) {
+    (groupes[c.categorie] = groupes[c.categorie]||[]).push(c);
+  });
 
   let html = "";
   Object.keys(groupes).forEach(cat=>{
     html += `<div class="section-titre">${cat==='ETV'?'🚚':'🧰'} Conteneurs ${cat}</div><div class="cards">`;
     groupes[cat].forEach(c=>{
       const nbItems = (c.caisses || []).reduce(function (total, caisse) {
-  return total + (
-    Array.isArray(caisse.items)
-      ? caisse.items.length
-      : 0
-  );
-}, 0);
-    const nbVal = (c.caisses || []).filter(function (caisse) {
-      const validation =
-        caisse.verif ||
-        caisse.derniereValidation;
+        return total + (Array.isArray(caisse.items) ? caisse.items.length : 0);
+      }, 0);
 
-      return validation && validation.date;
-    }).length;
+      const nbVal = (c.caisses || []).filter(function (caisse) {
+        const validation = caisse.verif || caisse.derniereValidation;
+        return validation && validation.date;
+      }).length;
+
       html += `<button class="cont-card" onclick="ouvrirConteneur('${c.id}')">
         <div class="pastille" style="background:${c.couleur}"></div>
         <div class="txt">
           <div class="titre">${esc(c.nom)} <span class="compte">· ${esc(c.couleurNom||'')}</span></div>
           <div class="sous">${esc(c.ref||'')}</div>
-          <div class="compte">${c.caisses.length} caisses · ${nbItems} éléments${nbVal? ' · '+nbVal+' validée(s)':''}</div>
+          <div class="compte">${(c.caisses||[]).length} caisses · ${nbItems} éléments${nbVal? ' · '+nbVal+' validée(s)':''}</div>
         </div>
         <div class="chev">›</div>
       </button>`;
@@ -533,21 +499,22 @@ function renderConteneurs(){
 }
 
 function renderCaisses(){
-  const c = DATA.conteneurs.find(x=>x.id===vue.conteneurId);
+  const c = (DATA.conteneurs||[]).find(x=>x.id===vue.conteneurId);
   if(!c){ retourAccueil(); return; }
 
   breadcrumb.innerHTML =
     `<a onclick="retourAccueil()">Conteneurs</a><span class="sep">›</span><span>${esc(c.nom)}</span>`;
 
   let html = `<div class="section-titre"><span class="chip" style="background:${c.couleur}"><span class="dot"></span>${esc(c.nom)}</span> <span style="font-weight:400;color:#5a6673">${esc(c.ref||'')}</span></div><div class="cards">`;
-  c.caisses.forEach((k,idx)=>{
+
+  (c.caisses||[]).forEach((k,idx)=>{
     html += `<button class="caisse-card" onclick="ouvrirCaisse(${idx})">
       <div class="ico">📦</div>
       <div class="txt">
         <div class="titre">${esc(k.nom)}</div>
         ${tagValidation(k)}
       </div>
-      <div class="compte">${k.items.length} él.</div>
+      <div class="compte">${(k.items||[]).length} él.</div>
       <div class="chev">›</div>
     </button>`;
   });
@@ -565,9 +532,9 @@ function libelleItem(it){
 }
 
 function renderItems(){
-  const c = DATA.conteneurs.find(x=>x.id===vue.conteneurId);
+  const c = (DATA.conteneurs||[]).find(x=>x.id===vue.conteneurId);
   if(!c){ retourAccueil(); return; }
-  const k = c.caisses[vue.caisseIdx];
+  const k = (c.caisses||[])[vue.caisseIdx];
   if(!k){ retourConteneur(); return; }
 
   breadcrumb.innerHTML =
@@ -591,18 +558,25 @@ function renderItems(){
       <div class="det">${texte}${conseil}</div>
     </div>`;
 
-  html += `<a class="btn-saisir" href="colisage-saisie.html?caisse=${encodeURIComponent(k.nom)}">
+  /* Si on vient d'un conteneur, on transmet le contexte a la page
+     de saisie pour qu'elle propose elle aussi un retour rapide. */
+  const paramRetour = retourConteneurParam
+    ? "&retourConteneur=" + encodeURIComponent(retourConteneurParam)
+    : "";
+
+  html += `<a class="btn-saisir" href="colisage-saisie.html?caisse=${encodeURIComponent(k.nom)}${paramRetour}">
       <span>📝 Renseigner le colisage de cette caisse</span><span>›</span></a>`;
 
   html += `<div class="section-titre">📦 ${esc(k.nom)}<span class="sous-titre-inline">${esc(c.nom)} · ${esc(c.ref||'')}</span></div>`;
 
-  if(k.items.length){
+  if((k.items||[]).length){
     html += `<ul class="item-list">`;
-      k.items.forEach(it=> html += `<li>${esc(libelleItem(it))}</li>`);
+    k.items.forEach(it=> html += `<li>${esc(libelleItem(it))}</li>`);
     html += `</ul>`;
   } else {
     html += `<div class='vide'>Cette caisse ne contient aucun élément référencé.</div>`;
   }
+
   contenu.innerHTML = html;
 }
 
@@ -612,35 +586,35 @@ function renderRecherche(saisie){
   const caisses = [], items = [];
 
   (DATA.conteneurs || []).forEach(function (c) {
-  const scoreCont = Math.max(
-    itemScore(saisie, c.nom || ""),
-    itemScore(saisie, c.ref || "")
-  );
+    const scoreCont = Math.max(
+      itemScore(saisie, c.nom || ""),
+      itemScore(saisie, c.ref || "")
+    );
 
-  (c.caisses || []).forEach(function (k, idx) {
-      const scoreNom = itemScore(saisie, k.nom);
+    (c.caisses || []).forEach(function (k, idx) {
+      const scoreNom = itemScore(saisie, k.nom || "");
       if(scoreNom > 0 || scoreCont > 0){
         caisses.push({ conteneur:c, caisse:k, idx,
           score: scoreNom>0 ? scoreNom + 40 : scoreCont,
           parConteneur: scoreNom===0 });
       }
-      (k.items || []).forEach(function (it) {
-  const texteItem = libelleItem(it);
-  const sc = itemScore(saisie, texteItem);
 
-  if (sc > 0) {
-    items.push({
-      item: texteItem,
-      conteneur: c,
-      caisse: k,
-      nomCaisse: k.nom || "",
-      idx: idx,
-      score: sc
+      (k.items || []).forEach(function (it) {
+        const texteItem = libelleItem(it);
+        const sc = itemScore(saisie, texteItem);
+        if (sc > 0) {
+          items.push({
+            item: texteItem,
+            conteneur: c,
+            caisse: k,
+            nomCaisse: k.nom || "",
+            idx: idx,
+            score: sc
+          });
+        }
+      });
     });
-  }
-});
   });
-});
 
   caisses.sort((a,b)=> b.score-a.score || a.caisse.nom.localeCompare(b.caisse.nom));
   items.sort((a,b)=> b.score-a.score || a.item.localeCompare(b.item));
@@ -653,17 +627,18 @@ function renderRecherche(saisie){
   let html = '';
 
   if(caisses.length){
-    html += `<div class="section-titre">🧰 Caisses & sous-ensembles<span class="sous-titre-inline">${caisses.length}</span></div>`;
+    html += `<div class="section-titre">🧰 Caisses &amp; sous-ensembles<span class="sous-titre-inline">${caisses.length}</span></div>`;
     caisses.slice(0,40).forEach(r=>{
-      const apercu = r.caisse.items.slice(0,4).map(function(it){ return esc(libelleItem(it)); }).join(' · ')
-             + (r.caisse.items.length>4 ? ` … +${r.caisse.items.length-4}` : '');
+      const listeItems = r.caisse.items || [];
+      const apercu = listeItems.slice(0,4).map(function(it){ return esc(libelleItem(it)); }).join(' · ')
+             + (listeItems.length>4 ? ` … +${listeItems.length-4}` : '');
       const approx = !r.parConteneur && estApproximatif(saisie, r.caisse.nom);
       html += `<button class="result res-caisse" onclick="ouvrirDepuisRecherche('${r.conteneur.id}',${r.idx})">
         <div class="item">📦 ${r.parConteneur ? esc(r.caisse.nom) : surligner(r.caisse.nom, saisie)}
           ${approx ? '<span class="badge-approx">approchant</span>' : ''}</div>
         <div class="loc">
           <span class="chip" style="background:${r.conteneur.couleur}"><span class="dot"></span>${esc(r.conteneur.nom)}</span>
-          <span class="caisse">${r.caisse.items.length} éléments</span>
+          <span class="caisse">${listeItems.length} éléments</span>
           ${tagValidation(r.caisse)}
         </div>
         <div class="apercu">${apercu}</div>
@@ -695,7 +670,6 @@ function ouvrirConteneur(id){ vue={conteneurId:id, caisseIdx:null}; render(); wi
 function ouvrirCaisse(idx){ vue.caisseIdx=idx; render(); window.scrollTo(0,0); }
 function retourAccueil(){ vue={conteneurId:null, caisseIdx:null}; render(); }
 function retourConteneur(){ vue.caisseIdx=null; render(); }
-
 function ouvrirDepuisRecherche(idCont, idxCaisse){
   searchInput.value=''; clearBtn.style.display='none';
   vue={ conteneurId:idCont, caisseIdx:idxCaisse };
@@ -706,7 +680,14 @@ document.getElementById('backLink').addEventListener('click', function(e){
   if(searchInput.value){ e.preventDefault(); searchInput.value=''; clearBtn.style.display='none'; render(); return; }
   if(vue.caisseIdx!==null){ e.preventDefault(); retourConteneur(); return; }
   if(vue.conteneurId!==null){ e.preventDefault(); retourAccueil(); return; }
+
+  /* Si on vient d'un colisage conteneur, le chevron y ramene directement */
+  if(retourConteneurParam){
+    e.preventDefault();
+    location.href = "colisage-conteneur-saisie.html?conteneur=" +
+      encodeURIComponent(retourConteneurParam);
+  }
 });
-</script>
+    </script>
   </body>
 </html>

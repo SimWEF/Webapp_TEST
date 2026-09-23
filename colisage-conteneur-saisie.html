@@ -87,15 +87,15 @@
         padding: 10px 0; border-bottom: 1px solid #eef0f3; }
       .ligne-item:last-of-type { border-bottom: 0; }
       .ligne-item .nom { flex: 1; min-width: 0; font-size: 14.5px; line-height: 1.3; }
+
       .ligne-item .nom-lien {
         color: var(--primary);
         text-decoration: none;
         border-bottom: 1px dotted var(--primary);
         cursor: pointer;
       }
-      .ligne-item .nom-lien:active {
-        opacity: 0.6;
-      }
+      .ligne-item .nom-lien:active { opacity: 0.6; }
+
       .ligne-item.est-ko .nom { color: var(--muted); text-decoration: line-through; }
       .ligne-item.ajout .nom::before { content: "➕ "; }
 
@@ -121,9 +121,6 @@
         border-radius: 10px; border: 1px solid var(--primary);
         background: var(--primary-soft); color: var(--primary); cursor: pointer; }
       .aide-ajout { font-size: 12px; color: var(--muted); margin-top: 6px; }
-
-      .avert { background: #fff8e1; border: 1px solid #ffe0a3; color: #8a6100;
-        border-radius: 10px; padding: 11px 13px; font-size: 13px; margin-bottom: 12px; }
 
       .status { text-align: center; font-size: 15px; font-weight: 700;
         padding: 14px; border-radius: 12px; margin-top: 10px; display: none; }
@@ -287,7 +284,7 @@
       let conteneurActif = null;
       let items = []; // { nom, etat: 'ok'|'ko', ajout: bool }
 
-      /* ---------- Normalisation permissive (identique à colisage-saisie.html) ---------- */
+      /* ---------- Normalisation permissive ---------- */
       function norm(s) {
         return (s || "").toString().toLowerCase()
           .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -385,6 +382,11 @@
       function setStatus(el, type, msg) { el.className = "status " + type; el.innerHTML = msg; }
       function cacherStatus(el) { el.className = "status"; el.innerHTML = ""; }
 
+      const champAjout = document.getElementById("champAjout");
+      const listeAjout = document.getElementById("listeAjout");
+      const statusChoix = document.getElementById("statusChoix");
+      const statusEnvoi = document.getElementById("statusEnvoi");
+
       /* =========================================================
          CHARGEMENT
          ========================================================= */
@@ -408,6 +410,12 @@
         if (demande) {
           const c = trouverConteneur(demande);
           if (c) selectionnerConteneur(c);
+        }
+
+        /* Si l'operateur a deja tape avant la fin du chargement,
+           on relance la recherche maintenant que les donnees sont pretes. */
+        if (champAjout.value.trim()) {
+          suggestionsAjout(champAjout.value);
         }
       });
 
@@ -465,7 +473,6 @@
 
       /* --- Scanner --- */
       const btnScan = document.getElementById("btnScan");
-      const statusChoix = document.getElementById("statusChoix");
 
       if (typeof PIGVS_SCAN === "undefined") {
         btnScan.disabled = true;
@@ -517,8 +524,11 @@
         const v = conteneur.verif;
         const zoneMaj = document.getElementById("majConteneur");
         if (v && v.date) {
+          const dateAff = /^\d{4}-\d{2}-\d{2}/.test(v.date)
+            ? new Date(v.date).toLocaleDateString("fr-FR")
+            : v.date;
           zoneMaj.style.display = "block";
-          zoneMaj.innerHTML = "🗓️ Dernier contrôle validé le <b>" + echapper(v.date) + "</b>" +
+          zoneMaj.innerHTML = "🗓️ Dernier contrôle validé le <b>" + echapper(dateAff) + "</b>" +
             (v.site ? " sur <b>" + echapper(v.site) + "</b>" : "") +
             (v.operateur ? " · relevé par " + echapper(v.operateur) : "");
         } else {
@@ -551,23 +561,52 @@
           listeItems.innerHTML =
             "<p class='empty' style='padding:20px 0'>Aucune caisse prévue dans ce conteneur.</p>";
         } else {
-          listeItems.innerHTML = items.map(function (item, index) { 
-            var classe = (item.etat === "ko" ? " est-ko" : "") + (item.ajout ? " ajout" : ""); 
+
+          listeItems.innerHTML = items.map(function (item, index) {
+
+            var classe = (item.etat === "ko" ? " est-ko" : "") +
+                         (item.ajout ? " ajout" : "");
+
             var nomConteneur = conteneurActif ? conteneurActif.nom : "";
 
-            var urlCaisse = "colisage-consultation.html?caisse=" +
+            /* Lien vers la consultation de la caisse.
+               MEME ONGLET : pas de target="_blank".
+               Le parametre retourConteneur permet de revenir ici
+               en un clic depuis la consultation ou la saisie. */
+            var urlCaisse =
+              "colisage-consultation.html?caisse=" +
               encodeURIComponent(item.nom) +
               "&conteneur=" +
               encodeURIComponent(nomConteneur) +
               "&retourConteneur=" +
-              encodeURIComponent(nomConteneur); 
-            var lienNom = "<a class=\"nom-lien\" href=\"" + urlCaisse + "\" target=\"_blank\" rel=\"noopener\">" + echapper(item.nom) + "</a>"; 
-            return ( "<div class=\"ligne-item" + classe + "\">" + "<span class=\"nom\">" + lienNom + "</span>" 
-              + "<div class=\"choix-etat\">" + "<button type=\"button\" data-ok=\"" + index + "\" class=\"" + 
-                (item.etat === "ok" ? "actif-ok" : "") + "\" title=\"Présente\">✅</button>" + 
-                "<button type=\"button\" data-ko=\"" + index + "\" class=\"" + (item.etat === "ko" ? "actif-ko" : "") + 
-                "\" title=\"Manquante\">❌</button>" + "</div>" + (item.ajout ? "<button type=\"button\" class=\"btn-suppr\" data-suppr=\""
-                 + index + "\">×</button>" : "") + "</div>" ); }).join("");
+              encodeURIComponent(nomConteneur);
+
+            var lienNom =
+              '<a class="nom-lien" href="' + attr(urlCaisse) + '">' +
+              echapper(item.nom) +
+              "</a>";
+
+            return (
+              '<div class="ligne-item' + classe + '">' +
+
+                '<span class="nom">' + lienNom + "</span>" +
+
+                '<div class="choix-etat">' +
+                  '<button type="button" data-ok="' + index + '" class="' +
+                    (item.etat === "ok" ? "actif-ok" : "") +
+                    '" title="Présente">✅</button>' +
+                  '<button type="button" data-ko="' + index + '" class="' +
+                    (item.etat === "ko" ? "actif-ko" : "") +
+                    '" title="Manquante">❌</button>' +
+                "</div>" +
+
+                (item.ajout
+                  ? '<button type="button" class="btn-suppr" data-suppr="' + index + '">×</button>'
+                  : "") +
+
+              "</div>"
+            );
+          }).join("");
 
           listeItems.querySelectorAll("[data-ok]").forEach(function (b) {
             b.addEventListener("click", function () {
@@ -616,12 +655,9 @@
 
       /* =========================================================
          AJOUT D'UNE CAISSE
-         Recherche exclusivement dans caisses.json (référentiel officiel)
+         Recherche exclusivement dans caisses.json (referentiel officiel)
          + scan. Pas de saisie libre : une caisse doit exister.
          ========================================================= */
-      const champAjout = document.getElementById("champAjout");
-      const listeAjout = document.getElementById("listeAjout");
-
       champAjout.addEventListener("focus", function () { suggestionsAjout(champAjout.value); });
       champAjout.addEventListener("input", function () { suggestionsAjout(champAjout.value); });
       champAjout.addEventListener("keydown", function (e) {
@@ -668,6 +704,15 @@
       function ajouterCaisse(nom) {
         const cle = cleKey(nom);
 
+        /* Securite : une caisse ne peut pas porter le nom du conteneur */
+        if (conteneurActif && cle === cleKey(conteneurActif.nom)) {
+          setStatus(statusEnvoi, "erreur",
+            "⚠️ Impossible d'ajouter le conteneur lui-même comme caisse.");
+          champAjout.value = "";
+          listeAjout.style.display = "none";
+          return;
+        }
+
         const existante = items.find(function (i) { return cleKey(i.nom) === cle; });
         if (existante) {
           existante.etat = "ok";
@@ -697,54 +742,58 @@
 
       /* =========================================================
          ENVOI
-         Reutilise EXACTEMENT le meme schema que le relevé de caisse
+         Reutilise le meme schema que le releve de caisse
          (Caisse / Conteneur / NbPrevus / Presents / Manquants / Ajoutes)
-         afin que le valideur admin-colisage-validation.html affiche
-         ce relevé SANS AUCUNE MODIFICATION.
-         Le champ NiveauColisage="conteneur" permet a pigvs-colisage.js
-         de savoir, au moment de la publication, qu'il doit mettre a
-         jour la liste des caisses d'un conteneur plutot que le
-         contenu d'une caisse.
+         afin que admin-colisage-validation.html affiche ce releve
+         SANS AUCUNE MODIFICATION.
+         NiveauColisage="conteneur" permet a pigvs-colisage.js de
+         mettre a jour la LISTE DES CAISSES du conteneur plutot que
+         le contenu d'une caisse.
          ========================================================= */
-         function siteCourant() {
-          const chantier = window.PIGVS ? PIGVS.getChantier() : null;
-
-          if (!chantier || !chantier.site) {
-            return "";
-          }
-
-          return chantier.site.trim();
+      function siteCourant() {
+        const chantier = window.PIGVS ? PIGVS.getChantier() : null;
+        if (!chantier || !chantier.site) {
+          return "";
         }
+        return chantier.site.trim();
+      }
 
-        function cheminDestination() {
-          const site = siteCourant();
-
-          if (!site) {
-            return "chantier-non-selectionne";
-          }
-
-          if (!conteneurActif) {
-            return "…";
-          }
-
-          return (
-            "colisage/" +
-            sanitizePath(site) +
-            "/conteneurs/" +
-            sanitizePath(conteneurActif.nom)
-          );
+      function cheminDestination() {
+        const site = siteCourant();
+        if (!site) {
+          return "chantier-non-selectionne";
         }
+        if (!conteneurActif) {
+          return "…";
+        }
+        return (
+          "colisage/" +
+          sanitizePath(site) +
+          "/conteneurs/" +
+          sanitizePath(conteneurActif.nom)
+        );
+      }
 
       function majChemin() {
         document.getElementById("apercuChemin").textContent =
           "Destination : /" + cheminDestination();
       }
 
-      const statusEnvoi = document.getElementById("statusEnvoi");
-
       document.getElementById("btnEnvoyer").addEventListener("click", async function () {
         const operateur = document.getElementById("operateur").value.trim();
         const commentaire = document.getElementById("commentaire").value.trim();
+
+        /* Le site DOIT etre defini, sinon le flux Power Automate ne
+           trouve pas colisage-reel-<site>.json et renvoie une 502. */
+        const site = siteCourant();
+        if (!site) {
+          setStatus(
+            statusEnvoi,
+            "erreur",
+            "⚠️ Aucun chantier sélectionné. Revenez à l'accueil et choisissez un chantier avant d'envoyer le colisage."
+          );
+          return;
+        }
 
         if (!conteneurActif) {
           setStatus(statusEnvoi, "erreur", "⚠️ Sélectionnez d'abord un conteneur.");
@@ -761,21 +810,18 @@
 
         const presentes = items.filter(function (i) { return i.etat === "ok" && !i.ajout; });
         const manquantes = items.filter(function (i) { return i.etat === "ko" && !i.ajout; });
-        const ajoutees = items.filter(function (i) { return i.ajout; });
+        const ajoutees = items.filter(function (i) { return i.ajout && i.etat === "ok"; });
         const prevues = items.filter(function (i) { return !i.ajout; });
 
         const resultat = await PIGVS_ENVOI.envoyer({
           type: "COLISAGE",
           path: cheminDestination(),
           champs: {
-            /* Indique a pigvs-colisage.js qu'il s'agit d'un relevé
-               de conteneur (liste de caisses), et non d'une caisse
-               (liste d'équipements). */
             NiveauColisage: "conteneur",
 
             Site: site,
             Conteneur: conteneurActif.nom,
-            Caisse: conteneurActif.nom, /* reutilise le champ existant, compatible valideur */
+            Caisse: conteneurActif.nom,
             Operateur: operateur,
             Date: new Date().toLocaleString("fr-FR"),
 

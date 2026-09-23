@@ -32,6 +32,22 @@
       .separateur::before, .separateur::after {
         content: ""; flex: 1; height: 1px; background: var(--border); }
 
+      /* ---------- Retour au conteneur ---------- */
+      .btn-retour-conteneur {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--marine, #0B2C5C);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 11px 14px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+      .btn-retour-conteneur:active { opacity: .8; }
+
       /* ---------- Autocompletion ---------- */
       .ac-wrap { position: relative; }
       .ac-list { position: absolute; top: 100%; left: 0; right: 0;
@@ -76,6 +92,7 @@
       .compteurs .kpi.ko .val { color: var(--rouge); }
       .compteurs .kpi.plus .val { color: var(--orange); }
 
+      /* ---------- Ligne d'inventaire ---------- */
       .ligne-item {
         display: flex;
         flex-wrap: wrap;
@@ -171,48 +188,6 @@
         font-weight: 700;
         cursor: pointer;
       }
-      .ligne-item .btn-absent {
-        width: 38px;
-        height: 38px;
-        flex: 0 0 auto;
-        font-size: 15px;
-        border: 1px solid var(--rouge);
-        border-radius: 10px;
-        background: #fff;
-        color: var(--rouge);
-        cursor: pointer;
-      }
-      .ligne-item .btn-absent.actif {
-        background: var(--rouge);
-        color: #fff;
-      }
-
-      @media (max-width: 520px) {
-        .ligne-item {
-          flex-wrap: wrap;
-        }
-
-        .ligne-item .nom {
-          flex: 1 1 calc(100% - 115px);
-        }
-
-        .ligne-item .zone-qte {
-          order: 3;
-          margin-left: auto;
-        }
-      }
-      .ligne-item.est-ko .nom { color: var(--muted); text-decoration: line-through; }
-      .ligne-item.ajout .nom::before { content: "➕ "; }
-
-      .choix-etat { display: flex; gap: 5px; flex: 0 0 auto; }
-      .choix-etat button { width: 42px; height: 42px; font-size: 17px;
-        border-radius: 10px; border: 1px solid #ccd4e0; background: #fff; cursor: pointer; }
-      .choix-etat button.actif-ok { background: var(--vert); border-color: var(--vert); }
-      .choix-etat button.actif-ko { background: var(--rouge); border-color: var(--rouge); }
-
-      .btn-suppr { width: 36px; height: 36px; flex: 0 0 auto;
-        border-radius: 50%; border: 2px solid var(--rouge); background: #fff;
-        color: var(--rouge); font-weight: 700; cursor: pointer; }
 
       .barre-rapide { display: flex; gap: 8px; margin-bottom: 12px; }
       .barre-rapide button { flex: 1; min-height: 44px; font-size: 13.5px;
@@ -225,12 +200,10 @@
       .ajout-zone button { flex: 0 0 auto; padding: 0 18px; font-weight: 700;
         border-radius: 10px; border: 1px solid var(--primary);
         background: var(--primary-soft); color: var(--primary); cursor: pointer; }
-
       .aide-ajout { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
       #camInput, #galInput { position: absolute; width: 1px; height: 1px;
         padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-
       .btns-photo { display: flex; flex-direction: column; gap: 9px; }
       .btn-photo { display: flex; align-items: center; justify-content: center;
         gap: 8px; width: 100%; padding: 15px; font-size: 16px; font-weight: 700;
@@ -272,7 +245,7 @@
 
   <body>
     <header class="app-header">
-      <a class="back" href="colisage.html">‹</a>
+      <a class="back" href="colisage.html" id="backLink">‹</a>
       <h1>📝 Saisie du colisage</h1>
     </header>
 
@@ -385,17 +358,14 @@
         <!-- ============ PHOTOS ============ -->
         <div class="bloc">
           <h2>3. Photos (facultatif)</h2>
-
           <input type="file" accept="image/*" capture="environment" id="camInput" />
           <input type="file" accept="image/*" multiple id="galInput" />
-
           <div class="btns-photo">
             <label for="camInput" class="btn-photo">📸 Prendre une photo</label>
             <label for="galInput" class="btn-photo gal">
               🖼️ Choisir dans la galerie
             </label>
           </div>
-
           <div id="galerie"></div>
           <div class="compteur" id="compteurPhotos"></div>
           <div class="jauge"><div id="jaugeFill"></div></div>
@@ -433,6 +403,7 @@
     <script src="pigvs-envoi.js"></script>
     <script src="pigvs-scan.js"></script>
     <script src="pigvs-colisage.js"></script>
+
     <script>
       const QUALITE_JPEG = 0.9;
       const MAX_LARGEUR = 2500;
@@ -455,6 +426,26 @@
       let caisseActive = null;
       let items = [];
       let photos = [];
+
+      /* =========================================================
+         RETOUR AU CONTENEUR D'ORIGINE
+         Permet d'enchainer le colisage des caisses d'un conteneur.
+         ========================================================= */
+      const retourConteneurParam =
+        new URLSearchParams(location.search).get("retourConteneur");
+
+      if (retourConteneurParam) {
+        const bandeau = document.createElement("a");
+        bandeau.className = "btn-retour-conteneur";
+        bandeau.href =
+          "colisage-conteneur-saisie.html?conteneur=" +
+          encodeURIComponent(retourConteneurParam);
+        bandeau.textContent =
+          "← Retour au conteneur « " + retourConteneurParam + " »";
+
+        const page = document.querySelector(".page");
+        page.insertBefore(bandeau, page.firstChild);
+      }
 
       /* =========================================================
          NORMALISATION PERMISSIVE
@@ -491,7 +482,6 @@
         }
         return dp[a.length][b.length];
       }
-
       function wordScore(s, t) {
         if (!s) return 1;
         if (t === s) return 120;
@@ -506,7 +496,6 @@
         else th = 3;
         return d <= th ? 60 - d * 10 : 0;
       }
-
       function scoreMots(q, text) {
         const qw = q.split(/\s+/).filter(Boolean);
         const tw = text.split(/\s+/).filter(Boolean);
@@ -522,7 +511,6 @@
         if (text.includes(q)) tot += 30;
         return tot;
       }
-
       function itemScore(search, texte) {
         const q = norm(search);
         if (!q) return 1;
@@ -537,12 +525,10 @@
         if (score > 0) return score;
         return scoreMots(eclater(search), eclater(texte));
       }
-
       function surligner(texte, search) {
         const mots = norm(search).split(/\s+/).filter(Boolean);
         const brut = norm(texte);
         const marques = new Array(texte.length).fill(false);
-
         mots.forEach(function (w) {
           let i = brut.indexOf(w);
           while (i >= 0) {
@@ -550,7 +536,6 @@
             i = brut.indexOf(w, i + w.length);
           }
         });
-
         if (!marques.some(Boolean)) {
           const kq = cleKey(search);
           if (kq) {
@@ -566,7 +551,6 @@
             }
           }
         }
-
         let out = "", ouvert = false;
         for (let i = 0; i < texte.length; i++) {
           if (marques[i] && !ouvert) { out += "<mark>"; ouvert = true; }
@@ -582,6 +566,7 @@
       function catalogueDepuisColisageEtSap(colisage, sap) {
         const vus = {};
         const liste = [];
+
         function ajouter(nom) {
           const texte = (nom || "").toString().trim();
           const k = cleKey(texte);
@@ -589,6 +574,7 @@
           vus[k] = true;
           liste.push(texte);
         }
+
         (colisage && colisage.conteneurs || []).forEach(function (conteneur) {
           (conteneur.caisses || []).forEach(function (caisse) {
             (caisse.items || []).forEach(function (item) {
@@ -600,11 +586,13 @@
             });
           });
         });
+
         const codes = (sap && sap.codes) || {};
         Object.keys(codes).forEach(function (code) {
           const entree = codes[code];
           if (entree && entree.type === "equipement" && entree.cible) ajouter(entree.cible);
         });
+
         return liste.sort(function (a, b) {
           return a.localeCompare(b, "fr", { sensitivity: "base" });
         });
@@ -617,7 +605,6 @@
         return (s || "").toString().trim().replace(/[\\\/:*?"<>|]/g, "-");
       }
       function versNomFichier(s) { return sanitizePath(s).replace(/\s+/g, "_"); }
-
       function setStatus(element, type, message) {
         element.className = "status " + type;
         element.innerHTML = message;
@@ -626,6 +613,15 @@
         element.className = "status";
         element.innerHTML = "";
       }
+
+      /* =========================================================
+         ETAPE 1 — CHOIX DE LA CAISSE (declare avant le chargement)
+         ========================================================= */
+      const champCaisse = document.getElementById("champCaisse");
+      const listeCaisses = document.getElementById("listeCaisses");
+      const statusChoix = document.getElementById("statusChoix");
+      const champAjout = document.getElementById("champAjout");
+      const listeAjout = document.getElementById("listeAjout");
 
       /* =========================================================
          CHARGEMENT DES REFERENTIELS
@@ -644,8 +640,6 @@
         const sap = resultats[2] || { codes: {} };
         CODES = sap.codes || {};
 
-        /* Catalogue pour l'autocompletion des ajouts.
-           Le module actuel expose catalogueEquipements(), qui est asynchrone. */
         CATALOGUE = [];
 
         const vues = {};
@@ -673,42 +667,36 @@
 
         /* Charge le catalogue sans bloquer la recherche de caisses. */
         if (typeof C.catalogueEquipements === "function") {
-            C.catalogueEquipements(COLISAGE)
-              .then(function (liste) {
-                CATALOGUE = Array.isArray(liste) ? liste : [];
-                console.log("PIGVS :", CAISSES.length, "caisses ;", CATALOGUE.length, "equipements");
-                if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
-              })
-              .catch(function (err) {
-                console.warn("Catalogue equipements indisponible :", err);
-                CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
-                if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
-              });
-          } else {
-            CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
-            if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
-          }
+          C.catalogueEquipements(COLISAGE)
+            .then(function (liste) {
+              CATALOGUE = Array.isArray(liste) ? liste : [];
+              console.log("PIGVS :", CAISSES.length, "caisses ;", CATALOGUE.length, "equipements");
+              if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+            })
+            .catch(function (err) {
+              console.warn("Catalogue equipements indisponible :", err);
+              CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+              if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+            });
+        } else {
+          CATALOGUE = catalogueDepuisColisageEtSap(COLISAGE, sap);
+          if (champAjout.value.trim()) suggestionsAjout(champAjout.value);
+        }
 
         const params = new URLSearchParams(location.search);
         const demandee = params.get("caisse");
         if (demandee) selectionnerCaisse(demandee);
-      
-              /* Si l'utilisateur a deja tape avant la fin du chargement,
-          on relance la recherche maintenant que les donnees sont pretes. */
+
+        /* Si l'utilisateur a deja tape avant la fin du chargement,
+           on relance la recherche maintenant que les donnees sont pretes. */
         if (champCaisse.value.trim()) {
           afficherSuggestions(champCaisse.value);
-        }});
+        }
+      });
 
       if (window.PIGVS) {
         PIGVS.loadChantiers().then(majChemin);
       }
-
-      /* =========================================================
-         ETAPE 1 — CHOIX DE LA CAISSE
-         ========================================================= */
-      const champCaisse = document.getElementById("champCaisse");
-      const listeCaisses = document.getElementById("listeCaisses");
-      const statusChoix = document.getElementById("statusChoix");
 
       champCaisse.addEventListener("focus", function () {
         afficherSuggestions(champCaisse.value);
@@ -843,24 +831,19 @@
           caisseActive = resultat;
           items = (resultat.caisse.items || []).map(function (source) {
             const estObjet = source && typeof source === "object";
-
-            const nom = estObjet
+            const nomItem = estObjet
               ? (source.equipement || source.nom || "")
               : String(source || "");
-
             const quantitePrevue = estObjet
               ? Math.max(0, parseInt(source.quantite || 1, 10))
               : 1;
-
             return {
-              nom: nom,
+              nom: nomItem,
               quantitePrevue: quantitePrevue,
               quantitePresente: quantitePrevue,
-              etat: "ok",
               ajout: false
             };
           });
-
         } else {
           caisseActive = {
             conteneur: { nom: "—" },
@@ -876,11 +859,14 @@
           "Conteneur : " + caisseActive.conteneur.nom;
 
         /* Derniere validation connue */
-        const v = caisseActive.caisse.derniereValidation || caisseActive.caisse.verif;
+        const v = caisseActive.caisse.verif || caisseActive.caisse.derniereValidation;
         const zoneMaj = document.getElementById("majCaisse");
         if (v && v.date) {
+          const dateAff = /^\d{4}-\d{2}-\d{2}/.test(v.date)
+            ? new Date(v.date).toLocaleDateString("fr-FR")
+            : v.date;
           zoneMaj.style.display = "block";
-          zoneMaj.innerHTML = "🗓️ Dernier colisage validé le <b>" + echapper(v.date) + "</b>" +
+          zoneMaj.innerHTML = "🗓️ Dernier colisage validé le <b>" + echapper(dateAff) + "</b>" +
             (v.site ? " sur <b>" + echapper(v.site) + "</b>" : "") +
             (v.operateur ? " · relevé par " + echapper(v.operateur) : "");
         } else {
@@ -909,6 +895,7 @@
 
       /* =========================================================
          ETAPE 2 — INVENTAIRE
+         La QUANTITE fait foi : quantite > 0 = present.
          ========================================================= */
       const listeItems = document.getElementById("listeItems");
 
@@ -993,36 +980,27 @@
 
       function majCompteurs() {
         const prevus = items
-          .filter(function (i) {
-            return !i.ajout;
-          })
+          .filter(function (i) { return !i.ajout; })
           .reduce(function (total, item) {
             return total + Number(item.quantitePrevue || 0);
           }, 0);
 
         const presents = items
-          .filter(function (i) {
-            return !i.ajout;
-          })
+          .filter(function (i) { return !i.ajout; })
           .reduce(function (total, item) {
             return total + Number(item.quantitePresente || 0);
           }, 0);
 
         const manquants = items
-          .filter(function (i) {
-            return !i.ajout;
-          })
+          .filter(function (i) { return !i.ajout; })
           .reduce(function (total, item) {
             const prevue = Number(item.quantitePrevue || 0);
             const presente = Number(item.quantitePresente || 0);
-
             return total + Math.max(0, prevue - presente);
           }, 0);
 
         const ajoutes = items
-          .filter(function (i) {
-            return i.ajout;
-          })
+          .filter(function (i) { return i.ajout; })
           .reduce(function (total, item) {
             return total + Number(item.quantitePresente || 0);
           }, 0);
@@ -1052,9 +1030,6 @@
          AJOUT D'UN ELEMENT
          Autocompletion sur la base materiel + saisie libre
          ========================================================= */
-      const champAjout = document.getElementById("champAjout");
-      const listeAjout = document.getElementById("listeAjout");
-
       champAjout.addEventListener("focus", function () {
         suggestionsAjout(champAjout.value);
       });
@@ -1090,7 +1065,6 @@
           })
           .slice(0, 40);
 
-        /* Saisie libre toujours proposee en premier */
         let html =
           '<div class="ac-libre" data-item="' + attr(saisie) + '">' +
           "➕ Ajouter « " + echapper(saisie) + " »" +
@@ -1107,6 +1081,7 @@
         }
 
         listeAjout.innerHTML = html;
+
         listeAjout.querySelectorAll("div[data-item]").forEach(function (ligne) {
           ligne.addEventListener("mousedown", function (ev) {
             ev.preventDefault();
@@ -1132,9 +1107,9 @@
           nom: nom,
           quantitePrevue: 0,
           quantitePresente: 1,
-          etat: "ok",
           ajout: true
         });
+
         champAjout.value = "";
         listeAjout.style.display = "none";
         cacherStatus(statusEnvoi);
@@ -1188,11 +1163,14 @@
         setStatus(statusEnvoi, "info", "⏳ Compression en cours…");
 
         let ajoutees = 0, refusees = 0;
+
         for (const fichier of fichiers) {
           let blob;
           try { blob = await compresser(fichier); }
           catch (err) { refusees++; continue; }
+
           if (tailleTotale() + blob.size > LIMITE_TOTALE) { refusees++; continue; }
+
           const file = new File([blob], "tmp_" + Date.now() + ".jpg", { type: "image/jpeg" });
           photos.push({
             file: file,
@@ -1203,6 +1181,7 @@
         }
 
         rendreGalerie();
+
         if (refusees > 0) {
           setStatus(statusEnvoi, "erreur",
             "⚠️ " + ajoutees + " ajoutée(s), " + refusees + " refusée(s) : limite de 10 Mo.");
@@ -1260,27 +1239,22 @@
       /* =========================================================
          ENVOI
          ========================================================= */
-         function siteCourant() {
+      function siteCourant() {
         const chantier = window.PIGVS ? PIGVS.getChantier() : null;
-
         if (!chantier || !chantier.site) {
           return "";
         }
-
         return chantier.site.trim();
       }
 
       function cheminDestination() {
         const site = siteCourant();
-
         if (!site) {
           return "chantier-non-selectionne";
         }
-
         if (!caisseActive) {
           return "…";
         }
-
         return (
           "colisage/" +
           sanitizePath(site) +
@@ -1297,15 +1271,14 @@
       document.getElementById("btnEnvoyer").addEventListener("click", async function () {
         const operateur = document.getElementById("operateur").value.trim();
         const commentaire = document.getElementById("commentaire").value.trim();
-        const site = siteCourant();
 
+        const site = siteCourant();
         if (!site) {
           setStatus(
             statusEnvoi,
             "erreur",
-            "⚠️ Aucun chantier sélectionné. Revenez à l’accueil et choisissez un chantier avant d’envoyer le colisage."
+            "⚠️ Aucun chantier sélectionné. Revenez à l'accueil et choisissez un chantier avant d'envoyer le colisage."
           );
-
           return;
         }
 
@@ -1318,20 +1291,12 @@
           return;
         }
 
-        const nonRenseignes = items.filter(function (i) { return !i.etat; }).length;
-        if (nonRenseignes > 0) {
-          const suite = confirm(
-            nonRenseignes + " élément(s) ne sont pas renseignés.\nEnvoyer quand même ?");
-          if (!suite) return;
-        }
-
         const bouton = this;
         bouton.disabled = true;
         setStatus(statusEnvoi, "info", "⏳ Envoi en cours…");
 
         const base = versNomFichier(caisseActive.caisse.nom);
         const compteurs = {};
-
         const listePhotos = photos.map(function (photo) {
           const cle = photo.type;
           compteurs[cle] = (compteurs[cle] || 0) + 1;
@@ -1355,16 +1320,14 @@
 
         const manquantsJson = items
           .filter(function (item) {
-            return !item.ajout &&
-              item.quantitePresente < item.quantitePrevue;
+            return !item.ajout && item.quantitePresente < item.quantitePrevue;
           })
           .map(function (item) {
             return {
               equipement: item.nom,
               quantitePrevue: item.quantitePrevue,
               quantitePresente: item.quantitePresente,
-              quantiteManquante:
-                item.quantitePrevue - item.quantitePresente
+              quantiteManquante: item.quantitePrevue - item.quantitePresente
             };
           });
 
@@ -1379,60 +1342,57 @@
             };
           });
 
-
         const resultat = await PIGVS_ENVOI.envoyer({
           type: "COLISAGE",
           path: cheminDestination(),
           champs: {
-          NiveauColisage: "caisse",
+            NiveauColisage: "caisse",
 
-          Site: site,
-          Conteneur: caisseActive.conteneur.nom,
-          Caisse: caisseActive.caisse.nom,
-          Operateur: operateur,
-          Date: new Date().toLocaleString("fr-FR"),
+            Site: site,
+            Conteneur: caisseActive.conteneur.nom,
+            Caisse: caisseActive.caisse.nom,
+            Operateur: operateur,
+            Date: new Date().toLocaleString("fr-FR"),
 
-          NbPrevus: String(
-            items
-              .filter(function (i) {
-                return !i.ajout;
-              })
-              .reduce(function (total, item) {
-                return total + Number(item.quantitePrevue || 0);
+            NbPrevus: String(
+              items
+                .filter(function (i) { return !i.ajout; })
+                .reduce(function (total, item) {
+                  return total + Number(item.quantitePrevue || 0);
+                }, 0)
+            ),
+            NbPresents: String(
+              presentsJson.reduce(function (total, item) {
+                return total + Number(item.quantitePresente || 0);
               }, 0)
-          ),
+            ),
+            NbManquants: String(
+              manquantsJson.reduce(function (total, item) {
+                return total + Number(item.quantiteManquante || 0);
+              }, 0)
+            ),
+            NbAjoutes: String(
+              ajoutesJson.reduce(function (total, item) {
+                return total + Number(item.quantitePresente || 0);
+              }, 0)
+            ),
 
-          NbPresents: String(
-            presentsJson.reduce(function (total, item) {
-              return total + Number(item.quantitePresente || 0);
-            }, 0)
-          ),
+            Presents: JSON.stringify(presentsJson),
+            Manquants: JSON.stringify(manquantsJson),
+            Ajoutes: JSON.stringify(ajoutesJson),
 
-          NbManquants: String(
-            manquantsJson.reduce(function (total, item) {
-              return total + Number(item.quantiteManquante || 0);
-            }, 0)
-          ),
-
-          NbAjoutes: String(
-            ajoutesJson.reduce(function (total, item) {
-              return total + Number(item.quantitePresente || 0);
-            }, 0)
-          ),
-
-          Presents: JSON.stringify(presentsJson),
-          Manquants: JSON.stringify(manquantsJson),
-          Ajoutes: JSON.stringify(ajoutesJson),
-
-          Commentaire: commentaire,
-          NbPhotos: String(photos.length),
-        },
-        photos: listePhotos,
+            Commentaire: commentaire,
+            NbPhotos: String(photos.length),
+          },
+          photos: listePhotos,
         });
 
         if (resultat.ok) {
           setStatus(statusEnvoi, "ok",
-            "✅ Colisage de « " + echapper(caisseActive.caisse.nom) + " » envoyé !");
+            "✅ Colisage de « " + echapper(caisseActive.caisse.nom) + " » envoyé !" +
+            (retourConteneurParam
+              ? "<br><span style='font-weight:400;font-size:13px'>Utilisez le bandeau en haut pour revenir au conteneur.</span>"
+              : ""));
           document.getElementById("pas3").classList.add("actif");
           photos.forEach(function (p) { URL.revokeObjectURL(p.url); });
           photos = [];
@@ -1443,6 +1403,15 @@
           bouton.disabled = false;
         }
       });
-</script>
+
+      /* Le chevron de retour ramene au conteneur si on en vient */
+      document.getElementById("backLink").addEventListener("click", function (e) {
+        if (retourConteneurParam) {
+          e.preventDefault();
+          location.href = "colisage-conteneur-saisie.html?conteneur=" +
+            encodeURIComponent(retourConteneurParam);
+        }
+      });
+    </script>
   </body>
 </html>
