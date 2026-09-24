@@ -8,6 +8,18 @@ window.PIGVS_AUTH = (function () {
     const KEY_OK   = "pigvs_auth_ok";
     const KEY_CODE = "pigvs_auth_code";
     const KEY_EXP  = "pigvs_auth_exp";
+    const KEY_DEVICE = "pigvs_device_id";
+
+    function identifiantAppareil(){
+        let id = localStorage.getItem(KEY_DEVICE);
+        if(!id){
+            id = (window.crypto && crypto.randomUUID)
+                ? crypto.randomUUID()
+                : String(Date.now()) + "-" + Math.random().toString(36).slice(2);
+            localStorage.setItem(KEY_DEVICE, id);
+        }
+        return id;
+    }
   
     const DUREE_JOURS = 3650;
   
@@ -21,6 +33,7 @@ window.PIGVS_AUTH = (function () {
     /* ==========================================
        Utilitaires
        ========================================== */
+
     function attendre(ms){
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -85,8 +98,17 @@ window.PIGVS_AUTH = (function () {
             const rep = await fetch(URL_VERIF, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code: code.trim() })
+                body: JSON.stringify({
+                    code: code.trim(),
+                    device: identifiantAppareil()
+                    })
             });
+            if(rep.status === 429){
+                return {
+                ok: false,
+                msg: "Trop de tentatives. Accès bloqué 24 h."
+                };
+                }
   
             if(rep.ok){
                 localStorage.setItem(KEY_OK, "1");
