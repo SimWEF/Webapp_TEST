@@ -11,7 +11,7 @@
 
     /* 1️⃣ URL COMPLÈTE du flux "PIGVS - Reception"
           ⚠️ Elle doit contenir &sig=... à la fin ! */
-    const URL_FLUX = "https://default516ec17ab92f438b8594e11b6f6bec.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/04/workflows/7ee4645413cd4d43aaf312a6fe97fbf4/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-uzPwa9IbvsUrxX4D26HGUMER7LS0dT3-mr2dfwKITw";
+    const URL_FLUX = "https://default516ec17ab92f438b8594e11b6f6bec.79.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/20/workflows/584eabb2016b4c6997ffca67cb736bee/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ixm98EdN6_FhSXuBU3A3Heu2prUWgXlY03fhUnWUeAI";
   
   
     /* Le base64 gonfle le poids d'environ 33 % */

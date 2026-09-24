@@ -8,7 +8,7 @@
    changer APP_CACHE pour voir un colisage mis a jour.
    ========================================================== */
 
-   const APP_CACHE = "pigvs-app-v47";
+   const APP_CACHE = "pigvs-app-v48";
    const DATA_CACHE = "pigvs-data-v15";
    
    /* ==========================================================
