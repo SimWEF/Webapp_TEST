@@ -219,6 +219,7 @@ window.PIGVS_AUTH = (function () {
         protegerPage,
         getCode,
         deconnecter,
+        identifiantAppareil,
         URL_VERIF
     };
   

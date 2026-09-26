@@ -65,6 +65,8 @@
       const payload = {
         type   : type,
         code   : code,
+        device : (window.PIGVS_AUTH && PIGVS_AUTH.identifiantAppareil)
+                ? PIGVS_AUTH.identifiantAppareil() : "",
         path   : donnees.path || "",
         envoi  : new Date().toISOString(),
         champs : champs,
@@ -83,6 +85,16 @@
           body   : JSON.stringify(payload),
           signal : AbortSignal.timeout(TIMEOUT_MS)
         });
+
+        if (rep.status === 429) {
+          return { ok: false, msg: "Appareil bloqué 24 h après trop de tentatives." };
+        }
+        if (rep.status === 400) {
+          return { ok: false, msg: "Envoi refusé : données non conformes." };
+        }
+        if (rep.status === 202) {
+          return { ok: false, msg: "Envoi rejeté : code d'accès non reconnu." };
+        }
   
         if (rep.ok) return { ok: true };
   
